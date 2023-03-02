@@ -5,6 +5,8 @@ Albert Valls Berengueras<valls.berengueras.albert@alumnat.copernic.cat>, Óscar 
 
 == Memoria setmanal
 
+include::setmanes/setmana.adoc[]
+
 == Disseny base de dades
 
 == Mockup d'interficies
