@@ -5,8 +5,9 @@ apt-get update
 apt-get install -y mariadb-server mariadb-client
 
 # Crear la base de dades
-
-
+mysql << EOF
+CREATE DATABASE marketifyBBDD charset='utf8mb4' collate='utf8mb4_unicode_ci';
+EOF
 # Configuració de MariaDB:
 # - Permet connexions des de qualsevol host
 # - Activa GROUP BY estricte
