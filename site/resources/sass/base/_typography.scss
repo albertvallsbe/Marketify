@@ -1,0 +1,21 @@
+$font-family-paragraph: 'Roboto', sans-serif;
+$line-height-paragraph: 1em;
+
+$font-family-headings: 'Tahoma', sans-serif;
+$line-height-headings: 1em;
+
+p,
+a{
+	font-family: $font-family-paragraph;
+	line-height: $line-height-paragraph;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-family-headings;
+	line-height: $line-height-headings;
+}

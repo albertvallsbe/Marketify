@@ -1,0 +1,19 @@
+div#navigation {
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: center;
+    padding-block: 10px;
+    color: white;
+    background-color: #0A2E36;
+
+    div.icon {
+        height: 50px;
+        width: 50px;
+        background-color: white;
+    }
+}
