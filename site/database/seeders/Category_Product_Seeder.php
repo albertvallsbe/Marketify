@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class ProductSeeder extends Seeder
+class Category_Product_Seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +14,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        
-        DB::table('products')->delete();
-        Product::factory()->count(10)->create();
+        //
     }
 }
