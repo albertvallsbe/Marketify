@@ -1,0 +1,16 @@
+=== Setmana 1
+
+Hem començat el projecte creant un trello per definir les tasques del projecte i organitzar-nos. 
+Hem creat un repositori al git de l'institut per al projecte, amb les branques principals de treball (main, development)
+
+==== David
+
+Començar a familiaritzar-se amb git, crear tasques de trello, instal·lar SASS i el layout main de la pàgina.
+
+==== Oscar
+
+Començar a familiaritzar-se amb git, crear tasques de trello, dissenyar i creear la BBDD, guia d'estil i el layout de la HomePage
+
+==== Albert
+
+Demostració de lús de git a l'equip, instal·lació del laravel al projecte, creació del Vagrant per allotjar la BBDD.

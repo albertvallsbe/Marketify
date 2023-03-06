@@ -3,6 +3,3 @@ vagrant/.vagrant/machines/javamariadb/virtualbox/action_set_name
 vagrant/.vagrant/machines/javamariadb/virtualbox/box_meta
 vagrant/.vagrant/machines/javamariadb/virtualbox/private_key
 vagrant/.vagrant/machines/javamariadb/virtualbox/synced_folders
-/node_modules
-/vendor
-.vagrant
