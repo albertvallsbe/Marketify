@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    @yield('content')
+    @include('components.header')
+    <div id="content">
+        @yield('content')
+    </div>
+    @include('components.navigation')
 </body>
 
 </html>
