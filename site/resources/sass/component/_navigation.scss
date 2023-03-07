@@ -1,5 +1,5 @@
 div#navigation {
-    position:fixed;
+    position: fixed;
     bottom: 0;
     width: 100%;
     overflow: hidden;
@@ -17,3 +17,19 @@ div#navigation {
         background-color: white;
     }
 }
+
+
+@media screen and (min-width: 769px) {
+    div#navigation {
+        display: none;
+    }
+    div#content {
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 1200px) {}
