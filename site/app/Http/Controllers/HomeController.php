@@ -22,4 +22,9 @@ class HomeController extends Controller
         ];
         return view('home.index', $data);
     }
+
+    public function show($id){
+        $product = Product::findOrFail($id);
+        return view('product.show', ['id' => $id], ['product' => $product]);
+    }
 }

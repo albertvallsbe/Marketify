@@ -15,3 +15,4 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home.index');
+Route::get('/product/show/{id}', [HomeController::class, 'show'])->name('product.show');

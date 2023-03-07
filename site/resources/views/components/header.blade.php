@@ -1,6 +1,6 @@
 <header>
     <div id="navbar">
-        <div class="logo"></div>
+        <a href="{{ route('home.index') }}"><div class="logo"></div></a>
         <form action="{{ route('home.index')}}" method="GET">
         <input type="text" placeholder="Search..." name="search" class="form__searchbar">
         <input type="submit" value="Q" id="form__buttonsearch">
