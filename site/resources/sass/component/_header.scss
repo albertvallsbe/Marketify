@@ -1,20 +1,23 @@
 header {
+    position:fixed;
+    top: 0;
     width: 100%;
+    overflow: hidden;
 
     div#navbar {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto 10%;
         align-items: center;
         padding-block: 10px;
         background-color: #0A2E36;
         color: #1F1F20;
     }
 
-    input.searchbar {
+    input.form__searchbar {
         border-radius: 12px;
         border-width: 0;
         width: 75%;
-        height: 75%;
+        padding-block: 2%;
         text-indent: 5%;
     }
 
@@ -23,5 +26,25 @@ header {
         height: 50px;
         background-color: #005910;
         margin-inline-start: 15%;
+    }
+
+    #form__buttonsearch{
+        background: none;
+        border-width: 0;
+        color: white;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .navbar__login{
+        color:white;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    .navbar__login{
+        display:none;
     }
 }
