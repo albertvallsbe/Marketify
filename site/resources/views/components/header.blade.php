@@ -9,7 +9,10 @@
                     src="{{ asset('images/magnifying-glass-solid.svg') }}"></button>
         </form>
         <div id="navbar__icons">
+            
+        <a href="{{ route('home.login') }}">
             <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
+        </a>
             <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
         </div>
     </div>
