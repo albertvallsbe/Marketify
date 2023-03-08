@@ -13,7 +13,7 @@ class HomeController extends Controller
         $search = $request->search;
         $products = Product::where('name','LIKE','%'.$search.'%')
         // ->orWhere('description','LIKE','%'.$search.'%')
-        ->simplePaginate(4);
+        ->simplePaginate(8);
         // ->paginate(4);
 
         $data = [

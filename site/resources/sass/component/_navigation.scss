@@ -9,13 +9,7 @@ div#navigation {
     justify-items: center;
     padding-block: 10px;
     color: white;
-    background-color: #0A2E36;
-
-    div.icon {
-        height: 50px;
-        width: 50px;
-        background-color: white;
-    }
+    background-color: #1F1F20;
 }
 
 
@@ -23,13 +17,8 @@ div#navigation {
     div#navigation {
         display: none;
     }
+
     div#content {
         margin-bottom: 0px;
     }
 }
-
-@media screen and (max-width: 768px) {}
-
-@media screen and (max-width: 1024px) {}
-
-@media screen and (max-width: 1200px) {}

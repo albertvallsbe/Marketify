@@ -9,10 +9,10 @@
             <div class="product">
                 <a href="{{ route('product.show', $product->id) }}">
                 {{-- <img src="{{ $product->image }}"/> --}}
-                <img class="product_img" src="https://www.ikea.com/es/es/images/products/bergmund-silla-efecto-roble-hallarp-beige__0926594_pe789377_s5.jpg"/>
+                <img class="product__img" src="{{ asset('images/marketify_logo.png') }}"/>
 
-                <h3>{{ $product->name }}</h3>
-                <h4>{{ $product->price }} €</h4>
+                <h4 class="product__name" >{{ $product->name }}</h4>
+                <h3 class="product__price" >{{ $product->price }} €</h3>
                 </a>
             </div>
         @endforeach

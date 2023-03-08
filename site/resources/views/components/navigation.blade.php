@@ -1,4 +1,4 @@
 <div id="navigation">
-    <div id="home" class="icon"></div>
-    <div id="profile" class="icon"></div>
+    <img class="icon" src="{{ asset('images/house-solid.svg') }}">
+    <img class="icon" src="{{ asset('images/user-solid.svg') }}">
 </div>
