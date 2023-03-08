@@ -15,4 +15,5 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home.index');
+Route::get('/login', [HomeController::class, 'login'])->name('home.login');
 Route::get('/product/show/{id}', [HomeController::class, 'show'])->name('product.show');
