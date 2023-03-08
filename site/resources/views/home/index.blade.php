@@ -9,7 +9,7 @@
             <div class="product">
                 <a href="{{ route('product.show', $product->id) }}">
                 {{-- <img src="{{ $product->image }}"/> --}}
-                <img class="product__img" src="{{ asset('images/marketify_logo.png') }}"/>
+                <img class="product__img" src="{{ $product->image }}"/>
 
                 <h4 class="product__name" >{{ $product->name }}</h4>
                 <h3 class="product__price" >{{ $product->price }} €</h3>
