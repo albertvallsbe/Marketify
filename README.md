@@ -1,4 +1,4 @@
-# Marketyfy
+# Marketify
 ## Integrantes del grupo
 * David Hernández
 * Albert Valls 
