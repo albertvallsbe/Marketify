@@ -1,5 +1,5 @@
 # Marketplace
-#Integrantes del grupo
+## Integrantes del grupo
 David Hernández
 Albert Valls 
 Oscar Ramírez
