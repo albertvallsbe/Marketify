@@ -12,11 +12,11 @@ class HomeController extends Controller
     public function index(Request $request) {
         $search = $request->search;
         $order = $request->order ?? 'name_asc';
-
+        $order_explode = explode("_", $order)[0].",".explode("_", $order)[1];
         $products = Product::where('name','LIKE','%'.$search.'%')
         ->orderBy(explode("_", $order)[0], explode("_", $order)[1])
         ->simplePaginate(8);
-        
+        $products->appends(['search' => $search, 'order' => explode("_", $order)[0]."_".explode("_", $order)[1]]);
         
         $order_array = [
             'name_asc' => 'Name Ascendent',
