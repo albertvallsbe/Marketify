@@ -14,12 +14,6 @@ h6 {
   line-height: 1em;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  overflow: hidden;
-}
 header div#navbar {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -144,13 +138,11 @@ div.product a {
 }
 
 body {
-  background-color: rgb(74, 74, 74);
+  background-color: rgb(217, 217, 217);
 }
 
 div#content {
-  margin-top: 100px;
   margin-inline: 5%;
-  margin-bottom: 100px;
   text-align: justify;
 }
 
