@@ -33,6 +33,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_category');
+      Schema::table('category_product', function (Blueprint $table) {
+        $table->dropForeign(['product_id']);
+        $table->dropForeign(['category_id']);
+      });
+      Schema::dropIfExists('product_category');
     }
 };
