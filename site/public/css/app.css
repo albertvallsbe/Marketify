@@ -1,7 +1,10 @@
-p,
-a {
-  font-family: "Roboto", sans-serif;
-  line-height: 1em;
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+form, input, select {
+  font-family: "Open Sans", sans-serif;
 }
 
 h1,
@@ -10,8 +13,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Tahoma", sans-serif;
-  line-height: 1em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 }
 
 header div#navbar {
@@ -23,36 +26,54 @@ header div#navbar {
   justify-items: center;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #1F1F20;
+  background-color: #303030;
 }
 header div#navbar form#navbar__form {
   display: flex;
   align-items: center;
-  width: 75%;
+  width: 100%;
 }
 header div#navbar form#navbar__form input.form__searchbar {
-  border-radius: 12px;
+  border-radius: 0 12px 12px 0;
   border-width: 0;
   padding-block: 2%;
   text-indent: 5%;
-  width: 100%;
+  width: 57%;
   background-color: #585858;
 }
 header div#navbar form#navbar__form input.form__searchbar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: black;
 }
-header div#navbar form#navbar__form input.form__searchbar:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
+header div#navbar form#navbar__form input.form__searchbar::-ms-input-placeholder {
   color: black;
 }
-header div#navbar form#navbar__form input.form__searchbar::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: black;
+header div#navbar form#navbar__form input.form__searchbar:hover {
+  background-color: #646464;
+}
+header div#navbar form#navbar__form input.form__searchbar:focus {
+  border-width: 0;
 }
 header div#navbar form#navbar__form #form__buttonsearch {
   background-color: rgba(0, 0, 0, 0);
   border-width: 0;
+}
+header div#navbar form#navbar__form select#form__select_orderby {
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  width: 28%;
+  background-color: #303030;
+}
+header div#navbar form#navbar__form select#form__select_category {
+  border-radius: 12px 0 0 12px;
+  border-width: 0;
+  padding-block: 2%;
+  width: 15%;
+  background-color: #327999;
 }
 header div#navbar div#navbar__icons {
   display: grid;
@@ -62,7 +83,7 @@ header div#navbar div#navbar__icons {
 header img.logo {
   width: 50px;
   height: 50px;
-  background-color: #005910;
+  background-color: #327999;
   margin: auto;
 }
 
@@ -85,7 +106,7 @@ div#navigation {
   justify-items: center;
   padding-block: 10px;
   color: white;
-  background-color: #1F1F20;
+  background-color: #303030;
 }
 
 @media screen and (min-width: 769px) {
@@ -98,7 +119,7 @@ div#navigation {
 }
 div#products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(168.75px, 1fr));
   grid-row-gap: 20px;
   grid-column-gap: 20px;
 }
@@ -107,38 +128,37 @@ div.product {
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  padding: 5%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-self: center;
-  align-items: center;
-  text-align: center;
   width: 150px;
-  height: 200px;
 }
 div.product img.product__img {
   height: 125px;
   width: 125px;
+}
+div.product h4.product__name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 div.product a {
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
 
-@media screen and (min-width: 950px) {
+@media screen and (max-width: 768px) {
   div#products {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-row-gap: 20px;
-    grid-column-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
-* {
+body {
   margin: 0;
 }
 
 body {
-  background-color: rgb(217, 217, 217);
+  background-color: #EAEAEA;
 }
 
 div#content {

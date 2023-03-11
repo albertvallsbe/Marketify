@@ -1,13 +1,12 @@
-$font-family-paragraph: 'Roboto', sans-serif;
-$line-height-paragraph: 1em;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+$font-family-base: 'Open Sans', sans-serif;
 
-$font-family-headings: 'Tahoma', sans-serif;
-$line-height-headings: 1em;
+body {
+	font-family: $font-family-base;
+}
 
-p,
-a{
-	font-family: $font-family-paragraph;
-	line-height: $line-height-paragraph;
+form, input, select {
+	font-family: $font-family-base;
 }
 
 h1,
@@ -16,6 +15,6 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: $font-family-headings;
-	line-height: $line-height-headings;
+	font-family: $font-family-base;
+	font-weight: 600;
 }

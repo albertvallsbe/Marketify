@@ -4,8 +4,11 @@
             <img class="logo" src="{{ asset('images/marketify_logo.png') }}">
         </a>
         <form id="navbar__form" action="{{ route('product.index') }}" method="GET">
+            <select name="order" id="form__select_category">
+                <option value="all_categories">All categories</option>
+            </select>
             <input type="text" placeholder="Search..." name="search" class="form__searchbar">
-            <select name="order">
+            <select name="order" id="form__select_orderby">
                 @foreach ($order_array as $value => $label)
                     <option value="{{ $value }}" {{ $value == $order ? 'selected' : '' }}>
                         {{ $label }}</option>
