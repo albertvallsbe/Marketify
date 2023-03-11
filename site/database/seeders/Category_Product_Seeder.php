@@ -22,18 +22,10 @@ class Category_Product_Seeder extends Seeder
         $products = Product::all();
 
         foreach ($products as $product) {
-          // $numberCategories = Category::count();
-          // $randomCategories = rand(0,$numberCategories);
+          $numberCategories = Category::count();
+          $randomCategories = rand(1,$numberCategories);
 
-           $randomCategories = rand(0,10);
-
-          //$product = new Product();
-          // $product->category()->attach(
-          // [
-          //   ($product->id),
-          //    ($randomCategories)
-          // ]);
-           $product->category()->attach(category::find($randomCategories));
+          $product->category()->attach(category::find($randomCategories));
       }
     }
 }
