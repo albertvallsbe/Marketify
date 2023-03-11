@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,10 @@ use App\Http\Controllers\CartController;
 |
 */
 
-Route::get('/', [HomeController::class,'index'])->name('home.index');
-Route::get('/login', [HomeController::class, 'login'])->name('home.login');
-Route::get('/product/show/{id}', [HomeController::class, 'show'])->name('product.show');
+Route::get('/', [ProductController::class,'index'])->name('product.index');
+Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

@@ -8,19 +8,19 @@ header {
         justify-items: center;
         padding: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #1F1F20;
+        background-color: #303030;
 
         form#navbar__form {
             display: flex;
             align-items: center;
-            width: 75%;
+            width: 100%;
 
             input.form__searchbar {
-                border-radius: 12px;
+                border-radius: 0 12px 12px 0;
                 border-width: 0;
                 padding-block: 2%;
                 text-indent: 5%;
-                width: 100%;
+                width: 57%;
                 background-color: #585858;
 
                 &::placeholder {
@@ -28,14 +28,16 @@ header {
                     color: black;
                 }
 
-                &:-ms-input-placeholder {
-                    /* Internet Explorer 10-11 */
+                &::-ms-input-placeholder {
                     color: black;
                 }
 
-                &::-ms-input-placeholder {
-                    /* Microsoft Edge */
-                    color: black;
+                &:hover {
+                    background-color: #646464;
+                }
+
+                &:focus {
+                    border-width: 0;
                 }
             }
 
@@ -43,6 +45,27 @@ header {
                 background-color: #00000000;
                 border-width: 0;
             }
+
+            select#form__select_orderby {
+                // appearance: none;
+                outline: 0;
+                border: 0;
+                box-shadow: none;
+                flex: 1;
+                padding: 0 1em;
+                color: #fff;
+                width: 28%;
+                background-color: #303030;
+            }
+
+            select#form__select_category {
+                border-radius: 12px 0 0 12px;
+                border-width: 0;
+                padding-block: 2%;
+                width: 15%;
+                background-color: #327999;
+            }
+
         }
 
         div#navbar__icons {
@@ -55,7 +78,7 @@ header {
     img.logo {
         width: 50px;
         height: 50px;
-        background-color: #005910;
+        background-color: #327999;
         margin: auto;
     }
 }
