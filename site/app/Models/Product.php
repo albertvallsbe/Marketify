@@ -17,4 +17,15 @@ class Product extends Model
      public function category(){
         return $this->belongsToMany(Category::class)->withTimeStamps();
     }
+
+    public static function search($search, $order = 'name_asc') {
+    $order_explode = explode("_", $order);
+    $orderBy = $order_explode[0];
+    $orderDirection = $order_explode[1];
+
+    return self::query()
+        ->where('name', 'LIKE', '%' . $search . '%')
+        ->orderBy($orderBy, $orderDirection)
+        ->simplePaginate(8);
+    }
 }
