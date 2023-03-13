@@ -18,7 +18,7 @@ class CartController extends Controller
         
         return view('cart.index', $order_data);
     }
-    
+
     public function add(Request $request) {
     }
 }
