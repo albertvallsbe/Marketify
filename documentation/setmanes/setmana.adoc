@@ -1,3 +1,31 @@
+=== Setmana 2
+
+-
+
+==== David
+
+Aquesta setmana he redissenyat la home view 3 vegades. Més que res per fer-la completament responsive i ajustar el grid correctament. La primera versió no era responsive. La segona versió tenia 6 media queries, i la tercera i última només té un media query i un grid amb un repeat amb minmax per fer-lo més automàtic. També he buscat i afegit icons, i fet un logo pel projecte.
+
+A més de la vista del home, he fet un component per al header, i un altre pel navigation. El navigation només es mostra per dispositius mòbils o tablets: he pensat que es una bona idea posar el navigation sota del tot per no saturar massa el header.
+Header: logo, search bar, ordenació, icon d'usuari i icon de carret
+Navigation: icon de home i icon d'usuari
+
+La barra de resultats de cerca és funcional, he afegit una vista sense detall pel carret i el login i fet la paginació.
+
+He afegit tipografia a la pàgina a "typografy_css", utilitzant l'arquitectura SASS.
+
+He mirat per crear imatges aleatòries amb un factory i utilitzo un fakeimg.
+
+==== Oscar
+
+-
+
+==== Albert
+
+-
+
+
+
 === Setmana 1
 
 Hem començat el projecte creant un trello per definir les tasques del projecte i organitzar-nos. 
