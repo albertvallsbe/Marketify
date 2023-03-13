@@ -22,6 +22,6 @@ Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('prod
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 
 
-Route::get('/card', [CartController::class, 'index'])->name('card.index');
-Route::post('/card', [CartController::class, 'add'])->name('card.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
 

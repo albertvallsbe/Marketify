@@ -8,7 +8,7 @@
             <p><b>Description: </b>{{ $product->description }}</p>
             <p><b>Price: </b>{{ $product->price }}</p>
 
-            <form action="{{ route('card.add') }}" method="POST">
+            <form action="{{ route('cart.add') }}" method="POST">
                 @csrf
                 <input type="hidden" value="{{ $product->image }}" name="product_image">
                 <input type="hidden" value="{{ $product->name }}" name="product_name">
