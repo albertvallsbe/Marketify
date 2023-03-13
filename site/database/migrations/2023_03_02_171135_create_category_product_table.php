@@ -37,6 +37,6 @@ return new class extends Migration
         $table->dropForeign(['product_id']);
         $table->dropForeign(['category_id']);
       });
-      Schema::dropIfExists('product_category');
+      Schema::dropIfExists('category_product');
     }
 };
