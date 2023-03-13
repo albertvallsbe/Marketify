@@ -1,3 +1,23 @@
+=== Setmana 3
+
+==== David
+
+==== Oscar
+
+==== Albert
+
+Actualitzar la funcionalita del migrate:rollback per solucionar els errors que hi havia. 
+Temps estimat => 1h
+Temps real => 2h
+
+=== Setmana 2
+
+==== David
+
+==== Oscar
+
+==== Albert
+
 === Setmana 1
 
 Hem començat el projecte creant un trello per definir les tasques del projecte i organitzar-nos. 
