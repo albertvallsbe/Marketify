@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class CardController extends Controller
 {
     private $order = 'name_asc';
 
@@ -21,9 +21,9 @@ class CartController extends Controller
             'order_array' => $this->order_array,
             'order' => $this->order,
         ];
-        return view('cart.index', $order_data);
+        return view('card.index', $order_data);
     }
-    
+
     public function add(Request $request) {
     }
 }
