@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Models\Product;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+// use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -18,26 +20,47 @@ class ProductController extends Controller
         'price_desc' => 'Price Descendent'
     ];
 
+    public function filter(){
+
+    }
     public function index(Request $request) {
         $search = $request->search;
         $this->order = $request->order ?? $this->order;
-    
-        $products = Product::search($search, $this->order);
-        $products->appends([
-            'search' => $search,
-            'order' => explode("_",$this->order)[0]."_".explode("_", $this->order)[1]
-        ]);
-    
+        $filter = $request->filter;
+        $categories = Category::selectCategory();
+        // $products = Product::search($search,$filter, $this->order);
+        if($search != ""){
+            $products = Product::searchTagCategory($search,$filter, $this->order);
+            echo "hola " . $search  ;
+         }else {
+            $products = Product::searchSpecific($filter);
+            echo $filter;
+         }
+        
+        // COMENTADA LA FUCION APPEND
+        // $products->appends([
+        //     'search' => $search,
+        //     'order' => explode("_",$this->order)[0]."_".explode("_", $this->order)[1]
+        // ]);
+        
+        
         $data = [
             'products' => $products,
             'search' => $search,
-
+            'categories'=> $categories,
+                 
+                 
+            
+            
         ];
+       
+
         $order_data = [
             'order_array' => $this->order_array,
             'order' => $this->order
         ];
-
+        
+        
         return view('product.index', $data, $order_data);
     }
 
@@ -52,7 +75,9 @@ class ProductController extends Controller
             'order_array' => $this->order_array,
             'order' => $this->order
         ];
+       
 
         return view('product.show', $data, $order_data);
     }
+  
 }
