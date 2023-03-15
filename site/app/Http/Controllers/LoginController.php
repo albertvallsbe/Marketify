@@ -12,7 +12,8 @@ class LoginController extends Controller
 
         $order_data = [
             'order_array' => Order::$order_array,
-            'order' => Order::$order
+            'order' => Order::$order,
+            'search' => ''
         ];
         
         return view('login.index', $order_data);
