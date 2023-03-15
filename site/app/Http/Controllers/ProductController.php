@@ -27,10 +27,8 @@ class ProductController extends Controller
         // $products = Product::search($search,$filter, $this->order);
         if($this->search != ""){
             $products = Product::searchTagCategory($this->search,$filter, $order_request);
-            echo "hola " . $this->search  ;
          }else {
             $products = Product::searchSpecific($filter);
-            echo $filter;
          }
         
         // COMENTADA LA FUCION APPEND
@@ -59,9 +57,11 @@ class ProductController extends Controller
     public function show($id){
         $product = Product::findOrFail($id);
         
+        $categories = Category::selectCategory();
         $data = [
             'id' => $id,
             'product' => $product,
+            'categories'=> $categories,
             'search' => $this->search
         ];
         $order_data = [

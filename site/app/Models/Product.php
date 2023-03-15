@@ -39,7 +39,8 @@ class Product extends Model
         ->join('categories', 'category_product.id', '=', 'categories.id')
         ->select('*')
         ->where('categories.id', 'LIKE', '%' . $filter . '%')
-        ->get();
+        
+        ->paginate(8);
     }
     public static function searchTagCategory($search,$filter,$order){
         return self::query()
@@ -49,7 +50,8 @@ class Product extends Model
         ->where('categories.id', '=' . $filter )
         ->where('products.name_product', 'LIKE', '%' . $search . '%' )
         ->orWhere('products.tag','LIKE','%'. $search . '%')
-        ->get();
+        
+        ->paginate(8);
     }
 
 
