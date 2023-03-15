@@ -15,11 +15,11 @@
                         <h4 class="product__name">{{ $product->name_product }}</h4>
                         <h3 class="product__price">{{ $product->price }} €</h3>
                     </a>
-                    <button id="btn-cart">xdd</button>
+                    <button id="btn-cart">Add to cart</button>
                 </div>
             @endforeach
         @else
-            <p>No se encontraron resultados.</p>
+            <h2>No results were found.</h2>
         @endif
     </div>
     <div id="pagination">

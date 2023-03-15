@@ -11,9 +11,11 @@ class CartController extends Controller
     
     public function index() {
 
+        $categories = Category::selectCategory();
         $order_data = [
             'order_array' => Order::$order_array,
             'order' => Order::$order,
+            'categories'=> $categories,
             'search' => ''
         ];
         
