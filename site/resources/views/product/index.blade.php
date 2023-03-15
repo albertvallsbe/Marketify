@@ -8,7 +8,9 @@
             @foreach ($products as $key => $product)
                 <div class="product">
                     <a href="{{ route('product.show', $product->id) }}">
-                        <img class="product__img" src="{{ $product->image }}" />
+                        <div class="product__div_img">
+                            <img class="product__img" src="{{ $product->image }}" />
+                        </div>
                         <h4 class="product__name">{{ $product->name }}</h4>
                         <h3 class="product__price">{{ $product->price }} €</h3>
                     </a>

@@ -16,9 +16,19 @@ div.product {
 
     width: 150px;
 
-    img.product__img {
+    div.product__div_img {
         height: 125px;
         width: 125px;
+        display: flex;
+        align-items: center;
+        margin-inline: auto;
+
+        img.product__img {
+            height: 125px;
+            width: 125px;
+            object-fit: cover;
+        }
+
     }
 
     h4.product__name {
