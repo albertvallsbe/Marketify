@@ -10,21 +10,21 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public $search;
 
     public function index(Request $request) {
-        $search = $request->search;
+        $this->search = $request->search;
         $order_request = $request->order ?? Order::$order;
     
-        $products = Product::search($search, $order_request);
+        $products = Product::search($this->search, $order_request);
         $products->appends([
-            'search' => $search,
+            'search' => $this->search,
             'order' => explode("_", $order_request)[0]."_".explode("_", $order_request)[1]
         ]);
     
         $data = [
             'products' => $products,
-            'search' => $search,
-
+            'search' => $this->search
         ];
         $order_data = [
             'order_array' => Order::$order_array,
@@ -38,7 +38,8 @@ class ProductController extends Controller
         
         $data = [
             'id' => $id,
-            'product' => $product
+            'product' => $product,
+            'search' => $this->search
         ];
         $order_data = [
             'order_array' => Order::$order_array,

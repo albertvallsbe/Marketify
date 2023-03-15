@@ -26,6 +26,6 @@ class Product extends Model
     return self::query()
         ->where('name', 'LIKE', '%' . $search . '%')
         ->orderBy($orderBy, $orderDirection)
-        ->simplePaginate(8);
+        ->paginate(8);
     }
 }

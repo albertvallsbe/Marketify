@@ -21,6 +21,7 @@
         @endif
     </div>
     <div id="pagination">
-        {{ $products->appends(['search' => $search]) }}
+        {{-- {{ $products->appends(['search' => $search]) }} --}}
+        {{ $products->links('vendor.pagination.default') }}
     </div>
 @endsection

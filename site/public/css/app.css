@@ -129,6 +129,7 @@ div#products {
   grid-template-columns: repeat(auto-fit, minmax(168.75px, 1fr));
   grid-row-gap: 20px;
   grid-column-gap: 20px;
+  padding-top: 38px;
 }
 
 div.product {
@@ -170,21 +171,44 @@ div.product a {
 }
 body {
   margin: 0;
-}
-
-body {
   background-color: #FBFBFD;
 }
 
 div#content {
   margin-inline: 5%;
   text-align: justify;
+  padding-bottom: 60px;
 }
 
 img.icon {
   height: 35px;
   width: 35px;
   cursor: pointer;
+}
+
+div.pagination {
+  border: 1px solid black;
+  padding: 4px;
+  padding-inline: 8px;
+  text-decoration: none;
+  background-color: #d8d8d8;
+}
+
+div.pagination a {
+  text-decoration: none;
+  color: #000;
+}
+
+div.active, div.disabled {
+  background-color: #919191;
+}
+
+ul.pagination {
+  display: flex;
+  font-size: 1.4em;
+  justify-content: center;
+  gap: 15px;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=app.css.map */
