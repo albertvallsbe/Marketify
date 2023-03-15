@@ -31,7 +31,7 @@ class Product extends Model
         ->where('name', 'LIKE', '%' . $search . '%' )
         // ->orWhere('tag','LIKE','%'. $search . '%')
         ->orderBy($orderBy, $orderDirection)
-        ->simplePaginate(8);
+        ->paginate(8);
     }
     public static function searchSpecific($filter){
         return self::query()

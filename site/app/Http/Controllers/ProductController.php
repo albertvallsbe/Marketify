@@ -2,36 +2,32 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Classes\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 // use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 
 class ProductController extends Controller
 {
-    private $order = 'name_asc';
-
-    private $order_array = [
-        'name_asc' => 'Name Ascendent',
-        'name_desc' => 'Name Descendent',
-        'price_asc' => 'Price Ascendent',
-        'price_desc' => 'Price Descendent'
-    ];
+    public $search;
 
     public function filter(){
 
     }
     public function index(Request $request) {
-        $search = $request->search;
-        $this->order = $request->order ?? $this->order;
+        $this->search = $request->search;
+        $order_request = $request->order ?? Order::$order;
+
         $filter = $request->filter;
         $categories = Category::selectCategory();
         // $products = Product::search($search,$filter, $this->order);
-        if($search != ""){
-            $products = Product::searchTagCategory($search,$filter, $this->order);
-            echo "hola " . $search  ;
+        if($this->search != ""){
+            $products = Product::searchTagCategory($this->search,$filter, $order_request);
+            echo "hola " . $this->search  ;
          }else {
             $products = Product::searchSpecific($filter);
             echo $filter;
@@ -46,18 +42,14 @@ class ProductController extends Controller
         
         $data = [
             'products' => $products,
-            'search' => $search,
+            'search' => $this->search,
             'categories'=> $categories,
                  
-                 
-            
-            
-        ];
-       
+        ];         
 
         $order_data = [
-            'order_array' => $this->order_array,
-            'order' => $this->order
+            'order_array' => Order::$order_array,
+            'order' => Order::$order
         ];
         
         
@@ -69,11 +61,12 @@ class ProductController extends Controller
         
         $data = [
             'id' => $id,
-            'product' => $product
+            'product' => $product,
+            'search' => $this->search
         ];
         $order_data = [
-            'order_array' => $this->order_array,
-            'order' => $this->order
+            'order_array' => Order::$order_array,
+            'order' => Order::$order
         ];
        
 

@@ -1,6 +1,58 @@
+=== Setmana 3
+
+==== David
+
+==== Oscar
+
+==== Albert
+
+Actualitzar la funcionalitat del migrate:rollback per solucionar els errors que hi havia.
+Temps estimat => 1h
+Temps real => 2h
+
+=== Setmana 2
+
+==== David
+
+Aquesta setmana he redissenyat la home view 3 vegades. Més que res per fer-la completament responsive i ajustar el grid correctament. La primera versió no era responsive. La segona versió tenia 6 media queries, i la tercera i última només té un media query i un grid amb un repeat amb minmax per fer-lo més automàtic. També he buscat i afegit icones, i he fet un logo pel projecte.
+
+A més de la vista del home, he fet un component per al header, i un altre pel navigation. El navigation només es mostra per dispositius mòbils o tablets: he pensat que es una bona idea posar el navigation sota del tot per no saturar massa el header.
+- Header: logo, search bar, ordenació, icona d'usuari i icona del carret
+- Navigation: icona de home i icona d'usuari
+
+La barra de resultats de cerca és funcional, he afegit una vista sense detall pel carret i el login i fet la paginació.
+
+He afegit tipografia a la pàgina a "typografy_css", utilitzant l'arquitectura SASS.
+
+He mirat per crear imatges aleatòries amb un factory i faig servir un fakeimg.
+
+==== Oscar
+
+==== Albert
+
+Durant la setmana he realitzat les següents tasques:
+
+- Creació de la relació n-m entre les taules.
+
+- La creació de les migracions i seeders a la base de dades.
+Elaboració de les migracions i dels seeders.
+
+A les migracions s'afegeix l'estructura de taules i relacions que tindrà la base de dades, s'inclou també les connexions per realitzar una relació n-m entre les taules de "productes" i de "categories"
+
+S'afegeixen els seeders que l'ompliran de dades fictícies gràcies a les factories. També s'afeixen les condicions necessàries en el mètode down() dels seeds perquè en cas de fer un migrate:rollback es desvinculin les relacions entre taules i es pugui a continuació esborrar les dades i les taules.
+
+- L'eliminació dels fitxers que van ser inclosos en el repositori remot, i que no ho haurien d'haver estat inclosos.
+
+L'eliminació dels fitxers .env i alguns fitxers de configuració de la màquina virtual de Vagrant per la base de dades.
+
+Aquestes tasques es van allargar més del temps estimat.
+- Creació i configuració del migrate:rollback => 2h
+- Creació de la relació n-m => 5h
+Entre documentació, cerca d'informació i realització de les tasques han superat el temps previst i superat el temps de les 18h de classe.
+
 === Setmana 1
 
-Hem començat el projecte creant un trello per definir les tasques del projecte i organitzar-nos. 
+Hem començat el projecte creant un trello per definir les tasques del projecte i organitzar-nos.
 Hem creat un repositori al git de l'institut per al projecte, amb les branques principals de treball (main, development)
 
 ==== David
@@ -9,8 +61,8 @@ Començar a familiaritzar-se amb git, crear tasques de trello, instal·lar SASS 
 
 ==== Oscar
 
-Començar a familiaritzar-se amb git, crear tasques de trello, dissenyar i creear la BBDD, guia d'estil i el layout de la HomePage
+Començar a familiaritzar-se amb git, crear tasques de trello, dissenyar i crear la BBDD, guia d'estil i el layout de la HomePage
 
 ==== Albert
 
-Demostració de lús de git a l'equip, instal·lació del laravel al projecte, creació del Vagrant per allotjar la BBDD.
+Demostració d'ús de git a l'equip, instal·lació del laravel al projecte, creació del Vagrant per allotjar la BBDD.

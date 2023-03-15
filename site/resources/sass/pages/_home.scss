@@ -3,6 +3,7 @@ div#products {
     grid-template-columns: repeat(auto-fit, minmax(calc(150px * 1.125), 1fr));
     grid-row-gap: 20px;
     grid-column-gap: 20px;
+    padding-top: 38px;
 }
 
 div.product {
@@ -16,15 +17,29 @@ div.product {
 
     width: 150px;
 
-    img.product__img {
+    div.product__div_img {
         height: 125px;
         width: 125px;
+        display: flex;
+        align-items: center;
+        margin-inline: auto;
+
+        img.product__img {
+            height: 125px;
+            width: 125px;
+            object-fit: cover;
+        }
+
     }
 
     h4.product__name {
+        text-align: left;
         overflow: hidden;
-        white-space: nowrap;
         text-overflow: ellipsis;
+        display: -webkit-box;
+        height: 3em;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
     }
 
     a {

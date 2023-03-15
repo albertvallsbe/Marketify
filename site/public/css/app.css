@@ -25,21 +25,21 @@ header div#navbar {
   align-items: center;
   justify-items: center;
   padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #303030;
+  background-color: #1F1F1F;
 }
 header div#navbar form#navbar__form {
   display: flex;
   align-items: center;
   width: 100%;
+  border-radius: 12px 12px 12px 12px;
+  background-color: #8F8F8F;
 }
 header div#navbar form#navbar__form input.form__searchbar {
-  border-radius: 0 12px 12px 0;
   border-width: 0;
   padding-block: 2%;
   text-indent: 5%;
   width: 57%;
-  background-color: #585858;
+  background-color: #8F8F8F;
 }
 header div#navbar form#navbar__form input.form__searchbar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -48,32 +48,39 @@ header div#navbar form#navbar__form input.form__searchbar::placeholder {
 header div#navbar form#navbar__form input.form__searchbar::-ms-input-placeholder {
   color: black;
 }
-header div#navbar form#navbar__form input.form__searchbar:hover {
-  background-color: #646464;
-}
-header div#navbar form#navbar__form input.form__searchbar:focus {
-  border-width: 0;
-}
 header div#navbar form#navbar__form #form__buttonsearch {
-  background-color: rgba(0, 0, 0, 0);
   border-width: 0;
+  background-color: #FF5208;
+  border-radius: 0 12px 12px 0;
+  padding-block: 0.75%;
+}
+header div#navbar form#navbar__form #form__buttonsearch:hover {
+  background-color: #E04807;
 }
 header div#navbar form#navbar__form select#form__select_orderby {
+  min-height: 100%;
   outline: 0;
   border: 0;
   box-shadow: none;
   flex: 1;
   padding: 0 1em;
-  color: #fff;
+  margin-left: 5px;
   width: 28%;
-  background-color: #303030;
+  padding-block: 2%;
+  text-overflow: ellipsis;
+  background-color: #828282;
+  min-height: 100%;
+  cursor: pointer;
 }
 header div#navbar form#navbar__form select#form__select_category {
+  min-height: 100%;
   border-radius: 12px 0 0 12px;
   border-width: 0;
   padding-block: 2%;
   width: 15%;
-  background-color: #327999;
+  text-overflow: ellipsis;
+  background-color: #3985a9;
+  cursor: pointer;
 }
 header div#navbar div#navbar__icons {
   display: grid;
@@ -83,7 +90,7 @@ header div#navbar div#navbar__icons {
 header img.logo {
   width: 50px;
   height: 50px;
-  background-color: #327999;
+  background-color: #43A1CC;
   margin: auto;
 }
 
@@ -106,7 +113,7 @@ div#navigation {
   justify-items: center;
   padding-block: 10px;
   color: white;
-  background-color: #303030;
+  background-color: #1F1F1F;
 }
 
 @media screen and (min-width: 769px) {
@@ -122,6 +129,7 @@ div#products {
   grid-template-columns: repeat(auto-fit, minmax(168.75px, 1fr));
   grid-row-gap: 20px;
   grid-column-gap: 20px;
+  padding-top: 38px;
 }
 
 div.product {
@@ -134,14 +142,26 @@ div.product {
   justify-self: center;
   width: 150px;
 }
-div.product img.product__img {
+div.product div.product__div_img {
   height: 125px;
   width: 125px;
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+}
+div.product div.product__div_img img.product__img {
+  height: 125px;
+  width: 125px;
+  object-fit: cover;
 }
 div.product h4.product__name {
+  text-align: left;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  height: 3em;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 div.product a {
   text-decoration: none;
@@ -155,21 +175,44 @@ div.product a {
 }
 body {
   margin: 0;
-}
-
-body {
-  background-color: #EAEAEA;
+  background-color: #FBFBFD;
 }
 
 div#content {
   margin-inline: 5%;
   text-align: justify;
+  padding-bottom: 60px;
 }
 
 img.icon {
   height: 35px;
   width: 35px;
   cursor: pointer;
+}
+
+div.pagination {
+  border: 1px solid black;
+  padding: 4px;
+  padding-inline: 8px;
+  text-decoration: none;
+  background-color: #d8d8d8;
+}
+
+div.pagination a {
+  text-decoration: none;
+  color: #000;
+}
+
+div.active, div.disabled {
+  background-color: #919191;
+}
+
+ul.pagination {
+  display: flex;
+  font-size: 1.4em;
+  justify-content: center;
+  gap: 15px;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=app.css.map */

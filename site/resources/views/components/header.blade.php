@@ -11,7 +11,7 @@
                     <option value="{{ $category-> id }}" >{{ $category->name }}</option>
                 @endforeach
             </select>
-            <input type="text" placeholder="Search..." name="search" class="form__searchbar">
+            <input type="text" placeholder="Search..." name="search" class="form__searchbar"  value="{{ $search ? $search : '' }}"">
             <select name="order" id="form__select_orderby">
                 @foreach ($order_array as $value => $label)
                     <option value="{{ $value }}" {{ $value == $order ? 'selected' : '' }}>

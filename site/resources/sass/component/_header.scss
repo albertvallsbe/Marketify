@@ -7,21 +7,21 @@ header {
         align-items: center;
         justify-items: center;
         padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #303030;
+        background-color: $darker_color;
 
         form#navbar__form {
             display: flex;
             align-items: center;
             width: 100%;
+            border-radius: 12px 12px 12px 12px;
+            background-color: $light_color;
 
             input.form__searchbar {
-                border-radius: 0 12px 12px 0;
                 border-width: 0;
                 padding-block: 2%;
                 text-indent: 5%;
                 width: 57%;
-                background-color: #585858;
+                background-color: $light_color;
 
                 &::placeholder {
                     /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -31,39 +31,44 @@ header {
                 &::-ms-input-placeholder {
                     color: black;
                 }
-
-                &:hover {
-                    background-color: #646464;
-                }
-
-                &:focus {
-                    border-width: 0;
-                }
             }
 
             #form__buttonsearch {
-                background-color: #00000000;
                 border-width: 0;
+                background-color: $primary_color1;
+                border-radius: 0 12px 12px 0;
+                padding-block: 0.75%;
+                &:hover{
+                    background-color: $primary_color2;
+                }
             }
 
             select#form__select_orderby {
+                min-height: 100%;
                 // appearance: none;
                 outline: 0;
                 border: 0;
                 box-shadow: none;
                 flex: 1;
                 padding: 0 1em;
-                color: #fff;
+                margin-left: 5px;
                 width: 28%;
-                background-color: #303030;
+                padding-block: 2%;
+                text-overflow: ellipsis;
+                background-color: $light_color2;
+                min-height: 100%;
+                cursor: pointer;
             }
 
             select#form__select_category {
+                min-height: 100%;
                 border-radius: 12px 0 0 12px;
                 border-width: 0;
                 padding-block: 2%;
                 width: 15%;
-                background-color: #327999;
+                text-overflow: ellipsis;
+                background-color: $secondary_color3;
+                cursor: pointer;
             }
 
         }
@@ -78,7 +83,7 @@ header {
     img.logo {
         width: 50px;
         height: 50px;
-        background-color: #327999;
+        background-color: $secondary_color1;
         margin: auto;
     }
 }
