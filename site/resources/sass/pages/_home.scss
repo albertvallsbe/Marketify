@@ -33,9 +33,12 @@ div.product {
     }
 
     h4.product__name {
+        text-align: left;
         overflow: hidden;
-        white-space: nowrap;
         text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
     }
 
     a {
