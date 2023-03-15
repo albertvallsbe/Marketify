@@ -159,6 +159,7 @@ div.product h4.product__name {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+  height: 3em;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
