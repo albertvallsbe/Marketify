@@ -13,22 +13,17 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
-    public $search;
 
-    public function filter(){
-
-    }
     public function index(Request $request) {
-        $this->search = $request->search;
-        $order_request = $request->order ?? Order::$order;
+        $search = $request->search;
+        $order_request = $request->order ?? "name_asc";
 
         $filter = $request->filter;
         $categories = Category::selectCategory();
-        // $products = Product::search($search,$filter, $this->order);
-        if($this->search != ""){
-            $products = Product::searchTagCategory($this->search,$filter, $order_request);
+        if($filter == ""){
+            $products = Product::searchAll($search, $order_request);
          }else {
-            $products = Product::searchSpecific($filter);
+            $products = Product::searchSpecific($search, $filter, $order_request);
          }
         
         // COMENTADA LA FUCION APPEND
@@ -40,14 +35,15 @@ class ProductController extends Controller
         
         $data = [
             'products' => $products,
-            'search' => $this->search,
+            'search' => $search,
             'categories'=> $categories,
+            'filter'=> $filter
                  
         ];         
 
         $order_data = [
             'order_array' => Order::$order_array,
-            'order' => Order::$order
+            'order' => $order_request
         ];
         
         
