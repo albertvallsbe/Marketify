@@ -17,10 +17,4 @@ class Category extends Model
     public function product(){
         return $this->belongsToMany(Product::class)->withTimeStamps();
     }
-    public static function selectCategory(){
-        return self::query()
-        ->select('*')
-        ->get();
-    }
-    
 }

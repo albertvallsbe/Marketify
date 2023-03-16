@@ -17,7 +17,7 @@ class ProductController extends Controller
         $search = $request->search;
         $order_request = $request->order ?? "name_asc";
         $filter = $request->filter;
-        $categories = Category::selectCategory();
+        $categories = Category::all();
         if($filter == ""){
             $products = Product::searchAll($search, $order_request);
          }else {
