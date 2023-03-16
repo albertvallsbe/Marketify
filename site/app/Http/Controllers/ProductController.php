@@ -48,7 +48,7 @@ class ProductController extends Controller
   public function show($id){
     $product = Product::findOrFail($id);
 
-        $categories = Category::selectCategory();
+        $categories = Category::all();
     $data = [
         'id' => $id,
         'product' => $product,
