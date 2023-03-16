@@ -13,11 +13,9 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
-
     public function index(Request $request) {
         $search = $request->search;
         $order_request = $request->order ?? "name_asc";
-
         $filter = $request->filter;
         $categories = Category::selectCategory();
         if($filter == ""){
@@ -26,28 +24,25 @@ class ProductController extends Controller
             $products = Product::searchSpecific($search, $filter, $order_request);
          }
         
-        // COMENTADA LA FUCION APPEND
-        // $products->appends([
-        //     'search' => $search,
-        //     'order' => explode("_",$this->order)[0]."_".explode("_", $this->order)[1]
-        // ]);
+        $products->appends([
+            'filter' => $filter,
+            'search' => $search,
+            'order' => explode("_",$order_request)[0]."_".explode("_", $order_request)[1]
+        ]);
         
         
         $data = [
             'products' => $products,
             'search' => $search,
             'categories'=> $categories,
-            'filter'=> $filter
-                 
-        ];         
-
-        $order_data = [
+            'filter'=> $filter,
             'order_array' => Order::$order_array,
             'order' => $order_request
+                 
         ];
         
         
-        return view('product.index', $data, $order_data);
+        return view('product.index', $data);
     }
 
     public function show($id){
@@ -58,11 +53,12 @@ class ProductController extends Controller
             'id' => $id,
             'product' => $product,
             'categories'=> $categories,
-            'search' => $this->search
         ];
         $order_data = [
             'order_array' => Order::$order_array,
-            'order' => Order::$order
+            'order' => "name_asc",
+            'filter'=> "",
+            'search' => ""
         ];
        
 

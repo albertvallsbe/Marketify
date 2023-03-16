@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Order;
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
@@ -13,9 +14,10 @@ class LoginController extends Controller
         $categories = Category::selectCategory();
         $order_data = [
             'order_array' => Order::$order_array,
-            'order' => Order::$order,
+            'order' => "name_asc",
             'categories'=> $categories,
-            'search' => ''
+            'search' => '',
+            'filter'=> ""
         ];
         
         return view('login.index', $order_data);
