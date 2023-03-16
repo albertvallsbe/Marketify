@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
-    
+
     public function index() {
 
         $categories = Category::selectCategory();
@@ -20,7 +20,7 @@ class CartController extends Controller
             'search' => '',
             'filter'=> ""
         ];
-        
+
         return view('cart.index', $order_data);
     }
 

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'description',
@@ -25,7 +26,7 @@ class Product extends Model
     public static function searchAll($search, $order = 'name_asc'){
         $order_explode = explode("_", $order);
         $orderBy = $order_explode[0];
-        $orderDirection = $order_explode[1]; 
+        $orderDirection = $order_explode[1];
 
         return self::query()
         ->where('products.name', 'LIKE', '%' . $search . '%' )
@@ -36,7 +37,7 @@ class Product extends Model
     public static function searchSpecific($search, $filter, $order = 'name_asc'){
         $order_explode = explode("_", $order);
         $orderBy = $order_explode[0];
-        $orderDirection = $order_explode[1]; 
+        $orderDirection = $order_explode[1];
 
         return self::query()
         ->join('category_product', 'category_product.product_id', '=', 'products.id')
@@ -44,7 +45,7 @@ class Product extends Model
         ->where('products.name', 'LIKE', '%' . $search . '%' )
         ->where('category_product.category_id', '=', $filter)
         ->orderBy($orderBy, $orderDirection)
-        ->paginate(18); 
+        ->paginate(18);
     }
 
 }

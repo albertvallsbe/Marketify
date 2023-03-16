@@ -19,6 +19,8 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [ProductController::class,'index'])->name('product.index');
 Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::post('products', [App\Http\Controllers\ProductController::class, 'store'])->name('products');
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 
