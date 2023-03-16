@@ -28,6 +28,16 @@ He mirat per crear imatges aleatòries amb un factory i faig servir un fakeimg.
 
 ==== Oscar
 
+Aquesta setmana he tingut alguns contratemps amb les migracions i els filtres.
+
+He aconsgeuit resoldre els problemes amb la taula del mig. També he hagut de resideñar algunes migracions, per a que així pugui filtrar bé...
+
+He fet el filtre de categories,encara que m'ha donat bastants problemes.
+
+També he fet el filtre de tags, y que puguis filtrar per catergoria i per tag a la vegada, així com per nom del producte.
+
+Per últim he actualitzat la guía d'estils i la documentació ja que hem redisenyar la home un altra cop.
+
 ==== Albert
 
 Durant la setmana he realitzat les següents tasques:
