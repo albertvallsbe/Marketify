@@ -8,13 +8,15 @@ use App\Models\Category;
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'description',
         'image',
         'price'
     ];
-     public function category(){
+
+    public function category(){
         return $this->belongsToMany(Category::class)->withTimeStamps();
     }
 
