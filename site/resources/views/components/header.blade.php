@@ -5,13 +5,15 @@
         </a>
         <form id="navbar__form" action="{{ route('product.index') }}" method="GET">
             <select name="filter" id="form__select_category">
-                <option value=""  selected>All categories</option>
-                {{-- QUITADA LA OPCION DISABLED --}}
-                @foreach ($categories as $category )
-                    <option value="{{ $category-> id }}" >{{ $category->name }}</option>
+                <option value="" {{ $filter == '' ? 'selected' : '' }}>All categories</option>
+
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ $filter == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}</option>
                 @endforeach
             </select>
-            <input type="text" placeholder="Search..." name="search" class="form__searchbar"  value="{{ $search ? $search : '' }}"">
+            <input type="text" placeholder="Search..." name="search" class="form__searchbar"
+                value="{{ $search ? $search : '' }}"">
             <select name="order" id="form__select_orderby">
                 @foreach ($order_array as $value => $label)
                     <option value="{{ $value }}" {{ $value == $order ? 'selected' : '' }}>

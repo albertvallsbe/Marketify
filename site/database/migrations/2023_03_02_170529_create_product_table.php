@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('name_product');
+            $table->string('name');
             $table->string('description', 300);
             $table->string('tag');
             $table->string('image');
