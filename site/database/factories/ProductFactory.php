@@ -19,7 +19,8 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->unique()->words(4, true),
             'description' => fake()->paragraph(1),
-            'image' => fake()->imageUrl(),
+            'tag' => fake()->unique()->words(4, true),
+            'image' =>  "images/products/".rand(1, 4).".jpg",
             'price' => fake()->randomDigit()
 
         ];

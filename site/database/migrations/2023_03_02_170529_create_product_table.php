@@ -19,9 +19,10 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('description', 300);
-
+            $table->string('tag');
             $table->string('image');
             $table->decimal('price', 5, 2);
+
         });
     }
 

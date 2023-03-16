@@ -4,10 +4,16 @@
             <img class="logo" src="{{ asset('images/marketify_logo.png') }}">
         </a>
         <form id="navbar__form" action="{{ route('product.index') }}" method="GET">
-            <select name="order" id="form__select_category">
-                <option value="all_categories">All categories</option>
+            <select name="filter" id="form__select_category">
+                <option value="" {{ $filter == '' ? 'selected' : '' }}>All categories</option>
+
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}" {{ $filter == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}</option>
+                @endforeach
             </select>
-            <input type="text" placeholder="Search..." name="search" class="form__searchbar">
+            <input type="text" placeholder="Search..." name="search" class="form__searchbar"
+                value="{{ $search ? $search : '' }}"">
             <select name="order" id="form__select_orderby">
                 @foreach ($order_array as $value => $label)
                     <option value="{{ $value }}" {{ $value == $order ? 'selected' : '' }}>
@@ -18,13 +24,13 @@
                     src="{{ asset('images/magnifying-glass-solid.svg') }}"></button>
         </form>
         <div id="navbar__icons">
-            
-        <a href="{{ route('login.index') }}">
-            <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
-        </a>
-        <a href="{{ route('cart.index') }}">
-            <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
-        </a>
+
+            <a href="{{ route('login.index') }}">
+                <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
+            </a>
+            <a href="{{ route('cart.index') }}">
+                <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
+            </a>
         </div>
     </div>
 </header>

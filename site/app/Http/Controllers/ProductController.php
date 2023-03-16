@@ -2,51 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+
 use App\Classes\Order;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+// use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
+    public function index(Request $request) {
+        $search = $request->search;
+        $order_request = $request->order ?? "name_asc";
+        $filter = $request->filter;
+        $categories = Category::selectCategory();
+        if($filter == ""){
+            $products = Product::searchAll($search, $order_request);
+         }else {
+            $products = Product::searchSpecific($search, $filter, $order_request);
+         }
 
-  public function index(Request $request) {
-    $search = $request->search;
-    $order_request = $request->order ?? Order::$order;
+        $products->appends([
+            'filter' => $filter,
+            'search' => $search,
+            'order' => explode("_",$order_request)[0]."_".explode("_", $order_request)[1]
+        ]);
 
-    $products = Product::search($search, $order_request);
-    $products->appends([
-        'search' => $search,
-        'order' => explode("_", $order_request)[0]."_".explode("_", $order_request)[1]
-    ]);
 
-    $data = [
-        'products' => $products,
-        'search' => $search,
+        $data = [
+            'products' => $products,
+            'search' => $search,
+            'categories'=> $categories,
+            'filter'=> $filter,
+            'order_array' => Order::$order_array,
+            'order' => $order_request
 
-    ];
-    $order_data = [
-        'order_array' => Order::$order_array,
-        'order' => Order::$order
-    ];
-    return view('product.index', $data, $order_data);
-  }
+        ];
+
+
+        return view('product.index', $data);
+    }
 
   public function show($id){
     $product = Product::findOrFail($id);
 
+        $categories = Category::selectCategory();
     $data = [
         'id' => $id,
-        'product' => $product
+        'product' => $product,
+            'categories'=> $categories,
     ];
     $order_data = [
         'order_array' => Order::$order_array,
-        'order' => Order::$order
+        'order' => "name_asc",
+            'filter'=> "",
+            'search' => ""
     ];
+
 
     return view('product.show', $data, $order_data);
   }
+
 
   public function store(Request $request )
   {
