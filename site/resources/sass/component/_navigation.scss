@@ -1,24 +1,23 @@
 div#navigation {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
 
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-items: center;
-    padding-block: 10px;
-    color: white;
-    background-color: $darker_color;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  padding-block: 10px;
+  color: white;
+  background-color: $darker_color;
 }
 
-
 @media screen and (min-width: 769px) {
-    div#navigation {
-        display: none;
-    }
+  div#navigation {
+    display: none;
+  }
 
-    div#content {
-        margin-bottom: 0px;
-    }
+  div#content {
+    margin-bottom: 0px;
+  }
 }

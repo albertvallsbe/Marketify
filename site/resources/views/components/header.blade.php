@@ -31,6 +31,9 @@
             <a href="{{ route('cart.index') }}">
                 <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
             </a>
+            <a href="{{ route('login.index') }}">
+                <img class="icon icon_house" src="{{ asset('images/house-solid.svg') }}">
+            </a>
         </div>
     </div>
 </header>
