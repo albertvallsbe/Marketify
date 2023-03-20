@@ -5,18 +5,20 @@
         </a>
         <form id="navbar__form" action="{{ route('product.index') }}" method="GET">
             <select name="filter" id="form__select_category">
-                <option value="" {{ $filter == '' ? 'selected' : '' }}>All categories</option>
+                <option value="" {{ session('request_categories') == '' ? 'selected' : '' }}>All categories
+                </option>
 
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ $filter == $category->id ? 'selected' : '' }}>
+                    <option value="{{ $category->id }}"
+                        {{ session('request_categories') == $category->id ? 'selected' : '' }}>
                         {{ $category->name }}</option>
                 @endforeach
             </select>
             <input type="text" placeholder="Search..." name="search" class="form__searchbar"
-                value="{{ $search ? $search : '' }}"">
+                value="{{ session('request_search') ? session('request_search') : '' }}"">
             <select name="order" id="form__select_orderby">
-                @foreach ($order_array as $value => $label)
-                    <option value="{{ $value }}" {{ $value == $order ? 'selected' : '' }}>
+                @foreach ($options_order as $value => $label)
+                    <option value="{{ $value }}" {{ $value == session('request_order') ? 'selected' : '' }}>
                         {{ $label }}</option>
                 @endforeach
             </select>

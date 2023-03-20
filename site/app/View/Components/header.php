@@ -4,16 +4,17 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\View\Component;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 
-class navigation extends Component
+class header extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        //
+        $order_request = $request->order ?? "name_asc";
+        session(['request_order' => $order_request]);
+        session(['request_search' => $request->search]);
+        session(['request_categories' => $request->filter]);
     }
 
     /**
@@ -21,6 +22,6 @@ class navigation extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navigation');
+        return view('components.header');
     }
 }
