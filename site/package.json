@@ -1,6 +1,6 @@
 {
   "private": true,
-  "type":"module",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -44,5 +44,6 @@
     "vite-plugin-full-reload": "^1.0.5"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }
