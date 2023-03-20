@@ -8,7 +8,7 @@
                 <option value="" {{ session('request_categories') == '' ? 'selected' : '' }}>All categories
                 </option>
 
-                @foreach (session('categories') as $category)
+                @foreach ($categories as $category)
                     <option value="{{ $category->id }}"
                         {{ session('request_categories') == $category->id ? 'selected' : '' }}>
                         {{ $category->name }}</option>
@@ -17,7 +17,7 @@
             <input type="text" placeholder="Search..." name="search" class="form__searchbar"
                 value="{{ session('request_search') ? session('request_search') : '' }}"">
             <select name="order" id="form__select_orderby">
-                @foreach (session('options_order') as $value => $label)
+                @foreach ($options_order as $value => $label)
                     <option value="{{ $value }}" {{ $value == session('request_order') ? 'selected' : '' }}>
                         {{ $label }}</option>
                 @endforeach

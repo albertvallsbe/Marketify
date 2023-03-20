@@ -4,22 +4,18 @@ namespace App\Http\Controllers;
 
 
 use App\Classes\Order;
-use Illuminate\Http\Request;
-
-// use App\Models\Category;
-use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Product;
+
+use App\Models\Category;
+use App\View\Components\Header;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller {
     public function index(Request $request) {
-        $order_request = $request->order ?? "name_asc";
-        
-        session(['request_order' => $order_request]);
-        session(['request_search' => $request->search]);
-        session(['request_categories' => $request->filter]);
-        session(['options_order' => Order::$order_array]);
-        session(['categories' => Category::all()]);
+        $header = new Header($request);
+
+        $categories = Category::all();
         
         if($request->session()->has('request_categories') == ""){
             $products = Product::searchAll(session('request_search'), session('request_order'));
@@ -33,12 +29,17 @@ class ProductController extends Controller {
             'order' => session('request_order')
         ]);
 
-        return view('product.index', ['products' => $products]);
+        return view('product.index', ['products' => $products,
+                                        'categories' => $categories,
+                                        'options_order' => Order::$order_array]);
     }
 
     public function show($id){
         $product = Product::findOrFail($id);
-        return view('product.show', ['product' => $product]);
+        $categories = Category::all();
+        return view('product.show', ['product' => $product,
+        'categories' => $categories,
+        'options_order' => Order::$order_array]);
     }
 
 
