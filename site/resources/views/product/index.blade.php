@@ -16,7 +16,7 @@
                         <h4 class="product__name">{{ $product->tag }}</h4>
                         <h3 class="product__price">{{ $product->price }} €</h3>
                     </a>
-                    <button id="btn-cart">Add to cart</button>
+                    <button class="btn-cart">Add to cart</button>
                 </div>
             @endforeach
         @else
