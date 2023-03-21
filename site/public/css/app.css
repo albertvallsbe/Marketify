@@ -25,21 +25,21 @@ header div#navbar {
   align-items: center;
   justify-items: center;
   padding: 10px;
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
 }
 header div#navbar form#navbar__form {
   display: flex;
   align-items: center;
   width: 100%;
   border-radius: 12px 12px 12px 12px;
-  background-color: #8F8F8F;
+  background-color: #8f8f8f;
 }
 header div#navbar form#navbar__form input.form__searchbar {
   border-width: 0;
   padding-block: 2%;
   text-indent: 5%;
   width: 57%;
-  background-color: #8F8F8F;
+  background-color: #8f8f8f;
 }
 header div#navbar form#navbar__form input.form__searchbar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -50,12 +50,12 @@ header div#navbar form#navbar__form input.form__searchbar::-ms-input-placeholder
 }
 header div#navbar form#navbar__form #form__buttonsearch {
   border-width: 0;
-  background-color: #FF5208;
+  background-color: #ff5208;
   border-radius: 0 12px 12px 0;
   padding-block: 0.75%;
 }
 header div#navbar form#navbar__form #form__buttonsearch:hover {
-  background-color: #E04807;
+  background-color: #e04807;
 }
 header div#navbar form#navbar__form select#form__select_orderby {
   min-height: 100%;
@@ -90,12 +90,15 @@ header div#navbar div#navbar__icons {
 header img.logo {
   width: 50px;
   height: 50px;
-  background-color: #43A1CC;
+  background-color: #43a1cc;
   margin: auto;
 }
 
 @media screen and (max-width: 768px) {
   div#navbar__icons img.icon_user {
+    display: none;
+  }
+  div#navbar__icons img.icon_home {
     display: none;
   }
   div#navbar div.logo {
@@ -113,7 +116,7 @@ div#navigation {
   justify-items: center;
   padding-block: 10px;
   color: white;
-  background-color: #1F1F1F;
+  background-color: #1f1f1f;
 }
 
 @media screen and (min-width: 769px) {
@@ -126,7 +129,7 @@ div#navigation {
 }
 div#products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(168.75px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(202.5px, 1fr));
   grid-row-gap: 20px;
   grid-column-gap: 20px;
   padding-top: 38px;
@@ -175,7 +178,7 @@ div.product a {
 }
 body {
   margin: 0;
-  background-color: #FBFBFD;
+  background-color: #fbfbfd;
 }
 
 div#content {
