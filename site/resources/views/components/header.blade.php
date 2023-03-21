@@ -30,11 +30,11 @@
             <a href="{{ route('login.index') }}">
                 <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
             </a>
-            <a href="{{ route('cart.index') }}">
-                <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
-            </a>
             <a href="{{ route('login.index') }}">
                 <img class="icon icon_house" src="{{ asset('images/house-solid.svg') }}">
+            </a>
+            <a href="{{ route('cart.index') }}">
+                <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
             </a>
         </div>
     </div>
