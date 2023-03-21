@@ -30,9 +30,12 @@
             <a href="{{ route('login.index') }}">
                 <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
             </a>
-            <a href="{{ route('cart.index') }}">
-                <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
-            </a>
+            <div id="cart-icon">
+                <a href="{{ route('cart.index') }}">
+                    <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
+                    <span id="cart-count"></span>
+                </a>
+            </div>
         </div>
     </div>
 </header>
