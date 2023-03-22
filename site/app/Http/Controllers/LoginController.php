@@ -3,27 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Order;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
-    {
-
+    public function index() {
         $categories = Category::all();
-        $order_data = [
-            'order_array' => Order::$order_array,
-            'order' => "name_asc",
-            'categories' => $categories,
-            'search' => '',
-            'filter' => ""
-        ];
 
-        return view('login.index', $order_data);
+        return view('login.index',['categories' => $categories,
+        'options_order' => Order::$order_array]);
     }
     public function login(Request $request)
     {

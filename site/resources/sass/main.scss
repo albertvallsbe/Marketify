@@ -1,7 +1,5 @@
-// VARIABLES
-@import "abstracts/variables";
+@import "abstracts/colors";
 
-// TYPOGRAPHY
 @import "base/typography";
 
 // COMPONENT
@@ -9,12 +7,10 @@
 @import "component/navigation";
 @import "component/footer";
 
-// PAGES
 @import "pages/home";
 @import "pages/cart";
 @import "pages/register";
 @import "pages/login";
 
-// THEMES
 @import "themes/theme";
 @import "themes/pagination";
