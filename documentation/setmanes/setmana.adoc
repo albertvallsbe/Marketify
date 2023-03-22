@@ -5,6 +5,25 @@ Millorar el ProductControler. Utilitzar sessió per les variables del $Request.
 Temps estimat => 2h
 Temps Real => 3h
 
+Carret amb productes no únics
+Temps estimats => 3h
+Temps real => 6h
+
+Passar múltiples variables i repetició de codi en cada Controller a variables de sessió, utilitzant el component 'Header'.
+Temps estimats => 2h
+Temps real => 2h
+
+Resoldre conflictes
+Temps real => 1:30h
+
+Carret amb productes únics
+Temps estimat => 1h
+Temps real => 1:30h
+
+Mantenir el carret a l'hora de recargar la pàgina i re-utilitzar funcions de javascript (amb mòduls) per poder afegir desde la pàgina de detall del producte.
+Temps estimat => 3h
+Temps real => 1h
+
 ==== Oscar
 
 ==== Albert
@@ -14,19 +33,19 @@ Temps Real => 3h
 ==== David
 Fer la paginació completament personalitzada.
 Temps estimat => 1h
-Temps Real => 1:30h
+Temps real => 1:30h
 
 Modificar factory per fer tests amb accents i caràcters especials.
 Temps estimat => 2h
-Temps Real => 1:30h
+Temps real => 1:30h
 
 Modificar factory per utilitzar rutes físiques en comptes de URLs.
 Temps estimat => 1h
-Temps Real => 30 min
+Temps real => 30 min
 
 Solucionar problema relacionat amb els inner joins amb el filtre de les categories.
 Temps estimat => 2h
-Temps Real => 2:30h
+Temps real => 2:30h
 
 ==== Oscar
 
