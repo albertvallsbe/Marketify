@@ -4,6 +4,6 @@
         <div class="container">
             <img class="logo" src="{{ asset('images/marketify_logo.png') }}">
         </div>
-        <h3 class="course-title">Course :2022-2023</h3>
+        <h3 class="course-title">Course : 2022-2023</h3>
     </div>
 </footer>

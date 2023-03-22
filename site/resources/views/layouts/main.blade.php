@@ -15,6 +15,7 @@
         @yield('content')
     </div>
     @include('components.navigation')
+    @include('components.footer')
 </body>
 
 </html>
