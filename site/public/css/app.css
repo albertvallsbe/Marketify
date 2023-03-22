@@ -117,7 +117,7 @@ div#navigation {
   grid-template-columns: auto auto;
   justify-items: center;
   padding-block: 10px;
-  color: white;
+  color: #fbfbfd;
   background-color: #1f1f1f;
 }
 

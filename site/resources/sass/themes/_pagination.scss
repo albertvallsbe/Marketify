@@ -1,19 +1,19 @@
 div.pagination {
-  border: 1px solid $darker;
+  border: 1px solid $neutral_darker;
   padding: 4px;
   padding-inline: 8px;
   text-decoration: none;
-  background-color: $light;
+  background-color: $neutral_light;
 }
 
 div.pagination a {
   text-decoration: none;
-  color: $darker;
+  color: $neutral_darker;
 }
 
 div.active,
 div.disabled {
-  background-color: $neutral;
+  background-color: $neutral_origin;
 }
 
 ul.pagination {
