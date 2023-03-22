@@ -7,7 +7,7 @@ header {
     align-items: center;
     justify-items: center;
     padding: 10px;
-    background-color: $neutral_dark;
+    background-color: $neutral_darker;
 
     form#navbar__form {
       display: flex;
@@ -88,11 +88,11 @@ header {
           position: absolute;
           top: -10px;
           right: -10px;
-          background-color: red;
+          background-color: $primary_origin;
           color: white;
           border-radius: 50%;
-          width: 20px;
-          height: 20px;
+          width: 22px;
+          height: 22px;
           text-align: center;
           font-size: 12px;
           line-height: 20px;
@@ -102,10 +102,7 @@ header {
   }
 
   img.logo {
-    width: 50px;
-    height: 50px;
-    background-color: $secondary_origin;
-    margin: auto;
+    @include logo;
   }
 }
 
@@ -116,6 +113,7 @@ header {
 
   div#navbar__icons img.icon_house {
     display: none;
+    background-color: $neutral_lighter;
   }
 
   div#navbar div.logo {
