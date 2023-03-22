@@ -25,37 +25,37 @@ header div#navbar {
   align-items: center;
   justify-items: center;
   padding: 10px;
-  background-color: #1F1F1F;
+  background-color: #828282;
 }
 header div#navbar form#navbar__form {
   display: flex;
   align-items: center;
   width: 100%;
   border-radius: 12px 12px 12px 12px;
-  background-color: #8F8F8F;
+  background-color: #fbfbfd;
 }
 header div#navbar form#navbar__form input.form__searchbar {
   border-width: 0;
   padding-block: 2%;
   text-indent: 5%;
   width: 57%;
-  background-color: #8F8F8F;
+  background-color: #fbfbfd;
 }
 header div#navbar form#navbar__form input.form__searchbar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: black;
+  color: #1f1f1f;
 }
 header div#navbar form#navbar__form input.form__searchbar::-ms-input-placeholder {
-  color: black;
+  color: #1f1f1f;
 }
 header div#navbar form#navbar__form #form__buttonsearch {
   border-width: 0;
-  background-color: #FF5208;
+  background-color: #ff5208;
   border-radius: 0 12px 12px 0;
   padding-block: 0.75%;
 }
 header div#navbar form#navbar__form #form__buttonsearch:hover {
-  background-color: #E04807;
+  background-color: #e04807;
 }
 header div#navbar form#navbar__form select#form__select_orderby {
   min-height: 100%;
@@ -68,9 +68,10 @@ header div#navbar form#navbar__form select#form__select_orderby {
   width: 28%;
   padding-block: 2%;
   text-overflow: ellipsis;
-  background-color: #828282;
   min-height: 100%;
   cursor: pointer;
+  color: #fbfbfd;
+  background-color: #3985a9;
 }
 header div#navbar form#navbar__form select#form__select_category {
   min-height: 100%;
@@ -79,8 +80,9 @@ header div#navbar form#navbar__form select#form__select_category {
   padding-block: 2%;
   width: 15%;
   text-overflow: ellipsis;
-  background-color: #3985a9;
   cursor: pointer;
+  color: #fbfbfd;
+  background-color: #3985a9;
 }
 header div#navbar div#navbar__icons {
   display: grid;
@@ -91,6 +93,7 @@ header div#navbar div#navbar__icons #cart-icon {
   position: relative;
 }
 header div#navbar div#navbar__icons #cart-icon #cart-count {
+  display: none;
   position: absolute;
   top: -10px;
   right: -10px;
@@ -106,12 +109,15 @@ header div#navbar div#navbar__icons #cart-icon #cart-count {
 header img.logo {
   width: 50px;
   height: 50px;
-  background-color: #43A1CC;
+  background-color: #43a1cc;
   margin: auto;
 }
 
 @media screen and (max-width: 768px) {
   div#navbar__icons img.icon_user {
+    display: none;
+  }
+  div#navbar__icons img.icon_house {
     display: none;
   }
   div#navbar div.logo {
@@ -128,8 +134,8 @@ div#navigation {
   grid-template-columns: auto auto;
   justify-items: center;
   padding-block: 10px;
-  color: white;
-  background-color: #1F1F1F;
+  color: #fbfbfd;
+  background-color: #1f1f1f;
 }
 
 @media screen and (min-width: 769px) {
@@ -142,7 +148,7 @@ div#navigation {
 }
 div#products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(168.75px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(202.5px, 1fr));
   grid-row-gap: 20px;
   grid-column-gap: 20px;
   padding-top: 38px;
@@ -181,7 +187,7 @@ div.product h4.product__name {
 }
 div.product a {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: #1f1f1f;
 }
 
 @media screen and (max-width: 768px) {
@@ -191,7 +197,7 @@ div.product a {
 }
 body {
   margin: 0;
-  background-color: #FBFBFD;
+  background-color: #fbfbfd;
 }
 
 div#content {
@@ -207,7 +213,7 @@ img.icon {
 }
 
 div.pagination {
-  border: 1px solid black;
+  border: 1px solid #1f1f1f;
   padding: 4px;
   padding-inline: 8px;
   text-decoration: none;
@@ -216,11 +222,12 @@ div.pagination {
 
 div.pagination a {
   text-decoration: none;
-  color: #000;
+  color: #1f1f1f;
 }
 
-div.active, div.disabled {
-  background-color: #919191;
+div.active,
+div.disabled {
+  background-color: #8f8f8f;
 }
 
 ul.pagination {

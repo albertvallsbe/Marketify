@@ -1,0 +1,125 @@
+header {
+  div#navbar {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "logo search icon";
+    align-items: center;
+    justify-items: center;
+    padding: 10px;
+    background-color: $neutral_dark;
+
+    form#navbar__form {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      border-radius: 12px 12px 12px 12px;
+      background-color: $neutral_lighter;
+
+      input.form__searchbar {
+        border-width: 0;
+        padding-block: 2%;
+        text-indent: 5%;
+        width: 57%;
+        background-color: $neutral_lighter;
+
+        &::placeholder {
+          /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: $neutral_darker;
+        }
+
+        &::-ms-input-placeholder {
+          color: $neutral_darker;
+        }
+      }
+
+      #form__buttonsearch {
+        border-width: 0;
+        background-color: $primary_origin;
+        border-radius: 0 12px 12px 0;
+        padding-block: 0.75%;
+
+        &:hover {
+          background-color: $primary_light;
+        }
+      }
+
+      select#form__select_orderby {
+        min-height: 100%;
+        // appearance: none;
+        outline: 0;
+        border: 0;
+        box-shadow: none;
+        flex: 1;
+        padding: 0 1em;
+        margin-left: 5px;
+        width: 28%;
+        padding-block: 2%;
+        text-overflow: ellipsis;
+        min-height: 100%;
+        cursor: pointer;
+        color: $neutral_lighter;
+        background-color: $secondary_dark;
+      }
+
+      select#form__select_category {
+        min-height: 100%;
+        border-radius: 12px 0 0 12px;
+        border-width: 0;
+        padding-block: 2%;
+        width: 15%;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        color: $neutral_lighter;
+        background-color: $secondary_dark;
+      }
+    }
+
+    div#navbar__icons {
+      display: grid;
+      grid-gap: 20px;
+      grid-auto-flow: column;
+
+      #cart-icon {
+        position: relative;
+
+        #cart-count {
+          display: none;
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          background-color: red;
+          color: white;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  img.logo {
+    width: 50px;
+    height: 50px;
+    background-color: $secondary_origin;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div#navbar__icons img.icon_user {
+    display: none;
+  }
+
+  div#navbar__icons img.icon_house {
+    display: none;
+  }
+
+  div#navbar div.logo {
+    width: 35px;
+    height: 35px;
+  }
+}

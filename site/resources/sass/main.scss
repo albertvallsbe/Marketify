@@ -1,16 +1,11 @@
-// VARIABLES
-@import "abstracts/variables";
+@import "abstracts/colors";
 
-// TYPOGRAPHY
 @import "base/typography";
 
-// COMPONENT
-@import "component/header";
-@import "component/navigation";
+@import "components/header";
+@import "components/navigation";
 
-// PAGES
 @import "pages/home";
 
-// THEMES
 @import "themes/theme";
 @import "themes/pagination";

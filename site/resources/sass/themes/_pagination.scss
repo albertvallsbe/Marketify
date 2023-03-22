@@ -1,22 +1,25 @@
-div.pagination{
-    border: 1px solid black;
-    padding: 4px;
-    padding-inline: 8px;
-    text-decoration: none;
-    background-color:#d8d8d8; 
-}
-div.pagination a{
-    text-decoration: none;
-    color: #000;
+div.pagination {
+  border: 1px solid $neutral_darker;
+  padding: 4px;
+  padding-inline: 8px;
+  text-decoration: none;
+  background-color: $neutral_light;
 }
 
-div.active, div.disabled{
-    background-color:#919191; 
+div.pagination a {
+  text-decoration: none;
+  color: $neutral_darker;
 }
-ul.pagination{
-    display: flex;
-    font-size: 1.4em;
-    justify-content: center;
-    gap: 15px;
-    text-decoration: none;
+
+div.active,
+div.disabled {
+  background-color: $neutral_origin;
+}
+
+ul.pagination {
+  display: flex;
+  font-size: 1.4em;
+  justify-content: center;
+  gap: 15px;
+  text-decoration: none;
 }

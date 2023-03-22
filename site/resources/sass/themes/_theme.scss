@@ -1,16 +1,16 @@
 body {
-    margin: 0;
-    background-color: $lighter_color;
+  margin: 0;
+  background-color: $neutral_lighter;
 }
 
 div#content {
-    margin-inline: 5%;
-    text-align: justify;
-    padding-bottom: 60px;
+  margin-inline: 5%;
+  text-align: justify;
+  padding-bottom: 60px;
 }
 
 img.icon {
-    height: 35px;
-    width: 35px;
-    cursor: pointer;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
 }

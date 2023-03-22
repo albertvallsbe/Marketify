@@ -4,6 +4,9 @@ function getCountCart() {
         let value = localStorage.getItem(localStorage.key(i));
         totalCount += parseInt(value);
     }
+    if(totalCount != 0){
+    document.getElementById('cart-count').style.display = "block";
+    }
     document.getElementById('cart-count').textContent = totalCount;
 }
 
@@ -13,8 +16,8 @@ function addToCart(productId) {
         productCount = 0;
     }
     productCount++;
-    getCountCart();
     localStorage.setItem(productId, productCount);
+    getCountCart();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
