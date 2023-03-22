@@ -1,11 +1,12 @@
 @import "abstracts/colors";
-
+@import "abstracts/globals";
+@import "mixins/mixins";
 @import "base/typography";
 
 // COMPONENT
-@import "component/header";
-@import "component/navigation";
-@import "component/footer";
+@import "components/header";
+@import "components/navigation";
+@import "components/footer";
 
 @import "pages/home";
 @import "pages/cart";
