@@ -1,19 +1,22 @@
+//FUNCTIONS
 function getCountCart() {
     let value = localStorage.getItem("Cart");
+    let number = document.getElementById('cart-count');
     value = JSON.parse(value);
 
     if (value) {
         if (value.length != 0) {
-            document.getElementById('cart-count').style.display = "block";
-            document.getElementById('cart-count').textContent = value.length;
+            number.style.display = "block";
+            number.textContent = value.length;
         } else {
-            document.getElementById('cart-count').style.display = "none";
+            number.style.display = "none";
         }
     }
 }
 
 function addToCart(productId) {
     let productCart = localStorage.getItem("Cart");
+
     if (!productCart) {
         productCart = [];
     } else {
@@ -22,6 +25,7 @@ function addToCart(productId) {
     productCart.push(productId);
     localStorage.setItem("Cart", JSON.stringify(productCart));
 }
+
 function clickButtonAction(productId, button) {
 
     if (button.innerText == "Add to cart") {
@@ -30,6 +34,7 @@ function clickButtonAction(productId, button) {
     } else {
         let cart = localStorage.getItem("Cart");
         cart = JSON.parse(cart);
+
         cart.forEach(function (productCart) {
             if (productCart == productId) {
                 cart.splice(cart.indexOf(productId), 1);
@@ -41,8 +46,10 @@ function clickButtonAction(productId, button) {
     }
     getCountCart();
 }
+
 function changeButton() {
     let cart = localStorage.getItem("Cart");
+
     if (cart) {
         cart = JSON.parse(cart);
         cart.forEach(function (productCart) {
@@ -52,11 +59,12 @@ function changeButton() {
     }
 }
 
-
+//CODE
 document.addEventListener("DOMContentLoaded", function () {
     getCountCart();
     changeButton();
     const buttons = document.getElementsByClassName('btn-cart');
+
     Array.from(buttons).forEach(button => {
         button.addEventListener('click', event => {
             const productId = button.dataset.productId;
