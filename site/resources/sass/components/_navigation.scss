@@ -8,8 +8,8 @@ div#navigation {
   grid-template-columns: auto auto;
   justify-items: center;
   padding-block: 10px;
-  color: white;
-  background-color: $darker;
+  color: $neutral_lighter;
+  background-color: $neutral_darker;
 }
 
 @media screen and (min-width: 769px) {

@@ -7,35 +7,35 @@ header {
     align-items: center;
     justify-items: center;
     padding: 10px;
-    background-color: $dark;
+    background-color: $neutral_dark;
 
     form#navbar__form {
       display: flex;
       align-items: center;
       width: 100%;
       border-radius: 12px 12px 12px 12px;
-      background-color: $lighter;
+      background-color: $neutral_lighter;
 
       input.form__searchbar {
         border-width: 0;
         padding-block: 2%;
         text-indent: 5%;
         width: 57%;
-        background-color: $lighter;
+        background-color: $neutral_lighter;
 
         &::placeholder {
           /* Chrome, Firefox, Opera, Safari 10.1+ */
-          color: $darker;
+          color: $neutral_darker;
         }
 
         &::-ms-input-placeholder {
-          color: $darker;
+          color: $neutral_darker;
         }
       }
 
       #form__buttonsearch {
         border-width: 0;
-        background-color: $primary_neutral;
+        background-color: $primary_origin;
         border-radius: 0 12px 12px 0;
         padding-block: 0.75%;
         &:hover {
@@ -57,7 +57,7 @@ header {
         text-overflow: ellipsis;
         min-height: 100%;
         cursor: pointer;
-        color: $lighter;
+        color: $neutral_lighter;
         background-color: $secondary_dark;
       }
 
@@ -69,7 +69,7 @@ header {
         width: 15%;
         text-overflow: ellipsis;
         cursor: pointer;
-        color: $lighter;
+        color: $neutral_lighter;
         background-color: $secondary_dark;
       }
     }
@@ -84,7 +84,7 @@ header {
   img.logo {
     width: 50px;
     height: 50px;
-    background-color: $secondary_neutral;
+    background-color: $secondary_origin;
     margin: auto;
   }
 }
