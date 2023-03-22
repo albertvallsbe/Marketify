@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,10 @@ Route::get('/', [ProductController::class,'index'])->name('product.index');
 Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 Route::post('products', [App\Http\Controllers\ProductController::class, 'store'])->name('products');
 
-
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
