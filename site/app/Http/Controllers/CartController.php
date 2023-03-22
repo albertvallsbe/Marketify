@@ -15,7 +15,6 @@ class CartController extends Controller
         return view('cart.index',['categories' => $categories,
         'options_order' => Order::$order_array]);
     }
-
     public function add(Request $request) {
     }
 }
