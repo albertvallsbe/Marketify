@@ -1,6 +1,32 @@
+=== Setmana 4
+
+==== David
+Millorar el ProductControler. Utilitzar sessió per les variables del $Request.
+Temps estimat => 2h
+Temps Real => 3h
+
+==== Oscar
+
+==== Albert
+
 === Setmana 3
 
 ==== David
+Fer la paginació completament personalitzada.
+Temps estimat => 1h
+Temps Real => 1:30h
+
+Modificar factory per fer tests amb accents i caràcters especials.
+Temps estimat => 2h
+Temps Real => 1:30h
+
+Modificar factory per utilitzar rutes físiques en comptes de URLs.
+Temps estimat => 1h
+Temps Real => 30 min
+
+Solucionar problema relacionat amb els inner joins amb el filtre de les categories.
+Temps estimat => 2h
+Temps Real => 2:30h
 
 ==== Oscar
 
