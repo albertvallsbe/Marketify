@@ -18,6 +18,7 @@ function addToCart(productId) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    getCountCart();
     const buttons = document.getElementsByClassName('btn-cart');
     Array.from(buttons).forEach(button => {
         button.addEventListener('click', event => {
