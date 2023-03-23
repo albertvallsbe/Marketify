@@ -121,7 +121,7 @@ header div#navbar div#navbar__icons #cart-icon #cart-count {
   line-height: 20px;
 }
 header img.logo {
-  margin: auto;
+  margin: 10px auto;
   background-color: #fbfbfd;
   border: 2px solid #fbfbfd;
   border-radius: 2px;
@@ -164,8 +164,9 @@ div#navigation {
   }
 }
 footer {
-  bottom: 12px;
+  bottom: 0;
   width: 100%;
+  min-height: 70px;
   overflow: hidden;
   font-size: 0.8rem;
   background-color: #1f1f1f;
@@ -189,7 +190,7 @@ footer .footer__course {
   margin-right: 20px;
 }
 footer .footer__logo {
-  margin: auto;
+  margin: 10px auto;
   background-color: #fbfbfd;
   border: 2px solid #fbfbfd;
   border-radius: 2px;
@@ -200,7 +201,6 @@ footer .footer__logo {
 @media screen and (max-width: 768px) {
   .footer {
     margin-bottom: 60px;
-    padding-bottom: 12px;
   }
 }
 div#products {

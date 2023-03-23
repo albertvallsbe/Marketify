@@ -1,10 +1,10 @@
 footer {
-  bottom: 12px;
+  bottom: 0;
   width: 100%;
+  min-height: 70px;
   overflow: hidden;
   font-size: 0.8rem;
-  background-color: $neutral_darker;
-  color: $neutral_lighter;
+  @include mainStyle;
 
   .footer {
     display: grid;
@@ -35,6 +35,5 @@ footer {
 @media screen and (max-width: 768px) {
   .footer {
     margin-bottom: 60px;
-    padding-bottom: 12px;
   }
 }

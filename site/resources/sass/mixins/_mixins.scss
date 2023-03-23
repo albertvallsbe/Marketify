@@ -1,8 +1,13 @@
 @mixin logo {
-  margin: auto;
+  margin: 10px auto;
   background-color: $neutral_lighter;
   border: 2px solid $neutral_lighter;
   border-radius: 2px;
   width: 50px;
   height: 50px;
+}
+
+@mixin mainStyle {
+  background-color: $neutral_darker;
+  color: $neutral_lighter;
 }
