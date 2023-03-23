@@ -127,8 +127,8 @@ header .logo {
   background-color: #fbfbfd;
   border: 2px solid #fbfbfd;
   border-radius: 2px;
-  width: 50px;
-  height: 50px;
+  width: 3.25rem;
+  height: 3.25rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -144,7 +144,7 @@ header .logo {
     height: 35px;
   }
 }
-div#navigation {
+.navigation {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -152,7 +152,7 @@ div#navigation {
   display: grid;
   grid-template-columns: auto auto;
   justify-items: center;
-  padding-block: 10px;
+  padding: 0.5rem;
   color: #fbfbfd;
   background-color: #1f1f1f;
 }
@@ -166,13 +166,12 @@ div#navigation {
   }
 }
 footer {
-  bottom: 0;
+  bottom: 12px;
   width: 100%;
-  min-height: 70px;
   overflow: hidden;
   font-size: 0.8rem;
-  color: #fbfbfd;
   background-color: #1f1f1f;
+  color: #fbfbfd;
 }
 footer .footer {
   display: grid;
@@ -196,13 +195,14 @@ footer .footer__logo {
   background-color: #fbfbfd;
   border: 2px solid #fbfbfd;
   border-radius: 2px;
-  width: 50px;
-  height: 50px;
+  width: 3.25rem;
+  height: 3.25rem;
 }
 
 @media screen and (max-width: 768px) {
   .footer {
     margin-bottom: 60px;
+    padding-bottom: 12px;
   }
 }
 div#products {
@@ -505,6 +505,7 @@ div.pagination {
   padding-inline: 8px;
   text-decoration: none;
   background-color: #fbfbfd;
+  overflow: hidden;
 }
 
 div.pagination a {
