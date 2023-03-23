@@ -8,6 +8,32 @@
 }
 
 @mixin mainStyle {
-  background-color: $neutral_darker;
   color: $neutral_lighter;
+  background-color: $neutral_darker;
+}
+
+@mixin secondaryStyle {
+  color: $neutral_lighter;
+  background-color: $secondary_darker;
+  cursor: pointer;
+}
+
+@mixin searchBar {
+  min-height: 35px;
+  border: none;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+}
+
+@mixin borderRadiusLeft {
+  border-radius: 12px 0 0 12px;
+}
+
+@mixin borderRadiusRight {
+  border-radius: 0 12px 12px 0;
+}
+
+@mixin iconSmall {
+  width: 1.5rem;
+  height: 1.5rem;
 }

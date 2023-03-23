@@ -31,96 +31,98 @@ h6 {
   font-weight: 600;
 }
 
-header div#navbar {
+header .navbar {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: "logo search icon";
   align-items: center;
   justify-items: center;
-  padding: 10px;
+  color: #fbfbfd;
   background-color: #1f1f1f;
 }
-header div#navbar form#navbar__form {
+header .navbar__form {
   display: flex;
-  align-items: center;
+  justify-items: center;
   width: 100%;
   border-radius: 12px 12px 12px 12px;
   background-color: #fbfbfd;
 }
-header div#navbar form#navbar__form input.form__searchbar {
-  border-width: 0;
-  padding-block: 2%;
-  text-indent: 5%;
-  width: 57%;
-  background-color: #fbfbfd;
+header .navbar__form--select-category {
+  width: 25%;
+  border-radius: 12px 0 0 12px;
+  min-height: 35px;
+  border: none;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+  color: #fbfbfd;
+  background-color: #175977;
+  cursor: pointer;
 }
-header div#navbar form#navbar__form input.form__searchbar::placeholder {
+header .navbar__form--search-bar {
+  width: 40%;
+  background-color: #fbfbfd;
+  min-height: 35px;
+  border: none;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+}
+header .navbar__form--search-bar::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #1f1f1f;
 }
-header div#navbar form#navbar__form input.form__searchbar::-ms-input-placeholder {
+header .navbar__form--search-bar::-ms-input-placeholder {
   color: #1f1f1f;
 }
-header div#navbar form#navbar__form #form__buttonsearch {
-  border-width: 0;
+header .navbar__form--select-orderby {
+  width: 25%;
+  min-height: 35px;
+  border: none;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+  color: #fbfbfd;
+  background-color: #175977;
+  cursor: pointer;
+}
+header .navbar__form--button-search {
+  width: 10%;
   background-color: #ff5208;
+  min-height: 35px;
+  border: none;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
   border-radius: 0 12px 12px 0;
-  padding-block: 0.75%;
 }
-header div#navbar form#navbar__form #form__buttonsearch:hover {
-  background-color: #e04807;
+header .navbar__form--button-search:hover {
+  background-color: #ff9680;
 }
-header div#navbar form#navbar__form select#form__select_orderby {
-  min-height: 100%;
-  outline: 0;
-  border: 0;
-  box-shadow: none;
-  flex: 1;
-  padding: 0 1em;
-  margin-left: 5px;
-  width: 28%;
-  padding-block: 2%;
-  text-overflow: ellipsis;
-  min-height: 100%;
-  cursor: pointer;
-  color: #fbfbfd;
-  background-color: #3985a9;
+header .navbar__form--button-search .icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
-header div#navbar form#navbar__form select#form__select_category {
-  min-height: 100%;
-  border-radius: 12px 0 0 12px;
-  border-width: 0;
-  padding-block: 2%;
-  width: 15%;
-  text-overflow: ellipsis;
-  cursor: pointer;
-  color: #fbfbfd;
-  background-color: #3985a9;
-}
-header div#navbar div#navbar__icons {
+header .navbar__icons {
   display: grid;
   grid-gap: 20px;
   grid-auto-flow: column;
 }
-header div#navbar div#navbar__icons #cart-icon {
+header .navbar__icons .cart-icon {
   position: relative;
 }
-header div#navbar div#navbar__icons #cart-icon #cart-count {
+header .navbar__icons .cart-icon .cart-count {
   display: none;
   position: absolute;
   top: -10px;
   right: -10px;
   background-color: #ff5208;
-  color: white;
+  color: #fbfbfd;
   border-radius: 50%;
-  width: 22px;
-  height: 22px;
   text-align: center;
   font-size: 12px;
   line-height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
-header img.logo {
+header .logo {
   margin: 10px auto;
   background-color: #fbfbfd;
   border: 2px solid #fbfbfd;
@@ -169,8 +171,8 @@ footer {
   min-height: 70px;
   overflow: hidden;
   font-size: 0.8rem;
-  background-color: #1f1f1f;
   color: #fbfbfd;
+  background-color: #1f1f1f;
 }
 footer .footer {
   display: grid;
