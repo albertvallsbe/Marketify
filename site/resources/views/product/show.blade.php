@@ -9,4 +9,5 @@
             <p><b>Price: </b>{{ $product->price }}</p>
 
             <button class="btn-cart" data-product-id="{{ $product->id }}">Add to cart</button>
+            <script type ="module" src="{{ asset('js/pages/product_show.js') }}"></script>
 @endsection
