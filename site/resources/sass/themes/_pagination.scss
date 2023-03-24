@@ -4,6 +4,7 @@ div.pagination {
   padding-inline: 8px;
   text-decoration: none;
   background-color: $neutral_lighter;
+  overflow: hidden;
 }
 
 div.pagination a {
