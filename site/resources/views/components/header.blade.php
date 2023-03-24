@@ -33,7 +33,7 @@
         <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
       </a>
       <div id="cart-icon" class="cart-icon">
-        <a href="{{ route('cart.index') }}">
+        <a id="cart-link" href="{{ route('cart.index') }}">
           <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
           <span id="cart-count" class="cart-count"></span>
         </a>

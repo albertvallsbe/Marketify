@@ -31,4 +31,5 @@
         {{-- {{ $products->appends(['search' => $search]) }} --}}
         {{ $products->links('vendor.pagination.default') }}
     </div>
+    <script type ="module" src="{{ asset('js/pages/product_index.js') }}"></script>
 @endsection
