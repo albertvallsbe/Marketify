@@ -29,9 +29,14 @@
     </form>
     <div id="navbar__icons" class="navbar__icons">
 
-      <a href="{{ route('login.index') }}">
+      @if (auth()->check())
+      <a href="{{ route('user.index', auth()->user()->id) }}">
         <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
-      </a>
+      @else
+      <a href="{{ route('login.index') }}">
+      <img class="icon" src="{{ asset('images/user-solid.svg') }}">
+      @endif
+
       <div id="cart-icon" class="cart-icon">
         <a id="cart-link" href="{{ route('cart.index') }}">
           <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">

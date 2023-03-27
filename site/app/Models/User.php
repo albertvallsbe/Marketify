@@ -56,8 +56,12 @@ class User extends Authenticatable implements MustVerifyEmail
             $users = User::find($user->id);
             $users->password =  Hash::make($value);
             return $users;
-            
         }
     }
     
+    public static function updateUserPassword($id, $password){
+            $user = User::find($id);
+            $user->password =  Hash::make($password);
+            $user->save();
+    }
 }
