@@ -20,11 +20,16 @@
                 </div>
             @endforeach
         @else
-            <h2>No results were found.</h2>
+            @if (session('request_search') != null)
+                <h2>No results were found with '<?= session('request_search') ?>'.</h2>
+            @else
+                <h2>No results were found.</h2>
+            @endif
         @endif
     </div>
     <div id="pagination">
         {{-- {{ $products->appends(['search' => $search]) }} --}}
         {{ $products->links('vendor.pagination.default') }}
     </div>
+    <script type ="module" src="{{ asset('js/pages/product_index.js') }}"></script>
 @endsection

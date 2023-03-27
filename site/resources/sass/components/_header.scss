@@ -1,27 +1,31 @@
 header {
-  div#navbar {
+  .navbar {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: "logo search icon";
     align-items: center;
     justify-items: center;
-    padding: 10px;
-    background-color: $neutral_dark;
+    @include mainStyle;
 
-    form#navbar__form {
+    &__form {
       display: flex;
-      align-items: center;
+      justify-items: center;
       width: 100%;
       border-radius: 12px 12px 12px 12px;
       background-color: $neutral_lighter;
 
-      input.form__searchbar {
-        border-width: 0;
-        padding-block: 2%;
-        text-indent: 5%;
-        width: 57%;
+      &--select-category {
+        width: 25%;
+        @include borderRadiusLeft;
+        @include searchBar;
+        @include secondaryStyle;
+      }
+
+      &--search-bar {
+        width: 40%;
         background-color: $neutral_lighter;
+        @include searchBar;
 
         &::placeholder {
           /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -33,79 +37,55 @@ header {
         }
       }
 
-      #form__buttonsearch {
-        border-width: 0;
+      &--select-orderby {
+        width: 25%;
+        @include searchBar;
+        @include secondaryStyle;
+      }
+
+      &--button-search {
+        width: 10%;
         background-color: $primary_origin;
-        border-radius: 0 12px 12px 0;
-        padding-block: 0.75%;
+        @include searchBar;
+        @include borderRadiusRight;
 
         &:hover {
           background-color: $primary_light;
         }
-      }
 
-      select#form__select_orderby {
-        min-height: 100%;
-        // appearance: none;
-        outline: 0;
-        border: 0;
-        box-shadow: none;
-        flex: 1;
-        padding: 0 1em;
-        margin-left: 5px;
-        width: 28%;
-        padding-block: 2%;
-        text-overflow: ellipsis;
-        min-height: 100%;
-        cursor: pointer;
-        color: $neutral_lighter;
-        background-color: $secondary_dark;
-      }
-
-      select#form__select_category {
-        min-height: 100%;
-        border-radius: 12px 0 0 12px;
-        border-width: 0;
-        padding-block: 2%;
-        width: 15%;
-        text-overflow: ellipsis;
-        cursor: pointer;
-        color: $neutral_lighter;
-        background-color: $secondary_dark;
+        .icon {
+          @include iconSmall;
+        }
       }
     }
 
-    div#navbar__icons {
+    &__icons {
       display: grid;
       grid-gap: 20px;
       grid-auto-flow: column;
 
-      #cart-icon {
+      .cart-icon {
         position: relative;
 
-        #cart-count {
+        .cart-count {
           display: none;
           position: absolute;
           top: -10px;
           right: -10px;
-          background-color: red;
-          color: white;
+          background-color: $primary_origin;
+          color: $neutral_lighter;
           border-radius: 50%;
-          width: 20px;
-          height: 20px;
           text-align: center;
           font-size: 12px;
           line-height: 20px;
+          @include iconSmall;
         }
       }
     }
   }
 
-  img.logo {
-    width: 50px;
-    height: 50px;
-    background-color: $secondary_origin;
-    margin: auto;
+  .logo {
+    @include logo;
   }
 }
 
@@ -116,6 +96,7 @@ header {
 
   div#navbar__icons img.icon_house {
     display: none;
+    background-color: $neutral_lighter;
   }
 
   div#navbar div.logo {
