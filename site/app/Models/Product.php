@@ -48,4 +48,10 @@ class Product extends Model
         ->paginate(18);
     }
 
+    public static function showByIDs($cart){
+        return self::query()
+        ->whereIn('id',$cart)
+        ->get();
+    }
+
 }

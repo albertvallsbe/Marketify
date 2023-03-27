@@ -37,5 +37,4 @@ Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
-
+// Route::post('/cart', [CartController::class, 'add'])->name('cart.add');

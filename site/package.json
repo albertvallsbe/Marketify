@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:sass": "node-sass --watch resources/sass/main.scss public/css/app.css"
+    "compile:sass": "sass --watch resources/sass/main.scss public/css/app.css"
   },
   "keywords": [],
   "author": "",
