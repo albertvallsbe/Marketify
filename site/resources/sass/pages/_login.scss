@@ -62,9 +62,9 @@ section.container-login {
         margin-top: 30px;
         display: grid;
         grid-template-columns: 1fr;
-        row-gap: 10%;
+        row-gap: 7%;
 
-        input {
+        input.input-mail,input.input-password {
             margin-left: 5%;
             margin-right: 5%;
             padding: 5%;
@@ -76,8 +76,12 @@ section.container-login {
 
         }
 
+
         p.text-login {
-            margin-bottom: 10%;
+            margin-bottom: 0;
+        }
+        p.text{
+            margin-bottom: 5%;
         }
 
         button.btn-login {

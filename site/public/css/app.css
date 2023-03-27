@@ -450,9 +450,9 @@ section.container-login form {
   margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 10%;
+  row-gap: 7%;
 }
-section.container-login form input {
+section.container-login form input.input-mail, section.container-login form input.input-password {
   margin-left: 5%;
   margin-right: 5%;
   padding: 5%;
@@ -463,7 +463,10 @@ section.container-login form input {
   border-bottom: 2px solid grey;
 }
 section.container-login form p.text-login {
-  margin-bottom: 10%;
+  margin-bottom: 0;
+}
+section.container-login form p.text {
+  margin-bottom: 5%;
 }
 section.container-login form button.btn-login {
   margin-left: 5%;
@@ -478,6 +481,114 @@ section.container-login form button.btn-login {
   margin-bottom: 10%;
 }
 section.container-login form button.btn-login:hover {
+  background-color: #E04807;
+  border: 3px #E04807 solid;
+}
+
+section.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10%;
+}
+section.container section.section-container {
+  margin: 0 auto;
+  display: grid;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  width: 80vh;
+  height: 50vh;
+}
+section.container section.section-container section.section-content h1.password-title {
+  text-align: center;
+}
+section.container section.section-container section.section-content p.content {
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+section.container section.section-container section.section-content form {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 10% 10% 10% 10%;
+}
+section.container section.section-container section.section-content form input.input-mail-password {
+  margin-bottom: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 3%;
+  right: 0;
+  font-weight: bold;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid grey;
+}
+section.container section.section-container section.section-content form button.btn-password {
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  padding: 2%;
+  background-color: #FF5208;
+  border: 3px #FF5208 solid;
+  color: white;
+  margin-bottom: 10%;
+}
+section.container section.section-container section.section-content form button.btn-password:hover {
+  background-color: #E04807;
+  border: 3px #E04807 solid;
+}
+
+section.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10%;
+}
+section.container section.remember-container {
+  margin: 0 auto;
+  display: grid;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  width: 80vh;
+  height: 70vh;
+}
+section.container section.remember-container section.remember-section h1.remember-title {
+  text-align: center;
+}
+section.container section.remember-container section.remember-section p.remember-content {
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+section.container section.remember-container section.remember-section form {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 10% 10% 10% 10%;
+}
+section.container section.remember-container section.remember-section form input.rememberpassw {
+  margin-bottom: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 3%;
+  right: 0;
+  font-weight: bold;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid grey;
+}
+section.container section.remember-container section.remember-section form button.btn-password {
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  padding: 2%;
+  background-color: #FF5208;
+  border: 3px #FF5208 solid;
+  color: white;
+  margin-bottom: 10%;
+}
+section.container section.remember-container section.remember-section form button.btn-password:hover {
   background-color: #E04807;
   border: 3px #E04807 solid;
 }
