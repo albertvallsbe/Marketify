@@ -6,6 +6,35 @@ Temps estimat => 2h
 Temps Real => 3h
 
 ==== Oscar
+Crear el disseny del register.
+Temps estimat => 2h
+Temps real => 2:30h
+
+Crear el disseny del login.
+Temps estimat => 2h
+Temps real => 30 min
+
+Crear disseny de la pagina de recuperació del password.
+Temps estimat => 2h 
+Temps real => 2h
+
+Fer la implementació del register.
+Temps estimat => 3h 
+Temps real => 3h
+
+Fer la implementació del login. 
+Temps estimat => 3h 
+Temps real => 2:30h
+
+Aconseguir que envii els mails correpsondents.
+Temps estimat => 3h 
+Temps real => 4h
+
+Cambiar la funció selectCategories.
+Temps estimat => 1h 
+Temps real => 15min
+
+
 
 ==== Albert
 

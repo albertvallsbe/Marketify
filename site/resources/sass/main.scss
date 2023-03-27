@@ -3,14 +3,16 @@
 @import "base/typography";
 
 // COMPONENT
-@import "component/header";
-@import "component/navigation";
-@import "component/footer";
+@import "components/header";
+@import "components/navigation";
+@import "components/footer";
 
 @import "pages/home";
 @import "pages/cart";
 @import "pages/register";
 @import "pages/login";
+@import "pages/password";
+@import "emails/remember.scss";
 
 @import "themes/theme";
 @import "themes/pagination";

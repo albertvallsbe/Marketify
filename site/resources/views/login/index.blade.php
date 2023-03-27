@@ -20,10 +20,12 @@
                     @endif
                     @if(session()->has('status'))
                     
-                        <p> {{ session()->get('status') }} </p>
+                        <p class="text-login"> {{ session()->get('status') }} </p>
                     
                     @endif
-                    <p class="text-login">You do not have an account? <a href="{{ route('register.index') }}">Create one</a>
+                    <p class="text-login">Do you not have an account? <a href="{{ route('register.index') }}">Create one</a>
+                    </p>
+                    <p class="text ">Do you forgot the password? <a href="{{(route('login.password')) }}">Remember it.</a>
                     </p>
 
                     <button class="btn-login">LOG IN</button>

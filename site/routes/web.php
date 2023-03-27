@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -24,6 +25,13 @@ Route::post('products', [App\Http\Controllers\ProductController::class, 'store']
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
+
+Route::get('/login/password', [LoginController::class, 'password'])->name('login.password');
+Route::post('/login/password', [LoginController::class, 'remember'])->name('login.remember');
+Route::get('/login/password/email', [LoginController::class, 'email'])->name('login.email');
+Route::get('/login/password/remember', [LoginController::class, 'rememberView'])->name('login.rememberView');
+Route::post('/login/password/remember', [LoginController::class, 'rememberpassw'])->name('login.rememberpassw');
+Route::post('/login/password/email', [EmailController::class, 'return'])->name('email.return');
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
