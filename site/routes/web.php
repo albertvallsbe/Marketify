@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -34,6 +35,10 @@ Route::post('/login/password/remember', [LoginController::class, 'rememberpassw'
 Route::post('/login/password/email', [EmailController::class, 'return'])->name('email.return');
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
+
+Route::get('/user/{id}', [UserController::class, 'index'])->name('user.index');
+Route::post('/user/{id}', [UserController::class, 'changeData'])->name('user.changeData');
+Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
