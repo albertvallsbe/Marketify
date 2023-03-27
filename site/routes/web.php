@@ -35,6 +35,7 @@ Route::post('/login/password/email', [EmailController::class, 'return'])->name('
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
+// Route::get('/register', [EmailController::class, 'index'])->name('register.index');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'add'])->name('cart.add');

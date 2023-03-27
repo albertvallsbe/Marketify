@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
@@ -17,12 +18,17 @@ class RegisterController extends Controller
         $request->validate([
             'register-email' => 'required',
             'register-password' => 'required',
+            'register-username'=>'required',
         ]);
         $data = $request->all();
+        
+        
 
         User::create([
             'email' => $data['register-email'],
+            'name'=>$data['register-username'],
             'password' => Hash::make($data['register-password']),
+            
         ]);
 
         

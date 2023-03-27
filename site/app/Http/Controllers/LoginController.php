@@ -27,10 +27,11 @@ class LoginController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
+            'name' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email','name', 'password');
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -51,6 +52,8 @@ class LoginController extends Controller
         $correo = new RememberPassword;
         Mail::to('oscarferram@gmail.com')->send($correo);
         session()->flash('status', 'Email send.');
+
+
         return redirect(route('login.password'));
     }
     public function rememberView(){

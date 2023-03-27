@@ -4,6 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+
+use App\Classes\Order;
+use Illuminate\Support\Str;
 use GuzzleHttp\Psr7\Request;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'email',
+        'name',
         'password',
     ];
 
@@ -45,19 +49,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public static function catchId($valor){
+    public static function catchId($valor)
+    {
         $sql = "SELECT id FROM users WHERE email = '$valor'";
         $user_id = DB::select($sql);
         return $user_id;
-        
     }
-    public static function updatePassword($id,$value){
+    public static function updatePassword($id, $value)
+    {
         foreach ($id as $user) {
             $users = User::find($user->id);
             $users->password =  Hash::make($value);
             return $users;
-            
         }
     }
-    
+
 }
