@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -22,22 +23,45 @@ class UserController extends Controller
     }
     
     public function changeData(Request $request, $id){
-        $actualpassword = $request->input('actual-password');
-        $password = $request->input('remember-password');
-        $repeatpassword = $request->input('repeat-password');
         $user = User::findOrFail($id);
-            if(Hash::check($actualpassword, Auth::user()->password)){
-                if($password == $repeatpassword){
-                    $user = User::updateUserPassword($id,$password);
-                    session()->flash('status', 'Password changed succesfully.');
-                }else {
-                    session()->flash('status', 'New password does not match');
-                }
-        }else{
-            session()->flash('status', 'Password is not correct');
+        if ($request->has('btn-password')) {
+            $actualpassword = $request->input('actual-password');
+            $password = $request->input('remember-password');
+            $repeatpassword = $request->input('repeat-password');
+                if(Hash::check($actualpassword, Auth::user()->password)){
+                    if($password == $repeatpassword){
+                        $user = User::updateUserPassword($id,$password);
+                        session()->flash('status', 'Password changed succesfully.');
+                    }else {
+                        session()->flash('status', 'New password does not match');
+                    }
+            }else{
+                session()->flash('status', 'Password is not correct');
+            }
+
+        }else if($request->has('btn-avatar')){
+            if ($request->hasFile('avatar')) {
+                $request->validate([
+                    'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                ]);
+                $avatar = $request->file('avatar');
+                $name = uniqid('profile_') . '.' . $avatar->extension();
+                $path = 'images/profiles/';
+                $avatar->move($path, $name);
+                $user->avatar = $path . $name;
+                $user->save();
+            }
+        }else if($request->has('btn-avatar-rm')){
+            if ($user->avatar != 'images/profiles/default-avatar.jpg') {
+                // Storage::delete('public/' . $user->avatar);
+                $user->avatar = 'images/profiles/default-avatar.jpg';
+                $user->save();
+            }
+            return redirect()->route('user.index',['id' => $id]);
         }
         return redirect()->route('user.index',['id' => $id]);
     }
+
 
     public function logout(Request $request) {
         Auth::logout();

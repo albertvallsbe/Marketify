@@ -105,6 +105,9 @@ header .navbar__icons {
   grid-gap: 20px;
   grid-auto-flow: column;
 }
+header .navbar__icons img.icon_user {
+  border-radius: 18px;
+}
 header .navbar__icons .cart-icon {
   position: relative;
 }
