@@ -59,15 +59,16 @@ header {
       }
     }
 
-      
+
     &__icons {
       display: grid;
       grid-gap: 20px;
       grid-auto-flow: column;
-      
-      img.icon_user{
+
+      img.icon_user {
         border-radius: 18px;
       }
+
       .cart-icon {
         position: relative;
 
@@ -90,6 +91,52 @@ header {
 
   .logo {
     @include logo;
+  }
+
+  .menu-container {
+    position: relative;
+    display: inline-block;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .toggle-button {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .menu-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $neutral_lighter;
+    border: 1px solid #ddd;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: none;
+    z-index: 1;
+  }
+
+  .menu-list li {
+    border-bottom: 1px solid #ddd;
+  }
+  .menu-list a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .menu-list a:hover {
+    background-color: #ddd;
   }
 }
 
