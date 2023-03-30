@@ -40,6 +40,7 @@
                     </div>
                     <ul class="menu-list">
                         <li><a href="{{ route('shop.create') }}">Create shop</a></li>
+                        <li><a href="{{ route('user.logout') }}">Log Out</a></li>
                     </ul>
                 </div>
             @else

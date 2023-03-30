@@ -39,9 +39,7 @@
         @endif
     </form>
 
-    <a href="{{ route('user.logout') }}">
-        Cerrar sesión
-    </a>
+    <a href="{{ route('user.logout') }}">Log out</a>
 
     <script type="module" src="{{ asset('js/pages/user_index.js') }}"></script>
 @endsection
