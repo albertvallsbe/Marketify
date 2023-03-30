@@ -22,15 +22,18 @@ class RegisterController extends Controller
             'register-email' => 'required',
             'register-password' => 'required',
             'register-username'=>'required',
+            
+           
         ]);
         $data = $request->all();
         
         
-
+       
         User::create([
             'email' => $data['register-email'],
             'name'=>$data['register-username'],
             'password' => Hash::make($data['register-password']),
+            
             
         ]);
 
