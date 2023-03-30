@@ -8,7 +8,7 @@
     <form method="POST" action="{{ route('shop.create') }}">
         @csrf
         <label for="store_name">Store name</label><br>
-        <input type="text" name="store_name" id="store_name" required><br>
+        <input type="text" name="name" id="store_name" required><br>
         <label for="nif">NIF or DNI</label><br>
         <input type="text" name="nif" id="nif" required><br>
         <button type="submit">Submit</button>

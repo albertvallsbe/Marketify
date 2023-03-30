@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use App\Classes\Order;
 use App\Models\Category;
@@ -53,7 +52,7 @@ class UserController extends Controller
             }
         }else if($request->has('btn-avatar-rm')){
             if ($user->avatar != 'images/profiles/default-avatar.jpg') {
-                // Storage::delete('public/' . $user->avatar);
+                Storage::disk('public2')->delete($user->avatar);
                 $user->avatar = 'images/profiles/default-avatar.jpg';
                 $user->save();
             }

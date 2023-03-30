@@ -46,4 +46,7 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 // Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
 
 
-Route::get('/shop/create', [ShopController::class, 'create'])->name('shop.create');
+Route::get('/shop/create', [ShopController::class, 'index'])->name('shop.index');
+Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
+
+Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
