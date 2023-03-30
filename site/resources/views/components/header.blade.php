@@ -1,43 +1,48 @@
 <header>
-  <div id="navbar" class="navbar">
-    <a href="{{ route('product.index') }}">
-      <img class="logo" src="{{ asset('images/marketify_logo.png') }}">
-    </a>
-    <form class="navbar__form" id="navbar__form" action="{{ route('product.index') }}" method="GET">
-      <select class="navbar__form--select-category" name="filter" id="form__select_category">
-          <option value="" {{ session('request_categories') == '' ? 'selected' : '' }}>All categories </option>
-          @foreach ($categories as $category)
-            <option value="{{ $category->id }}"
-              {{ session('request_categories') == $category->id ? 'selected' : '' }}>
-              {{ $category->name }}</option>
-          @endforeach
-      </select>
-
-      <input class="navbar__form--search-bar" type="text" placeholder="Search..." name="search"
-        value="{{ session('request_search') ? session('request_search') : '' }}"">
-
-      <select class="navbar__form--select-orderby" name="order" id="form__select_orderby">
-        @foreach ($options_order as $value => $label)
-          <option value="{{ $value }}" {{ $value == session('request_order') ? 'selected' : '' }}>
-          {{ $label }}</option>
-        @endforeach
-      </select>
-
-      <button class="navbar__form--button-search" id="form__buttonsearch" type="submit">
-        <img class="icon" src="{{ asset('images/magnifying-glass-solid.svg') }}">
-      </button>
-    </form>
-    <div id="navbar__icons" class="navbar__icons">
-
-      <a href="{{ route('login.index') }}">
-        <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
-      </a>
-      <div id="cart-icon" class="cart-icon">
-        <a id="cart-link" href="{{ route('cart.index') }}">
-          <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
-          <span id="cart-count" class="cart-count"></span>
+    <div id="navbar" class="navbar">
+        <a href="{{ route('product.index') }}">
+            <img class="logo" src="{{ asset('images/marketify_logo.png') }}">
         </a>
-      </div>
+        <form class="navbar__form" id="navbar__form" action="{{ route('product.index') }}" method="GET">
+            <select class="navbar__form--select-category" name="filter" id="form__select_category">
+                <option value="" {{ session('request_categories') == '' ? 'selected' : '' }}>All categories </option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}"
+                        {{ session('request_categories') == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}</option>
+                @endforeach
+            </select>
+
+            <input class="navbar__form--search-bar" type="text" placeholder="Search..." name="search"
+                value="{{ session('request_search') ? session('request_search') : '' }}"">
+
+            <select class="navbar__form--select-orderby" name="order" id="form__select_orderby">
+                @foreach ($options_order as $value => $label)
+                    <option value="{{ $value }}" {{ $value == session('request_order') ? 'selected' : '' }}>
+                        {{ $label }}</option>
+                @endforeach
+            </select>
+
+            <button class="navbar__form--button-search" id="form__buttonsearch" type="submit">
+                <img class="icon" src="{{ asset('images/magnifying-glass-solid.svg') }}">
+            </button>
+        </form>
+        <div id="navbar__icons" class="navbar__icons">
+
+            @if (auth()->check())
+                <a href="{{ route('user.index', auth()->user()->id) }}">
+                    <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
+                @else
+                    <a href="{{ route('login.index') }}">
+                        <img class="icon" src="{{ asset('images/user-solid.svg') }}">
+            @endif
+
+            <div id="cart-icon" class="cart-icon">
+                <a id="cart-link" href="{{ route('cart.index') }}">
+                    <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
+                    <span id="cart-count" class="cart-count"></span>
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
 </header>

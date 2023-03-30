@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\ConfirmMail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Console\View\Components\Confirm;
 
 class RegisterController extends Controller
 {
@@ -31,6 +34,10 @@ class RegisterController extends Controller
             
         ]);
 
+        $email = $request->input('register-email');
+        $correo = new ConfirmMail;
+        Mail::to($email)->send($correo);
+        session()->flash('status', 'Email send.');
         
         Log::channel('desarrollo')->info('Usuario registrado');
 

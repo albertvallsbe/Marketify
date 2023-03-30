@@ -53,9 +53,35 @@ Cambiar la funció selectCategories.
 Temps estimat => 1h 
 Temps real => 15min
 
-
-
 ==== Albert
+
+Arreglar problemes d'accesibilitat en els colors.
+Temps estimat => 1h 
+Temps real => 1:45h
+
+Problemes en la versió de node i packaje.json.
+Temps estimat => 2h 
+Temps real => 4:30h
+
+Actualitzar stil global.
+Temps estimat => 3h 
+Temps real => 4h
+
+Millorar i simplificar estil del header.
+Temps estimat => 2h 
+Temps real => 2:30h
+
+Millorar i simplificar estil del footer.
+Temps estimat => 1h 
+Temps real => 1h
+
+Millorar i simplificar estil del navigation.
+Temps estimat => 1h 
+Temps real => 0:30h
+
+Documentació
+Temps estimat => 1h 
+Temps real => 1h
 
 === Setmana 3
 
@@ -83,6 +109,23 @@ Temps real => 2:30h
 Actualitzar la funcionalitat del migrate:rollback per solucionar els errors que hi havia.
 Temps estimat => 1h
 Temps real => 2h
+
+Investigació sobre com fer test en php
+Temps estimat => 5h 
+Temps real => 10h
+
+Crear test del store amb tdd.
+Temps estimat => 1h 
+Temps real => 1:30h
+
+Crida general als seeders desde el seeder general
+Temps estimat => 1h 
+Temps real => 1h
+
+Documentació
+Temps estimat => 1h 
+Temps real => 1h
+
 
 === Setmana 2
 

@@ -1,3 +1,4 @@
+import '../app.js';
 const removeButtons = document.querySelectorAll('.btn-remove');
 const clearButton = document.querySelector('.btn-empty');
 

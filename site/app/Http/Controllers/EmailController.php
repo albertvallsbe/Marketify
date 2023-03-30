@@ -11,10 +11,11 @@ class EmailController extends Controller
     public function return(){
         return view('emails.confirm');
     }
-    public function sendEmail()
+    public function sendEmail($value)
     {
+
         $correo = new ConfirmMail;
-        Mail::to('oscarferram@gmail.com')->send($correo);
+        Mail::to($value)->send($correo);
         session()->flash('status', 'Email send.');
     }
 }

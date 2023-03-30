@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id'); 
             $table->string('email')->unique();
             $table->string('name')->unique();
             $table->string('password')->unique();
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->string('avatar')->default('images/profiles/default-avatar.jpg');
         });
     }
 

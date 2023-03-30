@@ -49,8 +49,9 @@ class LoginController extends Controller
     }
     public function remember(Request $request)
     {
+        $email = $request->input('remember-password');
         $correo = new RememberPassword;
-        Mail::to('oscarferram@gmail.com')->send($correo);
+        Mail::to($email)->send($correo);
         session()->flash('status', 'Email send.');
 
 
