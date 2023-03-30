@@ -8,6 +8,6 @@
 </head>
 <body>
     Please, confirm your email adress.
-    <button class= "btn-confirm" name="btn-confirm">CONFIRM</button>
+    <a href="{{route('login.index')}}"><button class= "btn-confirm" name="btn-confirm">CONFIRM</button></a>
 </body>
 </html>

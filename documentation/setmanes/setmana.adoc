@@ -53,6 +53,13 @@ Cambiar la funció selectCategories.
 Temps estimat => 1h 
 Temps real => 15min
 
+Fer la implementació de recordar la contrasenya.
+Temps estimat =>3h
+Temps real => 2:45h
+
+Fer que envii els mails a tots els correus.
+Temps estimat => 1h
+Temps real => 20min
 ==== Albert
 
 Arreglar problemes d'accesibilitat en els colors.
