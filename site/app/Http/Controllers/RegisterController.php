@@ -33,7 +33,7 @@ class RegisterController extends Controller
             'email' => $data['register-email'],
             'name'=>$data['register-username'],
             'password' => Hash::make($data['register-password']),
-            
+            'api_token'=> Str::random(60),
             
         ]);
 

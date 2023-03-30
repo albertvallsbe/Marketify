@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamp('expires_at');
             $table->timestamp('email_verified_at')->nullable();
             // $table->rememberToken();
-            // $table->string('api_token')->unique();
+            $table->string('api_token')->unique();
             $table->timestamps();
             $table->string('avatar')->default('images/profiles/default-avatar.jpg');
         });
