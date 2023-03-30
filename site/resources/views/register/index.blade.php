@@ -25,6 +25,7 @@
                 <form method="POST" action="{{route('auth.register')}}">
                     @csrf
                     <input type="email" class="input-mail" placeholder="example@gmail.com" name="register-email">
+                    <input type="text" class="input-mail" placeholder="_.username._" name="register-username">
                     <input type="password" class="input-password" placeholder="••••••••••••" name="register-password">
                     <p class="text-register">Do you already have an account?<a href="{{ route('login.index') }}">Log
                             in</a></p>

@@ -11,6 +11,7 @@
                 <form method='POST'action="{{ route('auth.login') }}">
                     @csrf
                     <input type="email" class="input-mail" placeholder="example@gmail.com" name="email">
+                    <input type="text" class="input-mail" placeholder="_.username._" name="name">
                     @if ($errors->has('login-email'))
                         <span><strong>{{ $errors->first('login-email') }}</strong></span>
                     @endif
