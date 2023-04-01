@@ -12,7 +12,7 @@
             <input type="email" class="input-mail" placeholder="example@gmail.com" name="register-email">
             <input type="text" class="input-mail" placeholder="_.username._" name="register-username">
             <input type="password" class="input-password" placeholder="••••••••••••" name="register-password">
-            <button class="general_button">CREATE ACCOUNT</button>
+            <button class="btn-register general_button">CREATE ACCOUNT</button>
 
             <p class="text-register users-link">Do you already have an account?<a href="{{ route('login.index') }}">Login</a></p>
 
