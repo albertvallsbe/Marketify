@@ -17,6 +17,22 @@
   cursor: pointer;
 }
 
+@mixin buttonStyle {
+  color: $neutral_darker;
+  background-color: $primary_origin;
+  border: 3px $primary_origin solid;
+}
+
+@mixin buttonStyleHover {
+  background-color: $primary_light;
+  border: 3px $primary_light solid;
+}
+
+@mixin mainStyleWhiteMode {
+  color: $neutral_darker;
+  background-color: $neutral_lighter;
+}
+
 @mixin searchBar {
   min-height: 35px;
   border: none;
@@ -32,6 +48,14 @@
   border-radius: 0 12px 12px 0;
 }
 
+@mixin borderRadiusCard {
+  border-radius: 2px;
+}
+
+@mixin borderRadiusButton {
+  border-radius: 12px;
+}
+
 @mixin iconSmall {
   width: 1.5rem;
   height: 1.5rem;
@@ -40,4 +64,24 @@
 @mixin iconBig {
   width: 3.25rem;
   height: 3.25rem;
+}
+
+@mixin cardShadow {
+  -webkit-box-shadow: 0px 0px 10px 0px $shadow_color;
+  -moz-box-shadow: 0px 0px 10px 0px $shadow_color;
+  box-shadow: 0px 0px 10px 0px $shadow_color;
+}
+
+@mixin mediumButton {
+  @include mediumTypografy;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+}
+
+@mixin smallButton {
+  @include smallTypografy;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
 }

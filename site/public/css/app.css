@@ -17,7 +17,9 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-form, input, select {
+form,
+input,
+select {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -86,7 +88,9 @@ header .navbar__form--select-orderby {
 }
 header .navbar__form--button-search {
   width: 10%;
+  color: #1f1f1f;
   background-color: #ff5208;
+  border: 3px #ff5208 solid;
   min-height: 35px;
   border: none;
   text-overflow: ellipsis;
@@ -252,6 +256,22 @@ div.product a {
   color: #1f1f1f;
 }
 
+.small_button {
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: small;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+}
+.small_button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+
 @media screen and (max-width: 768px) {
   div#products {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -315,7 +335,6 @@ section.main-container {
 
 section.register-text {
   display: grid;
-  margin-top: 20%;
   align-items: center;
   justify-content: center;
   height: 65vh;
@@ -341,33 +360,29 @@ section.register-text p {
   margin-right: 5%;
 }
 
-section.container-register {
+.container-register {
   margin: 0 auto;
-  border-radius: 10px;
-  border: 3px solid grey;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   display: grid;
   grid-template-columns: 1fr;
   margin-top: 20%;
   height: 65vh;
   width: 40vh;
 }
-section.container-register h1.register-title,
-section.container-register hr,
-section.container-register p {
-  margin-bottom: 10%;
+.container-register h1.register-title,
+.container-register hr,
+.container-register p {
   display: grid;
   justify-content: center;
   margin-left: 5%;
   margin-right: 5%;
 }
-section.container-register form {
+.container-register form {
   margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 20%;
+  row-gap: 10%;
 }
-section.container-register form input {
+.container-register form input {
   margin-left: 5%;
   margin-right: 5%;
   padding: 5%;
@@ -377,24 +392,30 @@ section.container-register form input {
   border: none;
   border-bottom: 2px solid grey;
 }
-section.container-register form p.text-register {
-  margin-bottom: 10%;
+
+.card_style {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
 }
-section.container-register form button.btn-register {
+
+.general_button {
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: medium;
   margin-left: 5%;
   margin-right: 5%;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
   padding: 2%;
-  background-color: #FF5208;
-  border: 3px #FF5208 solid;
-  color: white;
-  margin-bottom: 10%;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
 }
-section.container-register form button.btn-register:hover {
-  background-color: #E04807;
-  border: 3px #E04807 solid;
+.general_button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
 }
 
 section.main-container {
@@ -408,7 +429,6 @@ section.login-text {
   justify-content: center;
   height: 65vh;
   width: 70vh;
-  margin-top: 10%;
 }
 section.login-text img.img-logo {
   display: grid;
@@ -430,32 +450,30 @@ section.login-text p {
   margin-right: 5%;
 }
 
-section.container-login {
+.container-login {
   margin: 0 auto;
-  border-radius: 10px;
-  border: 3px solid grey;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   display: grid;
   grid-template-columns: 1fr;
-  margin-top: 10%;
+  margin-top: 20%;
   height: 65vh;
   width: 40vh;
 }
-section.container-login h1.login-title,
-section.container-login hr,
-section.container-login p {
+.container-login h1.login-title,
+.container-login hr,
+.container-login p {
   display: grid;
   justify-content: center;
   margin-left: 5%;
   margin-right: 5%;
 }
-section.container-login form {
+.container-login form {
   margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 7%;
+  row-gap: 10%;
 }
-section.container-login form input.input-mail, section.container-login form input.input-password {
+.container-login form input.input-mail,
+.container-login form input.input-password {
   margin-left: 5%;
   margin-right: 5%;
   padding: 5%;
@@ -465,27 +483,30 @@ section.container-login form input.input-mail, section.container-login form inpu
   border: none;
   border-bottom: 2px solid grey;
 }
-section.container-login form p.text-login {
-  margin-bottom: 0;
+
+.card_style {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
 }
-section.container-login form p.text {
-  margin-bottom: 5%;
-}
-section.container-login form button.btn-login {
+
+.general_button {
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: medium;
   margin-left: 5%;
   margin-right: 5%;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
   padding: 2%;
-  background-color: #FF5208;
-  border: 3px #FF5208 solid;
-  color: white;
-  margin-bottom: 10%;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
 }
-section.container-login form button.btn-login:hover {
-  background-color: #E04807;
-  border: 3px #E04807 solid;
+.general_button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
 }
 
 section.container {

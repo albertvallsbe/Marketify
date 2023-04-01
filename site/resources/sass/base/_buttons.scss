@@ -1,0 +1,19 @@
+@mixin medium_button {
+  @include borderRadiusButton;
+  @include mediumButton;
+  @include buttonStyle;
+
+  &:hover {
+    @include buttonStyleHover;
+  }
+}
+
+@mixin small_button {
+  @include borderRadiusButton;
+  @include smallButton;
+  @include buttonStyle;
+
+  &:hover {
+    @include buttonStyleHover;
+  }
+}
