@@ -21,7 +21,7 @@
           @if(session()->has('status'))
             <p class="text-login"> {{ session()->get('status') }} </p>
           @endif
-          <button class="general_button">LOG IN</button>
+          <button class="btn-login general_button">LOG IN</button>
 
           <p class="text-login users-link">Do you not have an account? <a href="{{ route('register.index') }}">Register</a>
           </p>
