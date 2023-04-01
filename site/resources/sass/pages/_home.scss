@@ -47,6 +47,10 @@ div.product {
   }
 }
 
+.small_button {
+  @include small_button;
+}
+
 @media screen and (max-width: 768px) {
   div#products {
     grid-template-columns: repeat(auto-fit, minmax(calc(150px), 1fr));
