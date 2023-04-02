@@ -212,37 +212,55 @@ footer .footer__logo {
     padding-bottom: 12px;
   }
 }
-div#products {
+.main_title {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(202.5px, 1fr));
   grid-row-gap: 20px;
   grid-column-gap: 20px;
-  padding-top: 38px;
+  margin-top: 20px;
 }
 
-div.product {
+.card-style {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  padding: 10px;
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-self: center;
-  width: 150px;
+  max-width: 160px;
 }
-div.product div.product__div_img {
+.card-style .product__div_img {
   height: 125px;
   width: 125px;
   display: flex;
   align-items: center;
   margin-inline: auto;
 }
-div.product div.product__div_img img.product__img {
+.card-style .product__div_img .product__img {
   height: 125px;
   width: 125px;
   object-fit: cover;
 }
-div.product h4.product__name {
+.card-style_title {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -251,12 +269,11 @@ div.product h4.product__name {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-div.product a {
+.card-style_a {
   text-decoration: none;
-  color: #1f1f1f;
+  color: inherit;
 }
-
-.small_button {
+.card-style .small_button {
   border-radius: 12px;
   color: #1f1f1f;
   background-color: #ff5208;
@@ -266,14 +283,17 @@ div.product a {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
+  max-height: 2rem;
+  max-width: 100px;
 }
-.small_button:hover {
+.card-style .small_button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
 
 @media screen and (max-width: 768px) {
-  div#products {
+  div#products,
+  .products {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
@@ -369,6 +389,7 @@ div.summary div.btns-cart button.btn-buy:hover {
   text-align: start;
   border: none;
   border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
 }
 .card-style .form .general_button {
   border-radius: 12px;

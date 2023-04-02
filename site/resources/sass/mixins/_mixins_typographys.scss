@@ -7,6 +7,10 @@
   font-weight: bold;
   font-size: medium;
 }
+@mixin largeTypografy {
+  font-weight: bold;
+  font-size: xx-large;
+}
 
 @mixin cardStyleTitle {
   display: grid;
