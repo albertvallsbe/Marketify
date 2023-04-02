@@ -3,6 +3,7 @@
   @include buttonStyle;
   @include mediumTypografy;
   @include marginPadding;
+  max-height: 2.5rem;
 
   &:hover {
     @include buttonStyleHover;

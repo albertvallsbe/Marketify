@@ -1,6 +1,5 @@
 .main-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  @include twoColumnsMode;
 }
 
 .card-style {
@@ -22,7 +21,7 @@
       right: 0;
       text-align: start;
       border: none;
-      border-bottom: 2px solid grey;
+      border-bottom: 2px solid $neutral_origin;
     }
     .general_button {
       @include mediumButton;

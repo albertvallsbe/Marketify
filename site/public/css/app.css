@@ -368,7 +368,7 @@ div.summary div.btns-cart button.btn-buy:hover {
   right: 0;
   text-align: start;
   border: none;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid #8f8f8f;
 }
 .card-style .form .general_button {
   border-radius: 12px;
@@ -380,6 +380,7 @@ div.summary div.btns-cart button.btn-buy:hover {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
+  max-height: 2.5rem;
 }
 .card-style .form .general_button:hover {
   background-color: #ff9680;
@@ -449,7 +450,6 @@ div.summary div.btns-cart button.btn-buy:hover {
   justify-content: center;
   margin-left: 5%;
   margin-right: 5%;
-  max-height: fit-content;
 }
 .card-style .form {
   display: grid;
@@ -465,7 +465,8 @@ div.summary div.btns-cart button.btn-buy:hover {
   right: 0;
   text-align: start;
   border: none;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
 }
 .card-style .form .general_button {
   border-radius: 12px;
@@ -477,6 +478,7 @@ div.summary div.btns-cart button.btn-buy:hover {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
+  max-height: 2.5rem;
 }
 .card-style .form .general_button:hover {
   background-color: #ff9680;
@@ -522,58 +524,118 @@ div.summary div.btns-cart button.btn-buy:hover {
   text-align: center;
 }
 
-section.container {
+.main-container {
   display: grid;
-  grid-template-columns: 1fr;
-  padding: 10%;
+  grid-template-columns: repeat(2, 1fr);
 }
-section.container section.section-container {
-  margin: 0 auto;
-  display: grid;
-  border-radius: 30px;
+
+.card-style {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  width: 80vh;
-  height: 50vh;
-}
-section.container section.section-container section.section-content h1.password-title {
-  text-align: center;
-}
-section.container section.section-container section.section-content p.content {
-  text-align: center;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-section.container section.section-container section.section-content form {
+  border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
-  margin: 10% 10% 10% 10%;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
 }
-section.container section.section-container section.section-content form input.input-mail-password {
-  margin-bottom: 10%;
+.card-style_title {
+  display: grid;
+  justify-content: center;
   margin-left: 5%;
   margin-right: 5%;
-  padding: 3%;
-  right: 0;
+  text-align: center;
+  max-height: 3rem;
+}
+.card-style_content {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin: -2rem;
+  margin-bottom: 1rem;
   font-weight: bold;
+  font-size: small;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-decoration: none;
+  color: inherit;
+}
+.card-style .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+  padding-bottom: 2rem;
+}
+.card-style .form_input {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  right: 0;
   text-align: start;
   border: none;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
 }
-section.container section.section-container section.section-content form button.btn-password {
+.card-style .form .general_button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: medium;
   margin-left: 5%;
   margin-right: 5%;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
   padding: 2%;
-  background-color: #FF5208;
-  border: 3px #FF5208 solid;
-  color: white;
-  margin-bottom: 10%;
+  max-height: 2.5rem;
 }
-section.container section.section-container section.section-content form button.btn-password:hover {
-  background-color: #E04807;
-  border: 3px #E04807 solid;
+.card-style .form .general_button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style .users-link {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+}
+
+.intro-style {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  width: 60vh;
+  align-items: center;
+  justify-content: center;
+}
+.intro-style_logo {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 60%;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+.intro-style_title, .intro-style_text {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: grid;
+  text-align: center;
 }
 
 section.container {

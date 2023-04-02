@@ -82,3 +82,8 @@
   margin-left: 5%;
   margin-right: 5%;
 }
+
+@mixin twoColumnsMode {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}

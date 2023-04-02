@@ -1,6 +1,5 @@
 .main-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  @include twoColumnsMode;
 }
 
 .card-style {
@@ -9,7 +8,6 @@
 
   &_title {
     @include cardStyleTitle;
-    max-height: fit-content;
   }
 
   .form {
@@ -22,7 +20,8 @@
       right: 0;
       text-align: start;
       border: none;
-      border-bottom: 2px solid grey;
+      border-bottom: 2px solid $neutral_origin;
+      max-height: 2.5rem;
     }
     .general_button {
       @include mediumButton;
