@@ -12,9 +12,9 @@
   margin-top: 20px;
 }
 
-.card-style {
+.card-style-mini {
   @include cardStyle;
-  @include cardPosition;
+  // @include cardPosition;
 
   padding: 1rem;
   display: flex;
@@ -51,8 +51,9 @@
     @include links;
   }
 
-  .small_button {
+  .small-button {
     @include smallButton;
+    min-height: 2.5rem;
   }
 }
 

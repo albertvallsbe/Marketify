@@ -16,7 +16,6 @@
   @include smallTypografy;
   @include marginPadding;
   max-height: 2rem;
-  max-width: 100px;
 
   &:hover {
     @include buttonStyleHover;

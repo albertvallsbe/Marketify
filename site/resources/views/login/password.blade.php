@@ -4,16 +4,16 @@
 
 @section('content')
   <section class="main-container">
-    <section class="card-style section-content">
-      <h1 class="card-style_title password-title">Have you forgotten the password?</h1>
-      <p class="card-style_content">Have you forgotten the password? Don't worry. Enter your email and we will send you an email to recover your password.
+    <section class="card-style-medium section-content">
+      <h1 class="card-style-medium_title password-title">Have you forgotten the password?</h1>
+      <p class="card-style-medium_content">Have you forgotten the password? Don't worry. Enter your email and we will send you an email to recover your password.
           <br>If you want to return press
           <a href={{route('login.index')}}>Login</a>
       </p>
       <form class="form" method='POST'action="{{ route('login.remember') }}">
         @csrf
         <input type="email" class="form_input input-mail-password" placeholder="example@gmail.com" name="remember-password">
-        <button class="general_button btn-password">SEND EMAIL</button>
+        <button class="general-button btn-password">SEND EMAIL</button>
         @if ($errors->has('login-email'))
           <span>{{ $errors->first('login-email') }}</span>
         @endif

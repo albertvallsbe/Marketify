@@ -4,8 +4,8 @@
 
 @section('content')
   <section class="main-container">
-    <section class="card-style">
-      <h1 class="card-style_title login-title">Login</h1>
+    <section class="card-style-medium">
+      <h1 class="card-style-medium_title login-title">Login</h1>
       <form class="form" method='POST'action="{{ route('auth.login') }}">
         @csrf
         <input type="email" class="form_input input-mail" placeholder="example@gmail.com" name="email">
@@ -20,7 +20,7 @@
         @if(session()->has('status'))
           <p class="text-login"> {{ session()->get('status') }} </p>
         @endif
-        <button class="btn-login general_button">LOG IN</button>
+        <button class="btn-login general-button">LOG IN</button>
       </form>
       <p class="users-link text-login">Do you not have an account?
         <a href="{{ route('register.index') }}">Register</a>

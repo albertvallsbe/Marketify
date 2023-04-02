@@ -7,16 +7,16 @@
   <div id="products" class="products">
     @if ($products->count())
       @foreach ($products as $key => $product)
-        <div class="card-style product" id={{ $product->id }}>
-          <a class="card-style_a" href="{{ route('product.show', $product->id) }}">
+        <div class="card-style-mini product" id={{ $product->id }}>
+          <a class="card-style-mini_a" href="{{ route('product.show', $product->id) }}">
             <div class="product__div_img">
               <img class="product__img" src="{{ $product->image }}" />
             </div>
-            <h4 class="card-style_title product__name">{{ $product->name }}</h4>
-            <h4 class="card-style_title product__name">{{ $product->tag }}</h4>
-            <h3 class="card-style_title product__price">{{ $product->price }} €</h3>
+            <h4 class="card-style-mini_title product__name">{{ $product->name }}</h4>
+            <h4 class="card-style-mini_title product__name">{{ $product->tag }}</h4>
+            <h3 class="card-style-mini_title product__price">{{ $product->price }} €</h3>
           </a>
-          <button class="btn-cart small_button" data-product-id="{{ $product->id }}">Add to cart</button>
+          <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
         </div>
       @endforeach
     @else
