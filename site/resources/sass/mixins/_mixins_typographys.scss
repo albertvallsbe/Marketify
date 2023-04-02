@@ -1,0 +1,21 @@
+@mixin smallTypografy {
+  font-weight: bold;
+  font-size: small;
+}
+
+@mixin mediumTypografy {
+  font-weight: bold;
+  font-size: medium;
+}
+
+@mixin cardStyleTitle {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+@mixin links {
+  text-decoration: none;
+  color: inherit;
+}

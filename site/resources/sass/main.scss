@@ -1,8 +1,13 @@
 @import "base/globals";
 @import "base/colors";
 @import "base/typographys";
-@import "base/buttons";
+
 @import "mixins/mixins";
+@import "mixins/mixins_typographys";
+@import "mixins/mixins_buttons";
+@import "mixins/mixins_cards";
+@import "mixins/mixins_imageLogos";
+@import "mixins/mixins_forms";
 
 // COMPONENT
 @import "components/header";

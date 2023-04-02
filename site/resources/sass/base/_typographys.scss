@@ -20,13 +20,3 @@ h6 {
   font-family: $font-family-base;
   font-weight: 600;
 }
-
-@mixin smallTypografy {
-  font-weight: bold;
-  font-size: small;
-}
-
-@mixin mediumTypografy {
-  font-weight: bold;
-  font-size: medium;
-}

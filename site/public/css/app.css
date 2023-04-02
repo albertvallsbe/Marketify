@@ -258,14 +258,14 @@ div.product a {
 
 .small_button {
   border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
   font-weight: bold;
   font-size: small;
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
-  color: #1f1f1f;
-  background-color: #ff5208;
-  border: 3px #ff5208 solid;
 }
 .small_button:hover {
   background-color: #ff9680;
@@ -328,19 +328,87 @@ div.summary div.btns-cart button.btn-buy:hover {
   border: 3px #005200 solid;
 }
 
-section.main-container {
+.main-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
-section.register-text {
+.card-style {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
   display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+}
+.card-style_title {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  max-height: fit-content;
+}
+.card-style .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+.card-style .form_input {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  right: 0;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid grey;
+}
+.card-style .form .general_button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: medium;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+}
+.card-style .form .general_button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style .users-link {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+}
+
+.intro-style {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  width: 60vh;
   align-items: center;
   justify-content: center;
-  height: 65vh;
-  width: 70vh;
 }
-section.register-text img.img-logo {
+.intro-style_logo {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -350,87 +418,94 @@ section.register-text img.img-logo {
   height: 100px;
   margin: auto;
 }
-section.register-text h1.register-title,
-section.register-text p {
-  margin-top: -30%;
+.intro-style_title, .intro-style_text {
+  margin-left: 5%;
+  margin-right: 5%;
   display: grid;
   text-align: center;
-  justify-content: center;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 
-.container-register {
-  margin: 0 auto;
+.main-container {
   display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 20%;
-  height: 65vh;
-  width: 40vh;
-}
-.container-register h1.register-title,
-.container-register hr,
-.container-register p {
-  display: grid;
-  justify-content: center;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-.container-register form {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 10%;
-}
-.container-register form input {
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 5%;
-  right: 0;
-  font-weight: bold;
-  text-align: start;
-  border: none;
-  border-bottom: 2px solid grey;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.card_style {
+.card-style {
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
 }
-
-.general_button {
+.card-style_title {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  max-height: fit-content;
+}
+.card-style .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+.card-style .form_input {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  right: 0;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid grey;
+}
+.card-style .form .general_button {
   border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
   font-weight: bold;
   font-size: medium;
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
-  color: #1f1f1f;
-  background-color: #ff5208;
-  border: 3px #ff5208 solid;
 }
-.general_button:hover {
+.card-style .form .general_button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
-
-section.main-container {
+.card-style .users-link {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
 }
 
-section.login-text {
+.intro-style {
   display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  width: 60vh;
   align-items: center;
   justify-content: center;
-  height: 65vh;
-  width: 70vh;
 }
-section.login-text img.img-logo {
+.intro-style_logo {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -440,73 +515,11 @@ section.login-text img.img-logo {
   height: 100px;
   margin: auto;
 }
-section.login-text h1.login-title,
-section.login-text p {
-  margin-top: -30%;
+.intro-style_title, .intro-style_text {
+  margin-left: 5%;
+  margin-right: 5%;
   display: grid;
   text-align: center;
-  justify-content: center;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-.container-login {
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 20%;
-  height: 65vh;
-  width: 40vh;
-}
-.container-login h1.login-title,
-.container-login hr,
-.container-login p {
-  display: grid;
-  justify-content: center;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-.container-login form {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 10%;
-}
-.container-login form input.input-mail,
-.container-login form input.input-password {
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 5%;
-  right: 0;
-  font-weight: bold;
-  text-align: start;
-  border: none;
-  border-bottom: 2px solid grey;
-}
-
-.card_style {
-  color: #1f1f1f;
-  background-color: #fbfbfd;
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 2px;
-}
-
-.general_button {
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: medium;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 2%;
-  color: #1f1f1f;
-  background-color: #ff5208;
-  border: 3px #ff5208 solid;
-}
-.general_button:hover {
-  background-color: #ff9680;
-  border: 3px #ff9680 solid;
 }
 
 section.container {

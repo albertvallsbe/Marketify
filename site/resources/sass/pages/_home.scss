@@ -48,7 +48,7 @@ div.product {
 }
 
 .small_button {
-  @include small_button;
+  @include smallButton;
 }
 
 @media screen and (max-width: 768px) {
