@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
@@ -43,3 +44,9 @@ Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 // Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+
+
+Route::get('/shop/create', [ShopController::class, 'index'])->name('shop.index');
+Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
+
+Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');

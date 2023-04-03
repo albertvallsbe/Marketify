@@ -137,6 +137,45 @@ header .logo {
   width: 3.25rem;
   height: 3.25rem;
 }
+header .menu-container {
+  position: relative;
+  display: inline-block;
+}
+header .menu-container a {
+  text-decoration: none;
+}
+header .menu-toggle {
+  display: inline-block;
+}
+header .toggle-button {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+header .menu-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fbfbfd;
+  border: 1px solid #ddd;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: none;
+  z-index: 1;
+}
+header .menu-list li {
+  border-bottom: 1px solid #ddd;
+}
+header .menu-list a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+}
+header .menu-list a:hover {
+  background-color: #ddd;
+}
 
 @media screen and (max-width: 768px) {
   div#navbar__icons img.icon_user {

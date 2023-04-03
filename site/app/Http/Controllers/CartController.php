@@ -21,7 +21,6 @@ class CartController extends Controller
         }else{
             $ids = [];
         }
-        Log::info($ids);
         $products = Product::showByIDs($ids);
         return view('cart.index',['categories' => $categories,
         'options_order' => Order::$order_array,
