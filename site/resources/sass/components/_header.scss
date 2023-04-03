@@ -45,7 +45,7 @@ header {
 
       &--button-search {
         width: 10%;
-        background-color: $primary_origin;
+        @include buttonStyle;
         @include searchBar;
         @include borderRadiusRight;
 
@@ -64,6 +64,8 @@ header {
       display: grid;
       grid-gap: 20px;
       grid-auto-flow: column;
+
+      img.icon_user {
 
       img.icon_user {
         border-radius: 18px;

@@ -1,57 +1,48 @@
-section.container {
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
+.main-container {
+  @include twoColumnsMode;
 }
 
-div.summary {
-    margin-top: 10px;
-    border-radius: 10px;
-    border: 2px solid gray;
-    padding: 5%;
+.products-cart {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(calc(180px * 1.125), 1fr));
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  .small-button {
+    @include smallButton;
+  }
+}
 
-    h1.title {
-        margin-bottom: 30px;
+.card-style-cart {
+  @include cardStyle;
+  @include cardPosition;
+  width: 50vh;
+
+  margin-top: 0;
+  padding-bottom: 2rem;
+  min-width: 250px;
+  height: min-content;
+  text-align: center;
+  justify-content: center;
+
+  &_title {
+    @include cardStyleTitle;
+  }
+
+  .general-button {
+    @include mediumButton;
+
+    &_buy {
+      background-color: $succes-dark;
+      border-color: $succes-dark;
     }
+  }
 
-    div.products-cart{
-        h3.total{
-            display: grid;
-            align-items: end;
-            justify-content: end;
-        }
-    }
-
-    div.btns-cart{
-        display:grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-column-gap: 50px;
-
-        button.btn-empty{
-            border-radius: 10px;
-            font-family: "Open Sans", sans-serif;
-            font-weight: bold;
-            padding:2%;
-            background-color: #FF5208;
-            border: 3px #FF5208 solid;
-            color:white;
-        }
-        button.btn-empty:hover{
-            background-color: #E04807;
-            border: 3px #E04807 solid;
-        }
-        button.btn-buy{
-            border-radius: 10px;
-            font-family: "Open Sans", sans-serif;
-            font-weight: bold;
-            padding:2%;
-            background-color: #258d19;
-            border: 3px #258d19 solid;
-            color:white;
-        }
-        button.btn-buy:hover{
-            background-color: #005200 ;
-            border: 3px #005200 solid;
-        }
-    }
+  .users-link {
+    display: grid;
+    @include margin;
+    @include smallTypografy;
+    @include links;
+    text-align: center;
+    justify-content: center;
+  }
 }

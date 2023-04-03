@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id'); 
             $table->string('email')->unique();
+            $table->string('name')->unique();
             $table->string('password')->unique();
             $table->timestamp('expires_at');
+            $table->timestamp('email_verified_at')->nullable();
+            // $table->rememberToken();
+            // $table->string('api_token')->unique();
             $table->timestamps();
             $table->enum('role' , ['seller','shopper','administrator'])->default('shopper');
             $table->string('avatar')->default('images/profiles/default-avatar.jpg');

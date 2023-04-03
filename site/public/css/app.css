@@ -17,7 +17,9 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-form, input, select {
+form,
+input,
+select {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -86,7 +88,9 @@ header .navbar__form--select-orderby {
 }
 header .navbar__form--button-search {
   width: 10%;
+  color: #1f1f1f;
   background-color: #ff5208;
+  border: 3px #ff5208 solid;
   min-height: 35px;
   border: none;
   text-overflow: ellipsis;
@@ -247,37 +251,49 @@ footer .footer__logo {
     padding-bottom: 12px;
   }
 }
-div#products {
+.main_title {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(202.5px, 1fr));
   grid-row-gap: 20px;
   grid-column-gap: 20px;
-  padding-top: 38px;
+  margin-top: 20px;
 }
 
-div.product {
+.card-style-mini {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  padding: 10px;
+  border-radius: 2px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-self: center;
-  width: 150px;
+  max-width: 160px;
 }
-div.product div.product__div_img {
+.card-style-mini .product__div_img {
   height: 125px;
   width: 125px;
   display: flex;
   align-items: center;
   margin-inline: auto;
 }
-div.product div.product__div_img img.product__img {
+.card-style-mini .product__div_img .product__img {
   height: 125px;
   width: 125px;
   object-fit: cover;
 }
-div.product h4.product__name {
+.card-style-mini_title {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
   text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -286,81 +302,205 @@ div.product h4.product__name {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-div.product a {
+.card-style-mini_a {
   text-decoration: none;
+  color: inherit;
+}
+.card-style-mini .small-button {
+  border-radius: 12px;
   color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: small;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  max-height: 2rem;
+  min-height: 2.5rem;
+}
+.card-style-mini .small-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
 }
 
 @media screen and (max-width: 768px) {
-  div#products {
+  div#products,
+  .products {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
-section.container {
+.main-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
-div.summary {
-  margin-top: 10px;
-  border-radius: 10px;
-  border: 2px solid gray;
-  padding: 5%;
-}
-div.summary h1.title {
-  margin-bottom: 30px;
-}
-div.summary div.products-cart h3.total {
+.products-cart {
   display: grid;
-  align-items: end;
-  justify-content: end;
+  grid-template-columns: repeat(auto-fit, minmax(202.5px, 1fr));
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
 }
-div.summary div.btns-cart {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 50px;
-}
-div.summary div.btns-cart button.btn-empty {
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
+.products-cart .small-button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
   font-weight: bold;
+  font-size: small;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 2%;
-  background-color: #FF5208;
-  border: 3px #FF5208 solid;
-  color: white;
+  max-height: 2rem;
 }
-div.summary div.btns-cart button.btn-empty:hover {
-  background-color: #E04807;
-  border: 3px #E04807 solid;
-}
-div.summary div.btns-cart button.btn-buy {
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  padding: 2%;
-  background-color: #258d19;
-  border: 3px #258d19 solid;
-  color: white;
-}
-div.summary div.btns-cart button.btn-buy:hover {
-  background-color: #005200;
-  border: 3px #005200 solid;
+.products-cart .small-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
 }
 
-section.main-container {
+.card-style-cart {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-section.register-text {
-  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
   margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  width: 50vh;
+  margin-top: 0;
+  padding-bottom: 2rem;
+  min-width: 250px;
+  height: min-content;
+  text-align: center;
+  justify-content: center;
+}
+.card-style-cart_title {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.card-style-cart .general-button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: medium;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  max-height: 2.5rem;
+}
+.card-style-cart .general-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style-cart .general-button_buy {
+  background-color: #638a5c;
+  border-color: #638a5c;
+}
+.card-style-cart .users-link {
+  display: grid;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  justify-content: center;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-style-medium {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  min-width: 250px;
+}
+.card-style-medium_title {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  max-height: fit-content;
+}
+.card-style-medium .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+.card-style-medium .form_input {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  right: 0;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
+}
+.card-style-medium .form .general-button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: medium;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  max-height: 2.5rem;
+}
+.card-style-medium .form .general-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style-medium .users-link {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+}
+
+.intro-style {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  width: 60vh;
   align-items: center;
   justify-content: center;
-  height: 65vh;
-  width: 70vh;
 }
-section.register-text img.img-logo {
+.intro-style_logo {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -370,86 +510,96 @@ section.register-text img.img-logo {
   height: 100px;
   margin: auto;
 }
-section.register-text h1.register-title,
-section.register-text p {
-  margin-top: -30%;
+.intro-style_title, .intro-style_text {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: grid;
+  text-align: center;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-style-medium {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  min-width: 250px;
+}
+.card-style-medium_title {
+  display: grid;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.card-style-medium .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+.card-style-medium .form_input {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  right: 0;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
+}
+.card-style-medium .form .general-button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: medium;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  max-height: 2.5rem;
+}
+.card-style-medium .form .general-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style-medium .users-link {
   display: grid;
   text-align: center;
   justify-content: center;
   margin-left: 5%;
   margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
 }
 
-section.container-register {
-  margin: 0 auto;
-  border-radius: 10px;
-  border: 3px solid grey;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+.intro-style {
   display: grid;
   grid-template-columns: 1fr;
+  margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
-  width: 40vh;
-}
-section.container-register h1.register-title,
-section.container-register hr,
-section.container-register p {
-  margin-bottom: 10%;
-  display: grid;
-  justify-content: center;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-section.container-register form {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 20%;
-}
-section.container-register form input {
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 5%;
-  right: 0;
-  font-weight: bold;
-  text-align: start;
-  border: none;
-  border-bottom: 2px solid grey;
-}
-section.container-register form p.text-register {
-  margin-bottom: 10%;
-}
-section.container-register form button.btn-register {
-  margin-left: 5%;
-  margin-right: 5%;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  padding: 2%;
-  background-color: #FF5208;
-  border: 3px #FF5208 solid;
-  color: white;
-  margin-bottom: 10%;
-}
-section.container-register form button.btn-register:hover {
-  background-color: #E04807;
-  border: 3px #E04807 solid;
-}
-
-section.main-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-section.login-text {
-  display: grid;
+  width: 50vh;
+  width: 60vh;
   align-items: center;
   justify-content: center;
-  height: 65vh;
-  width: 70vh;
-  margin-top: 10%;
 }
-section.login-text img.img-logo {
+.intro-style_logo {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -459,126 +609,126 @@ section.login-text img.img-logo {
   height: 100px;
   margin: auto;
 }
-section.login-text h1.login-title,
-section.login-text p {
-  margin-top: -30%;
-  display: grid;
-  text-align: center;
-  justify-content: center;
+.intro-style_title, .intro-style_text {
   margin-left: 5%;
   margin-right: 5%;
+  display: grid;
+  text-align: center;
 }
 
-section.container-login {
-  margin: 0 auto;
-  border-radius: 10px;
-  border: 3px solid grey;
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-style-medium {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
-  margin-top: 10%;
+  margin: 0 auto;
+  margin-top: 20%;
   height: 65vh;
-  width: 40vh;
+  width: 50vh;
+  min-width: 250px;
 }
-section.container-login h1.login-title,
-section.container-login hr,
-section.container-login p {
+.card-style-medium_title {
   display: grid;
   justify-content: center;
   margin-left: 5%;
   margin-right: 5%;
+  text-align: center;
+  max-height: 3rem;
 }
-section.container-login form {
-  margin-top: 30px;
+.card-style-medium_content {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin: -2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: small;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-decoration: none;
+  color: inherit;
+}
+.card-style-medium .form {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 7%;
+  row-gap: 1rem;
+  padding-bottom: 2rem;
 }
-section.container-login form input.input-mail, section.container-login form input.input-password {
+.card-style-medium .form_input {
   margin-left: 5%;
   margin-right: 5%;
-  padding: 5%;
-  right: 0;
+  padding: 2%;
   font-weight: bold;
+  font-size: small;
+  right: 0;
   text-align: start;
   border: none;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
 }
-section.container-login form p.text-login {
-  margin-bottom: 0;
-}
-section.container-login form p.text {
-  margin-bottom: 5%;
-}
-section.container-login form button.btn-login {
+.card-style-medium .form .general-button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: medium;
   margin-left: 5%;
   margin-right: 5%;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
   padding: 2%;
-  background-color: #FF5208;
-  border: 3px #FF5208 solid;
-  color: white;
-  margin-bottom: 10%;
+  max-height: 2.5rem;
 }
-section.container-login form button.btn-login:hover {
-  background-color: #E04807;
-  border: 3px #E04807 solid;
+.card-style-medium .form .general-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style-medium .users-link {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
 }
 
-section.container {
+.intro-style {
   display: grid;
   grid-template-columns: 1fr;
-  padding: 10%;
-}
-section.container section.section-container {
   margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  width: 60vh;
+  align-items: center;
+  justify-content: center;
+}
+.intro-style_logo {
   display: grid;
-  border-radius: 30px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  width: 80vh;
-  height: 50vh;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 60%;
+  width: 100px;
+  height: 100px;
+  margin: auto;
 }
-section.container section.section-container section.section-content h1.password-title {
-  text-align: center;
-}
-section.container section.section-container section.section-content p.content {
-  text-align: center;
+.intro-style_title, .intro-style_text {
   margin-left: 5%;
   margin-right: 5%;
-}
-section.container section.section-container section.section-content form {
   display: grid;
-  grid-template-columns: 1fr;
-  margin: 10% 10% 10% 10%;
-}
-section.container section.section-container section.section-content form input.input-mail-password {
-  margin-bottom: 10%;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 3%;
-  right: 0;
-  font-weight: bold;
-  text-align: start;
-  border: none;
-  border-bottom: 2px solid grey;
-}
-section.container section.section-container section.section-content form button.btn-password {
-  margin-left: 5%;
-  margin-right: 5%;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  padding: 2%;
-  background-color: #FF5208;
-  border: 3px #FF5208 solid;
-  color: white;
-  margin-bottom: 10%;
-}
-section.container section.section-container section.section-content form button.btn-password:hover {
-  background-color: #E04807;
-  border: 3px #E04807 solid;
+  text-align: center;
 }
 
 section.container {

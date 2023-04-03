@@ -1,109 +1,58 @@
-section.main-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.main-container {
+  @include twoColumnsMode;
 }
 
-section.login-text {
+.card-style-medium {
+  @include cardStyle;
+  @include cardPosition;
+  min-width: 250px;
+
+  &_title {
+    @include cardStyleTitle;
+  }
+
+  .form {
+    @include formInput;
+
+    &_input {
+      @include marginPadding;
+      @include smallTypografy;
+
+      right: 0;
+      text-align: start;
+      border: none;
+      border-bottom: 2px solid $neutral_origin;
+      max-height: 2.5rem;
+    }
+    .general-button {
+      @include mediumButton;
+    }
+  }
+
+  .users-link {
     display: grid;
-    align-items: center;
+    text-align: center;
     justify-content: center;
-    height: 65vh;
-    width: 70vh;
-    margin-top: 10%;
-
-    img.img-logo {
-        display: grid;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        bottom: 60%;
-        width: 100px;
-        height: 100px;
-        margin: auto;
-    }
-
-    h1.login-title,
-    p {
-        margin-top: -30%;
-        display: grid;
-        text-align: center;
-        justify-content: center;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
+    @include margin;
+    @include smallTypografy;
+    @include links;
+  }
 }
 
-section.container-login {
-    margin: 0 auto;
-    border-radius: 10px;
-    border: 3px solid grey;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+.intro-style {
+  @include cardPosition;
+  width: 60vh;
+  align-items: center;
+  justify-content: center;
+
+  &_logo {
+    @include logoIntro;
+  }
+
+  &_title,
+  &_text {
+    @include margin;
     display: grid;
-    grid-template-columns: 1fr;
-    margin-top: 10%;
-    height: 65vh;
-    width: 40vh;
-
-
-
-
-
-    h1.login-title,
-    hr,
-    p {
-        display: grid;
-        justify-content: center;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
-    form {
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: 1fr;
-        row-gap: 7%;
-
-        input.input-mail,input.input-password {
-            margin-left: 5%;
-            margin-right: 5%;
-            padding: 5%;
-            right: 0;
-            font-weight: bold;
-            text-align: start;
-            border: none;
-            border-bottom: 2px solid grey;
-
-        }
-
-
-        p.text-login {
-            margin-bottom: 0;
-        }
-        p.text{
-            margin-bottom: 5%;
-        }
-
-        button.btn-login {
-            margin-left: 5%;
-            margin-right: 5%;
-            border-radius: 10px;
-            font-family: "Open Sans", sans-serif;
-            font-weight: bold;
-            padding: 2%;
-            background-color: #FF5208;
-            border: 3px #FF5208 solid;
-            color: white;
-
-            margin-bottom: 10%;
-        }
-
-        button.btn-login:hover {
-            background-color: #E04807;
-            border: 3px #E04807 solid;
-
-        }
-
-
-    }
+    text-align: center;
+  }
 }
