@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ShopController extends Controller
 {
@@ -35,6 +36,9 @@ class ShopController extends Controller
             'nif' => $nif,
             'user_id' => $id,
         ]);
+        $idShop = Shop::checkUser($id);
+        Shop::makeUserShopper($id);
+        return redirect()->route('shop.show',['id' => $idShop]);
     }
 
     public function show($id){

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('password')->unique();
             $table->timestamp('expires_at');
             $table->timestamps();
+            $table->enum('role' , ['seller','shopper','administrator'])->default('shopper');
             $table->string('avatar')->default('images/profiles/default-avatar.jpg');
         });
     }

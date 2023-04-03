@@ -19,12 +19,21 @@ class Shop extends Model
         'user_id',
     ];
 
-    public function checkUser(){
-        return DB::table('shop')
+    public static function checkUser($user_id){
+        return DB::table('shops')
+                ->orderBy('id', 'DESC')
                 ->where('user_id', $user_id)
-                ->exists();
+                ->value('id');
     }
     
+    public static function makeUserShopper($user_id){
+        $user = User::find($user_id);
+        $user->role = "seller";
+        $user->save();
+    }
+    
+    
+
     public function user()
     {
         return $this->belongsToMany(User::class);

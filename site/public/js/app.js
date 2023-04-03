@@ -18,5 +18,21 @@ function getCountCart() {
       }
   }
 }
+
+function addToCart(){
+  let cart = localStorage.getItem("cart");
+if (cart) {
+  cart = JSON.parse(cart);
+  const queryString = cart.map(product => {
+      return `${product}`;
+  }).join(',');
+
+  let linkPlaceholder = document.getElementById('cart-link');
+  if (linkPlaceholder) {
+      linkPlaceholder.href = "/cart?id=" + queryString;
+  }
+}}
 export { getCountCart };
+export { addToCart };
 getCountCart();
+addToCart();

@@ -3,11 +3,9 @@
 namespace App\View\Components;
 
 use Closure;
-use App\Models\Shop;
-use Illuminate\Http\Request;
 use Illuminate\View\Component;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Auth;
 
 class header extends Component
 {
@@ -25,18 +23,5 @@ class header extends Component
     public function render(): View|Closure|string
     {
         return view('components.header');
-    }
-
-    public function checkUserShop(): boolean {
-        $id = Auth::user()->id;
-        if ($id) {
-            if (Shop::checkUser($id)) {
-                return true;
-            }else {
-                return false;
-            } 
-        } else{
-            return false;
-        }
     }
 }

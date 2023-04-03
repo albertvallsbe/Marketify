@@ -39,11 +39,11 @@
                         <button class="toggle-button">v</button>
                     </div>
                     <ul class="menu-list">
-                        {{-- @if ( checkUserShop() ) --}}
-                        <li><a href="{{ route('shop.show', Auth::user()->id) }}">Your shop</a></li>
-                        {{-- @else --}}
-                        <li><a href="{{ route('shop.index') }}">Create shop</a></li>
-                        {{-- @endif --}}
+                        @can('seller')
+                            <li><a href="{{ route('shop.show', Auth::user()->id) }}">Your shop</a></li>
+                        @elsecan('shopper')
+                            <li><a href="{{ route('shop.index') }}">Create shop</a></li>
+                        @endcan
                         <li><a href="{{ route('user.logout') }}">Log Out</a></li>
                     </ul>
                 </div>
