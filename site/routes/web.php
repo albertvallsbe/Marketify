@@ -23,7 +23,7 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [ProductController::class,'index'])->name('product.index');
 Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
-Route::post('products', [App\Http\Controllers\ProductController::class, 'store'])->name('products');
+Route::post('products', [ProductController::class, 'store'])->name('products');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
@@ -37,16 +37,16 @@ Route::post('/login/password/email', [EmailController::class, 'return'])->name('
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
-Route::get('/user/{id}', [UserController::class, 'index'])->name('user.index');
-Route::post('/user/{id}', [UserController::class, 'changeData'])->name('user.changeData');
+Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/edit', [UserController::class, 'changeData'])->name('user.changeData');
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 // Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
 
-
-Route::get('/shop/create', [ShopController::class, 'index'])->name('shop.index');
-Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
-
+Route::get('/shop/edit', [ShopController::class, 'edit'])->name('shop.edit');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
