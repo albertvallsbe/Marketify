@@ -11,17 +11,25 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
-{
-    public function index($id){
+{   
+    public function show($id){
         $user = User::findOrFail($id);
         $categories = Category::all();
-        return view('user.index', ['user' => $user,
-        'id' => $id,
+        return view('user.show', ['user' => $user,
+        'categories' => $categories,
+        'options_order' => Order::$order_array]);
+    }
+    public function edit(){
+        $id = auth()->user()->id;
+        $user = User::findOrFail($id);
+        $categories = Category::all();
+        return view('user.edit', ['user' => $user,
         'categories' => $categories,
         'options_order' => Order::$order_array]);
     }
     
-    public function changeData(Request $request, $id){
+    public function changeData(Request $request){
+        $id = auth()->user()->id;
         $user = User::findOrFail($id);
         if ($request->has('btn-password')) {
             $actualpassword = $request->input('actual-password');
@@ -56,11 +64,10 @@ class UserController extends Controller
                 $user->avatar = 'images/profiles/default-avatar.jpg';
                 $user->save();
             }
-            return redirect()->route('user.index',['id' => $id]);
+            return redirect()->route('user.edit');
         }
-        return redirect()->route('user.index',['id' => $id]);
+        return redirect()->route('user.edit');
     }
-
 
     public function logout(Request $request) {
         Auth::logout();

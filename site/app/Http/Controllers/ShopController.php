@@ -14,13 +14,27 @@ use Illuminate\Support\Facades\Log;
 class ShopController extends Controller
 {
     public function index() {
-    
         $categories = Category::all();
-        
         return view('shop.index',['categories' => $categories,
         'options_order' => Order::$order_array]);
     }
-
+    
+    public function show($id){
+        $shop = Shop::findOrFail($id);
+        $categories = Category::all();
+        return view('shop.show', ['shop' => $shop,
+        'categories' => $categories,
+        'options_order' => Order::$order_array]);
+    }
+    
+    public function edit(){
+        $id = Auth::user()->id;
+        $shop = Shop::findOrFail($id);
+        $categories = Category::all();
+        return view('shop.show', ['shop' => $shop,
+        'categories' => $categories,
+        'options_order' => Order::$order_array]);
+    }
     
     public function create(Request $request) {
         $request->validate([
@@ -38,14 +52,6 @@ class ShopController extends Controller
         ]);
         $idShop = Shop::checkUser($id);
         Shop::makeUserShopper($id);
-        return redirect()->route('shop.show',['id' => $idShop]);
-    }
-
-    public function show($id){
-        $shop = Shop::findOrFail($id);
-        $categories = Category::all();
-        return view('shop.show', ['shop' => $shop,
-        'categories' => $categories,
-        'options_order' => Order::$order_array]);
+        return redirect()->route('shop.edit');
     }
 }

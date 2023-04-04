@@ -32,7 +32,7 @@
 
             @if (auth()->check())
                 <div class="menu-container">
-                    <a href="{{ route('user.index', auth()->user()->id) }}">
+                    <a href="{{ route('user.edit') }}">
                         <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
                     </a>
                     <div class="menu-toggle">
@@ -40,7 +40,7 @@
                     </div>
                     <ul class="menu-list">
                         @can('seller')
-                            <li><a href="{{ route('shop.show', Auth::user()->id) }}">Your shop</a></li>
+                            <li><a href="{{ route('shop.edit') }}">Your shop</a></li>
                         @elsecan('shopper')
                             <li><a href="{{ route('shop.index') }}">Create shop</a></li>
                         @endcan
