@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Classes\Order;
 use App\Models\Product;
 use App\Models\Category;
@@ -30,10 +31,12 @@ class CartController extends Controller
     }
 }
 
-    // public function add(Request $request) {
-    //     $localVariables = $request->all();
-    //     $cart = json_decode($localVariables['cart']);
-    //     $products = Product::showByIDs($cart);
-    //     session(['request_cart' => $products]);
-    // }    
+    public function add(Request $request) {
+        $productsArray = $request->input('cart');
+        $userId = auth()->id();
+        if($userId){
+            Cart::updateCartDB($productsArray);
+        }
+    }
+
 }
