@@ -1,5 +1,5 @@
 import { getCountCart } from './app.js';
-import { addToCart } from './app.js';
+import { addToClientCart } from './app.js';
 
 //FUNCTIONS
 function addToLocalStorage(productId) {
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener('click', event => {
             const productId = button.dataset.productId;
             clickButtonAction(productId, button);
-            addToCart();
+            addToClientCart();
         });
     });
 });

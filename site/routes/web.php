@@ -44,7 +44,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-// Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
 
 Route::get('/shop/edit', [ShopController::class, 'edit'])->name('shop.edit');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
