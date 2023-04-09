@@ -45,3 +45,7 @@ Route::get('/shop/edit', [ShopController::class, 'edit'])->name('shop.edit');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
+
+
+Route::resource('products', App\Http\Controllers\ProductController::class)
+    ->middleware('auth');

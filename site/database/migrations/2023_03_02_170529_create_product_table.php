@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('description', 300);
             $table->string('tag');
             $table->string('image');
-            $table->decimal('price', 5, 2);
+            $table->decimal('price', 6, 2);
 
         });
     }

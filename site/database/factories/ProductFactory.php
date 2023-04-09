@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Category;
 use Faker\Factory as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -17,15 +18,15 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $faker = Faker::create('es_ES'); 
+        $faker = Faker::create('es_ES');
         return [
 
             'name' => $faker->unique()->name(),
-            'description' => $faker->unique()->address(),
-            'tag' => $faker->words(2, true),
+            'description' => $faker->text,
+            'tag' => Category::factory()->create()->name,
             'image' =>  "images/products/".rand(1, 4).".jpg",
-            'price' => fake()->randomDigit()
-            
+            'price' => $faker->numberBetween(10, 6000)
+
         ];
     }
 }
