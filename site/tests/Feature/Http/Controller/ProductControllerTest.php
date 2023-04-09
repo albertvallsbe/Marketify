@@ -6,35 +6,32 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
+use App\Models\User;
+use App\Models\Category;
+
 class ProductControllerTest extends TestCase
 {
-  /**
-   * A basic feature test example.
-   */
-  use RefreshDatabase;
+    use WithFaker, RefreshDatabase;
 
-  public function testNoProducts(): void
-  {
-      $response = $this->get('/');
-      $response->assertSeeText('No se encontraron resultados.');
-  }
+    public function test_store(): void
+    {
+        $data = [
+            'name' => $this->faker->unique()->name(),
+            'description' => $this->faker->text,
+            'tag' => Category::factory()->create()->name,
+            'image' => "images/products/".rand(1, 4).".jpg",
+            'price' => $this->faker->numberBetween(10, 6000)
+        ];
 
-  public function testStore(): void
-  {
-    $this
-      ->post(route('products'), [
-        'name' => 'Garden table',
-        'description' => 'Taula de jardi de kaoba',
-        'image' => 'url',
-        'price' => '200,00€'
-      ]);
-      // ->assertRedirect('/');
+        $user = User::factory()->create();
 
-    $this->assertDatabaseHas('products', [
-        'name' => 'Garden table',
-        'description' => 'Taula de jardi de kaoba',
-        'image' => 'url',
-        'price' => '200,00€'
-      ]);
-  }
+        $this
+            ->actingAs($user)
+            ->post('products', $data)
+            ->assertRedirect('products');
+
+        $this
+            ->assertDatabaseHas('products', $data);
+    }
+
 }

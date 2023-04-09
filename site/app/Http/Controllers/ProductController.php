@@ -11,12 +11,15 @@ use App\View\Components\Header;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller {
-    public function index(Request $request) {
+class ProductController extends Controller
+{
+
+    public function index(Request $request)
+    {
         $header = new Header($request);
 
         $categories = Category::all();
-        
+
         if($request->session()->has('request_categories') == ""){
             $products = Product::searchAll(session('request_search'), session('request_order'));
         }else {
@@ -29,12 +32,14 @@ class ProductController extends Controller {
             'order' => session('request_order')
         ]);
 
-        return view('product.index', ['products' => $products,
-                                        'categories' => $categories,
-                                        'options_order' => Order::$order_array]);
+        return view('product.index', [
+            'products' => $products,
+            'categories' => $categories,
+            'options_order' => Order::$order_array]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $product = Product::findOrFail($id);
         $categories = Category::all();
         return view('product.show', ['product' => $product,
@@ -42,10 +47,10 @@ class ProductController extends Controller {
         'options_order' => Order::$order_array]);
     }
 
+    public function store(Request $request)
+    {
+        $request->user()->products()->create($request->all());
 
-    public function store(Request $request) {
-        Product::create($request->all());
-        return redirect('/');
+        return redirect()->route('products.index');
     }
-
 }

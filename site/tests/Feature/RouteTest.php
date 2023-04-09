@@ -8,11 +8,7 @@ use Tests\TestCase;
 
 class RouteTest extends TestCase
 {
-    /**
-     * Test route.
-     */
-
-     use RefreshDatabase;
+    use RefreshDatabase, WithFaker;
 
     public function testRouteHome(): void
     {

@@ -14,11 +14,6 @@ use App\Http\Controllers\RegisterController;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
 Route::get('/', [ProductController::class,'index'])->name('product.index');
@@ -50,3 +45,7 @@ Route::get('/shop/edit', [ShopController::class, 'edit'])->name('shop.edit');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
+
+
+Route::resource('products', App\Http\Controllers\ProductController::class)
+    ->middleware('auth');
