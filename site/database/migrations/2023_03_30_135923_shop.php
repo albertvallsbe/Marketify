@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * 
+     *
      * @return void
      */
     public function up()
@@ -30,9 +30,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('shop', function (Blueprint $table) {
+        Schema::table('shops', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
-        Schema::dropIfExists('shop');
+        Schema::dropIfExists('shops');
     }
 };
