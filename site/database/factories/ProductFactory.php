@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Category;
+use App\Models\Product;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -11,22 +13,19 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProductFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+
+
     public function definition()
     {
         $faker = Faker::create('es_ES');
-        return [
 
-            'name' => $faker->unique()->name(),
-            'description' => $faker->text,
+        return [
+            // 'user_id' => User::factory(),
+            'name' => $faker->word(),
+            'description' => $faker->sentence(),
             'tag' => Category::factory()->create()->name,
             'image' =>  "images/products/".rand(1, 4).".jpg",
             'price' => $faker->numberBetween(10, 6000)
-
         ];
     }
 }
