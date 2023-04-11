@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\View\Components\Header;
 use App\Classes\Order;
-use App\Models\Product;
 
 use App\Models\Category;
-use App\View\Components\Header;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -49,8 +48,15 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->user()->products()->create($request->all());
+        $request->user()->product()->create($request->all());
 
         return redirect()->route('products.index');
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $product->update($request->all());
+
+        return redirect()->route('products.edit', $product);
     }
 }

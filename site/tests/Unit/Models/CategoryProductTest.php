@@ -27,9 +27,9 @@ class CategoryProductTest extends TestCase
 
     public function test_product_can_have_categories()
     {
+        $product = Product::factory()->create();
         $category1 = Category::factory()->create();
         $category2 = Category::factory()->create();
-        $product = Product::factory()->create();
 
         $product->category()->attach([$category1->id, $category2->id]);
 
