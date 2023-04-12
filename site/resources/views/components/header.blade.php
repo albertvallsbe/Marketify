@@ -5,7 +5,8 @@
         </a>
         <form class="navbar__form" id="navbar__form" action="{{ route('product.index') }}" method="GET">
             <select class="navbar__form--select-category" name="filter" id="form__select_category">
-                <option value="" {{ session('request_categories') == '' ? 'selected' : '' }}>All categories </option>
+                <option value="" {{ session('request_categories') == '' ? 'selected' : '' }}>All categories
+                </option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}"
                         {{ session('request_categories') == $category->id ? 'selected' : '' }}>
@@ -30,11 +31,25 @@
         <div id="navbar__icons" class="navbar__icons">
 
             @if (auth()->check())
-                <a href="{{ route('user.index', auth()->user()->id) }}">
-                    <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
-                @else
-                    <a href="{{ route('login.index') }}">
-                        <img class="icon" src="{{ asset('images/user-solid.svg') }}">
+                <div class="menu-container">
+                    <a href="{{ route('user.edit') }}">
+                        <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
+                    </a>
+                    <div class="menu-toggle">
+                        <button class="toggle-button">v</button>
+                    </div>
+                    <ul class="menu-list">
+                        @can('seller')
+                            <li><a href="{{ route('shop.edit') }}">Your shop</a></li>
+                        @elsecan('shopper')
+                            <li><a href="{{ route('shop.index') }}">Create shop</a></li>
+                        @endcan
+                        <li><a href="{{ route('user.logout') }}">Log Out</a></li>
+                    </ul>
+                </div>
+            @else
+                <a href="{{ route('login.index') }}">
+                    <img class="icon" src="{{ asset('images/user-solid.svg') }}">
             @endif
 
             <div id="cart-icon" class="cart-icon">
@@ -46,3 +61,5 @@
         </div>
     </div>
 </header>
+
+<script type="module" src="{{ asset('js/components/header.js') }}"></script>

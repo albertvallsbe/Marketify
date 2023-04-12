@@ -1,4 +1,6 @@
 import { getCountCart } from './app.js';
+import { addToClientCart } from './app.js';
+
 //FUNCTIONS
 function addToLocalStorage(productId) {
     let productCart = localStorage.getItem("cart");
@@ -11,20 +13,6 @@ function addToLocalStorage(productId) {
     productCart.push(productId);
     localStorage.setItem("cart", JSON.stringify(productCart));
 }
-
-function addToCart(){
-    let cart = localStorage.getItem("cart");
-if (cart) {
-    cart = JSON.parse(cart);
-    const queryString = cart.map(product => {
-        return `${product}`;
-    }).join(',');
-
-    let linkPlaceholder = document.getElementById('cart-link');
-    if (linkPlaceholder) {
-        linkPlaceholder.href = "/cart?id=" + queryString;
-    }
-}}
 
 function clickButtonAction(productId, button) {
 
@@ -62,16 +50,14 @@ function changeButton() {
 
 //CODE
 document.addEventListener("DOMContentLoaded", function () {
-    getCountCart();
     changeButton();
-    addToCart();
     const buttons = document.getElementsByClassName('btn-cart');
 
     Array.from(buttons).forEach(button => {
         button.addEventListener('click', event => {
             const productId = button.dataset.productId;
             clickButtonAction(productId, button);
-            addToCart();
+            addToClientCart();
         });
     });
 });

@@ -2,30 +2,30 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Product;
 use Faker\Factory as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
 class ProductFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+
+
     public function definition()
     {
-        $faker = Faker::create('es_ES'); 
-        return [
+        $faker = Faker::create('es_ES');
 
-            'name' => $faker->unique()->name(),
-            'description' => $faker->unique()->address(),
-            'tag' => $faker->words(2, true),
+        return [
+            // 'user_id' => User::factory(),
+            'name' => $faker->word(),
+            'description' => $faker->sentence(),
+            'tag' => Category::factory()->create()->name,
             'image' =>  "images/products/".rand(1, 4).".jpg",
-            'price' => fake()->randomDigit()
-            
+            'price' => $faker->numberBetween(10, 6000)
         ];
     }
 }

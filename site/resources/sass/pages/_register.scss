@@ -1,108 +1,59 @@
-section.main-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.main-container {
+  @include twoColumnsMode;
 }
 
-section.register-text {
+.card-style-medium {
+  @include cardStyle;
+  @include cardPosition;
+  min-width: 250px;
+
+  &_title {
+    @include cardStyleTitle;
+    max-height: fit-content;
+  }
+
+  .form {
+    @include formInput;
+
+    &_input {
+      @include marginPadding;
+      @include smallTypografy;
+
+      right: 0;
+      text-align: start;
+      border: none;
+      border-bottom: 2px solid $neutral_origin;
+      max-height: 2.5rem;
+    }
+    .general-button {
+      @include mediumButton;
+    }
+  }
+
+  .users-link {
     display: grid;
-    margin-top: 20%;
-    align-items: center;
+    text-align: center;
     justify-content: center;
-    height: 65vh;
-    width: 70vh;
-
-    img.img-logo {
-        display: grid;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        bottom: 60%;
-        width: 100px;
-        height: 100px;
-        margin: auto;
-    }
-
-    h1.register-title,
-    p {
-        margin-top: -30%;
-        display: grid;
-        text-align: center;
-        justify-content: center;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
+    @include margin;
+    @include smallTypografy;
+    @include links;
+  }
 }
 
-section.container-register {
-    // background-color: black;
-    margin: 0 auto;
-    border-radius: 10px;
-    border: 3px solid grey;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+.intro-style {
+  @include cardPosition;
+  width: 60vh;
+  align-items: center;
+  justify-content: center;
+
+  &_logo {
+    @include logoIntro;
+  }
+
+  &_title,
+  &_text {
+    @include margin;
     display: grid;
-    grid-template-columns: 1fr;
-    margin-top: 20%;
-    height: 65vh;
-    width: 40vh;
-    // color:white;
-
-
-
-
-    h1.register-title,
-    hr,
-    p {
-        margin-bottom: 10%;
-        display: grid;
-        justify-content: center;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-
-    form {
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: 1fr;
-        row-gap: 20%;
-
-        input {
-            // background-color: black;
-            margin-left: 5%;
-            margin-right: 5%;
-            padding: 5%;
-            right: 0;
-            font-weight: bold;
-            text-align: start;
-            border: none;
-            border-bottom: 2px solid grey;
-
-        }
-
-        p.text-register {
-            margin-bottom: 10%;
-        }
-
-        button.btn-register {
-            margin-left: 5%;
-            margin-right: 5%;
-            border-radius: 10px;
-            font-family: "Open Sans", sans-serif;
-            font-weight: bold;
-            padding: 2%;
-            background-color: #FF5208;
-            border: 3px #FF5208 solid;
-            color: white;
-
-            margin-bottom: 10%;
-        }
-
-        button.btn-register:hover {
-            background-color: #E04807;
-            border: 3px #E04807 solid;
-
-        }
-
-
-    }
+    text-align: center;
+  }
 }

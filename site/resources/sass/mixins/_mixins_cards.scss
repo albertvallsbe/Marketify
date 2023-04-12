@@ -1,0 +1,14 @@
+@mixin cardPosition {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+}
+
+@mixin cardStyle {
+  @include mainStyleWhiteMode;
+  @include cardShadow;
+  @include borderRadiusCard;
+}

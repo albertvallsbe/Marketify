@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('name');
-            $table->string('description', 300);
-            $table->string('tag');
-            $table->string('image');
-            $table->decimal('price', 5, 2);
+            $table->text('name');
+            $table->text('description', 300);
+            $table->text('tag');
+            $table->text('image');
+            $table->decimal('price', 6, 2);
 
         });
     }

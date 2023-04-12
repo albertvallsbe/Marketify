@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Product')
+@section('title', 'Edit Profile')
 
 @section('content')
     @if (session()->has('status'))
@@ -8,7 +8,7 @@
     @endif
     <h1>Profile page</h1>
 
-    <form method='POST' action="{{ route('user.changeData', request()->route('id')) }}" enctype="multipart/form-data">
+    <form method='POST' action="{{ route('user.changeData') }}" enctype="multipart/form-data">
         @csrf
         <h3>Change your password</h3>
         <span>
@@ -39,9 +39,7 @@
         @endif
     </form>
 
-    <a href="{{ route('user.logout') }}">
-        Cerrar sesión
-    </a>
+    <a href="{{ route('user.logout') }}">Log out</a>
 
-    <script type="module" src="{{ asset('js/pages/user_index.js') }}"></script>
+    <script type="module" src="{{ asset('js/pages/user_edit.js') }}"></script>
 @endsection

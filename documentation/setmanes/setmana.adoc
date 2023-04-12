@@ -1,3 +1,29 @@
+=== Setmana 6
+
+==== David
+
+==== Oscar
+
+==== Albert
+Resoldre hotfix en css
+Temps estimat => 1h
+Temps Real => 0,5h
+
+=== Setmana 5
+
+==== David
+
+==== Oscar
+
+==== Albert
+Investigació de testing 
+Temps estimat => 5h
+Temps Real => 5h
+
+Unificació estil de les targetes i reutilització de codi css
+Temps estimat => 5h
+Temps Real => 10h
+
 === Setmana 4
 
 ==== David

@@ -1,7 +1,13 @@
-@import "abstracts/colors";
-@import "abstracts/globals";
+@import "base/globals";
+@import "base/colors";
+@import "base/typographys";
+
 @import "mixins/mixins";
-@import "base/typography";
+@import "mixins/mixins_typographys";
+@import "mixins/mixins_buttons";
+@import "mixins/mixins_cards";
+@import "mixins/mixins_imageLogos";
+@import "mixins/mixins_forms";
 
 // COMPONENT
 @import "components/header";
@@ -13,7 +19,7 @@
 @import "pages/register";
 @import "pages/login";
 @import "pages/password";
-@import "emails/remember.scss";
+@import "emails/remember";
 
 @import "themes/theme";
 @import "themes/pagination";
