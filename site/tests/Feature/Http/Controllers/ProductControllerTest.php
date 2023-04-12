@@ -18,8 +18,8 @@ class ProductControllerTest extends TestCase
     {
         $user = User::factory()->create();
         $data = [
-            'name' => $this->faker->unique()->name(),
-            'description' => $this->faker->text,
+            'name' => $this->faker->name(),
+            'description' => $this->faker->sentence(),
             'tag' => Category::factory()->create()->name,
             'image' => "images/products/".rand(1, 4).".jpg",
             'price' => $this->faker->numberBetween(10, 6000)
@@ -38,7 +38,7 @@ class ProductControllerTest extends TestCase
         $product = Product::factory()->create();
         $user = User::factory()->create();
         $data = [
-            'name' => $this->faker->word(),
+            'name' => $this->faker->name(),
             'description' => $this->faker->sentence(),
             'tag' => Category::factory()->create()->name,
             'image' => "images/products/".rand(1, 4).".jpg",

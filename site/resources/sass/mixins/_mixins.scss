@@ -1,89 +1,89 @@
 @mixin logo {
-  margin: 10px auto;
-  background-color: $neutral_lighter;
-  border: 2px solid $neutral_lighter;
-  border-radius: 2px;
-  @include iconBig;
+    margin: 10px auto;
+    background-color: $neutral_lighter;
+    border: 2px solid $neutral_lighter;
+    border-radius: 2px;
+    @include iconBig;
 }
 
 @mixin mainStyle {
-  color: $neutral_lighter;
-  background-color: $neutral_darker;
+    color: $neutral_lighter;
+    background-color: $neutral_darker;
 }
 
 @mixin secondaryStyle {
-  color: $neutral_lighter;
-  background-color: $secondary_darker;
-  cursor: pointer;
+    color: $neutral_lighter;
+    background-color: $secondary_darker;
+    cursor: pointer;
 }
 
 @mixin buttonStyle {
-  color: $neutral_darker;
-  background-color: $primary_origin;
-  border: 3px $primary_origin solid;
+    color: $neutral_darker;
+    background-color: $primary_origin;
+    border: 3px $primary_origin solid;
 }
 
 @mixin buttonStyleHover {
-  background-color: $primary_light;
-  border: 3px $primary_light solid;
+    background-color: $primary_light;
+    border: 3px $primary_light solid;
 }
 
 @mixin mainStyleWhiteMode {
-  color: $neutral_darker;
-  background-color: $neutral_lighter;
+    color: $neutral_darker;
+    background-color: $neutral_lighter;
 }
 
 @mixin searchBar {
-  min-height: 35px;
-  border: none;
-  text-overflow: ellipsis;
-  padding: 0 0.5rem;
+    min-height: 35px;
+    border: none;
+    text-overflow: ellipsis;
+    padding: 0 0.5rem;
 }
 
 @mixin borderRadiusLeft {
-  border-radius: 12px 0 0 12px;
+    border-radius: 12px 0 0 12px;
 }
 
 @mixin borderRadiusRight {
-  border-radius: 0 12px 12px 0;
+    border-radius: 0 12px 12px 0;
 }
 
 @mixin borderRadiusCard {
-  border-radius: 2px;
+    border-radius: 2px;
 }
 
 @mixin borderRadiusButton {
-  border-radius: 12px;
+    border-radius: 12px;
 }
 
 @mixin iconSmall {
-  width: 1.5rem;
-  height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 @mixin iconBig {
-  width: 3.25rem;
-  height: 3.25rem;
+    width: 3.25rem;
+    height: 3.25rem;
 }
 
 @mixin cardShadow {
-  -webkit-box-shadow: 0px 0px 10px 0px $shadow_color;
-  -moz-box-shadow: 0px 0px 10px 0px $shadow_color;
-  box-shadow: 0px 0px 10px 0px $shadow_color;
+    -webkit-box-shadow: 0px 0px 10px 0px $shadow_color;
+    -moz-box-shadow: 0px 0px 10px 0px $shadow_color;
+    box-shadow: 0px 0px 10px 0px $shadow_color;
 }
 
 @mixin marginPadding {
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2%;
 }
 
 @mixin margin {
-  margin-left: 5%;
-  margin-right: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 @mixin twoColumnsMode {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }

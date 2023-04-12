@@ -1,59 +1,59 @@
 .main-container {
-  @include twoColumnsMode;
+    @include twoColumnsMode;
 }
 
 .card-style-medium {
-  @include cardStyle;
-  @include cardPosition;
-  min-width: 250px;
+    @include cardStyle;
+    @include cardPosition;
+    min-width: 250px;
 
-  &_title {
-    @include cardStyleTitle;
-    max-height: fit-content;
-  }
-
-  .form {
-    @include formInput;
-
-    &_input {
-      @include marginPadding;
-      @include smallTypografy;
-
-      right: 0;
-      text-align: start;
-      border: none;
-      border-bottom: 2px solid $neutral_origin;
-      max-height: 2.5rem;
+    &_title {
+        @include cardStyleTitle;
+        max-height: fit-content;
     }
-    .general-button {
-      @include mediumButton;
-    }
-  }
 
-  .users-link {
-    display: grid;
-    text-align: center;
-    justify-content: center;
-    @include margin;
-    @include smallTypografy;
-    @include links;
-  }
+    .form {
+        @include formInput;
+
+        &_input {
+            @include marginPadding;
+            @include smallTypografy;
+
+            right: 0;
+            text-align: start;
+            border: none;
+            border-bottom: 2px solid $neutral_origin;
+            max-height: 2.5rem;
+        }
+        .general-button {
+            @include mediumButton;
+        }
+    }
+
+    .users-link {
+        display: grid;
+        text-align: center;
+        justify-content: center;
+        @include margin;
+        @include smallTypografy;
+        @include links;
+    }
 }
 
 .intro-style {
-  @include cardPosition;
-  width: 60vh;
-  align-items: center;
-  justify-content: center;
+    @include cardPosition;
+    width: 60vh;
+    align-items: center;
+    justify-content: center;
 
-  &_logo {
-    @include logoIntro;
-  }
+    &_logo {
+        @include logoIntro;
+    }
 
-  &_title,
-  &_text {
-    @include margin;
-    display: grid;
-    text-align: center;
-  }
+    &_title,
+    &_text {
+        @include margin;
+        display: grid;
+        text-align: center;
+    }
 }

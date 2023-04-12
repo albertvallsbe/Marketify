@@ -14,14 +14,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class ProductFactory extends Factory
 {
 
-
     public function definition()
     {
         $faker = Faker::create('es_ES');
 
         return [
             // 'user_id' => User::factory(),
-            'name' => $faker->word(),
+            'name' => $faker->name(),
             'description' => $faker->sentence(),
             'tag' => Category::factory()->create()->name,
             'image' =>  "images/products/".rand(1, 4).".jpg",

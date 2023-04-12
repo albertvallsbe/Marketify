@@ -1,59 +1,58 @@
-section.container{
+section.container {
     display: grid;
     grid-template-columns: 1fr;
     padding: 10%;
- 
-     section.remember-container{
-         margin:0 auto;
-         display: grid;
-         border-radius: 30px;
-         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-         width: 80vh;
-         height: 70vh;
-         section.remember-section{
-             h1.remember-title{
-                 text-align: center;
-             }
-             p.remember-content{
-                 text-align: center; 
-                 margin-left: 5%;
-                 margin-right: 5%;
-             }
-             form{
-                 display: grid;
-                 grid-template-columns: 1fr;
-                 margin: 10% 10% 10% 10%;
-                 input.rememberpassw{
-                     margin-bottom:10%;
-                     margin-left: 5%;
-                     margin-right: 5%;
-                     padding: 3%;
-                     right: 0;
-                     font-weight: bold;
-                     text-align: start;
-                     border: none;
-                     border-bottom: 2px solid grey;
-                 }
-                 button.btn-password {
-                     margin-left: 5%;
-                     margin-right: 5%;
-                     border-radius: 10px;
-                     font-family: "Open Sans", sans-serif;
-                     font-weight: bold;
-                     padding: 2%;
-                     background-color: #FF5208;
-                     border: 3px #FF5208 solid;
-                     color: white;
-         
-                     margin-bottom: 10%;
-                 }
-         
-                 button.btn-password:hover {
-                     background-color: #E04807;
-                     border: 3px #E04807 solid;
-         
-                 }
-             }
-         }
-     }
- }
+
+    section.remember-container {
+        margin: 0 auto;
+        display: grid;
+        border-radius: 30px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+        width: 80vh;
+        height: 70vh;
+        section.remember-section {
+            h1.remember-title {
+                text-align: center;
+            }
+            p.remember-content {
+                text-align: center;
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+            form {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin: 10% 10% 10% 10%;
+                input.rememberpassw {
+                    margin-bottom: 10%;
+                    margin-left: 5%;
+                    margin-right: 5%;
+                    padding: 3%;
+                    right: 0;
+                    font-weight: bold;
+                    text-align: start;
+                    border: none;
+                    border-bottom: 2px solid grey;
+                }
+                button.btn-password {
+                    margin-left: 5%;
+                    margin-right: 5%;
+                    border-radius: 10px;
+                    font-family: "Open Sans", sans-serif;
+                    font-weight: bold;
+                    padding: 2%;
+                    background-color: #ff5208;
+                    border: 3px #ff5208 solid;
+                    color: white;
+
+                    margin-bottom: 10%;
+                }
+
+                button.btn-password:hover {
+                    background-color: #e04807;
+                    border: 3px #e04807 solid;
+                }
+            }
+        }
+    }
+}
