@@ -18,12 +18,13 @@ class UsersTableSeeder extends Seeder
             'email'=> 'comprador@test.com',
             'name'=>'comprador',
             'password'=>Hash::make('12345678'),
-            
+            'role'=>'shopper',
         ]);
         User::factory()->create([
             'email'=> 'venedor@test.com',
             'name'=>'venedor',
             'password'=>Hash::make('12345678'),
+            'role'=>'seller',
         ]);
     }
 }
