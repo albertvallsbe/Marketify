@@ -83,7 +83,18 @@
     margin-right: 5%;
 }
 
+@mixin marginTopBottom {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
 @mixin twoColumnsMode {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+@mixin threeColumnsMode {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
 }

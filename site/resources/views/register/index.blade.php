@@ -8,8 +8,11 @@
       <h1 class="card-style-medium_title register-title">Register</h1>
       <form class="form" method="POST" action="{{route('auth.register')}}">
         @csrf
+        <label class="form_label" for="register-email">Your email</label>
         <input type="email" class="form_input input-mail" placeholder="example@gmail.com" name="register-email">
+        <label class="form_label" for="register-username">Your username</label>
         <input type="text" class="form_input input-mail" placeholder="_.username._" name="register-username">
+        <label class="form_label" for="register-password">Your password</label>
         <input type="password" class="form_input input-password" placeholder="••••••••••••" name="register-password">
         <button class="btn-register general-button">CREATE ACCOUNT</button>
       </form>

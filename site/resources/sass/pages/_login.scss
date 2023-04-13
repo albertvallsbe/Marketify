@@ -14,16 +14,25 @@
     .form {
         @include formInput;
 
+        &_label {
+            @include marginPadding;
+            @include smallTypografy;
+
+            text-align: start;
+            border: none;
+            max-height: 2.5rem;
+        }
+
         &_input {
             @include marginPadding;
             @include smallTypografy;
 
-            right: 0;
             text-align: start;
             border: none;
             border-bottom: 2px solid $neutral_origin;
             max-height: 2.5rem;
         }
+
         .general-button {
             @include mediumButton;
         }
