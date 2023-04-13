@@ -9,7 +9,7 @@
     <h1>Profile page</h1>
     <section class="main-container">
         <section class="card-style-user">
-            <h3 card-style-cart_title>Change your password</h3>
+            <h3 class="card-style-cart_title">Change your password</h3>
             <form class="form" method='POST' action="{{ route('user.changeData') }}" enctype="multipart/form-data">
                 @csrf
                 <label  class="form_label" for="actual-password">Your actual password
@@ -26,20 +26,22 @@
             <button class="general-button btn-password" name="btn-password">CHANGE</button>
         </section>
         <section class="card-style-user">
-            <h3>Change your avatar</h3>
+            <h3 class="card-style-cart_title">Change your avatar</h3>
             <span>
                 <label class="form_label" for="avatar">Avatar:</label><br>
                 <img src="{{ asset(Auth::user()->avatar) }}" alt="Actual avatar" width="150" height="150"><br>
                 <input type="file" name="avatar" id="avatar" accept="image/*">
             </span>
-            <button class="general-button btn-password" name="btn-avatar" id="btn-avatar" disabled>CHANGE</button>
-            @if (Auth::user()->avatar != 'images/profiles/default-avatar.jpg')
-                <button class="general-button btn-password" name="btn-avatar-rm">RESET</button>
-            @endif
+            <div class="btns-cart">
+                <button class="general-button btn-password" name="btn-avatar" id="btn-avatar" disabled>CHANGE</button>
+                @if (Auth::user()->avatar != 'images/profiles/default-avatar.jpg')
+                    <button class="general-button btn-password" name="btn-avatar-rm">RESET</button>
+                @endif
+            </div>
 
         </section>
         <section class="card-style-user">
-            <h3>Change your username :</h3>
+            <h3 class="card-style-cart_title">Change your username :</h3>
             <form class="form">
                 <label class="form_label" for="username">Change your username </label>
                 <input class="form_input" type="text" name="username" placeholder="_.username._">
