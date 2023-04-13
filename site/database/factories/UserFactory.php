@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use DateTime;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -18,13 +19,25 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word(),
             'email' => $this->faker->unique()->safeEmail(),
+            'name' => $this->faker->name(),
+            'password' => $this->faker->text(),
+            'expires_at' => '2023-12-12 04:26:03',
             'email_verified_at' => now(),
-            'password' => $this->faker, // password
             // 'remember_token' => Str::random(10),
             // 'api_token' => fake()->unique(),
+            'role' => 'shopper',
+            'avatar'=> 'images/profiles/default-avatar.jpg'
         ];
+
+        // return [
+        //     'name' => $this->faker->name(),
+        //     'email' => $this->faker->unique()->safeEmail(),
+        //     'email_verified_at' => now(),
+        //     'password' => $this->faker->text(), // password
+        //     // 'remember_token' => Str::random(10),
+        //     // 'api_token' => fake()->unique(),
+        // ];
     }
 
     /**

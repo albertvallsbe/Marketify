@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamps();
+
             $table->text('email')->unique();
             $table->text('name')->unique();
             $table->text('password')->unique();
-            $table->timestamp('expires_at');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             // $table->rememberToken();
             // $table->string('api_token')->unique();
-            $table->timestamps();
             $table->enum('role' , ['seller','shopper','administrator'])->default('shopper');
             $table->text('avatar')->default('images/profiles/default-avatar.jpg');
         });
