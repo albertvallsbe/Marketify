@@ -1,3 +1,21 @@
+=== Setmana 7
+
+==== David
+
+==== Oscar
+
+==== Albert
+Documentació i planificació 
+Temps estimat => 1h
+Temps Real => 
+
+Fer test de producte
+Temps estimat => 10h
+Temps Real => 10,5h -> continua oberta
+
+Afegir estil a la vista d'edició de la configuració d'usuari
+Temps estimat => 2h
+Temps Real => 1,75h 
 === Setmana 6
 
 ==== David
@@ -8,6 +26,18 @@
 Resoldre hotfix en css
 Temps estimat => 1h
 Temps Real => 0,5h
+
+Resoldre hotfix a les migracions de shop
+Temps estimat => 1h
+Temps Real => 0,5h
+
+Fer test relació Category-Product
+Temps estimat => 2h
+Temps Real => 2,5h
+
+Fer test de producte
+Temps estimat => 10h
+Temps Real => 2h -> continua següent setmana
 
 === Setmana 5
 
