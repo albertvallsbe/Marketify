@@ -28,7 +28,7 @@
         <section class="card-style-user">
             <h3>Change your avatar</h3>
             <span>
-                <label for="avatar">Avatar:</label><br>
+                <label class="form_label" for="avatar">Avatar:</label><br>
                 <img src="{{ asset(Auth::user()->avatar) }}" alt="Actual avatar" width="150" height="150"><br>
                 <input type="file" name="avatar" id="avatar" accept="image/*">
             </span>
@@ -40,11 +40,10 @@
         </section>
         <section class="card-style-user">
             <h3>Change your username :</h3>
-            <span>
-                <label for="username">Change your username </label>
-
-                <input type="text" name="username" placeholder="_.username._">
-            </span>
+            <form class="form">
+                <label class="form_label" for="username">Change your username </label>
+                <input class="form_input" type="text" name="username" placeholder="_.username._">
+            </form>
 
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
         </form>
