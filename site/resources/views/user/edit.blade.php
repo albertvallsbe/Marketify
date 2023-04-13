@@ -37,6 +37,15 @@
         @if (Auth::user()->avatar != 'images/profiles/default-avatar.jpg')
             <button class="btn-password" name="btn-avatar-rm">RESET</button>
         @endif
+        <br>
+        <h3>Change your username :</h3>
+        <span>
+            <label for="username">Change your username </label>
+            <br>
+            <input type="text" name="username" placeholder="_.username._">
+        </span>
+        <br>
+        <button class="btn-password" name="btn-username" id="btn-username">CHANGE</button>
     </form>
 
     <a href="{{ route('user.logout') }}">Log out</a>

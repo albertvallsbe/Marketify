@@ -55,6 +55,7 @@ Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
 
+
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
 //     return view('dashboard');
 // })->name('dashboard');
