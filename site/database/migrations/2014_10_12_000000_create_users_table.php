@@ -15,9 +15,9 @@ return new class extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->text('email')->unique();
+            $table->text('email')->unique()->default('patata@exampler.com');
             $table->text('name')->unique();
-            $table->text('password')->unique();
+            $table->text('password')->unique()->default('12345678');
             $table->timestamp('expires_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             // $table->rememberToken();

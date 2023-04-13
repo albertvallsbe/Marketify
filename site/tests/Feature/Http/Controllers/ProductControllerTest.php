@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 class ProductControllerTest extends TestCase
 {
     use WithFaker, RefreshDatabase;
@@ -28,8 +28,8 @@ class ProductControllerTest extends TestCase
 
         $this
             ->actingAs($user)
-            ->post('products', $data);
-            // ->assertRedirect('products');
+            ->post('products', $data)
+            ->assertRedirect('products');
 
         $this
             ->assertDatabaseHas('products', $data);
