@@ -1,23 +1,23 @@
 @mixin mediumButton {
-  @include borderRadiusButton;
-  @include buttonStyle;
-  @include mediumTypografy;
-  @include marginPadding;
-  max-height: 2.5rem;
+    @include borderRadiusButton;
+    @include buttonStyle;
+    @include mediumTypografy;
+    @include marginPadding;
+    max-height: 2.5rem;
 
-  &:hover {
-    @include buttonStyleHover;
-  }
+    &:hover {
+        @include buttonStyleHover;
+    }
 }
 
 @mixin smallButton {
-  @include borderRadiusButton;
-  @include buttonStyle;
-  @include smallTypografy;
-  @include marginPadding;
-  max-height: 2rem;
+    @include borderRadiusButton;
+    @include buttonStyle;
+    @include smallTypografy;
+    @include marginPadding;
+    max-height: 2rem;
 
-  &:hover {
-    @include buttonStyleHover;
-  }
+    &:hover {
+        @include buttonStyleHover;
+    }
 }
