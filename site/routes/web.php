@@ -49,12 +49,17 @@ Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+Route::post('/getcart', [CartController::class, 'getCart'])->name('cart.get');
 
 Route::get('/shop/edit', [ShopController::class, 'edit'])->name('shop.edit');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
 
+Route::get('/auth', function () {
+    $authenticated = Auth::check();
+    return response()->json(['authenticated' => $authenticated]);
+});
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
 //     return view('dashboard');

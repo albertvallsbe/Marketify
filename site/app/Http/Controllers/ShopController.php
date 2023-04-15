@@ -29,9 +29,10 @@ class ShopController extends Controller
     
     public function edit(){
         $id = Auth::user()->id;
-        $shop = Shop::findOrFail($id);
+        $shopID = Shop::findShopUserID($id);
+        $shop = Shop::findOrFail($shopID);
         $categories = Category::all();
-        return view('shop.show', ['shop' => $shop,
+        return view('shop.edit', ['shop' => $shop,
         'categories' => $categories,
         'options_order' => Order::$order_array]);
     }
