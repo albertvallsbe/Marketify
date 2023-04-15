@@ -8,10 +8,8 @@
             <h1 class="card-style-medium_title login-title">Login</h1>
             <form class="form" method='POST'action="{{ route('auth.login') }}">
                 @csrf
-                <label class="form_label" for="email">Your email</label>
-                <input type="email" class="form_input input-mail" placeholder="example@gmail.com" name="email">
-                <label class="form_label" for="name">Your username</label>
-                <input type="text" class="form_input input-mail" placeholder="_.username._" name="name">
+                <label class="form_label" for="login">Your email/username</label>
+                <input type="text" class="form_input input-mail" placeholder="_.username._" name="login">
                 @if ($errors->has('login-email'))
                 <span>{{ $errors->first('login-email') }}</span>
                 @endif

@@ -41,8 +41,6 @@ class RegisterController extends Controller
         $correo = new ConfirmMail;
         Mail::to($email)->send($correo);
         session()->flash('status', 'Email send.');
-        
-        Log::channel('desarrollo')->info('Usuario registrado');
 
         return redirect(route('login.index'));
     }
