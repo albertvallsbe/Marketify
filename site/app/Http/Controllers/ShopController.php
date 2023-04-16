@@ -51,7 +51,6 @@ class ShopController extends Controller
             'nif' => $nif,
             'user_id' => $id,
         ]);
-        $idShop = Shop::checkUser($id);
         Shop::makeUserShopper($id);
         return redirect()->route('shop.edit');
     }
