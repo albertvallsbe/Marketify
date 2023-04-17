@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Console\View\Components\Confirm;
 
 class RegisterController extends Controller
@@ -18,31 +19,51 @@ class RegisterController extends Controller
     }
     public function register(Request $request)
     {
-        $request->validate([
-            'register-email' => 'required',
-            'register-password' => 'required',
-            'register-username'=>'required',
-            
-           
-        ]);
-        $data = $request->all();
-        
-        
-       
-        User::create([
-            'email' => $data['register-email'],
-            'name'=>$data['register-username'],
-            'password' => Hash::make($data['register-password']),
-            'api_token'=> Str::random(60),
-            
-        ]);
+        // $request->validate([
+        //     'register-email' => 'required|string|email|max:255|unique:users',
+        //     'register-username' => 'required|string|max:255|unique:users',
+        //     'current-password' => 'required|string|min:8|confirmed',
+        // ]);
+        // $data = $request->all();
 
-        $email = $request->input('register-email');
-        $correo = new ConfirmMail;
-        Mail::to($email)->send($correo);
-        session()->flash('status', 'Email send.');
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|regex:/^[a-zA-Z]+$/u|max:255|min:3|unique:users',
+            'password' => 'required|string|min:8|max:255',
+        ], [
+            'email.required' => 'The email field is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'email.max' => 'The email may not be greater than :max characters.',
+            'email.unique' => 'The email has already been taken.',
 
-        return redirect(route('login.index'));
+            'name.required' => 'The username field is required.',
+            'name.regex' => 'The username field format is invalid.',
+            'name.max' => 'The username may not be greater than :max characters.',
+            'name.min' => 'The username must be at least :min characters.',
+            'name.unique' => 'The username has already been taken.',
+
+            'password.required' => 'The password field is required.',
+            'password.max' => 'The password may not be greater than :max characters.',
+            'password.min' => 'The password must be at least :min characters.',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+            User::create([
+                'email' => $request->input('email'),
+                'name' => $request->input('name'),
+                'password' => Hash::make($request->input('password')), 
+                'api_token' => Str::random(60),
+            ]);
+
+            $email = $request->input('email');
+            $confirmMail = new ConfirmMail;
+            Mail::to($email)->send($confirmMail);
+            session()->flash('status', 'Email send.');
+
+            return redirect(route('login.index'));
     }
    
 }

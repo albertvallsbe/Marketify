@@ -43,8 +43,8 @@ class UserController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
         if ($request->has('btn-password')) {
-            $actualpassword = $request->input('actual-password');
-            $password = $request->input('remember-password');
+            $actualpassword = $request->input('current-password');
+            $password = $request->input('new-password');
             $repeatpassword = $request->input('repeat-password');
             if (Hash::check($actualpassword, Auth::user()->password)) {
                 if ($password == $repeatpassword) {
@@ -52,10 +52,10 @@ class UserController extends Controller
                     $user->save();
                     session()->flash('status', 'Password changed succesfully.');
                 } else {
-                    session()->flash('status', 'New password does not match');
+                    session()->flash('status', 'New passwords does not match');
                 }
             } else {
-                session()->flash('status', 'Password is not correct');
+                session()->flash('status', 'Your current password is not correct');
             }
         } else if ($request->has('btn-avatar')) {
             if ($request->hasFile('avatar')) {

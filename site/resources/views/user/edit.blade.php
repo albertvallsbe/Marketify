@@ -12,16 +12,16 @@
             <h3 card-style-cart_title>Change your password</h3>
             <form class="form" method='POST' action="{{ route('user.changeData') }}" enctype="multipart/form-data">
                 @csrf
-                <label  class="form_label" for="actual-password">Your actual password:
+                <label  class="form_label" for="current-password">Your actual password:
                 </label>
-                <input type="password" class="form_input rememberpassw" placeholder="********" name="actual-password">
+                <input type="password" class="form_input rememberpassw" placeholder="••••••••••••" name="current-password">
 
-                <label  class="form_label" for="remember-password">Your new password:
+                <label  class="form_label" for="new-password">Your new password:
                 </label>
-                <input type="password" class="form_input rememberpassw" placeholder="********" name="remember-password">
+                <input type="password" class="form_input rememberpassw" placeholder="••••••••••••" name="new-password">
 
                 <label  class="form_label" for="repeat-password">Repeat your new password:</label>
-                <input type="password" class="form_input rememberpassw" placeholder="********" name="repeat-password">
+                <input type="password" class="form_input rememberpassw" placeholder="••••••••••••" name="repeat-password">
 
             <button class="general-button btn-password" name="btn-password">CHANGE</button>
         </section>
@@ -39,11 +39,13 @@
 
         </section>
         <section class="card-style-user">
-            <h3>Change your actual username</h3>
-            <form class="form">
+            <span>
+                <h3>Change your actual username</h3>
+                <h5>Current username: <i>{{ $user->name }}</i></h5>
+            </span>
+            
                 <label class="form_label" for="username">Your new username:</label>
                 <input class="form_input" type="text" name="username" placeholder="{{ $user->name }}">
-            </form>
 
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
         </form>
