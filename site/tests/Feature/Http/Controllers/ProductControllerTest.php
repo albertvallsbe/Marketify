@@ -16,7 +16,7 @@ class ProductControllerTest extends TestCase
     public function test_store(): void
     {
 
-        $user = User::factory()->create();
+        // $user = User::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
@@ -27,7 +27,7 @@ class ProductControllerTest extends TestCase
         ];
 
         $this
-            ->actingAs($user)
+            // ->actingAs($user)
             ->post('products', $data)
             ->assertRedirect('products');
 
@@ -38,8 +38,9 @@ class ProductControllerTest extends TestCase
     public function test_update(): void
     {
         $product = Product::factory()->create();
-        $user = User::factory()->create();
+        // $user = User::factory()->create();
         $data = [
+            'id' => $product->id,
             'name' => $this->faker->name(),
             'description' => $this->faker->sentence(),
             'tag' => Category::factory()->create()->name,
@@ -48,9 +49,10 @@ class ProductControllerTest extends TestCase
         ];
 
         $this
-            ->actingAs($user)
+            // ->actingAs($user)
             ->put("products/$product->id", $data)
             ->assertRedirect("products/$product->id/edit", "Error al actualizar el producto: los datos no son válidos");
+
         $this
             ->assertDatabaseHas('products', $data);
     }
