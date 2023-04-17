@@ -6,6 +6,13 @@
     @if (session()->has('status'))
         <p>{{ session()->get('status') }}</p>
     @endif
+    @if($errors->any())
+      <div class="alert alert-error">
+        @foreach($errors->all() as $error)
+          <p>{{ $error }}</p>
+        @endforeach
+      </div>
+    @endif
     <h1>Profile page</h1>
     <section class="main-container">
         <section class="card-style-user">
@@ -44,8 +51,8 @@
                 <h5>Current username: <i>{{ $user->name }}</i></h5>
             </span>
             
-                <label class="form_label" for="username">Your new username:</label>
-                <input class="form_input" type="text" name="username" placeholder="{{ $user->name }}">
+                <label class="form_label" for="name">Your new username:</label>
+                <input class="form_input" type="text" name="name" placeholder="{{ $user->name }}">
 
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
         </form>
