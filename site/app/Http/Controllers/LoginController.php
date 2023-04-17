@@ -27,14 +27,14 @@ class LoginController extends Controller
     {
         $request->validate([
             'login' => 'required|string',
-            'password' => 'required|string',
+            'current-password' => 'required|string',
         ]);
 
         $loginType = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
         
         $credentials = [
             $loginType => $request->input('login'),
-            'password' => $request->input('password')
+            'password' => $request->input('current-password')
         ];
 
         if (Auth::attempt($credentials)) {
