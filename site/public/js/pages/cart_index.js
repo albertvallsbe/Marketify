@@ -1,8 +1,13 @@
 import '../app.js';
+import { updateServerStorage } from '../app.js';
+
+
 const removeButtons = document.querySelectorAll('.btn-remove');
 const clearButton = document.querySelector('.btn-empty');
 
 //FUNCTIONS
+
+//Treu el producte desde el carret
 function removeFromLocalCart(id) {
   let cart = JSON.parse(localStorage.getItem("cart"));
   let index = cart.indexOf(id);
@@ -13,6 +18,7 @@ function removeFromLocalCart(id) {
   location.reload();
 }
 
+//Suma del preu total
 function showTotalPrice() {
   const product_names = document.querySelectorAll('.product__name');
   const product_prices = document.querySelectorAll('.product__price');
@@ -54,6 +60,7 @@ removeButtons.forEach(function (button) {
 
 clearButton.addEventListener('click', function () {
   localStorage.removeItem('cart');
+  updateServerStorage();
   window.location.href = '/cart';
 });
 showTotalPrice();

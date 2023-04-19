@@ -1,7 +1,9 @@
 import { getCountCart } from './app.js';
-import { addToClientCart } from './app.js';
+import { addToCart } from './app.js';
 
 //FUNCTIONS
+
+//Afegeix el producte al localstorage
 function addToLocalStorage(productId) {
     let productCart = localStorage.getItem("cart");
 
@@ -14,6 +16,7 @@ function addToLocalStorage(productId) {
     localStorage.setItem("cart", JSON.stringify(productCart));
 }
 
+//Canvia l'estat dels botons quan són clicats
 function clickButtonAction(productId, button) {
 
     if (button.innerText == "Add to cart") {
@@ -35,6 +38,7 @@ function clickButtonAction(productId, button) {
     getCountCart();
 }
 
+//Canvia l'estat de tots els botons
 function changeButton() {
     let cart = localStorage.getItem("cart");
     if (cart) {
@@ -57,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener('click', event => {
             const productId = button.dataset.productId;
             clickButtonAction(productId, button);
-            addToClientCart();
+            addToCart();
         });
     });
 });
