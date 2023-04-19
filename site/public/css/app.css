@@ -91,6 +91,7 @@ header .navbar__form--button-search {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   min-height: 35px;
   border: none;
   text-overflow: ellipsis;
@@ -312,6 +313,7 @@ footer .footer__logo {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: small;
   margin-left: 5%;
@@ -348,6 +350,7 @@ footer .footer__logo {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: small;
   margin-left: 5%;
@@ -395,6 +398,7 @@ footer .footer__logo {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: medium;
   margin-left: 5%;
@@ -482,6 +486,7 @@ footer .footer__logo {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: medium;
   margin-left: 5%;
@@ -593,6 +598,7 @@ footer .footer__logo {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: medium;
   margin-left: 5%;
@@ -720,6 +726,7 @@ footer .footer__logo {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: medium;
   margin-left: 5%;
@@ -969,6 +976,7 @@ footer .footer__logo {
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: medium;
   margin-left: 5%;

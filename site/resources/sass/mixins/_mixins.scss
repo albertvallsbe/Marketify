@@ -21,6 +21,7 @@
     color: $neutral_darker;
     background-color: $primary_origin;
     border: 3px $primary_origin solid;
+    cursor: pointer;
 }
 
 @mixin buttonStyleHover {

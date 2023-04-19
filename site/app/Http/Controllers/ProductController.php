@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Cart;
+use App\Classes\Order;
+use App\Models\Product;
+use App\Models\Category;
+
 use Illuminate\Http\Request;
 use App\View\Components\Header;
-use App\Classes\Order;
-
-use App\Models\Category;
-use App\Models\Product;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -16,21 +17,26 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $header = new Header($request);
-
+        
         $categories = Category::all();
-
         if($request->session()->has('request_categories') == ""){
             $products = Product::searchAll(session('request_search'), session('request_order'));
         }else {
             $products = Product::searchSpecific(session('request_search'), session('request_categories'), session('request_order'));
         }
-
         $products->appends([
             'filter' => session('request_categories'),
             'search' => session('request_search'),
             'order' => session('request_order')
         ]);
 
+        $userId = auth()->id();
+        if ($userId) {
+            $arrayCart = Cart::showCartByUserID($userId);
+        }else{
+            $arrayCart = "[]";
+        }
+        setcookie("arrayCart",$arrayCart);
         return view('product.index', [
             'products' => $products,
             'categories' => $categories,
@@ -48,14 +54,15 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // $request->user()->products()->create($request->all());
-        $request->user()->create($request->all());
+        // $id=auth()->user->id; Quan treballem amb usuaris, per recuperar id de l'usuari logat
+        Product::create($request->all());
 
         return redirect()->route('products.index');
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
+        $product=Product::findOrFail($request->id);
         $product->update($request->all());
 
         return redirect()->route('products.edit', $product);

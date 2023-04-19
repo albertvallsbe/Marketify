@@ -6,22 +6,29 @@
     @if (session()->has('status'))
         <p>{{ session()->get('status') }}</p>
     @endif
+    @if($errors->any())
+      <div class="alert alert-error">
+        @foreach($errors->all() as $error)
+          <p>{{ $error }}</p>
+        @endforeach
+      </div>
+    @endif
     <h1>Profile page</h1>
     <section class="main-container">
         <section class="card-style-user">
             <h3 class="card-style-cart_title">Change your password</h3>
             <form class="form" method='POST' action="{{ route('user.changeData') }}" enctype="multipart/form-data">
                 @csrf
-                <label  class="form_label" for="actual-password">Your actual password
+                <label  class="form_label" for="current-password">Your actual password:
                 </label>
-                <input type="password" class="form_input rememberpassw" placeholder="********" name="actual-password">
+                <input type="password" class="form_input rememberpassw" placeholder="••••••••••••" name="current-password">
 
-                <label  class="form_label" for="remember-password">Your new password
+                <label  class="form_label" for="new-password">Your new password:
                 </label>
-                <input type="password" class="form_input rememberpassw" placeholder="********" name="remember-password">
+                <input type="password" class="form_input rememberpassw" placeholder="••••••••••••" name="new-password">
 
-                <label  class="form_label" for="repeat-password">Repeat your new password</label>
-                <input type="password" class="form_input rememberpassw" placeholder="********" name="repeat-password">
+                <label  class="form_label" for="repeat-password">Repeat your new password:</label>
+                <input type="password" class="form_input rememberpassw" placeholder="••••••••••••" name="repeat-password">
 
             <button class="general-button btn-password" name="btn-password">CHANGE</button>
         </section>
@@ -42,15 +49,14 @@
         </section>
         <section class="card-style-user">
             <h3 class="card-style-cart_title">Change your username :</h3>
+                <h5 class="card-style-cart_title">Current username: <i>{{ $user->name }}</i></h5>
             <form class="form">
-                <label class="form_label" for="username">Change your username </label>
-                <input class="form_input" type="text" name="username" placeholder="_.username._">
+                <label class="form_label" for="name">Your new username:</label>
+                <input class="form_input" type="text" name="name" placeholder="{{ $user->name }}">
             </form>
-
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
         </form>
-        <p class="users-link text-login">Do you want logout?
-            <a href="{{ route('user.logout') }}">Log out</a>
-        </p>
+    </section>
+        <a href="{{ route('user.logout') }}">Log out</a>
             <script type="module" src="{{ asset('js/pages/user_edit.js') }}"></script>
 @endsection
