@@ -76,7 +76,5 @@ class LoginController extends Controller
         }else {
             session()->flash('status', 'Passwords do not match.');
         }
-
-        
     }
 }
