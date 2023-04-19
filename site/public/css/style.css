@@ -731,96 +731,14 @@ footer .footer__logo {
   text-align: center;
 }
 
-* {
-  margin: 0;
-}
-
 section.landing-container {
   display: grid;
   grid-template-columns: 1 fr;
-  width: 100%;
-  row-gap: 10px;
-}
-section.landing-container a {
-  text-decoration: none;
-  list-style: none;
 }
 section.landing-container div.container-slogan {
   display: grid;
   justify-content: center;
   align-items: center;
-  margin-left: 0;
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0) 0, rgb(255, 255, 255) 100%), url(../images/prueba.jpg);
-  background-size: 100%;
-  width: 100%;
-  height: 94vh;
-  transition: transform 0.2s;
-}
-section.landing-container div.container-slogan img.logo {
-  width: 50%;
-  margin-left: 100px;
-  margin-bottom: -100px;
-}
-section.landing-container div.container-slogan h1.title-slogan {
-  margin-left: 40px;
-  margin-top: -300px;
-}
-section.landing-container div.container-slogan:hover {
-  transform: scale(0.98);
-}
-section.landing-container div.container-products {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 10px;
-  row-gap: 10px;
-  background-color: white;
-}
-section.landing-container div.container-products div.container-product {
-  display: grid;
-  justify-content: end;
-  align-items: end;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/woman.jpg);
-  background-size: 100%;
-  height: 50vh;
-  transition: transform 0.2s;
-}
-section.landing-container div.container-products div.container-product h2.title-product {
-  color: white;
-  margin-right: 10px;
-}
-section.landing-container div.container-products div.container-product:hover {
-  transform: scale(0.98);
-}
-section.landing-container div.container-products div.container-product2 {
-  display: grid;
-  justify-content: end;
-  align-items: end;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/men.webp);
-  background-size: 100%;
-  height: 50vh;
-  transition: transform 0.2s;
-}
-section.landing-container div.container-products div.container-product2 h2.title-product {
-  color: white;
-  margin-right: 10px;
-}
-section.landing-container div.container-products div.container-product2:hover {
-  transform: scale(0.98);
-}
-section.landing-container div.products-container {
-  display: grid;
-  width: 100%;
-  height: 50vh;
-}
-section.landing-container div.products-container h2 {
-  margin-left: 10px;
-}
-section.landing-container div.products-container hr {
-  background-color: black;
-  height: 3px;
-  width: 99%;
-  margin-left: 10px;
-  margin-top: -200px;
 }
 
 section.container {
@@ -883,6 +801,7 @@ body {
 }
 
 div#content {
+  margin-inline: 5%;
   text-align: justify;
   padding-bottom: 60px;
 }
@@ -925,4 +844,4 @@ ul.pagination {
   text-decoration: none;
 }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=style.css.map */
