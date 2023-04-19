@@ -293,6 +293,7 @@ footer .footer__logo {
 .card-style-mini_title {
   display: grid;
   justify-content: center;
+  align-items: center;
   margin-left: 5%;
   margin-right: 5%;
   text-align: left;
@@ -371,6 +372,7 @@ footer .footer__logo {
   border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
@@ -387,6 +389,7 @@ footer .footer__logo {
 .card-style-cart_title {
   display: grid;
   justify-content: center;
+  align-items: center;
   margin-left: 5%;
   margin-right: 5%;
 }
@@ -437,6 +440,7 @@ footer .footer__logo {
   border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
@@ -446,6 +450,7 @@ footer .footer__logo {
 .card-style-medium_title {
   display: grid;
   justify-content: center;
+  align-items: center;
   margin-left: 5%;
   margin-right: 5%;
   max-height: fit-content;
@@ -508,6 +513,7 @@ footer .footer__logo {
 .intro-style {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
@@ -547,6 +553,7 @@ footer .footer__logo {
   border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
@@ -556,6 +563,7 @@ footer .footer__logo {
 .card-style-medium_title {
   display: grid;
   justify-content: center;
+  align-items: center;
   margin-left: 5%;
   margin-right: 5%;
 }
@@ -617,6 +625,7 @@ footer .footer__logo {
 .intro-style {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
@@ -656,6 +665,7 @@ footer .footer__logo {
   border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
@@ -665,6 +675,7 @@ footer .footer__logo {
 .card-style-medium_title {
   display: grid;
   justify-content: center;
+  align-items: center;
   margin-left: 5%;
   margin-right: 5%;
   text-align: center;
@@ -742,6 +753,135 @@ footer .footer__logo {
 .intro-style {
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  width: 60vh;
+  align-items: center;
+  justify-content: center;
+}
+.intro-style_logo {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 60%;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+.intro-style_title, .intro-style_text {
+  margin-left: 5%;
+  margin-right: 5%;
+  display: grid;
+  text-align: center;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-style-medium {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  margin: 0 auto;
+  margin-top: 20%;
+  height: 65vh;
+  width: 50vh;
+  min-width: 250px;
+}
+.card-style-medium_title {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  max-height: 3rem;
+}
+.card-style-medium_content {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin: -2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: small;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-decoration: none;
+  color: inherit;
+}
+.card-style-medium .form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.5rem;
+  padding-bottom: 2rem;
+}
+.card-style-medium .form_label {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  text-align: start;
+  border: none;
+  max-height: 2.5rem;
+}
+.card-style-medium .form_input {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
+}
+.card-style-medium .form .general-button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  font-weight: bold;
+  font-size: medium;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  max-height: 2.5rem;
+  background-color: aqua;
+}
+.card-style-medium .form .general-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style-medium .users-link {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+}
+
+.intro-style {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
@@ -782,33 +922,32 @@ footer .footer__logo {
   border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr;
+  align-items: flex-start;
   margin: 0 auto;
   margin-top: 20%;
   height: 65vh;
   width: 50vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 0.5rem;
   width: 30vw;
   margin-top: 0;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   padding-bottom: 2rem;
   min-width: 250px;
-  min-height: 420px;
+  min-height: 450px;
   height: min-content;
   text-align: center;
-  justify-content: center;
 }
 .card-style-user_title {
   display: grid;
   justify-content: center;
+  align-items: center;
   margin-left: 5%;
   margin-right: 5%;
 }
 .card-style-user .form {
   display: grid;
   grid-template-columns: 1fr;
+  row-gap: 0.5rem;
 }
 .card-style-user .form_label {
   margin-left: 5%;
@@ -826,6 +965,7 @@ footer .footer__logo {
   padding: 2%;
   font-weight: bold;
   font-size: small;
+  padding-bottom: 1rem;
   text-align: start;
   border: none;
   border-bottom: 2px solid #8f8f8f;
@@ -845,6 +985,7 @@ footer .footer__logo {
   max-height: 2.5rem;
   margin-top: 2%;
   margin-bottom: 2%;
+  align-items: flex-end;
 }
 .card-style-user .general-button:hover {
   background-color: #ff9680;
@@ -862,60 +1003,18 @@ footer .footer__logo {
   justify-content: center;
 }
 
-section.container {
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 10%;
+@media screen and (max-width: 900px) {
+  .main-container {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+  }
+  .card-style-user {
+    min-width: 300px;
+  }
 }
-section.container section.remember-container {
-  margin: 0 auto;
-  display: grid;
-  border-radius: 30px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  width: 80vh;
-  height: 70vh;
-}
-section.container section.remember-container section.remember-section h1.remember-title {
-  text-align: center;
-}
-section.container section.remember-container section.remember-section p.remember-content {
-  text-align: center;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-section.container section.remember-container section.remember-section form {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 10% 10% 10% 10%;
-}
-section.container section.remember-container section.remember-section form input.rememberpassw {
-  margin-bottom: 10%;
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 3%;
-  right: 0;
-  font-weight: bold;
-  text-align: start;
-  border: none;
-  border-bottom: 2px solid grey;
-}
-section.container section.remember-container section.remember-section form button.btn-password {
-  margin-left: 5%;
-  margin-right: 5%;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  padding: 2%;
-  background-color: #ff5208;
-  border: 3px #ff5208 solid;
-  color: white;
-  margin-bottom: 10%;
-}
-section.container section.remember-container section.remember-section form button.btn-password:hover {
-  background-color: #e04807;
-  border: 3px #e04807 solid;
-}
-
 body {
   margin: 0;
   background-color: #fbfbfd;
