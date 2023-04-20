@@ -1,110 +1,86 @@
-* {
-    margin: 0;
-
-}
-
-section.landing-container {
+.landing-container {
     display: grid;
-    grid-template-columns: 1 fr;
-    width: 100%;
     row-gap: 10px;
+    margin-inline: -5%;
 
-     a {
-        text-decoration: none;
-        list-style: none;
+    a {
+        @include links;
     }
 
-    div.container-slogan {
-        display: grid;
-        justify-content: center;
-        align-items: center;
-        margin-left: 0;
-        background-image: linear-gradient(0deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%), url(../images/prueba.jpg);
-        background-size: 100%;
-        width: 100%;
-        height: 94vh;
+    .container-slogan {
+        @include landingMainCard;
         transition: transform .2s;
 
-        img.logo {
-            width: 50%;
-            margin-left: 100px;
-            margin-bottom: -100px;
+        .logo {
+            @include logoIntro;
+            bottom: 0px;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 0;
         }
 
-        h1.title-slogan {
+        .title-slogan {
+            @include largeTypografy;
             margin-left: 40px;
             margin-top: -300px;
         }
     }
 
-    div.container-slogan:hover {
+    .container-slogan:hover {
         transform: scale(0.98);
     }
 
-    div.container-products {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+    .container-products {
+        @include twoColumnsMode;
         column-gap: 10px;
         row-gap: 10px;
-        background-color: white;
+        background-color: $neutral_lighter;
 
-        div.container-product {
-            display: grid;
-            justify-content: end;
-            align-items: end;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/woman.jpg);
-            background-size: 100%;
-            height: 50vh;
-            transition: transform .2s;
+        .container-product {
+            @include landingCards;
+            background-image: linear-gradient($shadow_color , $shadow_color), url(../images/woman.jpg);
+            background-repeat: no-repeat;
 
-            h2.title-product {
-                color: white;
+            .title-product {
+                color: $neutral_lighter;
                 margin-right: 10px;
+                @include largeTypografy;
 
             }
         }
 
-        div.container-product:hover {
+        .container-product:hover {
             transform: scale(0.98);
         }
 
-        div.container-product2 {
-            display: grid;
-            justify-content: end;
-            align-items: end;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/men.webp);
-            background-size: 100%;
-            height: 50vh;
-            transition: transform .2s;
+        .container-product2 {
+            @include landingCards;
+            background-image: linear-gradient($shadow_color , $shadow_color), url(../images/men.webp);
+            background-repeat: no-repeat;
 
             h2.title-product {
-                color: white;
+                color: $neutral_lighter;
                 margin-right: 10px;
+                @include largeTypografy;
 
             }
         }
 
-        div.container-product2:hover {
+        .container-product2:hover {
             transform: scale(0.98);
         }
     }
 
-    div.products-container {
+    .products-container {
         display: grid;
         width: 100%;
         height: 50vh;
 
         h2 {
             margin-left: 10px;
-
-        }
-
-        hr {
-            background-color: black;
-            height: 3px;
-            width: 99%;
-            margin-left: 10px;
-            margin-top: -200px;
+            @include largeTypografy;
+            @include line;
+            max-height: 80px;
         }
     }
 }

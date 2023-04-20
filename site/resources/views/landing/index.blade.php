@@ -20,7 +20,6 @@
         </div>
         <div class="products-container">
             <h2 class="products-title">Recommended products for you...</h2>
-            <hr>
 
         </div>
     </section>
