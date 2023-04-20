@@ -1,8 +1,8 @@
-.main-container {
+.main-register {
     @include twoColumnsMode;
 }
 
-.card-style-medium {
+.card-style-register {
     @include cardStyle;
     @include cardPosition;
     min-width: 250px;
@@ -40,16 +40,11 @@
     }
 
     .users-link {
-        display: grid;
-        text-align: center;
-        justify-content: center;
-        @include margin;
-        @include smallTypografy;
-        @include links;
+        @include userLinks;
     }
 }
 
-.intro-style {
+.intro-style-register {
     @include cardPosition;
     width: 60vh;
     align-items: center;

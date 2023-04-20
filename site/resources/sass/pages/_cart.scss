@@ -1,4 +1,4 @@
-.main-container {
+.main-cart {
     @include twoColumnsMode;
 }
 
@@ -39,11 +39,6 @@
     }
 
     .users-link {
-        display: grid;
-        @include margin;
-        @include smallTypografy;
-        @include links;
-        text-align: center;
-        justify-content: center;
+        @include userLinks;
     }
 }

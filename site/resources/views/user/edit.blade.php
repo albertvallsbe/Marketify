@@ -7,16 +7,16 @@
         <p>{{ session()->get('status') }}</p>
     @endif
     @if($errors->any())
-      <div class="alert alert-error">
-        @foreach($errors->all() as $error)
-          <p>{{ $error }}</p>
-        @endforeach
-      </div>
+        <div class="alert alert-error">
+            @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
+        </div>
     @endif
     <h1>Profile page</h1>
-    <section class="main-container">
-        <section class="card-style-user">
-            <h3 class="card-style-cart_title">Change your password</h3>
+    <section class="main-edituser">
+        <section class="card-style-edituser">
+            <h3 class="card-style-edituser_title">Change your password</h3>
             <form class="form" method='POST' action="{{ route('user.changeData') }}" enctype="multipart/form-data">
                 @csrf
                 <label  class="form_label" for="current-password">Your actual password:
@@ -32,8 +32,8 @@
 
             <button class="general-button btn-password" name="btn-password">CHANGE</button>
         </section>
-        <section class="card-style-user">
-            <h3 class="card-style-cart_title">Change your avatar</h3>
+        <section class="card-style-edituser">
+            <h3 class="card-style-edituser_title">Change your avatar</h3>
             <span>
                 <label class="form_label" for="avatar">Avatar:</label><br>
                 <img src="{{ asset(Auth::user()->avatar) }}" alt="Actual avatar" width="150" height="150"><br>
@@ -47,9 +47,9 @@
             </div>
 
         </section>
-        <section class="card-style-user">
-            <h3 class="card-style-cart_title">Change your username :</h3>
-                <h5 class="card-style-cart_title">Current username: <i>{{ $user->name }}</i></h5>
+        <section class="card-style-edituser">
+            <h3 class="card-style-edituser_title">Change your username :</h3>
+                <h5 class="card-style-edituser_title">Current username: <i>{{ $user->name }}</i></h5>
             <form class="form">
                 <label class="form_label" for="name">Your new username:</label>
                 <input class="form_input" type="text" name="name" placeholder="{{ $user->name }}">

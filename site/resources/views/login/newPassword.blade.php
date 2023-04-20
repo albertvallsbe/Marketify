@@ -3,10 +3,10 @@
 @section('title', 'Forgot the password')
 
 @section('content')
-    <section class="main-container">
-        <section class="card-style-new-password remember-section remember-container">
-            <h1 class="card-style-new-password_title remember-title">Have you forgotten the password?</h1>
-            <p class="card-style-new-password_content remember-content">Have you forgotten the password? Don't worry. Enter your new password and we will update you new password.
+    <section class="main-newpassword">
+        <section class="card-style-newpassword remember-section remember-container">
+            <h1 class="card-style-newpassword_title remember-title">Have you forgotten the password?</h1>
+            <p class="card-style-newpassword_content remember-content">Have you forgotten the password? Don't worry. Enter your new password and we will update you new password.
                 <br><br>If you want to return press
                 <a href={{route('login.index')}}>Login</a>
             </p>

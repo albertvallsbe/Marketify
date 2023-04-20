@@ -333,7 +333,7 @@ footer .footer__logo {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
-.main-container {
+.main-cart {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
@@ -416,24 +416,24 @@ footer .footer__logo {
   border-color: #638a5c;
 }
 .card-style-cart .users-link {
-  display: grid;
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
   font-size: small;
   text-decoration: none;
   color: inherit;
+  display: grid;
   text-align: center;
   justify-content: center;
 }
 
-.main-container {
+.main-register {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
 }
 
-.card-style-medium {
+.card-style-register {
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -449,7 +449,7 @@ footer .footer__logo {
   width: 50vh;
   min-width: 250px;
 }
-.card-style-medium_title {
+.card-style-register_title {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -457,12 +457,12 @@ footer .footer__logo {
   margin-right: 5%;
   max-height: fit-content;
 }
-.card-style-medium .form {
+.card-style-register .form {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
 }
-.card-style-medium .form_label {
+.card-style-register .form_label {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -472,7 +472,7 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
-.card-style-medium .form_input {
+.card-style-register .form_input {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -483,7 +483,7 @@ footer .footer__logo {
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
 }
-.card-style-medium .form .general-button {
+.card-style-register .form .general-button {
   border-radius: 12px;
   color: #1f1f1f;
   background-color: #ff5208;
@@ -496,23 +496,23 @@ footer .footer__logo {
   padding: 2%;
   max-height: 2.5rem;
 }
-.card-style-medium .form .general-button:hover {
+.card-style-register .form .general-button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
-.card-style-medium .users-link {
-  display: grid;
-  text-align: center;
-  justify-content: center;
+.card-style-register .users-link {
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
   font-size: small;
   text-decoration: none;
   color: inherit;
+  display: grid;
+  text-align: center;
+  justify-content: center;
 }
 
-.intro-style {
+.intro-style-register {
   display: grid;
   grid-template-columns: 1fr;
   align-items: flex-start;
@@ -524,7 +524,7 @@ footer .footer__logo {
   align-items: center;
   justify-content: center;
 }
-.intro-style_logo {
+.intro-style-register_logo {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -534,20 +534,20 @@ footer .footer__logo {
   height: 100px;
   margin: auto;
 }
-.intro-style_title, .intro-style_text {
+.intro-style-register_title, .intro-style-register_text {
   margin-left: 5%;
   margin-right: 5%;
   display: grid;
   text-align: center;
 }
 
-.main-container {
+.main-login {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
 }
 
-.card-style-medium {
+.card-style-login {
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -563,19 +563,19 @@ footer .footer__logo {
   width: 50vh;
   min-width: 250px;
 }
-.card-style-medium_title {
+.card-style-login_title {
   display: grid;
   justify-content: center;
   align-items: center;
   margin-left: 5%;
   margin-right: 5%;
 }
-.card-style-medium .form {
+.card-style-login .form {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
 }
-.card-style-medium .form_label {
+.card-style-login .form_label {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -585,7 +585,7 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
-.card-style-medium .form_input {
+.card-style-login .form_input {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -596,7 +596,7 @@ footer .footer__logo {
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
 }
-.card-style-medium .form .general-button {
+.card-style-login .form .general-button {
   border-radius: 12px;
   color: #1f1f1f;
   background-color: #ff5208;
@@ -609,23 +609,23 @@ footer .footer__logo {
   padding: 2%;
   max-height: 2.5rem;
 }
-.card-style-medium .form .general-button:hover {
+.card-style-login .form .general-button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
-.card-style-medium .users-link {
-  display: grid;
-  text-align: center;
-  justify-content: center;
+.card-style-login .users-link {
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
   font-size: small;
   text-decoration: none;
   color: inherit;
+  display: grid;
+  text-align: center;
+  justify-content: center;
 }
 
-.intro-style {
+.intro-style-login {
   display: grid;
   grid-template-columns: 1fr;
   align-items: flex-start;
@@ -637,7 +637,7 @@ footer .footer__logo {
   align-items: center;
   justify-content: center;
 }
-.intro-style_logo {
+.intro-style-login_logo {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -647,20 +647,20 @@ footer .footer__logo {
   height: 100px;
   margin: auto;
 }
-.intro-style_title, .intro-style_text {
+.intro-style-login_title, .intro-style-login_text {
   margin-left: 5%;
   margin-right: 5%;
   display: grid;
   text-align: center;
 }
 
-.main-container {
+.main-password {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
 }
 
-.card-style-medium {
+.card-style-password {
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -676,7 +676,7 @@ footer .footer__logo {
   width: 50vh;
   min-width: 250px;
 }
-.card-style-medium_title {
+.card-style-password_title {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -685,7 +685,7 @@ footer .footer__logo {
   text-align: center;
   max-height: 3rem;
 }
-.card-style-medium_content {
+.card-style-password_content {
   display: grid;
   text-align: center;
   justify-content: center;
@@ -698,13 +698,13 @@ footer .footer__logo {
   text-decoration: none;
   color: inherit;
 }
-.card-style-medium .form {
+.card-style-password .form {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
   padding-bottom: 2rem;
 }
-.card-style-medium .form_label {
+.card-style-password .form_label {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -714,7 +714,7 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
-.card-style-medium .form_input {
+.card-style-password .form_input {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -725,7 +725,7 @@ footer .footer__logo {
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
 }
-.card-style-medium .form .general-button {
+.card-style-password .form .general-button {
   border-radius: 12px;
   color: #1f1f1f;
   background-color: #ff5208;
@@ -738,23 +738,23 @@ footer .footer__logo {
   padding: 2%;
   max-height: 2.5rem;
 }
-.card-style-medium .form .general-button:hover {
+.card-style-password .form .general-button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
-.card-style-medium .users-link {
-  display: grid;
-  text-align: center;
-  justify-content: center;
+.card-style-password .users-link {
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
   font-size: small;
   text-decoration: none;
   color: inherit;
+  display: grid;
+  text-align: center;
+  justify-content: center;
 }
 
-.intro-style {
+.intro-style-password {
   display: grid;
   grid-template-columns: 1fr;
   align-items: flex-start;
@@ -766,7 +766,7 @@ footer .footer__logo {
   align-items: center;
   justify-content: center;
 }
-.intro-style_logo {
+.intro-style-password_logo {
   display: grid;
   align-items: center;
   justify-content: center;
@@ -776,20 +776,21 @@ footer .footer__logo {
   height: 100px;
   margin: auto;
 }
-.intro-style_title, .intro-style_text {
+.intro-style-password_title, .intro-style-password_text {
   margin-left: 5%;
   margin-right: 5%;
   display: grid;
   text-align: center;
 }
 
-.main-container {
+.main-newpassword {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
+  column-gap: 20%;
 }
 
-.card-style-new-password {
+.card-style-newpassword {
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -803,11 +804,10 @@ footer .footer__logo {
   margin-top: 20%;
   height: 65vh;
   width: 50vh;
-  width: 50vw;
-  min-width: 550px;
+  min-width: 250px;
   margin-left: 4rem;
 }
-.card-style-new-password_title {
+.card-style-newpassword_title {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -817,7 +817,7 @@ footer .footer__logo {
   max-height: 3rem;
   padding-bottom: 1rem;
 }
-.card-style-new-password_content {
+.card-style-newpassword_content {
   display: grid;
   text-align: center;
   justify-content: center;
@@ -830,13 +830,13 @@ footer .footer__logo {
   text-decoration: none;
   color: inherit;
 }
-.card-style-new-password .form {
+.card-style-newpassword .form {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
   padding-bottom: 2rem;
 }
-.card-style-new-password .form_label {
+.card-style-newpassword .form_label {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -846,7 +846,7 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
-.card-style-new-password .form_input {
+.card-style-newpassword .form_input {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -857,7 +857,7 @@ footer .footer__logo {
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
 }
-.card-style-new-password .form .general-button {
+.card-style-newpassword .form .general-button {
   border-radius: 12px;
   color: #1f1f1f;
   background-color: #ff5208;
@@ -870,20 +870,20 @@ footer .footer__logo {
   padding: 2%;
   max-height: 2.5rem;
 }
-.card-style-new-password .form .general-button:hover {
+.card-style-newpassword .form .general-button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
-.card-style-new-password .users-link {
-  display: grid;
-  text-align: center;
-  justify-content: center;
+.card-style-newpassword .users-link {
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
   font-size: small;
   text-decoration: none;
   color: inherit;
+  display: grid;
+  text-align: center;
+  justify-content: center;
 }
 
 .intro-style {
@@ -915,7 +915,7 @@ footer .footer__logo {
   text-align: center;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 900px) {
   .main-container {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     justify-content: center;
@@ -927,13 +927,13 @@ footer .footer__logo {
     min-width: 350px;
   }
 }
-.main-container {
+.main-edituser {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
 }
 
-.card-style-user {
+.card-style-edituser {
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -957,19 +957,19 @@ footer .footer__logo {
   height: min-content;
   text-align: center;
 }
-.card-style-user_title {
+.card-style-edituser_title {
   display: grid;
   justify-content: center;
   align-items: center;
   margin-left: 5%;
   margin-right: 5%;
 }
-.card-style-user .form {
+.card-style-edituser .form {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
 }
-.card-style-user .form_label {
+.card-style-edituser .form_label {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -979,7 +979,7 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
-.card-style-user .form_input {
+.card-style-edituser .form_input {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -991,7 +991,7 @@ footer .footer__logo {
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
 }
-.card-style-user .general-button {
+.card-style-edituser .general-button {
   border-radius: 12px;
   color: #1f1f1f;
   background-color: #ff5208;
@@ -1007,31 +1007,31 @@ footer .footer__logo {
   margin-bottom: 2%;
   align-items: flex-end;
 }
-.card-style-user .general-button:hover {
+.card-style-edituser .general-button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
-.card-style-user .users-link {
-  display: grid;
+.card-style-edituser .users-link {
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
   font-size: small;
   text-decoration: none;
   color: inherit;
+  display: grid;
   text-align: center;
   justify-content: center;
 }
 
 @media screen and (max-width: 900px) {
-  .main-container {
+  .main-edituser {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     justify-content: center;
     align-items: center;
     grid-row-gap: 1rem;
     grid-column-gap: 1rem;
   }
-  .card-style-user {
+  .card-style-edituser {
     min-width: 300px;
   }
 }

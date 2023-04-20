@@ -24,3 +24,12 @@
     text-decoration: none;
     color: inherit;
 }
+
+@mixin userLinks {
+    @include margin;
+    @include smallTypografy;
+    @include links;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+}
