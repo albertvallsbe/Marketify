@@ -42,3 +42,18 @@
         @include userLinks;
     }
 }
+
+@media screen and (max-width: 900px) {
+    .main-cart {
+        grid-template-columns: repeat(auto-fit, minmax(calc(400px), 1fr));
+
+        justify-content: center;
+        align-items: center;
+        grid-row-gap: 1rem;
+        grid-column-gap: 1rem;
+    }
+
+    .card-style-cart {
+        min-width: 350px;
+    }
+}
