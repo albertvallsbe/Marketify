@@ -1,48 +1,49 @@
 .main-container {
-  @include twoColumnsMode;
+    @include twoColumnsMode;
 }
 
 .products-cart {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(calc(180px * 1.125), 1fr));
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
-  .small-button {
-    @include smallButton;
-  }
+    display: grid;
+    width: 60vw;
+    grid-template-columns: repeat(auto-fit, minmax(calc(160px * 1.125), 1fr));
+    grid-row-gap: 20px;
+    grid-column-gap: 0px;
+    .small-button {
+        @include smallButton;
+    }
 }
 
 .card-style-cart {
-  @include cardStyle;
-  @include cardPosition;
-  width: 50vh;
-
-  margin-top: 0;
-  padding-bottom: 2rem;
-  min-width: 250px;
-  height: min-content;
-  text-align: center;
-  justify-content: center;
-
-  &_title {
-    @include cardStyleTitle;
-  }
-
-  .general-button {
-    @include mediumButton;
-
-    &_buy {
-      background-color: $succes-dark;
-      border-color: $succes-dark;
-    }
-  }
-
-  .users-link {
-    display: grid;
-    @include margin;
-    @include smallTypografy;
-    @include links;
+    @include cardStyle;
+    @include cardPosition;
+    width: 30vw;
+    margin-top: 0;
+    margin-left: 1rem;
+    padding-bottom: 2rem;
+    min-width: 250px;
+    height: min-content;
     text-align: center;
     justify-content: center;
-  }
+
+    &_title {
+        @include cardStyleTitle;
+    }
+
+    .general-button {
+        @include mediumButton;
+
+        &_buy {
+            background-color: $succes-dark;
+            border-color: $succes-dark;
+        }
+    }
+
+    .users-link {
+        display: grid;
+        @include margin;
+        @include smallTypografy;
+        @include links;
+        text-align: center;
+        justify-content: center;
+    }
 }

@@ -1,19 +1,31 @@
 .main-container {
-    @include twoColumnsMode;
+    @include threeColumnsMode;
 }
 
-.card-style-medium {
+.card-style-user {
     @include cardStyle;
     @include cardPosition;
+    @include formInput;
+
+    width: 30vw;
+    margin-top: 0;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-bottom: 2rem;
     min-width: 250px;
+    min-height: 420px;
+    height: min-content;
+    text-align: center;
+    justify-content: center;
 
     &_title {
         @include cardStyleTitle;
-        max-height: fit-content;
     }
 
     .form {
-        @include formInput;
+        display: grid;
+        grid-template-columns: 1fr;
+        // grid-auto-columns: 200px;
 
         &_label {
             @include marginPadding;
@@ -33,36 +45,19 @@
             border-bottom: 2px solid $neutral_origin;
             max-height: 2.5rem;
         }
+    }
 
-        .general-button {
-            @include mediumButton;
-        }
+    .general-button {
+        @include mediumButton;
+        @include marginTopBottom;
     }
 
     .users-link {
         display: grid;
-        text-align: center;
-        justify-content: center;
         @include margin;
         @include smallTypografy;
         @include links;
-    }
-}
-
-.intro-style {
-    @include cardPosition;
-    width: 60vh;
-    align-items: center;
-    justify-content: center;
-
-    &_logo {
-        @include logoIntro;
-    }
-
-    &_title,
-    &_text {
-        @include margin;
-        display: grid;
         text-align: center;
+        justify-content: center;
     }
 }

@@ -1,6 +1,99 @@
+=== Setmana 8
+
+==== David
+Afegir un seeder de la tenda per l'usuari "venedor". Solucionar error del controlador de la tenda.
+Temps estimat => 2h
+Temps real => 2h
+Login ara funciona amb email i user en el mateix camp.
+Temps estimat => 1h
+Temps real => 1h
+Canviar formularis: labels, placeholders, names...
+Temps estimat => 1h
+Temps real => 1h
+Validar els inputs dels formularis de registre i d'editar usuari. Missatges flash descartats per missatges d'error.
+Temps estimat => 2h
+Temps real => 3h
+
+==== Oscar
+
+Crear dos usuaris de prova(venedor,comprador) =
+Temps estimat => 1h
+Temps real => 25min
+Fer skectchings de totes les pantalles 
+Temps estimat => 1h
+Temps real => 1h
+Fer Wireframes de totes les pantalles 
+Temps estimat => 1h
+Temps real => 1h
+Fer mockups de totes les pantalles 
+Temps estimat => 2h
+Temps real => 1:30h
+
+==== Albert
+
+=== Setmana 7
+
+==== David
+Terminar amb la creació de la tenda (rol de venedor, modificar bdd...) 
+Temps estimat => 2h
+Temps real => 3h
+Menú amb possibilitat de crear tenda (si l'usuari ja és venedor, es canvia aquest botó per accedir a la seva tenda)
+Temps estimat => 2h
+Temps real => 3h
+Separar de manera correcta les pàgines de "edit" i "show". Show funciona amb ids a l'url /user/1 i edit amb /user/edit (ara agafa l'ID amb l'usuari autenticat). També per la tenda. Temps estimat => 2h
+Temps real => 4h
+Carret es guarda a la base de dades, però no té un ús real.
+Temps estimat => 2h
+Temps real => 2h
+
+==== Oscar
+Fer funció que permeti cambiar el nom d'usuari a la pagina de perfil d'usuari
+Temps estimat => 2h
+Temps real => 1h
+Fer la funció que permeti canviar la contrasenya al perfil d'usuari
+Temps estimat => 1h
+Temps real => 1h
+Solucionar el problema del canvi de contrasenya
+Temps estimat => 2h
+Temps real => 2h
+Solucionar el problema del login i el register
+Temps estimat => 2h
+Temps real => 1h
+Solucionar el problema de l'enviament d'emails
+Temps estimat => 2h
+Temps real => 1:30h
+==== Albert
+Documentació i planificació 
+Temps estimat => 1h
+Temps Real => 
+
+Fer test de producte
+Temps estimat => 10h
+Temps Real => 10,5h -> continua oberta
+
+Afegir estil a la vista d'edició de la configuració d'usuari
+Temps estimat => 2h
+Temps Real => 1,75h 
+
 === Setmana 6
 
 ==== David
+User show page, user edit page:
+Show user page. 
+Temps estimat => 1h
+Temps real => 1h
+Edit user page.
+Temps estimat => 1h
+Temps real => 2h
+Afegir canvi de contrasenya.
+Temps estimat => 2h
+Temps real => 3h
+Afegir avatars (canviar i esborrar)
+Temps estimat => 5h
+Temps real => 5h
+Crear tenda (només formulari i vista)
+Temps estimat => 2h
+Temps real => 3h
 
 ==== Oscar
 
@@ -9,9 +102,32 @@ Resoldre hotfix en css
 Temps estimat => 1h
 Temps Real => 0,5h
 
+Resoldre hotfix a les migracions de shop
+Temps estimat => 1h
+Temps Real => 0,5h
+
+Fer test relació Category-Product
+Temps estimat => 2h
+Temps Real => 2,5h
+
+Fer test de producte
+Temps estimat => 10h
+Temps Real => 2h -> continua següent setmana
+
 === Setmana 5
 
 ==== David
+Caràcters especials al factory i seeders
+Carret funcionant a Javascript (amb localstorage):
+Petició post finalment descartada.
+Botons d'afegir i treure al carret al home i a detall de producte.
+Utilitzar mòduls de javascript.
+Comprovar si el producte s'ha afegit al carret abans de carregar el botó.
+Contador de productes a la icona del carret (en el menú).
+Icona del carret dirigeix amb la stringQuery des de totes les pàgines.
+Mostra correctament els productes a la pàgina del carret i la suma total dels preus.
+Temps estimat => 6h
+Temps real => 16h
 
 ==== Oscar
 

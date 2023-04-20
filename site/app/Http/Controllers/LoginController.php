@@ -26,16 +26,19 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'name' => 'required|string',
-            'password' => 'required|string',
+            'login' => 'required|string',
+            'current-password' => 'required|string',
         ]);
 
-        $credentials = $request->only('email','name', 'password');
+        $loginType = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+        
+        $credentials = [
+            $loginType => $request->input('login'),
+            'password' => $request->input('current-password')
+        ];
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            Log::channel('desarrollo')->info('Usuario logueado');
             return redirect()->intended(route('product.index'));
         } else {
             session()->flash('status', 'Incorrect username or password!');

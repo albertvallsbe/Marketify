@@ -47,7 +47,16 @@ function addToClientCart() {
       linkPlaceholder.href = "/cart?id=" + queryString;
     }
   }
-  addToServerCart();
+  fetch('/auth')
+    .then(response => response.json())
+    .then(data => {
+      if (data.authenticated) {
+        addToServerCart();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 export { getCountCart };
 export { addToClientCart };

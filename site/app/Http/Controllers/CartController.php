@@ -30,13 +30,21 @@ class CartController extends Controller
         return view('error', ['message' => $e->getMessage()]);
     }
 }
-
-    public function add(Request $request) {
-        $productsArray = $request->input('cart');
-        $userId = auth()->id();
-        if($userId){
-            Cart::updateCartDB($productsArray);
-        }
+public function add(Request $request) {
+    $productsArray = $request->input('cart');
+    $userId = auth()->id();
+    if($userId){
+        Cart::updateCartDB($productsArray);
     }
+}
 
+// public function getCart(Request $request) {
+//     $userId = auth()->id();
+//     if($userId){
+//         $cart = Cart::updateCartClient();
+//         return response()->json(['cart' => $cart], 200);
+//     } else {
+//         return response()->json(['error' => 'User not found'], 401);
+//     }
+// }
 }

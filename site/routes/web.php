@@ -28,7 +28,7 @@ Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('prod
 // Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
@@ -50,12 +50,17 @@ Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+Route::post('/getcart', [CartController::class, 'getCart'])->name('cart.get');
 
 Route::get('/shop/edit', [ShopController::class, 'edit'])->name('shop.edit');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
 
+Route::get('/auth', function () {
+    $authenticated = Auth::check();
+    return response()->json(['authenticated' => $authenticated]);
+});
 
 Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {

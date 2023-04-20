@@ -48,13 +48,15 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->user()->product()->create($request->all());
+        // $id=auth()->user->id; Quan treballem amb usuaris, per recuperar id de l'usuari logat
+        Product::create($request->all());
 
         return redirect()->route('products.index');
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
+        $product=Product::findOrFail($request->id);
         $product->update($request->all());
 
         return redirect()->route('products.edit', $product);
