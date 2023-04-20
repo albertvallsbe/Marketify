@@ -24,3 +24,8 @@
     text-decoration: none;
     color: inherit;
 }
+
+@mixin line {
+    border-bottom: 3px solid $neutral_darker ;
+    
+}
