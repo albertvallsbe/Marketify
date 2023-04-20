@@ -39,15 +39,18 @@ class ShopController extends Controller
     
     public function create(Request $request) {
         $request->validate([
-            'name' => 'required|string',
+            'store_name' => 'required|string',
+            'username'=>'required|string',
             'nif' => 'required|string',
         ]);
         $id = Auth::user()->id;
-        $name = $request->input('name');
+        $store_name = $request->input('store_name');
+        $username = $request->input('username');
         $nif = $request->input('nif');
 
         Shop::create([
-            'name' => $name,
+            'shopname' => $store_name,
+            'username'=>$username,
             'nif' => $nif,
             'user_id' => $id,
         ]);

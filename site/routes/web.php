@@ -8,6 +8,7 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -61,6 +62,7 @@ Route::get('/auth', function () {
     return response()->json(['authenticated' => $authenticated]);
 });
 
+Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
 //     return view('dashboard');
 // })->name('dashboard');
