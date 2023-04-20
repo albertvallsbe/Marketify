@@ -16,7 +16,8 @@ class Product extends Model
         'description',
         'image',
         'tag',
-        'price'
+        'price',
+        'shop_id'
     ];
 
     public function category()
@@ -49,10 +50,25 @@ class Product extends Model
         ->paginate(18);
     }
 
+    public static function productsShop($shopId, $order = 'name_asc'){
+        $order_explode = explode("_", $order);
+        $orderBy = $order_explode[0];
+        $orderDirection = $order_explode[1];
+
+        return self::query()
+        ->where('products.shop_id', $shopId)
+        ->orderBy($orderBy, $orderDirection)
+        ->paginate(18);
+    }
+
     public static function showByIDs($cart){
         return self::query()
         ->whereIn('id',$cart)
         ->get();
     }
 
+    // public function shop()
+    // {
+    //     return $this->belongsToOne(Shop::class);
+    // }
 }

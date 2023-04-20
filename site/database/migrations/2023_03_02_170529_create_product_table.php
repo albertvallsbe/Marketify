@@ -22,6 +22,8 @@ return new class extends Migration
             $table->text('tag');
             $table->text('image');
             $table->decimal('price', 6, 2);
+            $table->unsignedBigInteger('shop_id');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
 
         });
     }
@@ -33,6 +35,9 @@ return new class extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('products');
+      Schema::table('products', function (Blueprint $table) {
+        $table->dropForeign(['shop_id']);
+      });
+      Schema::dropIfExists('products');
     }
 };

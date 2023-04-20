@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Shop;
 use App\Models\User;
 use App\Classes\Order;
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ShopController extends Controller
@@ -23,10 +24,13 @@ class ShopController extends Controller
     public function show($id){
         try {
             $shop = Shop::findOrFail($id);
+            
+            $products = Product::productsShop($shop->id);
             $categories = Category::all();
             return view('shop.show', ['shop' => $shop,
             'categories' => $categories,
-            'options_order' => Order::$order_array]);
+            'options_order' => Order::$order_array,
+            'products' => $products]);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('shop.404');
         }

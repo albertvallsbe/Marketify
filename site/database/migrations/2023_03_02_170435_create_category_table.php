@@ -18,8 +18,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->text('name')->unique();
-            // $table->unsignedBigInteger('id_product');
-            // $table->foreign('id_product')->references('id')->on('products');
         });
     }
 
