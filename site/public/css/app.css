@@ -336,6 +336,7 @@ footer .footer__logo {
 .main-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
 }
 
 .products-cart {
@@ -429,6 +430,7 @@ footer .footer__logo {
 .main-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
 }
 
 .card-style-medium {
@@ -542,6 +544,7 @@ footer .footer__logo {
 .main-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
 }
 
 .card-style-medium {
@@ -654,6 +657,7 @@ footer .footer__logo {
 .main-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
 }
 
 .card-style-medium {
@@ -782,9 +786,10 @@ footer .footer__logo {
 .main-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
 }
 
-.card-style-medium {
+.card-style-new-password {
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -798,9 +803,11 @@ footer .footer__logo {
   margin-top: 20%;
   height: 65vh;
   width: 50vh;
-  min-width: 250px;
+  width: 50vw;
+  min-width: 550px;
+  margin-left: 4rem;
 }
-.card-style-medium_title {
+.card-style-new-password_title {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -808,8 +815,9 @@ footer .footer__logo {
   margin-right: 5%;
   text-align: center;
   max-height: 3rem;
+  padding-bottom: 1rem;
 }
-.card-style-medium_content {
+.card-style-new-password_content {
   display: grid;
   text-align: center;
   justify-content: center;
@@ -822,13 +830,13 @@ footer .footer__logo {
   text-decoration: none;
   color: inherit;
 }
-.card-style-medium .form {
+.card-style-new-password .form {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
   padding-bottom: 2rem;
 }
-.card-style-medium .form_label {
+.card-style-new-password .form_label {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -838,7 +846,7 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
-.card-style-medium .form_input {
+.card-style-new-password .form_input {
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
@@ -849,24 +857,24 @@ footer .footer__logo {
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
 }
-.card-style-medium .form .general-button {
+.card-style-new-password .form .general-button {
   border-radius: 12px;
   color: #1f1f1f;
   background-color: #ff5208;
   border: 3px #ff5208 solid;
+  cursor: pointer;
   font-weight: bold;
   font-size: medium;
   margin-left: 5%;
   margin-right: 5%;
   padding: 2%;
   max-height: 2.5rem;
-  background-color: aqua;
 }
-.card-style-medium .form .general-button:hover {
+.card-style-new-password .form .general-button:hover {
   background-color: #ff9680;
   border: 3px #ff9680 solid;
 }
-.card-style-medium .users-link {
+.card-style-new-password .users-link {
   display: grid;
   text-align: center;
   justify-content: center;
@@ -907,6 +915,18 @@ footer .footer__logo {
   text-align: center;
 }
 
+@media screen and (max-width: 1100px) {
+  .main-container {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+  }
+  .card-style-new-password {
+    min-width: 350px;
+  }
+}
 .main-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
