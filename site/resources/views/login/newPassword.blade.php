@@ -22,12 +22,12 @@
                 <button class="general-button btn-password">UPDATE PASSWORD</button>
             </form>
         </section>
-        <section class="login-text intro-style">
+        <section class="login-text intro-style-newpassword">
             <a href="{{ route('product.index') }}">
-            <img class="intro-style_logo" src="{{ asset('images/marketify_logo.png') }}">
+            <img class="intro-style-newpassword_logo" src="{{ asset('images/marketify_logo.png') }}">
             </a>
-            <h1 class="intro-style_title">LOG IN TO ENJOY OUR APP!</h1>
-            <p class="intro-style_text">This is an application that allows you to buy products and sell them at the same
+            <h1 class="intro-style-newpassword_title">LOG IN TO ENJOY OUR APP!</h1>
+            <p class="intro-style-newpassword_text">This is an application that allows you to buy products and sell them at the same
                 time. In this way you can be a buyer and a seller at the same time.<br><br>By: Albert Valls, David Hernández
                 & Oscar Ramírez.</p>
         </section>

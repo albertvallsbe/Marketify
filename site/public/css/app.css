@@ -427,6 +427,18 @@ footer .footer__logo {
   justify-content: center;
 }
 
+@media screen and (max-width: 900px) {
+  .main-cart {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+  }
+  .card-style-cart {
+    min-width: 350px;
+  }
+}
 .main-register {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -541,6 +553,18 @@ footer .footer__logo {
   text-align: center;
 }
 
+@media screen and (max-width: 900px) {
+  .main-register {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+  }
+  .card-style-register {
+    min-width: 350px;
+  }
+}
 .main-login {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -654,6 +678,18 @@ footer .footer__logo {
   text-align: center;
 }
 
+@media screen and (max-width: 900px) {
+  .main-login {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+  }
+  .card-style-login {
+    min-width: 350px;
+  }
+}
 .main-password {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -783,6 +819,18 @@ footer .footer__logo {
   text-align: center;
 }
 
+@media screen and (max-width: 900px) {
+  .main-password {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+  }
+  .card-style-newpassword {
+    min-width: 350px;
+  }
+}
 .landing-container {
   display: grid;
   row-gap: 10px;
@@ -889,7 +937,6 @@ footer .footer__logo {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  column-gap: 20%;
 }
 
 .card-style-newpassword {
@@ -907,7 +954,6 @@ footer .footer__logo {
   height: 65vh;
   width: 50vh;
   min-width: 250px;
-  margin-left: 4rem;
 }
 .card-style-newpassword_title {
   display: grid;
