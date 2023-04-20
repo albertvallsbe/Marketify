@@ -10,6 +10,7 @@ use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 
@@ -38,9 +39,9 @@ Route::post('/register', [RegisterController::class, 'register'])->name('auth.re
 Route::get('/login/password', [LoginController::class, 'password'])->name('login.password');
 Route::post('/login/password', [LoginController::class, 'remember'])->name('login.remember');
 Route::get('/login/password/email', [LoginController::class, 'email'])->name('login.email');
+Route::post('/login/password/email', [EmailController::class, 'return'])->name('email.return');
 Route::get('/login/password/remember', [LoginController::class, 'rememberView'])->name('login.rememberView');
 Route::post('/login/password/remember', [LoginController::class, 'rememberpassw'])->name('login.rememberpassw');
-Route::post('/login/password/email', [EmailController::class, 'return'])->name('email.return');
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
 
@@ -63,6 +64,8 @@ Route::get('/auth', function () {
     $authenticated = Auth::check();
     return response()->json(['authenticated' => $authenticated]);
 });
+
+Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 
 Route::get('/product-not-found', [ErrorController::class, 'product404'])->name('product.404');
 Route::get('/shop-not-found', [ErrorController::class, 'shop404'])->name('shop.404');

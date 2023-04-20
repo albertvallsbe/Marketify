@@ -40,7 +40,7 @@ class ConfirmMail extends Mailable
             view: 'emails.confirm',
         );
     }
-
+    
     /**
      * Get the attachments for the message.
      *

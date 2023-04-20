@@ -5,23 +5,23 @@
 @section('content')
     <section class="main-container">
         <section class="card-style-medium section-content">
-        <h1 class="card-style-medium_title password-title">Have you forgotten the password?</h1>
-        <p class="card-style-medium_content">Have you forgotten the password? Don't worry. Enter your email and we will send you an email to recover your password.
-            <br>If you want to return press
-            <a href={{route('login.index')}}>Login</a>
-        </p>
-        <form class="form" method='POST'action="{{ route('login.remember') }}">
-            @csrf
-            <label class="form_label" for="remember-password">Your email</label>
-            <input type="email" class="form_input input-mail-password" placeholder="example@gmail.com" name="remember-password">
-            <button class="general-button btn-password">SEND EMAIL</button>
-            @if ($errors->has('login-email'))
-            <span>{{ $errors->first('login-email') }}</span>
-            @endif
-            @if(session()->has('status'))
-            <p> {{ session()->get('status') }} </p>
-            @endif
-        </form>
+            <h1 class="card-style-medium_title password-title">Have you forgotten the password?</h1>
+            <p class="card-style-medium_content">Have you forgotten the password? Don't worry. Enter your email and we will send you an email to recover your password.
+                <br>If you want to return press
+                <a href={{route('login.index')}}>Login</a>
+            </p>
+            <form class="form" method='POST'action="{{ route('login.remember') }}">
+                @csrf
+                <label class="form_label" for="remember-password">Your email</label>
+                <input type="email" class="form_input input-mail-password" placeholder="example@gmail.com" name="remember-password">
+                <button class="general-button btn-password">SEND EMAIL</button>
+                @if ($errors->has('login-email'))
+                <span>{{ $errors->first('login-email') }}</span>
+                @endif
+                @if(session()->has('status'))
+                <p> {{ session()->get('status') }} </p>
+                @endif
+            </form>
         </section>
         <section class="login-text intro-style">
             <a href="{{ route('product.index') }}">
