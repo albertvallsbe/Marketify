@@ -13,9 +13,14 @@ Temps real => 1h
 Validar els inputs dels formularis de registre i d'editar usuari. Missatges flash descartats per missatges d'error.
 Temps estimat => 2h
 Temps real => 3h
+Carret de servidor completament funcional
+Temps estimat => 5h
+Temps real => 6h
+Redireccions 403 i errors 404
+Temps estimat => 2h
+Temps real => 2h
 
 ==== Oscar
-
 Crear dos usuaris de prova(venedor,comprador) 
 Temps estimat => 1h
 Temps real => 25min
