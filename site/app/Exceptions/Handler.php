@@ -45,4 +45,20 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+{
+    if ($this->isHttpException($exception)) {
+        if ($exception->getStatusCode() == 404) {
+            if ($request->is('product/*')) {
+                return redirect()->route('product.404');
+            } elseif ($request->is('shop/*')) {
+                return redirect()->route('shop.404');
+            } elseif ($request->is('user/*')) {
+                return redirect()->route('user.404');
+            }
+        }
+    }
+    return parent::render($request, $exception);
+}
 }

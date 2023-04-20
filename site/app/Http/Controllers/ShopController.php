@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ShopController extends Controller
 {
@@ -20,21 +21,35 @@ class ShopController extends Controller
     }
     
     public function show($id){
-        $shop = Shop::findOrFail($id);
-        $categories = Category::all();
-        return view('shop.show', ['shop' => $shop,
-        'categories' => $categories,
-        'options_order' => Order::$order_array]);
+        try {
+            $shop = Shop::findOrFail($id);
+            $categories = Category::all();
+            return view('shop.show', ['shop' => $shop,
+            'categories' => $categories,
+            'options_order' => Order::$order_array]);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('shop.404');
+        }
     }
     
     public function edit(){
-        $id = Auth::user()->id;
-        $shopID = Shop::findShopUserID($id);
-        $shop = Shop::findOrFail($shopID);
-        $categories = Category::all();
-        return view('shop.edit', ['shop' => $shop,
-        'categories' => $categories,
-        'options_order' => Order::$order_array]);
+        if(auth()->user()){
+            $id = Auth::user()->id;
+            $shopID = Shop::findShopUserID($id);
+            try {
+                $shop = Shop::findOrFail($shopID);
+                $categories = Category::all();
+                return view('shop.edit', [
+                    'shop' => $shop,
+                    'categories' => $categories,
+                    'options_order' => Order::$order_array
+                ]);
+            } catch (ModelNotFoundException $e) {
+                return redirect()->route('shop.index');
+            }
+        }else{
+            return redirect()->route('login.index');
+        }
     }
     
     public function create(Request $request) {
