@@ -12,25 +12,34 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller
 {
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        $categories = Category::all();
-        $id = Auth::id();
-
-        return view('user.show', [
-            'user' => $user,
-            'categories' => $categories,
-            'options_order' => Order::$order_array
-        ]);
+        try {
+            $user = User::findOrFail($id);
+            $categories = Category::all();
+            $id = Auth::id();
+    
+            return view('user.show', [
+                'user' => $user,
+                'categories' => $categories,
+                'options_order' => Order::$order_array
+            ]);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('user.404');
+        }
     }
     public function edit()
     {
-        $id = auth()->user()->id;
-        $user = User::findOrFail($id);
+        if(auth()->user()){
+            $id = auth()->user()->id;
+            $user = User::findOrFail($id);
+        }else{
+            return redirect()->route('login.index');
+        }
         $categories = Category::all();
         return view('user.edit', [
             'user' => $user,

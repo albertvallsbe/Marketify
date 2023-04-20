@@ -10,6 +10,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\View\Components\Header;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductController extends Controller
 {
@@ -45,11 +46,15 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::findOrFail($id);
-        $categories = Category::all();
-        return view('product.show', ['product' => $product,
-        'categories' => $categories,
-        'options_order' => Order::$order_array]);
+        try {
+            $product = Product::findOrFail($id);
+            $categories = Category::all();
+            return view('product.show', ['product' => $product,
+            'categories' => $categories,
+            'options_order' => Order::$order_array]);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('product.404');
+        }
     }
 
     public function store(Request $request)
