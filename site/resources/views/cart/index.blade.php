@@ -4,17 +4,17 @@
 
 @section('content')
     <h1 class="main_title">Cart</h1>
-    <section class="main-container">
+    <section class="main-cart">
         <section class="products-cart">
             @if (count($products) != 0)
                 @foreach ($products as $key => $product)
-                <div class="product card-style-mini" id={{ $product->id }}>
-                    <a class="card-style-mini_a" href="{{ route('product.show', $product->id) }}">
+                <div class="product card-style-cart" id={{ $product->id }}>
+                    <a class="card-style-cart_a" href="{{ route('product.show', $product->id) }}">
                     <div class="product__div_img">
                         <img class="product__img" src="{{ $product->image }}" />
                     </div>
-                    <h4 class="card-style-mini_title product__name">{{ $product->name }}</h4>
-                    <h3 class="card-style-mini_title product__price">{{ $product->price }} €</h3>
+                    <h4 class="card-style_title product__name">{{ $product->name }}</h4>
+                    <h3 class="card-style_title product__price">{{ $product->price }} €</h3>
                     </a>
                     <button class="btn-remove small-button" data-product-id="{{ $product->id }}">X</button>
                 </div>
@@ -35,6 +35,6 @@
                 <button class="btn-buy general-button general-button_buy">BUY ALL</button>
             </div>
         </section>
-  </section>
+    </section>
     <script type="module" src="{{ asset('js/pages/cart_index.js') }}"></script>
 @endsection

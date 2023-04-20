@@ -1,8 +1,8 @@
-.main-container {
+.main-edituser {
     @include threeColumnsMode;
 }
 
-.card-style-user {
+.card-style-edituser {
     @include cardStyle;
     @include cardPosition;
 
@@ -53,17 +53,12 @@
     }
 
     .users-link {
-        display: grid;
-        @include margin;
-        @include smallTypografy;
-        @include links;
-        text-align: center;
-        justify-content: center;
+        @include userLinks;
     }
 }
 
 @media screen and (max-width: 900px) {
-    .main-container {
+    .main-edituser {
         grid-template-columns: repeat(auto-fit, minmax(calc(320px), 1fr));
 
         justify-content: center;
@@ -71,7 +66,7 @@
         grid-row-gap: 1rem;
         grid-column-gap: 1rem;
     }
-    .card-style-user {
+    .card-style-edituser {
         min-width: 300px;
     }
 }

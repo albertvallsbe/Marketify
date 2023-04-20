@@ -3,9 +3,9 @@
 @section('title', 'Log In')
 
 @section('content')
-    <section class="main-container">
-        <section class="card-style-medium">
-            <h1 class="card-style-medium_title login-title">Login</h1>
+    <section class="main-login">
+        <section class="card-style-login">
+            <h1 class="card-style-login_title login-title">Login</h1>
             <form class="form" method='POST'action="{{ route('auth.login') }}">
                 @csrf
                 <label class="form_label" for="login">Your email/username</label>
@@ -30,12 +30,12 @@
                 <a href="{{ route('login.password') }}">Remember it.</a>
             </p>
         </section>
-        <section class="login-text intro-style">
+        <section class="login-text intro-style-login">
             <a href="{{ route('product.index') }}">
-                <img class="intro-style_logo" src="{{ asset('images/marketify_logo.png') }}">
+                <img class="intro-style-login_logo" src="{{ asset('images/marketify_logo.png') }}">
             </a>
-            <h1 class="intro-style_title">LOG IN TO ENJOY OUR APP!</h1>
-            <p class="intro-style_text">Marketify is an application that allows you to buy products and sell them at the same
+            <h1 class="intro-style-login_title">LOG IN TO ENJOY OUR APP!</h1>
+            <p class="intro-style-login_text">Marketify is an application that allows you to buy products and sell them at the same
                 time. In this way you can be a buyer and a seller at once.<br><br>By: Albert Valls, David Hernández
                 & Oscar Ramírez.</p>
         </section>

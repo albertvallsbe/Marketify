@@ -14,3 +14,23 @@
     @include cardShadow;
     @include borderRadiusCard;
 }
+
+@mixin landingCards {
+    display: grid;
+    justify-content: end;
+    align-items: end;
+    background-size: 100%;
+    height: 50vh;
+    transition: transform .2s;
+}
+
+@mixin landingMainCard {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 100%), url(../images/prueba.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 94vh;
+}
