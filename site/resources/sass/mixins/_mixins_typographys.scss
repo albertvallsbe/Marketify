@@ -26,6 +26,14 @@
 }
 
 @mixin line {
-    border-bottom: 3px solid $neutral_darker ;
-    
+    border-bottom: 3px solid $neutral_darker;
+}
+
+@mixin userLinks {
+    @include margin;
+    @include smallTypografy;
+    @include links;
+    display: grid;
+    text-align: center;
+    justify-content: center;
 }
