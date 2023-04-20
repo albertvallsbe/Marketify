@@ -25,10 +25,13 @@ class Cart extends Model
         $existingCart->save();
     }   
 
-    public static function updateCartClient(){
-        $userId = auth()->id();
-        $actualCart = Cart::findOrFail($userId);
-        $arrayProducts = $actualCart->products;
-        return json_encode($arrayProducts);
+    public static function showCartByUserID($userId){
+    $cart = Cart::where('user_id', $userId)->first();
+    if (isset($cart->products)) {
+        $arrayProducts = $cart->products;
+        return json_decode($arrayProducts);
+    }else{
+        return "[]";
+    }
     }
 }

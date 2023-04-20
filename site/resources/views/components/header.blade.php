@@ -44,7 +44,7 @@
                         @elsecan('shopper')
                             <li><a href="{{ route('shop.index') }}">Create shop</a></li>
                         @endcan
-                        <li><a href="{{ route('user.logout') }}">Log Out</a></li>
+                        <li><a href="{{ route('user.logout') }}" class="logout">Log Out</a></li>
                     </ul>
                 </div>
             @else
