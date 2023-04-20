@@ -1,5 +1,5 @@
-import { getCountCart } from './app.js';
-import { addToCart } from './app.js';
+import { getCountCart } from './cartFunctions.js';
+import { addToCart } from './cartFunctions.js';
 
 //FUNCTIONS
 

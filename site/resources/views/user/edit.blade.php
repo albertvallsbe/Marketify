@@ -50,10 +50,9 @@
         <section class="card-style-edituser">
             <h3 class="card-style-edituser_title">Change your username :</h3>
                 <h5 class="card-style-edituser_title">Current username: <i>{{ $user->name }}</i></h5>
-            <form class="form">
+
                 <label class="form_label" for="name">Your new username:</label>
                 <input class="form_input" type="text" name="name" placeholder="{{ $user->name }}">
-            </form>
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
         </form>
     </section>

@@ -1,14 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +27,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 // Route::post('/product', [ProductController::class, 'store'])->name('products');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 // Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
@@ -60,6 +64,13 @@ Route::get('/auth', function () {
     $authenticated = Auth::check();
     return response()->json(['authenticated' => $authenticated]);
 });
+
+Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
+
+Route::get('/product-not-found', [ErrorController::class, 'product404'])->name('product.404');
+Route::get('/shop-not-found', [ErrorController::class, 'shop404'])->name('shop.404');
+Route::get('/user-not-found', [ErrorController::class, 'user404'])->name('user.404');
+Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
 //     return view('dashboard');

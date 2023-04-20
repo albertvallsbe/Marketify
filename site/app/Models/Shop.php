@@ -14,7 +14,8 @@ class Shop extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'shopname',
+        'username',
         'nif',
         'user_id',
     ];

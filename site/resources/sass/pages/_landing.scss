@@ -1,0 +1,86 @@
+.landing-container {
+    display: grid;
+    row-gap: 10px;
+    margin-inline: -5%;
+
+    a {
+        @include links;
+    }
+
+    .container-slogan {
+        @include landingMainCard;
+        transition: transform .2s;
+
+        .logo {
+            @include logoIntro;
+            bottom: 0px;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 0;
+        }
+
+        .title-slogan {
+            @include largeTypografy;
+            margin-left: 40px;
+            margin-top: -300px;
+        }
+    }
+
+    .container-slogan:hover {
+        transform: scale(0.98);
+    }
+
+    .container-products {
+        @include twoColumnsMode;
+        column-gap: 10px;
+        row-gap: 10px;
+        background-color: $neutral_lighter;
+
+        .container-product {
+            @include landingCards;
+            background-image: linear-gradient($shadow_color , $shadow_color), url(../images/woman.jpg);
+            background-repeat: no-repeat;
+
+            .title-product {
+                color: $neutral_lighter;
+                margin-right: 10px;
+                @include largeTypografy;
+
+            }
+        }
+
+        .container-product:hover {
+            transform: scale(0.98);
+        }
+
+        .container-product2 {
+            @include landingCards;
+            background-image: linear-gradient($shadow_color , $shadow_color), url(../images/men.webp);
+            background-repeat: no-repeat;
+
+            h2.title-product {
+                color: $neutral_lighter;
+                margin-right: 10px;
+                @include largeTypografy;
+
+            }
+        }
+
+        .container-product2:hover {
+            transform: scale(0.98);
+        }
+    }
+
+    .products-container {
+        display: grid;
+        width: 100%;
+        height: 50vh;
+
+        h2 {
+            margin-left: 10px;
+            @include largeTypografy;
+            @include line;
+            max-height: 80px;
+        }
+    }
+}

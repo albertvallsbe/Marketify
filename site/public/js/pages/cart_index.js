@@ -1,5 +1,5 @@
 import '../app.js';
-import { updateServerStorage } from '../app.js';
+import { updateServerStorage } from '../cartFunctions.js';
 
 
 const removeButtons = document.querySelectorAll('.btn-remove');

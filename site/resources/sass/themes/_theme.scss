@@ -3,13 +3,13 @@ body {
     background-color: $neutral_lighter;
 }
 
-div#content {
+.content {
     margin-inline: 5%;
     text-align: justify;
     padding-bottom: 60px;
 }
 
-img.icon {
+.icon {
     height: 30px;
     width: 30px;
     cursor: pointer;
