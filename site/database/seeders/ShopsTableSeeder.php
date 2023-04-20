@@ -14,15 +14,15 @@ class ShopsTableSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
-    {
+    public function run(): void {
 
         DB::table('shops')->delete();
         $seller = User::where('role', 'seller')->first();
         Shop::factory()->state([
             'user_id' => $seller->id,
         ])->create([
-            'name' => 'shop',
+            'shopname' => 'shop',
+            'username' => 'Seller',
             'nif' => '0001A',
         ]);
     }
