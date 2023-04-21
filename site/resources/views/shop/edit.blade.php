@@ -1,12 +1,31 @@
 @extends('layouts.main')
 
-@section('title', 'Shop')
+@section('title', 'Edit shop')
 
 @section('content')
-    <h1>Shop name: {{ $shop->shopname }}</h1>
-    <p><b>NAME USER: </b>{{ $shop->username }}</p>
-    <p><b>NIF/DNI: </b>{{ $shop->nif }}</p>
-    
-    <a href="{{ route('product.create') }}">Add product</a>
-    {{-- <script type ="module" src="{{ asset('js/pages/shop_show.js') }}"></script> --}}
+@if (session()->has('status'))
+    <p>{{ session()->get('status') }}</p>
+@endif
+@if($errors->any())
+  <div class="alert alert-error">
+    @foreach($errors->all() as $error)
+      <p>{{ $error }}</p>
+    @endforeach
+  </div>
+@endif
+    <h1 class="main_title">Edit Shop: '{{$shop->shopname}}'</h1>
+    <form class="form" method='POST' action="{{ route('shop.update') }}" enctype="multipart/form-data">
+      @csrf
+      @method('PUT')
+      <label for="storename">Store name</label><br>
+      <input type="text" name="storename" id="storename" value="{{$shop->shopname}}" placeholder="{{$shop->shopname}}" required><br>
+      <label for="username">Name of user</label><br>
+      <input type="text" name="username" id="username" value="{{$shop->username}}" placeholder="{{$shop->username}}" required><br>
+      <label for="nif">NIF or DNI</label><br>
+      <input type="text" name="nif" id="nif" value="{{$shop->nif}}" placeholder="{{$shop->nif}}" required><br>
+      <label class="form_label" for="image">Logo:</label><br>
+      <input type="file" name="image" id="image" accept="image/*"><br>
+      <button type="submit">Apply changes</button>
+  </form>
+    <script type="module" src="{{ asset('js/app.js') }}"></script>
 @endsection

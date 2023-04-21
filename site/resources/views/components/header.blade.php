@@ -40,7 +40,7 @@
                     </div>
                     <ul class="menu-list">
                         @can('seller')
-                            <li><a href="{{ route('shop.edit') }}">Your shop</a></li>
+                            <li><a href="{{ route('shop.admin') }}">Your shop</a></li>
                         @elsecan('shopper')
                             <li><a href="{{ route('shop.index') }}">Create shop</a></li>
                         @endcan

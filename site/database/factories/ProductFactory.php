@@ -27,7 +27,8 @@ class ProductFactory extends Factory
             'tag' => Category::factory()->create()->name,
             'image' =>  "images/products/".rand(1, 4).".jpg",
             'price' => $faker->numberBetween(10, 6000),
-            'shop_id' => $shop->id
+            'shop_id' => $shop->id,
+            'hidden' => false
         ];
     }
 }
