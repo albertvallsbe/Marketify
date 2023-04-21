@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Console\View\Components\Confirm;
+use App\Helpers\ValidationMessages;
 
 class RegisterController extends Controller
 {
@@ -30,22 +31,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'name' => 'required|string|alpha_num|max:255|min:3|unique:users',
             'password' => 'required|string|min:8|max:255',
-        ], [
-            'email.required' => 'The email field is required.',
-            'email.email' => 'The email must be a valid email address.',
-            'email.max' => 'The email may not be greater than :max characters.',
-            'email.unique' => 'The email has already been taken.',
-
-            'name.required' => 'The username field is required.',
-            'name.regex' => 'The username field format is invalid.',
-            'name.max' => 'The username may not be greater than :max characters.',
-            'name.min' => 'The username must be at least :min characters.',
-            'name.unique' => 'The username has already been taken.',
-
-            'password.required' => 'The password field is required.',
-            'password.max' => 'The password may not be greater than :max characters.',
-            'password.min' => 'The password must be at least :min characters.',
-        ]);
+        ], ValidationMessages::userValidationMessages());
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)

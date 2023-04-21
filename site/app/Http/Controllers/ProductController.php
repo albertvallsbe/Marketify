@@ -14,6 +14,7 @@ use App\View\Components\Header;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Helpers\ValidationMessages;
 
 class ProductController extends Controller
 {
@@ -79,22 +80,7 @@ class ProductController extends Controller
             'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'product_tag' => 'nullable|string',
             'product_category' => 'required|exists:categories,id',
-        ], [
-            'product_name.required' => 'The name field is required.',
-            'product_name.string' => 'The name field must be a string.',
-            'product_name.max' => 'The name field may not be greater than 255 characters.',
-            'product_description.required' => 'The description field is required.',
-            'product_description.string' => 'The description field must be a string.',
-            'product_price.required' => 'The price field is required.',
-            'product_price.numeric' => 'The price field must be a number.',
-            'product_price.min' => 'The price field must be at least 0.',
-            'product_image.image' => 'The image field must be an image.',
-            'product_image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, svg.',
-            'product_image.max' => 'The image may not be greater than 2048 kilobytes.',
-            'product_tag.string' => 'The tag field must be a string.',
-            'product_category.required' => 'The category field is required.',
-            'product_category.exists' => 'The selected category is invalid.',
-        ]);
+        ], ValidationMessages::productValidationMessages());
 
         if ($request->hasFile('product_image')) {
             $image = $request->file('product_image');
@@ -131,7 +117,7 @@ class ProductController extends Controller
         'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'product_tag' => 'nullable|string',
         'product_category' => 'required|exists:categories,id',
-    ]);
+    ], ValidationMessages::productValidationMessages());
     
     if ($request->hasFile('product_image')) {
         $image = $request->file('product_image');
