@@ -42,8 +42,10 @@ class ShopController extends Controller
             $shopID = Shop::findShopUserID($id);
             try {
                 $shop = Shop::findOrFail($shopID);
+                $products = Product::productsShop($shopID);
                 $categories = Category::all();
                 return view('shop.edit', [
+                    'products' => $products,
                     'shop' => $shop,
                     'categories' => $categories,
                     'options_order' => Order::$order_array

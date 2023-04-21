@@ -29,9 +29,11 @@ Route::get('/product/create', [ProductController::class, 'create'])->name('produ
 Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 // Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::put('/product/edit/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/product/hide/{id}', [ProductController::class, 'hide'])->name('product.hide');
+
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');

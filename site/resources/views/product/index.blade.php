@@ -7,6 +7,7 @@
   <div id="products" class="products">
     @if ($products->count())
       @foreach ($products as $key => $product)
+      @if (!$product->hidden)            
         <div class="card-style-mini product" id={{ $product->id }}>
           <a class="card-style-mini_a" href="{{ route('product.show', $product->id) }}">
             <div class="product__div_img">
@@ -18,6 +19,7 @@
           </a>
           <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
         </div>
+        @endif
       @endforeach
     @else
       @if (session('request_search') != null)

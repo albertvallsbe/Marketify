@@ -7,6 +7,7 @@ use App\Models\Shop;
 use App\Classes\Order;
 use App\Models\Product;
 
+use Illuminate\Support\Facades\Log;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\View\Components\Header;
@@ -122,11 +123,66 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function update(Request $request)
-    {
-        $product=Product::findOrFail($request->id);
-        $product->update($request->all());
-
-        return redirect()->route('product.edit', $product);
+    public function update(Request $request, $id)
+    {$validatedData = $request->validate([
+        'product_name' => 'required|string|max:255',
+        'product_description' => 'required|string',
+        'product_price' => 'required|numeric|min:0',
+        'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'product_tag' => 'nullable|string',
+        'product_category' => 'required|exists:categories,id',
+    ]);
+    
+    if ($request->hasFile('product_image')) {
+        $image = $request->file('product_image');
+        
+        $name = uniqid('product_') . '.' . $image->extension();
+        $path = 'images/products/';
+        $image->move($path, $name);
+        $imagePath = $path . $name;
     }
+    $product=Product::findOrFail($id);
+        
+        $product->update([
+            'name' => $validatedData['product_name'],
+            'description' => $validatedData['product_description'],
+            'price' => $validatedData['product_price'],
+            'tag' => $validatedData['product_tag'],
+            'product_category' => $validatedData['product_category'],
+            'image' => $imagePath ?? $product->image,
+        ]);
+        session()->flash('status', "Product '$product->name' edited successfully.");
+        return redirect()->route('shop.edit');
+    }
+
+    public function destroy($id) {
+    $product = Product::find($id);
+    $product->delete();
+    
+    session()->flash('status', "Product '$product->name' deleted successfully.");
+    return redirect()->route('shop.edit');
+}
+
+public function hide(Request $request, $id) {
+$product = Product::find($id);
+if ($product->hidden == true) {
+    $product->hidden = false;
+    session()->flash('status', "Product '$product->name' has been hidden successfully.");
+}else{
+    $product->hidden = true;
+    session()->flash('status', "Product '$product->name' has been set to visible successfully.");
+}
+$product->save();
+
+return redirect()->route('shop.edit');
+}
+
+public function edit($id)
+{
+    $categories = Category::all();
+    $product = Product::find($id);
+    return view('product.edit', ['categories' => $categories,
+    'options_order' => Order::$order_array,
+    'product' => $product]);
+}
 }
