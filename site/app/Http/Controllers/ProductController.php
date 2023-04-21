@@ -98,15 +98,15 @@ class ProductController extends Controller
             'name' => $validatedData['product_name'],
             'description' => $validatedData['product_description'],
             'price' => $validatedData['product_price'],
-            // 'category_id' => $validatedData['product_category'],
+            'category_id' => $validatedData['product_category'],
             'tag' => $validatedData['product_tag'],
             'shop_id' => $shopID,
-            'image' => $imagePath ?? null,
+            'image' => $imagePath ?? 'images/products/default-product.png',
         ]);
     
 
     
-        return redirect()->route('products.index');
+        return redirect()->route('shop.edit');
     }
 
     public function update(Request $request, $id)
@@ -153,10 +153,10 @@ public function hide(Request $request, $id) {
 $product = Product::find($id);
 if ($product->hidden == true) {
     $product->hidden = false;
-    session()->flash('status', "Product '$product->name' has been hidden successfully.");
+    session()->flash('status', "Product '$product->name' has been set to visible successfully.");
 }else{
     $product->hidden = true;
-    session()->flash('status', "Product '$product->name' has been set to visible successfully.");
+    session()->flash('status', "Product '$product->name' has been hidden successfully.");
 }
 $product->save();
 

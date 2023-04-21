@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->text('name');
             $table->text('description', 300);
-            $table->text('tag');
+            $table->text('tag')->nullable();
             $table->text('image');
             $table->decimal('price', 6, 2);
             $table->unsignedBigInteger('shop_id');

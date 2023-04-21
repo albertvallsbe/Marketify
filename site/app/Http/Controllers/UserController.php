@@ -65,9 +65,9 @@ class UserController extends Controller
                     ->withErrors($validator)
                     ->withInput();
             }
-            $actualpassword = $request->input('current-password');
-            $password = $request->input('new-password');
-            $repeatpassword = $request->input('repeat-password');
+            $actualpassword = $validator->validated()['current-password'];
+            $password = $validator->validated()['new-password'];
+            $repeatpassword = $validator->validated()['repeat-password'];
             $user->password = Hash::make($password);
             $user->save();
             session()->flash('status', 'Password changed succesfully.');
@@ -97,7 +97,6 @@ class UserController extends Controller
             }
             return redirect()->route('user.edit');
         } else if ($request->has('btn-username')) {
-            $username = $request->input('username');    
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|alpha_num|max:255|min:3|unique:users',
                 ], ValidationMessages::userValidationMessages());
@@ -106,7 +105,7 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-            $user->name = $request->input('name');
+            $user->name = $validator->validated()['name'];
             $user->save();
             session()->flash('status', 'Username changed succesfully.');
         }

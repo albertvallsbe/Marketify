@@ -38,13 +38,13 @@ class RegisterController extends Controller
                 ->withInput();
         }
             User::create([
-                'email' => $request->input('email'),
-                'name' => $request->input('name'),
-                'password' => Hash::make($request->input('password')), 
+                'email' => $validator->validated()['email'],
+                'name' => $validator->validated()['name'],
+                'password' => Hash::make($validator->validated()['password']), 
                 'api_token' => Str::random(60),
             ]);
 
-            $email = $request->input('email');
+            $email = $validator->validated()['email'];
             $confirmMail = new ConfirmMail;
             Mail::to($email)->send($confirmMail);
             session()->flash('status', 'Email send.');

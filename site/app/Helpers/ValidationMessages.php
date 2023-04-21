@@ -57,4 +57,19 @@ class ValidationMessages
             'repeat-password.same' => 'The new password and repeat password do not match.',
         ];
     }
+    
+    public static function shopValidationMessages()
+    {
+        return [
+            'storename.required' => 'The store name field is required.',
+            'storename.string' => 'The store name field must be a string.',
+            'username.required' => 'The username field is required.',
+            'username.string' => 'The username field must be a string.',
+            'nif.required' => 'The NIF field is required.',
+            'nif.string' => 'The NIF field must be a string.',
+            'image.image' => 'The logo must be an image.',
+            'image.mimes' => 'The logo must be a file of type: jpeg, png, jpg, gif.',
+            'image.max' => 'The logo may not be greater than :max kilobytes.',
+        ];
+    }
 }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Helpers\ValidationMessages;
 
 class ShopController extends Controller
 {
@@ -58,21 +59,41 @@ class ShopController extends Controller
         }
     }
     
-    public function create(Request $request) {
-        $request->validate([
-            'store_name' => 'required|string',
+    public function create(Request $request) { 
+        $validatedData = $request->validate([
+            'storename' => 'required|string',
             'username'=>'required|string',
             'nif' => 'required|string',
-        ]);
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], ValidationMessages::shopValidationMessages());
+
+
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = uniqid('logo_') . '.' . $image->extension();
+            $path = 'images/logo/';
+            $image->move($path, $name);
+            $logoPath = $path . $name;
+        }
+
+
+
+
+
+
+
+
         $id = Auth::user()->id;
-        $store_name = $request->input('store_name');
-        $username = $request->input('username');
-        $nif = $request->input('nif');
+        $store_name = $validatedData['storename'];
+        $username = $validatedData['username'];
+        $nif = $validatedData['nif'];
 
         Shop::create([
             'shopname' => $store_name,
             'username'=>$username,
             'nif' => $nif,
+            'logo' => $logoPath ?? null,
             'user_id' => $id,
         ]);
         Shop::makeUserShopper($id);

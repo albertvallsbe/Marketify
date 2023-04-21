@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>{{ $shop->shopname }}</h1>
+    <img src="../{{ $shop->logo }}" width=150 height=150/>
     <p>{{ $shop->username }}</p>
     <p><b>NIF/DNI: </b>{{ $shop->nif }}</p>
 
