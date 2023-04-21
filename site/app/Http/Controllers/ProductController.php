@@ -83,7 +83,7 @@ class ProductController extends Controller
         ], ValidationMessages::productValidationMessages());
 
         if ($request->hasFile('product_image')) {
-            $image = $request->file('product_image');
+            $image = $validatedData['product_image'];
             
             $name = uniqid('product_') . '.' . $image->extension();
             $path = 'images/products/';
@@ -106,7 +106,7 @@ class ProductController extends Controller
     
 
     
-        return redirect()->route('shop.edit');
+        return redirect()->route('shop.admin');
     }
 
     public function update(Request $request, $id)
@@ -120,7 +120,7 @@ class ProductController extends Controller
     ], ValidationMessages::productValidationMessages());
     
     if ($request->hasFile('product_image')) {
-        $image = $request->file('product_image');
+        $image = $validatedData['product_image'];
         
         $name = uniqid('product_') . '.' . $image->extension();
         $path = 'images/products/';
@@ -138,7 +138,7 @@ class ProductController extends Controller
             'image' => $imagePath ?? $product->image,
         ]);
         session()->flash('status', "Product '$product->name' edited successfully.");
-        return redirect()->route('shop.edit');
+        return redirect()->route('shop.admin');
     }
 
     public function destroy($id) {
@@ -146,7 +146,7 @@ class ProductController extends Controller
     $product->delete();
     
     session()->flash('status', "Product '$product->name' deleted successfully.");
-    return redirect()->route('shop.edit');
+    return redirect()->route('shop.admin');
 }
 
 public function hide(Request $request, $id) {
@@ -160,7 +160,7 @@ if ($product->hidden == true) {
 }
 $product->save();
 
-return redirect()->route('shop.edit');
+return redirect()->route('shop.admin');
 }
 
 public function edit($id)

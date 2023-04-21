@@ -82,7 +82,7 @@ class UserController extends Controller
                         ->withErrors($validator)
                         ->withInput();
                 }
-                $avatar = $request->file('avatar');
+                $avatar = $validator->validated()['avatar'];
                 $name = uniqid('profile_') . '.' . $avatar->extension();
                 $path = 'images/profiles/';
                 $avatar->move($path, $name);
