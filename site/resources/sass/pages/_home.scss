@@ -1,4 +1,4 @@
-.main {
+.main-home {
     &_title {
         @include largeTypografy;
     }
@@ -12,39 +12,18 @@
     margin-top: 20px;
 }
 
-.card-style-mini {
+.card-style-home {
     @include cardStyle;
     // @include cardPosition;
+    @include miniCardStyle;
 
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    max-width: 160px;
-
-    .product__div_img {
-        height: 125px;
-        width: 125px;
-        display: flex;
-        align-items: center;
-        margin-inline: auto;
-
-        .product__img {
-            height: 125px;
-            width: 125px;
-            object-fit: cover;
-        }
+    .product-img {
+        @include imageCardSize;
     }
 
     &_title {
         @include cardStyleTitle;
-        text-align: left;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        height: 3em;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        @include cardStyleTypography;
     }
 
     &_a {
