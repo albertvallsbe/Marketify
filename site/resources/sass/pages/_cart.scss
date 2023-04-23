@@ -15,6 +15,29 @@
 
 .card-style-cart {
     @include cardStyle;
+    @include miniCardStyle;
+
+    .product-img {
+        @include imageCardSize;
+    }
+
+    &_title {
+        @include cardStyleTitle;
+        @include cardStyleTypography;
+    }
+
+    &_a {
+        @include links;
+    }
+
+    .small-button {
+        @include smallButton;
+        min-height: 2.5rem;
+    }
+}
+
+.card-style-account {
+    @include cardStyle;
     @include cardPosition;
     width: 30vw;
     margin-top: 0;

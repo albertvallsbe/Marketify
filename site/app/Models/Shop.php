@@ -18,6 +18,7 @@ class Shop extends Model
         'username',
         'nif',
         'user_id',
+        'logo'
     ];
 
     public static function findShopUserID($user_id){

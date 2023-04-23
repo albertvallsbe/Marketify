@@ -37,3 +37,13 @@
     text-align: center;
     justify-content: center;
 }
+
+@mixin cardStyleTypography {
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    height: 3em;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
