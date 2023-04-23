@@ -3,10 +3,20 @@
 @section('title', 'Product')
 
 @section('content')
-  <img src="../../{{ $product->image }}" height="auto" width=250>
-    <h1>{{ $product->name }}</h1>
-    <p>Description: {{ $product->description }}</p>
-    <p>Price: {{ $product->price }}</p>
-    <button class="btn-cart" data-product-id="{{ $product->id }}">Add to cart</button>
+    <section class="main-productshow">
+        <section class="card-style-productshow"=>
+            <img class="card-style-productshow_image" src="../../{{ $product->image }}" height="auto" width="auto">
+        </section>
+        <section class="card-style-productshow-details">
+            <h1 class="card-style-productshow-details_title">{{ $product->name }}</h1>
+            <p class="card-style-productshow-details_content">Description: {{ $product->description }}</p>
+            <p class="card-style-productshow-details_content">Description: {{ $product->description }}</p>
+            <p class="card-style-productshow-details_content">Shop: {{ $product->shop_id }}</p>
+            <p class="card-style-productshow-details_content">Price: {{ $product->price }}</p>
+            <button class="small-button btn-cart" data-product-id="{{ $product->id }}">Add to cart</button>
+
+        </section>
+
+    </section>
     <script type ="module" src="{{ asset('js/pages/product_show.js') }}"></script>
 @endsection

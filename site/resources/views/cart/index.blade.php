@@ -10,11 +10,9 @@
                 @foreach ($products as $key => $product)
                 <div class="product card-style-cart" id={{ $product->id }}>
                     <a class="card-style-cart_a" href="{{ route('product.show', $product->id) }}">
-                    <div class="product__div_img">
-                        <img class="product__img" src="{{ $product->image }}" />
-                    </div>
-                    <h4 class="card-style_title product__name">{{ $product->name }}</h4>
-                    <h3 class="card-style_title product__price">{{ $product->price }} €</h3>
+                    <img class="product-img" src="{{ $product->image }}" />
+                    <h4 class="card-style-cart_title product__name">{{ $product->name }}</h4>
+                    <h3 class="card-style-cart_title product__price">{{ $product->price }} €</h3>
                     </a>
                     <button class="btn-remove small-button" data-product-id="{{ $product->id }}">X</button>
                 </div>
@@ -23,8 +21,8 @@
                 <h2>No results were found.</h2>
             @endif
         </section>
-        <section class="card-style-cart section summary">
-            <h1 class="card-style-cart_title title">Summary</h1>
+        <section class="card-style-account section summary">
+            <h1 class="card-style-acount_title title">Summary</h1>
             <div class="users-link products-cartt">
 
                 <div class="individual_prices"></div>
