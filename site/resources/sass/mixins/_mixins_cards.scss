@@ -56,3 +56,13 @@
     margin-inline: auto;
     object-fit: cover;
 }
+
+@mixin imageBigCardSize {
+    height: max-content;
+    width: 350px;
+    display: flex;
+    align-items: center;
+
+    margin-inline: auto;
+    object-fit: cover;
+}
