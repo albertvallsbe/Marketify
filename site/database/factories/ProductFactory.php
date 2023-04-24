@@ -22,7 +22,7 @@ class ProductFactory extends Factory
 
         return [
             // 'user_id' => User::factory(),
-            'name' => $faker->name(),
+            'name' => $faker->word(),
             'description' => $faker->sentence(),
             'tag' => Category::factory()->create()->name,
             'image' =>  "images/products/".rand(1, 4).".jpg",
