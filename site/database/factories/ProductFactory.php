@@ -24,7 +24,7 @@ class ProductFactory extends Factory
             // 'user_id' => User::factory(),
             'name' => $faker->word(),
             'description' => $faker->sentence(),
-            'tag' => Category::factory()->create()->name,
+            'tag' => $faker->name(),
             'image' =>  "images/products/".rand(1, 4).".jpg",
             'price' => $faker->numberBetween(10, 6000),
             'shop_id' => $shop->id,
