@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('shopname');
-            $table->string('username');
+            $table->string('shopname')->unique();
+            $table->string('username')->unique();
             $table->text('logo')->default('images/logos/default-logo.png');
             $table->string('nif')->unique();
             $table->unsignedinteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('url')->unique();
         });
     }
 

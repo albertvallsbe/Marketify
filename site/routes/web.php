@@ -60,7 +60,7 @@ Route::post('/getcart', [CartController::class, 'getCart'])->name('cart.get');
 Route::put('/shop/admin', [ShopController::class, 'update'])->name('shop.update');
 Route::get('/shop/admin', [ShopController::class, 'admin'])->name('shop.admin');
 Route::get('/shop/admin/edit', [ShopController::class, 'edit'])->name('shop.edit');
-Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::get('/shop/{url}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::post('/shop/create', [ShopController::class, 'create'])->name('shop.create');
 

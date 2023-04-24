@@ -21,9 +21,10 @@ class ShopsTableSeeder extends Seeder
         Shop::factory()->state([
             'user_id' => $seller->id,
         ])->create([
-            'shopname' => 'shop',
+            'shopname' => 'Awesome Shop!',
             'username' => 'Seller',
             'nif' => '0001A',
+            'url' => Shop::generateURL('Awesome Shop!'),
         ]);
     }
 }

@@ -21,9 +21,9 @@ class ShopController extends Controller {
         'options_order' => Order::$order_array]);
     }
     
-    public function show($id) {
+    public function show($url) {
         try {
-            $shop = Shop::findOrFail($id);
+            $shop = Shop::findShopByURL($url);
             $products = Product::productsShop($shop->id);
             $categories = Category::all();
 
@@ -130,6 +130,7 @@ class ShopController extends Controller {
             $shop->update([
                 'shopname' => $validatedData['storename'],
                 'username'=>$validatedData['username'],
+                'url' => Shop::generateURL($validatedData['storename']),
                 'nif' => $validatedData['nif'],
                 'logo' => $logoPath ?? $shop->logo,
             ]);

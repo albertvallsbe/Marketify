@@ -17,8 +17,9 @@
     <form class="form" method='POST' action="{{ route('shop.update') }}" enctype="multipart/form-data">
       @csrf
       @method('PUT')
-      <label for="storename">Store name</label><br>
+      <label for="storename">Store name</label><br><small><i>Changing your name will change your shop's URL!</i></small><br>
       <input type="text" name="storename" id="storename" value="{{$shop->shopname}}" placeholder="{{$shop->shopname}}" required><br>
+      
       <label for="username">Name of user</label><br>
       <input type="text" name="username" id="username" value="{{$shop->username}}" placeholder="{{$shop->username}}" required><br>
       <label for="nif">NIF or DNI</label><br>
