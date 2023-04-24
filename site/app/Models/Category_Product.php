@@ -11,9 +11,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category_Product extends Model
 {
     use HasFactory;
+    
+    protected $table = 'category_product';
+    
+    protected $fillable = [
+        'product_id',
+        'category_id'
+    ];
+
+    
+    public static function findCat_ProByProduct($product_id){
+        return Category_Product::where('product_id', $product_id)->orderBy('id', 'desc')->firstOrFail();
+    }
+
     public function product()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class,);
     }
     public function category()
     {
