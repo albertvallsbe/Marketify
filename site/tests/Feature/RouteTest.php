@@ -62,12 +62,6 @@ class RouteTest extends TestCase
         $response->assertStatus(200);
     }
     
-    // public function testRoutePasswordEmail(): void
-    // {
-    //     $response = $this->get(route('login.email'));
-    //     $response->assertStatus(200);
-    // }
-    
     public function testRoutePasswordRemember(): void
     {
         $response = $this->get(route('login.remember'));
