@@ -21,26 +21,32 @@ class Shop extends Model
         'logo'
     ];
 
+    public static function findShopName($shop_id){
+        return DB::table('shops')
+                ->where('id', $shop_id)
+                ->value('shopname');
+    }
+
     public static function findShopUserID($user_id){
         return DB::table('shops')
                 ->orderBy('id', 'DESC')
                 ->where('user_id', $user_id)
                 ->value('id');
     }
-    
+
     public static function makeUserShopper($user_id){
         $user = User::find($user_id);
         $user->role = "seller";
         $user->save();
     }
-    
-    
+
+
 
     public function user()
     {
         return $this->belongsToMany(User::class);
     }
-    
+
     // public function products()
     // {
     //     return $this->belongsToMany(Product::class);

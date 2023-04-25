@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Shop;
 use App\Classes\Order;
-use App\Models\Product;
 
 use Illuminate\Support\Facades\Log;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use App\View\Components\Header;
 use App\Http\Controllers\Controller;
@@ -22,7 +22,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $header = new Header($request);
-        
+
         $categories = Category::all();
         if($request->session()->has('request_categories') == ""){
             $products = Product::searchAll(session('request_search'), session('request_order'));
@@ -53,9 +53,17 @@ class ProductController extends Controller
         try {
             $product = Product::findOrFail($id);
             $categories = Category::all();
-            return view('product.show', ['product' => $product,
-            'categories' => $categories,
-            'options_order' => Order::$order_array]);
+            $shopName = Shop::findShopName($product->shop_id);
+            // $categoryName = Category::findCategoryName($product->category_id);
+            return view('product.show', [
+                'product' => $product,
+                'categories' => $categories,
+                'options_order' => Order::$order_array,
+                'shopname' => $shopName,
+                // 'categoryname' => $categoryName
+        ]);
+
+
         } catch (ModelNotFoundException $e) {
             return redirect()->route('product.404');
         }
@@ -63,7 +71,7 @@ class ProductController extends Controller
 
 
 
-    public function create() {        
+    public function create() {
         $categories = Category::all();
         return view('product.create', ['categories' => $categories,
         'options_order' => Order::$order_array]);
@@ -84,14 +92,14 @@ class ProductController extends Controller
 
         if ($request->hasFile('product_image')) {
             $image = $validatedData['product_image'];
-            
+
             $name = uniqid('product_') . '.' . $image->extension();
             $path = 'images/products/';
             $image->move($path, $name);
             $imagePath = $path . $name;
         }
 
-        
+
             $id = Auth::user()->id;
             $shopID = Shop::findShopUserID($id);
             $product = Product::create([
@@ -103,9 +111,9 @@ class ProductController extends Controller
             'shop_id' => $shopID,
             'image' => $imagePath ?? 'images/products/default-product.png',
         ]);
-    
 
-    
+
+
         return redirect()->route('shop.admin');
     }
 
@@ -118,17 +126,17 @@ class ProductController extends Controller
         'product_tag' => 'nullable|string',
         'product_category' => 'required|exists:categories,id',
     ], ValidationMessages::productValidationMessages());
-    
+
     if ($request->hasFile('product_image')) {
         $image = $validatedData['product_image'];
-        
+
         $name = uniqid('product_') . '.' . $image->extension();
         $path = 'images/products/';
         $image->move($path, $name);
         $imagePath = $path . $name;
     }
     $product=Product::findOrFail($id);
-        
+
         $product->update([
             'name' => $validatedData['product_name'],
             'description' => $validatedData['product_description'],
@@ -144,7 +152,7 @@ class ProductController extends Controller
     public function destroy($id) {
     $product = Product::find($id);
     $product->delete();
-    
+
     session()->flash('status', "Product '$product->name' deleted successfully.");
     return redirect()->route('shop.admin');
 }

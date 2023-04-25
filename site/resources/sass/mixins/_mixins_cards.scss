@@ -58,8 +58,9 @@
 }
 
 @mixin imageBigCardSize {
-    height: max-content;
-    width: 350px;
+    height: auto;
+    width: auto;
+    // object-fit: contain;
     display: flex;
     align-items: center;
 
