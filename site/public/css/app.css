@@ -644,8 +644,12 @@ footer .footer__logo {
   margin: 0 auto;
   margin-top: 5%;
   height: max-content;
-  width: 50vh;
-  min-width: 250px;
+  width: 75vh;
+}
+@media screen and (max-width: 768px) {
+  .card-style-shop {
+    width: auto;
+  }
 }
 .card-style-shop_title {
   display: grid;

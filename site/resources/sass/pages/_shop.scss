@@ -1,7 +1,6 @@
 .card-style-shop {
     @include cardStyle;
     @include cardPositionLessMargin;
-    min-width: 250px;
 
     &_title {
         @include cardStyleTitle;

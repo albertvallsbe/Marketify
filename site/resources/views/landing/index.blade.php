@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Landign Page')
+@section('title', 'Marketify')
 
 @section('content')
     <section class="landing-container">
