@@ -24,18 +24,23 @@ Temps real => 2h
 Crear dos usuaris de prova(venedor,comprador) 
 Temps estimat => 1h
 Temps real => 25min
+
 Fer skectchings de totes les pantalles 
 Temps estimat => 1h
 Temps real => 45min
+
 Fer Wireframes de totes les pantalles 
 Temps estimat => 1h
 Temps real => 1h
+
 Fer mockups de totes les pantalles 
 Temps estimat => 2h
 Temps real => 1:30h
+
 Implementar la pagina de la landing(maquetació)
 Temps estimat => 1h
 Temps real => 1h
+
 Fer la implementació de la landing 
 Temps estimat => 2h
 Temps real => 
@@ -61,15 +66,19 @@ Temps real => 2h
 Fer funció que permeti cambiar el nom d'usuari a la pagina de perfil d'usuari
 Temps estimat => 2h
 Temps real => 1h
+
 Fer la funció que permeti canviar la contrasenya al perfil d'usuari
 Temps estimat => 1h
 Temps real => 1h
+
 Solucionar el problema del canvi de contrasenya
 Temps estimat => 2h
 Temps real => 2h
+
 Solucionar el problema del login i el register
 Temps estimat => 2h
 Temps real => 1h
+
 Solucionar el problema de l'enviament d'emails
 Temps estimat => 2h
 Temps real => 1:30h

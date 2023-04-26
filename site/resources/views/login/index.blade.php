@@ -8,19 +8,17 @@
             <h1 class="card-style-login_title login-title">Login</h1>
             <form class="form" method='POST'action="{{ route('auth.login') }}">
                 @csrf
-                <label class="form_label" for="login">Your email/username</label>
-                <input type="text" class="form_input input-mail" placeholder="Email/Username" name="login">
-                @if ($errors->has('login-email'))
-                    <span>{{ $errors->first('login-email') }}</span>
-                @endif
-                <label class="form_label" for="current-password">Your password</label>
-                <input type="password" class="form_input input-password" placeholder="••••••••••••" name="current-password">
-                @if ($errors->has('login-password'))
-                    <span>{{ $errors->first('login-password') }}</span>
-                @endif
+                <label class="form_label" for="login">Your email/username:</label>
+                <input type="text" class="form_input input-mail @error('current-password') is-invalid @enderror" placeholder="Email/Username" name="login" value="{{ old('login') }}">
+                
+                <label class="form_label" for="current-password">Your password:</label>
+                <input type="password" class="form_input input-password @error('current-password') is-invalid @enderror" placeholder="••••••••••••" name="current-password">
                 @if (session()->has('status'))
-                    <p class="text-login"> {{ session()->get('status') }} </p>
+                    <label class="form_label_invalid"> {{ session()->get('status') }} </label>
                 @endif
+                @error('current-password')
+                <label class="form_label_invalid">{{ $message }}</label>
+                @enderror
                 <button class="btn-login general-button">LOG IN</button>
             </form>
             <p class="users-link text-login">Do you not have an account?

@@ -15,9 +15,14 @@ use App\Helpers\ValidationMessages;
 
 class RegisterController extends Controller
 {
-    public function index(){
-        return view('register.index');
+    public function index(){    
+        if(auth()->user()) {
+            return redirect()->route('user.edit');
+        }else{
+            return view('register.index');
+        }
     }
+    
     public function register(Request $request)
     {
         // $request->validate([

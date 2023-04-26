@@ -12,7 +12,7 @@
             </p>
             <form class="form" method='POST'action="{{ route('login.remember') }}">
                 @csrf
-                <label class="form_label" for="remember-password">Your email</label>
+                <label class="form_label" for="remember-password">Your email:</label>
                 <input type="email" class="form_input input-mail-password" placeholder="example@gmail.com" name="remember-password">
                 <button class="general-button btn-password">SEND EMAIL</button>
                 @if ($errors->has('login-email'))

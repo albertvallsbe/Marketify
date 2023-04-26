@@ -3,45 +3,68 @@
 @section('title', 'Add product')
 
 @section('content')
-@if (session()->has('status'))
-    <p>{{ session()->get('status') }}</p>
-@endif
-@if($errors->any())
-  <div class="alert alert-error">
-    @foreach($errors->all() as $error)
-      <p>{{ $error }}</p>
-    @endforeach
-  </div>
-@endif
-    <h1 class="main_title">Edit product: '{{$product->name}}'</h1>
-    <form class="form" method='POST' action="{{ route('product.update', ['id' => $product->id]) }}" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <label class="form_label" for="product_name">Name:
-        </label>
-        <input type="text" class="form_input" placeholder="{{$product->name}}" value="{{$product->name}}" name="product_name"><br>
-        <label class="form_label" for="product_description">Description:
-        </label>
-        <input type="text" class="form_input" placeholder="{{$product->description}}" value="{{$product->description}}" name="product_description"><br>
-        <label class="form_label" for="product_price">Price:
-        </label>
-        <input type="number" class="form_input" placeholder="{{$product->price}}" value="{{$product->price}}" name="product_price">€<br>
-        <label class="form_label" for="product_image">Image(s):
-        </label>
-        <input type="file" class="form_input" name="product_image" value="{{$product->image}}"><br>
-        <label class="form_label" for="product_tag">Tag(s):
-        </label>
-        <input type="text" class="form_input" placeholder="{{$product->tag}}" value="{{$product->tag}}" name="product_tag"><br>
-        <label class="form_label" for="product_category">Category:
-        </label>
-        <select name="product_category" id="form__select_category">
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}" {{ session('request_categories') == $category->id ? 'selected' : '' }}>
-                    {{ $category->name }}</option>
-            @endforeach
-        </select><br>
 
-        <button class="general-button btn-password" name="btn-password">Apply changes</button>
-    </form>
+<section class="main-shop">
+  <section class="card-style-shop">
+      <h1 class="card-style-shop_title shop-title">Modify your product</h1>
+      <form class="form" method='POST' action="{{ route('product.update', ['id' => $product->id]) }}" enctype="multipart/form-data">
+        @method('PUT')
+          @csrf
+
+          <label class="form_label" for="product_name">Name:</label>
+          <input type="text" class="form_input @error('product_name') is-invalid @enderror" placeholder="{{$product->name}}" value="{{$product->name}}"
+              name="product_name">
+              @error('product_name')
+                  <label class="form_label_invalid">{{ $message }}</label>
+              @enderror
+
+              <label class="form_label" for="product_description">Description:</label>
+              <textarea class="form_input @error('product_description') is-invalid @enderror" name="product_description"
+                  placeholder="{{$product->description}}">{{$product->description}}</textarea>
+              @error('product_description')
+                  <label class="form_label_invalid">{{ $message }}</label>
+              @enderror
+
+          <label class="form_label" for="product_price">Price:
+          </label>
+          <input type="number" class="form_input @error('product_price') is-invalid @enderror"
+              name="product_price" placeholder="{{$product->price}}" value="{{$product->price}}">
+              @error('product_price')
+                  <label class="form_label_invalid">{{ $message }}</label>
+              @enderror
+
+          <label class="form_label" for="product_image">Image(s):
+          </label>
+          <input type="file" class="form_input @error('product_image') is-invalid @enderror" name="product_image">
+          @error('product_image')
+              <label class="form_label_invalid">{{ $message }}</label>
+          @enderror
+
+
+          <label class="form_label" for="product_tag">Tag(s): <small><i>(Add tags that describe your product, separated by commas)</i></small></label>
+          <input type="text" class="form_input @error('product_tag') is-invalid @enderror"
+              name="product_tag" placeholder="{{$product->tag}}" value="{{$product->tag}}">
+              @error('product_tag')
+                  <label class="form_label_invalid">{{ $message }}</label>
+              @enderror
+
+          <label class="form_label" for="product_category">Category:
+          </label>
+          <select name="product_category" class="form_input @error('product_category') is-invalid @enderror"
+              id="form__select_category">
+              @foreach ($categories as $category)
+                  <option value="{{ $category->id }}"
+                      {{ session('request_categories') == $category->id ? 'selected' : '' }}>
+                      {{ $category->name }}</option>
+              @endforeach
+          </select>
+          @error('product_category')
+              <label class="form_label_invalid">{{ $message }}</label>
+          @enderror
+          <button class="general-button" type="submit">Create</button>
+      </form>
+      <p class="users-link">Modify your product!</p>
+  </section>
+</section>
     <script type="module" src="{{ asset('js/app.js') }}"></script>
 @endsection

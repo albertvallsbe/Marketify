@@ -69,8 +69,8 @@ class ShopController extends Controller {
 
     public function create(Request $request) {
         $validatedData = $request->validate([
-            'shopname' => 'required|string|alpha_num|unique:shops',
-            'username'=>'required|string|alpha_num|unique:shops',
+            'shopname' => 'required|string|regex:/[a-zA-Z0-9\s]+/|unique:shops',
+            'username'=>'required|string|alpha|unique:shops',
             'nif' => 'required|string|alpha_num|unique:shops',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], ValidationMessages::shopValidationMessages());
@@ -129,13 +129,13 @@ class ShopController extends Controller {
                 'shopname' => [
                     'required',
                     'string',
-                    'alpha_num',
+                    'regex:/[a-zA-Z0-9\s]+/',
                     Rule::unique('shops')->ignore($shop->id),
                 ],
                 'username' => [
                     'required',
                     'string',
-                    'alpha_num',
+                    'alpha',
                     Rule::unique('shops')->ignore($shop->id),
                 ],
                 'nif' => [

@@ -434,6 +434,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   width: 30vw;
   margin-top: 0;
   margin-left: 1rem;
@@ -513,6 +515,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   min-width: 250px;
 }
 .card-style-register_title {
@@ -524,6 +528,7 @@ footer .footer__logo {
   max-height: fit-content;
 }
 .card-style-register .form {
+  background-color: inherit;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
@@ -538,6 +543,14 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
+.card-style-register .form_label_invalid {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  color: #780707;
+}
 .card-style-register .form_input {
   margin-left: 5%;
   margin-right: 5%;
@@ -548,6 +561,9 @@ footer .footer__logo {
   border: none;
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
+}
+.card-style-register .form_input.is-invalid {
+  background-color: #fdc3c9;
 }
 .card-style-register .form .general-button {
   border-radius: 12px;
@@ -584,6 +600,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   width: 60vh;
   align-items: center;
   justify-content: center;
@@ -617,6 +635,97 @@ footer .footer__logo {
     min-width: 350px;
   }
 }
+.card-style-shop {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  margin: 0 auto;
+  margin-top: 5%;
+  height: max-content;
+  width: 50vh;
+  min-width: 250px;
+}
+.card-style-shop_title {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  max-height: fit-content;
+}
+.card-style-shop .form {
+  background-color: inherit;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.5rem;
+}
+.card-style-shop .form_label {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  text-align: start;
+  border: none;
+  max-height: 2.5rem;
+}
+.card-style-shop .form_label_invalid {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  color: #780707;
+}
+.card-style-shop .form_input {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  text-align: start;
+  border: none;
+  border-bottom: 2px solid #8f8f8f;
+  max-height: 2.5rem;
+}
+.card-style-shop .form_input.is-invalid {
+  background-color: #fdc3c9;
+}
+.card-style-shop .form .general-button {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: medium;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  max-height: 2.5rem;
+}
+.card-style-shop .form .general-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.card-style-shop .users-link {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+  font-size: small;
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+}
+
 .main-login {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -637,6 +746,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   min-width: 250px;
 }
 .card-style-login_title {
@@ -647,6 +758,7 @@ footer .footer__logo {
   margin-right: 5%;
 }
 .card-style-login .form {
+  background-color: inherit;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
@@ -661,6 +773,14 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
+.card-style-login .form_label_invalid {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  color: #780707;
+}
 .card-style-login .form_input {
   margin-left: 5%;
   margin-right: 5%;
@@ -671,6 +791,9 @@ footer .footer__logo {
   border: none;
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
+}
+.card-style-login .form_input.is-invalid {
+  background-color: #fdc3c9;
 }
 .card-style-login .form .general-button {
   border-radius: 12px;
@@ -707,6 +830,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   width: 60vh;
   align-items: center;
   justify-content: center;
@@ -758,6 +883,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   min-width: 250px;
 }
 .card-style-password_title {
@@ -783,6 +910,7 @@ footer .footer__logo {
   color: inherit;
 }
 .card-style-password .form {
+  background-color: inherit;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
@@ -798,6 +926,14 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
+.card-style-password .form_label_invalid {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  color: #780707;
+}
 .card-style-password .form_input {
   margin-left: 5%;
   margin-right: 5%;
@@ -808,6 +944,9 @@ footer .footer__logo {
   border: none;
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
+}
+.card-style-password .form_input.is-invalid {
+  background-color: #fdc3c9;
 }
 .card-style-password .form .general-button {
   border-radius: 12px;
@@ -844,6 +983,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   width: 60vh;
   align-items: center;
   justify-content: center;
@@ -922,8 +1063,7 @@ footer .footer__logo {
 }
 .landing-container .container-products {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   column-gap: 10px;
   row-gap: 10px;
   background-color: #fbfbfd;
@@ -969,7 +1109,6 @@ footer .footer__logo {
 .landing-container .products-container {
   display: grid;
   width: 100%;
-  height: 50vh;
 }
 .landing-container .products-container h2 {
   margin-left: 10px;
@@ -978,7 +1117,27 @@ footer .footer__logo {
   border-bottom: 3px solid #1f1f1f;
   max-height: 80px;
 }
+.landing-container .products-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(292.5px, 1fr));
+  grid-row-gap: 20px;
+  grid-column-gap: 0px;
+}
+.landing-container .products-section .product {
+  max-width: 400px;
+  width: 250px;
+}
 
+@media screen and (max-width: 900px) {
+  .products-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .products-section .product {
+    max-width: 160px;
+    width: 160px;
+  }
+}
 .main-newpassword {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -997,6 +1156,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   min-width: 250px;
 }
 .card-style-newpassword_title {
@@ -1023,6 +1184,7 @@ footer .footer__logo {
   color: inherit;
 }
 .card-style-newpassword .form {
+  background-color: inherit;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
@@ -1038,6 +1200,14 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
+.card-style-newpassword .form_label_invalid {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  color: #780707;
+}
 .card-style-newpassword .form_input {
   margin-left: 5%;
   margin-right: 5%;
@@ -1048,6 +1218,9 @@ footer .footer__logo {
   border: none;
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
+}
+.card-style-newpassword .form_input.is-invalid {
+  background-color: #fdc3c9;
 }
 .card-style-newpassword .form .general-button {
   border-radius: 12px;
@@ -1084,6 +1257,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   width: 60vh;
   align-items: center;
   justify-content: center;
@@ -1135,6 +1310,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   width: 30vw;
   margin-top: 0;
   margin-left: 0.5rem;
@@ -1153,6 +1330,7 @@ footer .footer__logo {
   margin-right: 5%;
 }
 .card-style-edituser .form {
+  background-color: inherit;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.5rem;
@@ -1167,6 +1345,14 @@ footer .footer__logo {
   border: none;
   max-height: 2.5rem;
 }
+.card-style-edituser .form_label_invalid {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  font-weight: bold;
+  font-size: small;
+  color: #780707;
+}
 .card-style-edituser .form_input {
   margin-left: 5%;
   margin-right: 5%;
@@ -1178,6 +1364,9 @@ footer .footer__logo {
   border: none;
   border-bottom: 2px solid #8f8f8f;
   max-height: 2.5rem;
+}
+.card-style-edituser .form_input.is-invalid {
+  background-color: #fdc3c9;
 }
 .card-style-edituser .general-button {
   border-radius: 12px;
@@ -1241,6 +1430,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   width: 50vw;
   height: auto;
   width: auto;
@@ -1262,6 +1453,8 @@ footer .footer__logo {
   align-items: flex-start;
   margin: 0 auto;
   margin-top: 10%;
+  height: max-content;
+  width: 50vh;
   margin-top: 20%;
   margin-left: 1rem;
   padding-bottom: 2rem;
