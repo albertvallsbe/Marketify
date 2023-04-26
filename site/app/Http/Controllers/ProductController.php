@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Shop;
+use App\Models\Category_Product;
 use App\Classes\Order;
 
 use Illuminate\Support\Facades\Log;
@@ -42,10 +43,18 @@ class ProductController extends Controller
             $arrayCart = "[]";
         }
         setcookie("arrayCart",$arrayCart);
+        
+        $usersShop = Shop::findShopUserID($userId);
+        if($usersShop){
+            $shop = Shop::findOrFail($usersShop);
+        }else{
+            $shop = 0;
+        }
         return view('product.index', [
             'products' => $products,
             'categories' => $categories,
-            'options_order' => Order::$order_array]);
+            'options_order' => Order::$order_array,
+            'shop' => $shop]);
     }
 
     public function show($id)
@@ -106,14 +115,15 @@ class ProductController extends Controller
             'name' => $validatedData['product_name'],
             'description' => $validatedData['product_description'],
             'price' => $validatedData['product_price'],
-            'category_id' => $validatedData['product_category'],
             'tag' => $validatedData['product_tag'],
             'shop_id' => $shopID,
             'image' => $imagePath ?? 'images/products/default-product.png',
         ]);
 
-
-
+        $category_product = Category_product::create([
+           'product_id' => $product->id,
+           'category_id' => $validatedData['product_category'],
+        ]);
         return redirect()->route('shop.admin');
     }
 
@@ -142,9 +152,13 @@ class ProductController extends Controller
             'description' => $validatedData['product_description'],
             'price' => $validatedData['product_price'],
             'tag' => $validatedData['product_tag'],
-            'product_category' => $validatedData['product_category'],
             'image' => $imagePath ?? $product->image,
         ]);
+        $Category_Product = Category_Product::findCat_ProByProduct($product->id);
+        $Category_Product->update([
+            'category_id' => $validatedData['product_category'],
+        ]);
+
         session()->flash('status', "Product '$product->name' edited successfully.");
         return redirect()->route('shop.admin');
     }

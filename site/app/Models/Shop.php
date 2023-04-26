@@ -18,15 +18,19 @@ class Shop extends Model
         'username',
         'nif',
         'user_id',
-        'logo'
+        'logo',
+        'url'
     ];
+    public static function findShopByURL($url){
+        return Shop::where('url', $url)->orderBy('id', 'desc')->firstOrFail();
+    }
 
     public static function findShopName($shop_id){
         return DB::table('shops')
                 ->where('id', $shop_id)
                 ->value('shopname');
     }
-
+    
     public static function findShopUserID($user_id){
         return DB::table('shops')
                 ->orderBy('id', 'DESC')
@@ -51,4 +55,10 @@ class Shop extends Model
     // {
     //     return $this->belongsToMany(Product::class);
     // }
+
+    public static function generateURL($shop_name) {
+        $shop_name = strtolower(str_replace(' ', '-', $shop_name));
+        $shop_name = preg_replace('/[^A-Za-z0-9\-]/', '', $shop_name);
+        return $shop_name;
+      }
 }

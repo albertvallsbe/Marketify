@@ -20,8 +20,8 @@
     @elsecan('shopper')
         <form method="POST" action="{{ route('shop.create') }}" enctype="multipart/form-data">
             @csrf
-            <label for="storename">Store name</label><br>
-            <input type="text" name="storename" id="storename" required><br>
+            <label for="shopname">Store name</label><br>
+            <input type="text" name="shopname" id="shopname" required><br>
             <label for="username">Name of user</label><br>
             <input type="text" name="username" id="username" required><br>
             <label for="nif">NIF or DNI</label><br>

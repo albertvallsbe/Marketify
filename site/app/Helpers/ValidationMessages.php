@@ -61,8 +61,8 @@ class ValidationMessages
     public static function shopValidationMessages()
     {
         return [
-            'storename.required' => 'The store name field is required.',
-            'storename.string' => 'The store name field must be a string.',
+            'shopname.required' => 'The store name field is required.',
+            'shopname.string' => 'The store name field must be a string.',
             'username.required' => 'The username field is required.',
             'username.string' => 'The username field must be a string.',
             'nif.required' => 'The NIF field is required.',

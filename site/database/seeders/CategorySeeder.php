@@ -17,6 +17,6 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->delete();
-        Category::factory()->count(15)->create();
+        Category::factory()->count(20)->create();
     }
 }

@@ -17,6 +17,8 @@
     <img src="../{{ $shop->logo }}" width=150 height=150/>
     <p><b>NAME USER: </b>{{ $shop->username }}</p>
     <p><b>NIF/DNI: </b>{{ $shop->nif }}</p>
+    <a href="{{ route('shop.show', $shop->url) }}">View as shopper</a>
+    <br>    
     <a href="{{ route('shop.edit') }}">Edit your shop</a>
     <br>    
     <a href="{{ route('product.create') }}">Add product</a>
@@ -26,14 +28,12 @@
         @if ($products->count())
             @foreach ($products as $key => $product)
             @if ($product->hidden)
-                <div class="card-style-mini product disabled" id={{ $product->id }}>
-                    <a class="card-style-mini_a" href="{{ route('product.show', $product->id) }}">
-                        <div class="product__div_img">
-                            <img class="product__img" src="../{{ $product->image }}" />
-                        </div>
-                        <h4 class="card-style-mini_title product__name">{{ $product->name }}</h4>
-                        <h4 class="card-style-mini_title product__name">{{ $product->tag }}</h4>
-                        <h3 class="card-style-mini_title product__price">{{ $product->price }} €</h3>
+                <div class="card-style-home product disabled" id={{ $product->id }}>
+                    <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
+                    <img class="product-img" src="../{{ $product->image }}" />
+                        <h4 class="card-style-home_title product__name">{{ $product->name }}</h4>
+                        <h4 class="card-style-home_title product__name">{{ $product->tag }}</h4>
+                        <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
                     </a>
                     <a href="{{ route('product.edit', ['id' => $product->id]) }}"><button>Edit</button></a>
                     <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}">
@@ -45,14 +45,13 @@
                         @csrf
                         <button type="submit">Show</button>
                     </form>
-                    @else                <div class="card-style-mini product" id={{ $product->id }}>
-                        <a class="card-style-mini_a" href="{{ route('product.show', $product->id) }}">
-                            <div class="product__div_img">
-                                <img class="product__img" src="../{{ $product->image }}" />
-                            </div>
-                            <h4 class="card-style-mini_title product__name">{{ $product->name }}</h4>
-                            <h4 class="card-style-mini_title product__name">{{ $product->tag }}</h4>
-                            <h3 class="card-style-mini_title product__price">{{ $product->price }} €</h3>
+                    @else                
+                    <div class="card-style-home product" id={{ $product->id }}>
+                        <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
+                        <img class="product-img" src="../{{ $product->image }}" />
+                            <h4 class="card-style-home_title product__name">{{ $product->name }}</h4>
+                            <h4 class="card-style-home_title product__name">{{ $product->tag }}</h4>
+                            <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
                         </a>
                         <a href="{{ route('product.edit', ['id' => $product->id]) }}"><button>Edit</button></a>
                         <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}">
