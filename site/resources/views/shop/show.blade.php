@@ -20,7 +20,9 @@
                     <h4 class="card-style-home_title product__name">{{ $product->tag }}</h4>
                     <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
                     </a>
+                    @if($shop->id != $usersShop)
                     <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
+                    @endif
                 </div>
             @endif
             @endforeach

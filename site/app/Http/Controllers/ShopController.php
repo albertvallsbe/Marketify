@@ -8,11 +8,12 @@ use App\Classes\Order;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Helpers\ValidationMessages;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Helpers\ValidationMessages;
 
 class ShopController extends Controller {
     public function index() {
@@ -26,11 +27,18 @@ class ShopController extends Controller {
             $shop = Shop::findShopByURL($url);
             $products = Product::productsShop($shop->id);
             $categories = Category::all();
-
+            
+        if(auth()->user()) {
+            $userID = Auth::user()->id;
+            $usersShop = Shop::findShopUserID($userID);
+        }else{
+            $usersShop = 0;            
+        }
             return view('shop.show', ['shop' => $shop,
             'categories' => $categories,
             'options_order' => Order::$order_array,
-            'products' => $products]);
+            'products' => $products,
+            'usersShop' => $usersShop]);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('shop.404');
         }
@@ -61,11 +69,14 @@ class ShopController extends Controller {
     
     public function create(Request $request) { 
         $validatedData = $request->validate([
-            'storename' => 'required|string',
-            'username'=>'required|string',
-            'nif' => 'required|string',
+            'shopname' => 'required|string|alpha_num|unique:shops',
+            'username'=>'required|string|alpha_num|unique:shops',
+            'nif' => 'required|string|alpha_num|unique:shops',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], ValidationMessages::shopValidationMessages());
+        if(Shop::generateURL($validatedData['shopname']) == ""){
+
+        }
 
         if($request->hasFile('image')) {
             $image = $validatedData['image'];
@@ -75,15 +86,16 @@ class ShopController extends Controller {
             $logoPath = $path . $name;
         }
         $id = Auth::user()->id;
-        $store_name = $validatedData['storename'];
+        $store_name = $validatedData['shopname'];
         $username = $validatedData['username'];
         $nif = $validatedData['nif'];
         Shop::create([
             'shopname' => $store_name,
             'username'=>$username,
             'nif' => $nif,
-            'logo' => $logoPath ?? null,
+            'logo' => $logoPath ?? 'images/logos/default-logo.png',
             'user_id' => $id,
+            'url' => Shop::generateURL($validatedData['shopname']),
         ]);
         Shop::makeUserShopper($id);
         return redirect()->route('shop.admin');
@@ -114,12 +126,26 @@ class ShopController extends Controller {
         try {
             $shop = Shop::findOrFail($shopID);
             $validatedData = $request->validate([
-                'storename' => 'required|string',
-                'username'=>'required|string',
-                'nif' => 'required|string',
+                'shopname' => [
+                    'required',
+                    'string',
+                    'alpha_num',
+                    Rule::unique('shops')->ignore($shop->id),
+                ],
+                'username' => [
+                    'required',
+                    'string',
+                    'alpha_num',
+                    Rule::unique('shops')->ignore($shop->id),
+                ],
+                'nif' => [
+                    'required',
+                    'string',
+                    'alpha_num',
+                    Rule::unique('shops')->ignore($shop->id),
+                ],
                 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             ], ValidationMessages::shopValidationMessages());
-            
             if($request->hasFile('image')) {
                 $image = $validatedData['image'];
                 $name = uniqid('logo_') . '.' . $image->extension();
@@ -128,9 +154,9 @@ class ShopController extends Controller {
                 $logoPath = $path . $name;
             }
             $shop->update([
-                'shopname' => $validatedData['storename'],
+                'shopname' => $validatedData['shopname'],
                 'username'=>$validatedData['username'],
-                'url' => Shop::generateURL($validatedData['storename']),
+                'url' => Shop::generateURL($validatedData['shopname']),
                 'nif' => $validatedData['nif'],
                 'logo' => $logoPath ?? $shop->logo,
             ]);
