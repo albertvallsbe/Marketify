@@ -56,6 +56,6 @@
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
         </form>
     </section>
-        <a href="{{ route('user.logout') }}">Log out</a>
-            <script type="module" src="{{ asset('js/pages/user_edit.js') }}"></script>
+    <a href="{{ route('user.logout') }}">Log out</a>
+    <script type="module" src="{{ asset('js/pages/user_edit.js') }}"></script>
 @endsection

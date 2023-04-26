@@ -1,5 +1,6 @@
-import { getCountCart } from './cartFunctions.js';
-import { addToCart } from './cartFunctions.js';
+import { getCountCart } from "./cartFunctions.js";
+import { addToCart } from "./cartFunctions.js";
+import words from "./dictionaryWords.js";
 
 //FUNCTIONS
 
@@ -18,10 +19,10 @@ function addToLocalStorage(productId) {
 
 //Canvia l'estat dels botons quan són clicats
 function clickButtonAction(productId, button) {
-
-    if (button.innerText == "Add to cart") {
+    if (button.innerText == words.buttons.add) {
+        // if (button.innerText == "Add to carttsz") {
         addToLocalStorage(productId);
-        button.innerText = "Remove from cart";
+        button.innerText = words.buttons.remove;
     } else {
         let cart = localStorage.getItem("cart");
         cart = JSON.parse(cart);
@@ -29,11 +30,11 @@ function clickButtonAction(productId, button) {
         cart.forEach(function (productCart) {
             if (productCart == productId) {
                 cart.splice(cart.indexOf(productId), 1);
-                localStorage.removeItem('cart');
+                localStorage.removeItem("cart");
                 localStorage.setItem("cart", JSON.stringify(cart));
             }
         });
-        button.innerText = "Add to cart";
+        button.innerText = words.buttons.add;
     }
     getCountCart();
 }
@@ -44,9 +45,11 @@ function changeButton() {
     if (cart) {
         cart = JSON.parse(cart);
         cart.forEach(function (productCart) {
-            const button = document.querySelector(`[data-product-id="${productCart}"]`);
-            if(button){
-                button.innerText = "Remove from cart";
+            const button = document.querySelector(
+                `[data-product-id="${productCart}"]`
+            );
+            if (button) {
+                button.innerText = words.buttons.remove;
             }
         });
     }
@@ -55,10 +58,11 @@ function changeButton() {
 //CODE
 document.addEventListener("DOMContentLoaded", function () {
     changeButton();
-    const buttons = document.getElementsByClassName('btn-cart');
+    const buttons = document.getElementsByClassName("btn-cart");
 
-    Array.from(buttons).forEach(button => {
-        button.addEventListener('click', event => {
+    Array.from(buttons).forEach((button) => {
+        button.innerText = words.buttons.add;
+        button.addEventListener("click", (event) => {
             const productId = button.dataset.productId;
             clickButtonAction(productId, button);
             addToCart();

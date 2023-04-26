@@ -21,18 +21,18 @@ class ShopController extends Controller {
         return view('shop.index',['categories' => $categories,
         'options_order' => Order::$order_array]);
     }
-    
+
     public function show($url) {
         try {
             $shop = Shop::findShopByURL($url);
             $products = Product::productsShop($shop->id);
             $categories = Category::all();
-            
+
         if(auth()->user()) {
             $userID = Auth::user()->id;
             $usersShop = Shop::findShopUserID($userID);
         }else{
-            $usersShop = 0;            
+            $usersShop = 0;
         }
             return view('shop.show', ['shop' => $shop,
             'categories' => $categories,
@@ -43,7 +43,7 @@ class ShopController extends Controller {
             return redirect()->route('shop.404');
         }
     }
-    
+
     public function admin() {
         if(auth()->user()) {
             $id = Auth::user()->id;
@@ -66,8 +66,8 @@ class ShopController extends Controller {
             return redirect()->route('login.index');
         }
     }
-    
-    public function create(Request $request) { 
+
+    public function create(Request $request) {
         $validatedData = $request->validate([
             'shopname' => 'required|string|alpha_num|unique:shops',
             'username'=>'required|string|alpha_num|unique:shops',
@@ -120,7 +120,7 @@ class ShopController extends Controller {
     }
 
 
-    public function update(Request $request) {  
+    public function update(Request $request) {
         $id = Auth::user()->id;
         $shopID = Shop::findShopUserID($id);
         try {

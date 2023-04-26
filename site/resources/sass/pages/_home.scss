@@ -1,18 +1,21 @@
 .main-home {
+    @include outerBorder;
     &_title {
         @include largeTypografy;
     }
 }
 
 .products {
+    @include outerBorder;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc(160px * 1.125), 1fr));
     grid-row-gap: 20px;
     grid-column-gap: 0px;
-    margin-top: 20px;
+    // margin-top: 20px;
 }
 
 .card-style-home {
+    @include outerBorder;
     @include cardStyle;
     // @include cardPosition;
     @include miniCardStyle;

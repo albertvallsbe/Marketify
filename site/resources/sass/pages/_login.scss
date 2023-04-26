@@ -1,8 +1,10 @@
 .main-login {
     @include twoColumnsMode;
+    @include outerBorder;
 }
 
 .card-style-login {
+    @include outerBorder;
     @include cardStyle;
     @include cardPosition;
     min-width: 250px;
