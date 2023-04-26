@@ -20,10 +20,11 @@ class LandingController extends Controller
         $data = $data['variableCategories'];
         $activeTags = array();
         foreach($data as $key => $category) {
-            $activeTags[$key]['name'] = $category['category'];
-            $activeTags[$key]['products'] = self::getProducts($category['category']);
+            $activeTags[$key]['name'] = self::getCategories($category['category']);
+            $activeTags[$key]['products'] = self::getProducts($category['category'],$category['amount']);
             // array_push($activeTags, $tag['tag']);
         }
+        
         //  dd($activeTags[0]['products'][0]['tag']);
         // dd($activeTags[0]);
         // Mostramos el contenido del array
@@ -35,13 +36,23 @@ class LandingController extends Controller
         ]);
         
     }
-    public function getProducts($category){
+    public function getProducts($category,$limit){
         return Product::query()
         ->join('category_product', 'category_product.product_id', '=', 'products.id')
         ->select('products.*')
         ->where('category_product.category_id', '=', $category)
+        ->limit($limit)
         ->get()
         ;
 
     }
+    public function getCategories($id){
+        return Category::query()
+        ->join('category_product', 'category_product.category_id', '=', 'categories.id')
+        ->select('categories.*')
+        ->where('category_product.category_id', '=', $id)
+        ->first()
+        ;
+    }
+   
 }
