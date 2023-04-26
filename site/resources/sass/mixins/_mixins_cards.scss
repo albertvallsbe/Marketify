@@ -5,7 +5,17 @@
 
     margin: 0 auto;
     margin-top: 20%;
-    height: 65vh;
+    height: max-content;
+    width: 50vh;
+}
+@mixin cardPositionLessMargin {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+
+    margin: 0 auto;
+    margin-top: 5%;
+    height: max-content;
     width: 50vh;
 }
 

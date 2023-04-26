@@ -1,10 +1,6 @@
-.main-register {
-    @include twoColumnsMode;
-}
-
-.card-style-register {
+.card-style-shop {
     @include cardStyle;
-    @include cardPosition;
+    @include cardPositionLessMargin;
     min-width: 250px;
 
     &_title {
@@ -43,38 +39,5 @@
 
     .users-link {
         @include userLinks;
-    }
-}
-
-.intro-style-register {
-    @include cardPosition;
-    width: 60vh;
-    align-items: center;
-    justify-content: center;
-
-    &_logo {
-        @include logoIntro;
-    }
-
-    &_title,
-    &_text {
-        @include margin;
-        display: grid;
-        text-align: center;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .main-register {
-        grid-template-columns: repeat(auto-fit, minmax(calc(400px), 1fr));
-
-        justify-content: center;
-        align-items: center;
-        grid-row-gap: 1rem;
-        grid-column-gap: 1rem;
-    }
-
-    .card-style-register {
-        min-width: 350px;
     }
 }
