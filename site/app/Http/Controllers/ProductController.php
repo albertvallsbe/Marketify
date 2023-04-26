@@ -43,10 +43,18 @@ class ProductController extends Controller
             $arrayCart = "[]";
         }
         setcookie("arrayCart",$arrayCart);
+        
+        $usersShop = Shop::findShopUserID($userId);
+        if($usersShop){
+            $shop = Shop::findOrFail($usersShop);
+        }else{
+            $shop = 0;
+        }
         return view('product.index', [
             'products' => $products,
             'categories' => $categories,
-            'options_order' => Order::$order_array]);
+            'options_order' => Order::$order_array,
+            'shop' => $shop]);
     }
 
     public function show($id)

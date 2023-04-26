@@ -17,7 +17,13 @@
                 <h4 class="card-style-home_title product__name">{{ $product->tag }}</h4>
                 <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
             </a>
-            <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
+            @if($shop == null)
+                <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
+            @else
+                @if($shop->id != $product->shop_id)
+                    <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
+                @endif
+            @endif
             </div>
             @endif
         @endforeach
