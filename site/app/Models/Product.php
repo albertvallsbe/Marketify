@@ -66,6 +66,13 @@ class Product extends Model
         ->whereIn('id',$cart)
         ->get();
     }
+    public static function filterCategory($id){
+        return self::query()
+        ->join('category_product', 'category_product.product_id', '=', 'products.id')
+        -> select('products.*')
+        ->where('category_product.category_id', '=', $id)
+        ->paginate(18);
+    }
 
     // public function shop()
     // {
