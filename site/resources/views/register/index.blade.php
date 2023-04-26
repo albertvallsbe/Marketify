@@ -8,19 +8,19 @@
             <h1 class="card-style-register_title register-title">Register</h1>
             <form class="form" method="POST" action="{{ route('auth.register') }}">
                 @csrf
-                <label class="form_label" for="email">Your email</label>
+                <label class="form_label" for="email">Your email:</label>
                 <input type="email" class="form_input input-mail @error('email') is-invalid @enderror"
                     placeholder="example@gmail.com" name="email" value="{{ old('email') }}">
                 @error('email')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
-                <label class="form_label" for="name">Your username</label>
+                <label class="form_label" for="name">Your username:</label>
                 <input type="text" class="form_input input-mail @error('name') is-invalid @enderror"
                     placeholder="username" name="name" value="{{ old('name') }}">
                 @error('name')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
-                <label class="form_label" for="password">Your password</label>
+                <label class="form_label" for="password">Your password:</label>
                 <input type="password" class="form_input input-password @error('password') is-invalid @enderror"
                     placeholder="••••••••••••" name="password">
                 @error('password')

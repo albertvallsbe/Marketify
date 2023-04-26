@@ -12,11 +12,11 @@
             </p>
             <form class="form" method='POST'action="{{ route('login.rememberpassw') }}">
                 @csrf
-                <label class="form_label" for="remember-password">Your email</label>
+                <label class="form_label" for="remember-password">Your email:</label>
                 <input type="email" class="form_input rememberpassw" placeholder="Introduce your email" name="email">
-                <label class="form_label" for="remember-password">Your new password</label>
+                <label class="form_label" for="remember-password">Your new password:</label>
                 <input type="password" class="form_input rememberpassw" placeholder="Introduce your new password" name="remember-password">
-                <label class="form_label" for="remember-password">Repeat your new password</label>
+                <label class="form_label" for="remember-password">Repeat your new password:</label>
                 <input type="password" class="form_input rememberpassw" placeholder="Repeat your new passsword" name="repeat-password">
 
                 <button class="general-button btn-password">UPDATE PASSWORD</button>
