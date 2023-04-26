@@ -19,10 +19,12 @@ use App\Http\Controllers\DashboardController;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 
-Route::get('/', [ProductController::class,'index'])->name('product.index');
-
+Route::get('/search', [ProductController::class,'index'])->name('product.index');
+Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');
 // Route::get('/products', [RegisterController::class, 'index'])->name('products.index');
+
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
 // Route::post('/product', [ProductController::class, 'store'])->name('products');
@@ -69,7 +71,6 @@ Route::get('/auth', function () {
     return response()->json(['authenticated' => $authenticated]);
 });
 
-Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 
 Route::get('/product-not-found', [ErrorController::class, 'product404'])->name('product.404');
 Route::get('/shop-not-found', [ErrorController::class, 'shop404'])->name('shop.404');
@@ -77,9 +78,9 @@ Route::get('/user-not-found', [ErrorController::class, 'user404'])->name('user.4
 Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-//     return view('dashboard');
-// })->name('dashboard');
-
-
-// Route::resource('dashboard', App\Http\Controllers\DashboardController::class)
-//     ->middleware('auth');
+    //     return view('dashboard');
+    // })->name('dashboard');
+    
+    
+    // Route::resource('dashboard', App\Http\Controllers\DashboardController::class)
+    //     ->middleware('auth');

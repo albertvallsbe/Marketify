@@ -25,9 +25,9 @@ class ProductController extends Controller
         $header = new Header($request);
 
         $categories = Category::all();
-        if($request->session()->has('request_categories') == ""){
+        if ($request->session()->has('request_categories') == "") {
             $products = Product::searchAll(session('request_search'), session('request_order'));
-        }else {
+        } else {
             $products = Product::searchSpecific(session('request_search'), session('request_categories'), session('request_order'));
         }
         $products->appends([
@@ -39,7 +39,7 @@ class ProductController extends Controller
         $userId = auth()->id();
         if ($userId) {
             $arrayCart = Cart::showCartByUserID($userId);
-        }else{
+        } else {
             $arrayCart = "[]";
         }
         setcookie("arrayCart",$arrayCart);
@@ -82,8 +82,10 @@ class ProductController extends Controller
 
     public function create() {
         $categories = Category::all();
-        return view('product.create', ['categories' => $categories,
-        'options_order' => Order::$order_array]);
+        return view('product.create', [
+            'categories' => $categories,
+            'options_order' => Order::$order_array
+        ]);
     }
 
     public function store(Request $request)
@@ -163,34 +165,65 @@ class ProductController extends Controller
         return redirect()->route('shop.admin');
     }
 
-    public function destroy($id) {
-    $product = Product::find($id);
-    $product->delete();
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
 
-    session()->flash('status', "Product '$product->name' deleted successfully.");
-    return redirect()->route('shop.admin');
-}
+        session()->flash('status', "Product '$product->name' deleted successfully.");
+        return redirect()->route('shop.admin');
+    }
 
-public function hide(Request $request, $id) {
-$product = Product::find($id);
-if ($product->hidden == true) {
-    $product->hidden = false;
-    session()->flash('status', "Product '$product->name' has been set to visible successfully.");
-}else{
-    $product->hidden = true;
-    session()->flash('status', "Product '$product->name' has been hidden successfully.");
-}
-$product->save();
+    public function hide(Request $request, $id)
+    {
+        $product = Product::find($id);
+        if ($product->hidden == true) {
+            $product->hidden = false;
+            session()->flash('status', "Product '$product->name' has been set to visible successfully.");
+        } else {
+            $product->hidden = true;
+            session()->flash('status', "Product '$product->name' has been hidden successfully.");
+        }
+        $product->save();
 
-return redirect()->route('shop.admin');
-}
+        return redirect()->route('shop.admin');
+    }
 
-public function edit($id)
-{
-    $categories = Category::all();
-    $product = Product::find($id);
-    return view('product.edit', ['categories' => $categories,
-    'options_order' => Order::$order_array,
-    'product' => $product]);
-}
+    public function edit($id)
+    {
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('product.edit', [
+            'categories' => $categories,
+            'options_order' => Order::$order_array,
+            'product' => $product
+        ]);
+    }
+    public function filterCategory($id)
+    {
+
+        $userId = auth()->id();
+        if ($userId) {
+            $arrayCart = Cart::showCartByUserID($userId);
+        } else {
+            $arrayCart = "[]";
+        }
+        setcookie("arrayCart",$arrayCart);
+        
+        $usersShop = Shop::findShopUserID($userId);
+        if($usersShop){
+            $shop = Shop::findOrFail($usersShop);
+        }else{
+            $shop = 0;
+        }
+        $categories = Category::all();
+        
+        $products = Product::filterCategory($id);
+        return view('product.index', [
+            'products' => $products,
+            'categories' => $categories,
+            'options_order' => Order::$order_array,
+            'shop' => $shop
+        ]);
+    }
 }

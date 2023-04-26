@@ -1,6 +1,6 @@
 <header>
     <div id="navbar" class="navbar">
-        <a href="{{ route('product.index') }}">
+        <a href="{{ route('landing.index') }}">
             <img class="logo" src="{{ asset('images/marketify_logo.png') }}">
         </a>
         <form class="navbar__form" id="navbar__form" action="{{ route('product.index') }}" method="GET">
