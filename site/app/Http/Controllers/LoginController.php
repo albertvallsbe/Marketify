@@ -15,15 +15,14 @@ use App\Helpers\ValidationMessages;
 
 class LoginController extends Controller
 {
-    public function index()
-    {
-        $categories = Category::all();
-
-        return view('login.index', [
-            'categories' => $categories,
-            'options_order' => Order::$order_array
-        ]);
+    public function index(){    
+        if(auth()->user()) {
+            return redirect()->route('user.edit');
+        }else{
+            return view('login.index');
+        }
     }
+    
     public function login(Request $request)
     { 
         $validatedData = $request->validate([

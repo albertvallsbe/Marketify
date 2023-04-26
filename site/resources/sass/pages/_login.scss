@@ -17,6 +17,7 @@
         &_label {
             @include marginPadding;
             @include smallTypografy;
+            @include formLabelError;
 
             text-align: start;
             border: none;
@@ -24,6 +25,7 @@
         }
 
         &_input {
+            @include formInputError;
             @include marginPadding;
             @include smallTypografy;
 
