@@ -5,7 +5,7 @@
 @section('content')
     <section class="main-productshow">
         <section class="card-style-productshow"=>
-            <img class="card-style-productshow_image" src="../{{ asset($product->image) }}" height="auto" width="500px">
+            <img class="card-style-productshow_image" src="{{ asset($product->image) }}" height="auto" width="500px">
         </section>
         <section class="card-style-productshow-details">
             <h1 class="card-style-productshow-details_title">{{ $product->name }}</h1>
