@@ -1,0 +1,365 @@
+=== Setmana 8
+
+==== David
+Afegir un seeder de la tenda per l'usuari "venedor". Solucionar error del controlador de la tenda.
+Temps estimat => 2h
+Temps real => 2h
+Login ara funciona amb email i user en el mateix camp.
+Temps estimat => 1h
+Temps real => 1h
+Canviar formularis: labels, placeholders, names...
+Temps estimat => 1h
+Temps real => 1h
+Validar els inputs dels formularis de registre i d'editar usuari. Missatges flash descartats per missatges d'error.
+Temps estimat => 2h
+Temps real => 3h
+Carret de servidor completament funcional
+Temps estimat => 5h
+Temps real => 6h
+Redireccions 403 i errors 404
+Temps estimat => 2h
+Temps real => 2h
+
+==== Oscar
+Crear dos usuaris de prova(venedor,comprador) 
+Temps estimat => 1h
+Temps real => 25min
+
+Fer skectchings de totes les pantalles 
+Temps estimat => 1h
+Temps real => 45min
+
+Fer Wireframes de totes les pantalles 
+Temps estimat => 1h
+Temps real => 1h
+
+Fer mockups de totes les pantalles 
+Temps estimat => 2h
+Temps real => 1:30h
+
+Implementar la pagina de la landing(maquetació)
+Temps estimat => 1h
+Temps real => 1h
+
+Fer la implementació de la landing 
+Temps estimat => 2h
+Temps real => 
+
+==== Albert
+
+=== Setmana 7
+
+==== David
+Terminar amb la creació de la tenda (rol de venedor, modificar bdd...) 
+Temps estimat => 2h
+Temps real => 3h
+Menú amb possibilitat de crear tenda (si l'usuari ja és venedor, es canvia aquest botó per accedir a la seva tenda)
+Temps estimat => 2h
+Temps real => 3h
+Separar de manera correcta les pàgines de "edit" i "show". Show funciona amb ids a l'url /user/1 i edit amb /user/edit (ara agafa l'ID amb l'usuari autenticat). També per la tenda. Temps estimat => 2h
+Temps real => 4h
+Carret es guarda a la base de dades, però no té un ús real.
+Temps estimat => 2h
+Temps real => 2h
+
+==== Oscar
+Fer funció que permeti cambiar el nom d'usuari a la pagina de perfil d'usuari
+Temps estimat => 2h
+Temps real => 1h
+
+Fer la funció que permeti canviar la contrasenya al perfil d'usuari
+Temps estimat => 1h
+Temps real => 1h
+
+Solucionar el problema del canvi de contrasenya
+Temps estimat => 2h
+Temps real => 2h
+
+Solucionar el problema del login i el register
+Temps estimat => 2h
+Temps real => 1h
+
+Solucionar el problema de l'enviament d'emails
+Temps estimat => 2h
+Temps real => 1:30h
+
+==== Albert
+Documentació i planificació 
+Temps estimat => 1h
+Temps Real => 
+
+Fer test de producte
+Temps estimat => 10h
+Temps Real => 10,5h -> continua oberta
+
+Afegir estil a la vista d'edició de la configuració d'usuari
+Temps estimat => 2h
+Temps Real => 1,75h 
+
+=== Setmana 6
+
+==== David
+User show page, user edit page:
+Show user page. 
+Temps estimat => 1h
+Temps real => 1h
+Edit user page.
+Temps estimat => 1h
+Temps real => 2h
+Afegir canvi de contrasenya.
+Temps estimat => 2h
+Temps real => 3h
+Afegir avatars (canviar i esborrar)
+Temps estimat => 5h
+Temps real => 5h
+Crear tenda (només formulari i vista)
+Temps estimat => 2h
+Temps real => 3h
+
+==== Oscar
+
+==== Albert
+Resoldre hotfix en css
+Temps estimat => 1h
+Temps Real => 0,5h
+
+Resoldre hotfix a les migracions de shop
+Temps estimat => 1h
+Temps Real => 0,5h
+
+Fer test relació Category-Product
+Temps estimat => 2h
+Temps Real => 2,5h
+
+Fer test de producte
+Temps estimat => 10h
+Temps Real => 2h -> continua següent setmana
+
+=== Setmana 5
+
+==== David
+Caràcters especials al factory i seeders
+Carret funcionant a Javascript (amb localstorage):
+Petició post finalment descartada.
+Botons d'afegir i treure al carret al home i a detall de producte.
+Utilitzar mòduls de javascript.
+Comprovar si el producte s'ha afegit al carret abans de carregar el botó.
+Contador de productes a la icona del carret (en el menú).
+Icona del carret dirigeix amb la stringQuery des de totes les pàgines.
+Mostra correctament els productes a la pàgina del carret i la suma total dels preus.
+Temps estimat => 6h
+Temps real => 16h
+
+==== Oscar
+
+==== Albert
+Investigació de testing 
+Temps estimat => 5h
+Temps Real => 5h
+
+Unificació estil de les targetes i reutilització de codi css
+Temps estimat => 5h
+Temps Real => 10h
+
+=== Setmana 4
+
+==== David
+Millorar el ProductControler. Utilitzar sessió per les variables del $Request.
+Temps estimat => 2h
+Temps Real => 3h
+
+Carret amb productes no únics
+Temps estimats => 3h
+Temps real => 6h
+
+Passar múltiples variables i repetició de codi en cada Controller a variables de sessió, utilitzant el component 'Header'.
+Temps estimats => 2h
+Temps real => 2h
+
+Resoldre conflictes
+Temps real => 1:30h
+
+Carret amb productes únics
+Temps estimat => 1h
+Temps real => 1:30h
+
+Mantenir el carret a l'hora de recargar la pàgina i re-utilitzar funcions de javascript (amb mòduls) per poder afegir desde la pàgina de detall del producte.
+Temps estimat => 3h
+Temps real => 1h
+
+==== Oscar
+Crear el disseny del register.
+Temps estimat => 2h
+Temps real => 2:30h
+
+Crear el disseny del login.
+Temps estimat => 2h
+Temps real => 30 min
+
+Crear disseny de la pagina de recuperació del password.
+Temps estimat => 2h 
+Temps real => 2h
+
+Fer la implementació del register.
+Temps estimat => 3h 
+Temps real => 3h
+
+Fer la implementació del login. 
+Temps estimat => 3h 
+Temps real => 2:30h
+
+Aconseguir que envii els mails correpsondents.
+Temps estimat => 3h 
+Temps real => 4h
+
+Cambiar la funció selectCategories.
+Temps estimat => 1h 
+Temps real => 15min
+
+Fer la implementació de recordar la contrasenya.
+Temps estimat =>3h
+Temps real => 2:45h
+
+Fer que envii els mails a tots els correus.
+Temps estimat => 1h
+Temps real => 20min
+==== Albert
+
+Arreglar problemes d'accesibilitat en els colors.
+Temps estimat => 1h 
+Temps real => 1:45h
+
+Problemes en la versió de node i packaje.json.
+Temps estimat => 2h 
+Temps real => 4:30h
+
+Actualitzar stil global.
+Temps estimat => 3h 
+Temps real => 4h
+
+Millorar i simplificar estil del header.
+Temps estimat => 2h 
+Temps real => 2:30h
+
+Millorar i simplificar estil del footer.
+Temps estimat => 1h 
+Temps real => 1h
+
+Millorar i simplificar estil del navigation.
+Temps estimat => 1h 
+Temps real => 0:30h
+
+Documentació
+Temps estimat => 1h 
+Temps real => 1h
+
+=== Setmana 3
+
+==== David
+Fer la paginació completament personalitzada.
+Temps estimat => 1h
+Temps real => 1:30h
+
+Modificar factory per fer tests amb accents i caràcters especials.
+Temps estimat => 2h
+Temps real => 1:30h
+
+Modificar factory per utilitzar rutes físiques en comptes de URLs.
+Temps estimat => 1h
+Temps real => 30 min
+
+Solucionar problema relacionat amb els inner joins amb el filtre de les categories.
+Temps estimat => 2h
+Temps real => 2:30h
+
+==== Oscar
+
+==== Albert
+
+Actualitzar la funcionalitat del migrate:rollback per solucionar els errors que hi havia.
+Temps estimat => 1h
+Temps real => 2h
+
+Investigació sobre com fer test en php
+Temps estimat => 5h 
+Temps real => 10h
+
+Crear test del store amb tdd.
+Temps estimat => 1h 
+Temps real => 1:30h
+
+Crida general als seeders desde el seeder general
+Temps estimat => 1h 
+Temps real => 1h
+
+Documentació
+Temps estimat => 1h 
+Temps real => 1h
+
+
+=== Setmana 2
+
+==== David
+
+Aquesta setmana he redissenyat la home view 3 vegades. Més que res per fer-la completament responsive i ajustar el grid correctament. La primera versió no era responsive. La segona versió tenia 6 media queries, i la tercera i última només té un media query i un grid amb un repeat amb minmax per fer-lo més automàtic. També he buscat i afegit icones, i he fet un logo pel projecte.
+
+A més de la vista del home, he fet un component per al header, i un altre pel navigation. El navigation només es mostra per dispositius mòbils o tablets: he pensat que es una bona idea posar el navigation sota del tot per no saturar massa el header.
+- Header: logo, search bar, ordenació, icona d'usuari i icona del carret
+- Navigation: icona de home i icona d'usuari
+
+La barra de resultats de cerca és funcional, he afegit una vista sense detall pel carret i el login i fet la paginació.
+
+He afegit tipografia a la pàgina a "typografy_css", utilitzant l'arquitectura SASS.
+
+He mirat per crear imatges aleatòries amb un factory i faig servir un fakeimg.
+
+==== Oscar
+
+Aquesta setmana he tingut alguns contratemps amb les migracions i els filtres.
+
+He aconsgeuit resoldre els problemes amb la taula del mig. També he hagut de resideñar algunes migracions, per a que així pugui filtrar bé...
+
+He fet el filtre de categories,encara que m'ha donat bastants problemes.
+
+També he fet el filtre de tags, y que puguis filtrar per catergoria i per tag a la vegada, així com per nom del producte.
+
+Per últim he actualitzat la guía d'estils i la documentació ja que hem redisenyar la home un altra cop.
+
+==== Albert
+
+Durant la setmana he realitzat les següents tasques:
+
+- Creació de la relació n-m entre les taules.
+
+- La creació de les migracions i seeders a la base de dades.
+Elaboració de les migracions i dels seeders.
+
+A les migracions s'afegeix l'estructura de taules i relacions que tindrà la base de dades, s'inclou també les connexions per realitzar una relació n-m entre les taules de "productes" i de "categories"
+
+S'afegeixen els seeders que l'ompliran de dades fictícies gràcies a les factories. També s'afeixen les condicions necessàries en el mètode down() dels seeds perquè en cas de fer un migrate:rollback es desvinculin les relacions entre taules i es pugui a continuació esborrar les dades i les taules.
+
+- L'eliminació dels fitxers que van ser inclosos en el repositori remot, i que no ho haurien d'haver estat inclosos.
+
+L'eliminació dels fitxers .env i alguns fitxers de configuració de la màquina virtual de Vagrant per la base de dades.
+
+Aquestes tasques es van allargar més del temps estimat.
+- Creació i configuració del migrate:rollback => 2h
+- Creació de la relació n-m => 5h
+Entre documentació, cerca d'informació i realització de les tasques han superat el temps previst i superat el temps de les 18h de classe.
+
+=== Setmana 1
+
+Hem començat el projecte creant un trello per definir les tasques del projecte i organitzar-nos.
+Hem creat un repositori al git de l'institut per al projecte, amb les branques principals de treball (main, development)
+
+==== David
+
+Començar a familiaritzar-se amb git, crear tasques de trello, instal·lar SASS i el layout main de la pàgina.
+
+==== Oscar
+
+Començar a familiaritzar-se amb git, crear tasques de trello, dissenyar i crear la BBDD, guia d'estil i el layout de la HomePage
+
+==== Albert
+
+Demostració d'ús de git a l'equip, instal·lació del laravel al projecte, creació del Vagrant per allotjar la BBDD.

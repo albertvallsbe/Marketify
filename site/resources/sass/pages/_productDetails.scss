@@ -1,0 +1,69 @@
+.main-productshow {
+    @include twoColumnsMode;
+}
+
+.card-style-productshow {
+    @include cardStyle;
+    @include cardPosition;
+    width: 50vw;
+    @include imageBigCardSize;
+
+    // &_image {
+    //     // display: flex;
+    //     // margin-top: 64px;
+    // }
+}
+
+.card-style-productshow-details {
+    @include cardStyle;
+    @include cardPosition;
+
+    margin-top: 20%;
+    margin-left: 1rem;
+    padding-bottom: 2rem;
+    min-width: 250px;
+
+    &_title {
+        @include cardStyleTitle;
+        @include cardStyleTypography;
+        text-align: center;
+    }
+
+    &_a {
+        @include links;
+    }
+
+    &_content {
+        display: grid;
+        text-align: left;
+        justify-content: left;
+
+        @include smallTypografy;
+        @include margin;
+        @include links;
+    }
+
+    .small-button {
+        @include smallButton;
+        min-height: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .main-productshow {
+        grid-template-columns: repeat(auto-fit, minmax(calc(600px), 1fr));
+
+        justify-content: center;
+        align-items: center;
+        grid-row-gap: 1rem;
+        grid-column-gap: 1rem;
+    }
+    .card-style-productshow-details {
+        // min-width: 350px;
+
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+}

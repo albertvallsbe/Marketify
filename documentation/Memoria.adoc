@@ -1,0 +1,27 @@
+= Marketplace:
+Albert Valls Berengueras<valls.berengueras.albert@alumnat.copernic.cat>, Óscar Ramírez Fernández<ramirez.fernandez.oscar@alumnat.copernic.cat>, David Hernández Larrea<hernandez.larrea.david@alumnat.copernic.cat>
+
+== Introducció
+
+== Memoria setmanal
+
+include::setmanes/setmana.adoc[]
+
+== Disseny base de dades
+
+== Mockup d'interficies
+
+== Guía d'estils
+include::estils/Estils.adoc[]
+
+== Confecció del manual d’instal·lació/distribució de l’aplicació.
+
+== Confecció del manual d’usuari.
+
+== Línies futures
+
+== Conclusions. Desviacions en la planificació. Aportacions del projecte als coneixements de l’alumne.
+
+== Glossari. Webgrafia. Altres recursos de consulta.
+
+== Presentació del projecte.

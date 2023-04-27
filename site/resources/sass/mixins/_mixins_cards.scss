@@ -1,0 +1,89 @@
+@mixin cardPosition {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+
+    margin: 0 auto;
+    margin-top: 10%;
+    height: max-content;
+    width: 50vh;
+}
+@mixin cardPositionLessMargin {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+
+    margin: 0 auto;
+    margin-top: 5%;
+    height: max-content;
+    
+    width: 75vh;
+    @media screen and (max-width: 768px) {
+        width: auto;
+    }    
+}
+
+@mixin cardStyle {
+    @include mainStyleWhiteMode;
+    @include cardShadow;
+    @include borderRadiusCard;
+}
+
+@mixin landingCards {
+    display: grid;
+    justify-content: end;
+    align-items: end;
+    background-size: 100%;
+    height: 50vh;
+    transition: transform 0.2s;
+}
+
+@mixin landingMainCard {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        url(../images/prueba.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 94vh;
+}
+
+@mixin miniCardStyle {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    max-width: 160px;
+}
+
+@mixin imageCardSize {
+    height: 125px;
+    width: 125px;
+    display: flex;
+    align-items: center;
+    margin-inline: auto;
+    object-fit: cover;
+}
+
+@mixin imageBigCardSize {
+    height: auto;
+    width: auto;
+    // object-fit: contain;
+    display: flex;
+    align-items: center;
+
+    margin-inline: auto;
+    object-fit: cover;
+}
+
+@mixin outerBorder {
+    // border: 3px solid $error-origin;
+    border: none;
+    padding: 1%;
+}

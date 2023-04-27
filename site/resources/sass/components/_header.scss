@@ -1,0 +1,156 @@
+header {
+    .navbar {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: "logo search icon";
+        align-items: center;
+        justify-items: center;
+        @include mainStyle;
+
+        &__form {
+            display: flex;
+            justify-items: center;
+            width: 100%;
+            border-radius: 12px 12px 12px 12px;
+            background-color: $neutral_lighter;
+
+            &--select-category {
+                width: 25%;
+                @include borderRadiusLeft;
+                @include searchBar;
+                @include secondaryStyle;
+            }
+
+            &--search-bar {
+                width: 40%;
+                background-color: $neutral_lighter;
+                @include searchBar;
+
+                &::placeholder {
+                    /* Chrome, Firefox, Opera, Safari 10.1+ */
+                    color: $neutral_darker;
+                }
+
+                &::-ms-input-placeholder {
+                    color: $neutral_darker;
+                }
+            }
+
+            &--select-orderby {
+                width: 25%;
+                @include searchBar;
+                @include secondaryStyle;
+            }
+
+            &--button-search {
+                width: 10%;
+                @include buttonStyle;
+                @include searchBar;
+                @include borderRadiusRight;
+
+                &:hover {
+                    background-color: $primary_light;
+                }
+
+                .icon {
+                    @include iconSmall;
+                }
+            }
+        }
+
+        &__icons {
+            display: grid;
+            grid-gap: 20px;
+            grid-auto-flow: column;
+
+            img.icon_user {
+                border-radius: 18px;
+            }
+
+            .cart-icon {
+                position: relative;
+
+                .cart-count {
+                    display: none;
+                    position: absolute;
+                    top: -10px;
+                    right: -10px;
+                    background-color: $primary_origin;
+                    color: #000;
+                    border-radius: 50%;
+                    text-align: center;
+                    font-size: 14px;
+                    line-height: 20px;
+                    @include iconSmall;
+                }
+            }
+        }
+    }
+
+    .logo {
+        @include logo;
+    }
+
+    .menu-container {
+        position: relative;
+        display: inline-block;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    .toggle-button {
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .menu-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $neutral_lighter;
+        border: 1px solid #ddd;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: none;
+        z-index: 1;
+    }
+
+    .menu-list li {
+        border-bottom: 1px solid #ddd;
+    }
+    .menu-list a {
+        display: block;
+        padding: 10px 20px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .menu-list a:hover {
+        background-color: #ddd;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    div#navbar__icons img.icon_user {
+        display: none;
+    }
+
+    div#navbar__icons img.icon_house {
+        display: none;
+        background-color: $neutral_lighter;
+    }
+
+    div#navbar div.logo {
+        width: 35px;
+        height: 35px;
+    }
+}

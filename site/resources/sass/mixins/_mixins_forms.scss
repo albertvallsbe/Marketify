@@ -1,0 +1,20 @@
+@mixin formInput {
+    background-color: inherit;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+}
+
+@mixin formInputError {
+    &.is-invalid {
+    background-color: $error_lighter;   
+    }
+}
+
+@mixin formLabelError {
+    &_invalid{
+        @include marginPadding;
+        @include smallTypografy;
+        color: $error_darker;
+    }
+}

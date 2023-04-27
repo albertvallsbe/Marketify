@@ -1,0 +1,30 @@
+div.pagination {
+    border: 1px solid $neutral_darker;
+    padding: 4px;
+    padding-inline: 8px;
+    text-decoration: none;
+    background-color: $neutral_lighter;
+    overflow: hidden;
+}
+
+div.pagination a {
+    text-decoration: none;
+    color: $neutral_darker;
+}
+
+div.disabled {
+    color: $neutral_light;
+    background-color: $neutral_lighter;
+}
+div.active {
+    color: $neutral_lighter;
+    background-color: $neutral_darker;
+}
+
+ul.pagination {
+    display: flex;
+    font-size: 1.4em;
+    justify-content: center;
+    gap: 15px;
+    text-decoration: none;
+}

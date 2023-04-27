@@ -1,0 +1,21 @@
+.navigation {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: center;
+    padding: 0.5rem;
+    @include mainStyle;
+}
+
+@media screen and (min-width: 769px) {
+    div#navigation {
+        display: none;
+    }
+
+    div#content {
+        margin-bottom: 0px;
+    }
+}

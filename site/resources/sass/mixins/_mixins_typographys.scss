@@ -1,0 +1,49 @@
+@mixin smallTypografy {
+    font-weight: bold;
+    font-size: small;
+}
+
+@mixin mediumTypografy {
+    font-weight: bold;
+    font-size: medium;
+}
+@mixin largeTypografy {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+@mixin cardStyleTitle {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@mixin links {
+    text-decoration: none;
+    color: inherit;
+}
+
+@mixin line {
+    border-bottom: 3px solid $neutral_darker;
+}
+
+@mixin userLinks {
+    @include margin;
+    @include smallTypografy;
+    @include links;
+    display: grid;
+    text-align: center;
+    justify-content: center;
+}
+
+@mixin cardStyleTypography {
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    height: 3em;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
