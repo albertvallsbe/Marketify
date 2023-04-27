@@ -43,5 +43,5 @@
             @endforeach
 
     </section>
-
+    <script type ="module" src="{{ asset('js/app.js') }}"></script>
 @endsection

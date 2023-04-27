@@ -8,14 +8,20 @@
         <section class="products-cart">
             @if (count($products) != 0)
                 @foreach ($products as $key => $product)
-                <div class="product card-style-cart" id={{ $product->id }}>
-                    <a class="card-style-cart_a" href="{{ route('product.show', $product->id) }}">
-                    <img class="product-img" src="{{ $product->image }}" />
-                    <h4 class="card-style-cart_title product__name">{{ $product->name }}</h4>
-                    <h3 class="card-style-cart_title product__price">{{ $product->price }} €</h3>
-                    </a>
-                    <button class="btn-remove small-button" data-product-id="{{ $product->id }}">X</button>
-                </div>
+                    @if (!$shop || $shop->id != $product->shop_id)
+                        <div class="product card-style-cart" id={{ $product->id }}>
+                            <a class="card-style-cart_a" href="{{ route('product.show', $product->id) }}">
+                                <img class="product-img" src="{{ $product->image }}" />
+                                <h4 class="card-style-cart_title product__name">{{ $product->name }}</h4>
+                                <h3 class="card-style-cart_title product__price">{{ $product->price }} €</h3>
+                            </a>
+                            <button class="btn-remove small-button" data-product-id="{{ $product->id }}">X</button>
+                        </div>
+                    @else
+                        @php
+                            $error = true;
+                        @endphp
+                    @endif
                 @endforeach
             @else
                 <h2>No results were found.</h2>
@@ -34,5 +40,8 @@
             </div>
         </section>
     </section>
+    @if ($error)
+        <p>Some products has been removed from your cart as you are the owner.</p=>
+    @endif
     <script type="module" src="{{ asset('js/pages/cart_index.js') }}"></script>
 @endsection
