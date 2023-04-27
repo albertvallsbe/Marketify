@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Shop creator')
+@section('title', 'Create your shop')
 
 @section('content')
 
@@ -14,21 +14,21 @@
         <form class="form" method="POST" action="{{ route('shop.create') }}" enctype="multipart/form-data">
             @csrf
             
-            <label class="form_label"  for="shopname">Store name</label>
+            <label class="form_label"  for="shopname">Store name:</label>
             <input type="text" class="form_input input-mail @error('shopname') is-invalid @enderror"
                 placeholder="My shop" name="shopname" id="shopname" value="{{ old('shopname') }}">
             @error('shopname')
                 <label class="form_label_invalid">{{ $message }}</label>
             @enderror
             
-            <label class="form_label"  for="username">Your full name</label>
+            <label class="form_label"  for="username">Your full name:</label>
             <input type="text" class="form_input input-mail @error('username') is-invalid @enderror"
                 placeholder="Pere Pou" name="username" id="username" value="{{ old('username') }}">
             @error('username')
                 <label class="form_label_invalid">{{ $message }}</label>
             @enderror
 
-            <label class="form_label"  for="nif">Your NIF</label>
+            <label class="form_label"  for="nif">Your DNI/NIF:</label>
             <input type="text" class="form_input input-mail @error('nif') is-invalid @enderror"
                 placeholder="XXXXXXXXA" name="nif" id="nif" value="{{ old('nif') }}">
             @error('nif')

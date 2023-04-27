@@ -11,21 +11,21 @@
                 @csrf
 
                 <label class="form_label" for="shopname">Store name <small><i>(Changing your name will change your shop's
-                            URL!)</i></small></label>
+                            URL!):</i></small></label>
                 <input type="text" class="form_input input-mail @error('shopname') is-invalid @enderror" name="shopname"
                     id="shopname" value="{{ $shop->shopname }}" placeholder="{{ $shop->shopname }}">
                 @error('shopname')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
 
-                <label class="form_label" for="username">Your full name</label>
+                <label class="form_label" for="username">Your full name:</label>
                 <input type="text" class="form_input input-mail @error('username') is-invalid @enderror" name="username"
                     id="username" value="{{ $shop->username }}" placeholder="{{ $shop->username }}">
                 @error('username')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
 
-                <label class="form_label" for="nif">Your NIF</label>
+                <label class="form_label" for="nif">Your DNI/NIF:</label>
                 <input type="text" class="form_input input-mail @error('nif') is-invalid @enderror" name="nif"
                     id="nif" value="{{ $shop->nif }}" placeholder="{{ $shop->nif }}">
                 @error('nif')

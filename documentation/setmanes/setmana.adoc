@@ -1,14 +1,45 @@
+
 === Setmana 9
 
 ==== David
-
-
 ==== Oscar
 
+Acabar els mockups de totes les vistes .
+Temps estimat => 1h
+Temps real => 30min
+
+Maquetar la página de Landing Page(refactoritzar el codi).
+Temps estimat => 1h
+Temps real => 2h
+
+Fer que llegeixi un json i mostri productes relacionats amb les categories.
+Temps estimat => 2
+Temps real => 3h
+
+Fer que quan facis click al títol de la categoria, surtin tots el productes filtrats per aquesta.
+Temps estimat => 2h
+Temps real => 2h
+
+Fer el disseny de la Landing Page responsive.
+Temps estimat => 2h
+Temps real => 2h
+
+Arreglar l'email de confirmació
+Temps estimat => 3h
+Temps real => 
 
 ==== Albert
+Vista detall del producte
+Temps estimat => 5h -> Total 7,25h
+Temps Real => 2,5h -> venia de la setmana anterior 
 
+Diccionari javascript
+Temps estimat => 3h 
+Temps Real => 2,5h 
 
+Realitzar Comanda
+Temps estimat => 15h 
+Temps Real => 1,75 -> conctinua encara
 
 === Setmana 8
 
@@ -58,6 +89,18 @@ Temps estimat => 2h
 Temps real => 
 
 ==== Albert
+Fer test de producte
+Temps estimat => 10h -> Total 23h
+Temps Real => 10,5h -> venia de la setmana anterior 
+
+Update cards and media queries
+Temps estimat => 10h
+Temps Real => 6,5h 
+
+Vista detall del producte
+Temps estimat => 5h
+Temps Real => 4,75h -> continua oberta
+
 
 === Setmana 7
 

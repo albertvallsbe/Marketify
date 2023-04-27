@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Shop')
+@section('title', $shop->shopname)
 
 @section('content')
     <h1>{{ $shop->shopname }}</h1>
@@ -15,7 +15,7 @@
             @if (!$product->hidden)            
             <div class="card-style-home product" id={{ $product->id }}>
                 <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
-                <img class="product-img" src="../{{ $product->image }}" />
+                <img class="product-img" src="{{ asset($product->image) }}" />
                     <h4 class="card-style-home_title product__name">{{ $product->name }}</h4>
                     <h4 class="card-style-home_title product__name">{{ $product->tag }}</h4>
                     <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>

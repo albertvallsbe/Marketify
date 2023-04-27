@@ -8,10 +8,10 @@
             <h1 class="card-style-login_title login-title">Login</h1>
             <form class="form" method='POST'action="{{ route('auth.login') }}">
                 @csrf
-                <label class="form_label" for="login">Your email/username</label>
+                <label class="form_label" for="login">Your email/username:</label>
                 <input type="text" class="form_input input-mail @error('current-password') is-invalid @enderror" placeholder="Email/Username" name="login" value="{{ old('login') }}">
                 
-                <label class="form_label" for="current-password">Your password</label>
+                <label class="form_label" for="current-password">Your password:</label>
                 <input type="password" class="form_input input-password @error('current-password') is-invalid @enderror" placeholder="••••••••••••" name="current-password">
                 @if (session()->has('status'))
                     <label class="form_label_invalid"> {{ session()->get('status') }} </label>

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Profile')
+@section('title', $user->name)
 
 @section('content')
     <h1>Profile page</h1>
