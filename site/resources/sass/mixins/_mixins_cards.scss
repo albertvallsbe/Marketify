@@ -4,7 +4,7 @@
     align-items: flex-start;
 
     margin: 0 auto;
-    margin-top: 20%;
+    margin-top: 10%;
     height: max-content;
     width: 50vh;
 }
@@ -80,4 +80,10 @@
 
     margin-inline: auto;
     object-fit: cover;
+}
+
+@mixin outerBorder {
+    // border: 3px solid $error-origin;
+    border: none;
+    padding: 1%;
 }
