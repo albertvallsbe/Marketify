@@ -12,7 +12,7 @@
 
         &_label {
             @include marginPadding;
-            @include smallTypografy;
+            @include mediumTypografy;
             @include formLabelError;
 
             text-align: start;
@@ -23,13 +23,23 @@
         &_input {
             @include formInputError;
             @include marginPadding;
-            @include smallTypografy;
+            @include mediumTypografy;
 
             text-align: start;
             border: none;
             border-bottom: 2px solid $neutral_origin;
-            max-height: 2.5rem;
+            max-height: 3rem;
+            &_textarea {
+                @include formInputError;
+                @include marginPadding;
+                font-size: large;
+                text-align: start;
+                border: none;
+                border-bottom: 2px solid $neutral_origin;
+                min-height: 5rem;
+            }
         }
+
 
         .general-button {
             @include mediumButton;
