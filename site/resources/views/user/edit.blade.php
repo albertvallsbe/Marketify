@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Edit Profile')
+@section('title', 'Edit your profile')
 
 @section('content')
     <h1>Profile page</h1>

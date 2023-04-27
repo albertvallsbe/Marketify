@@ -1,6 +1,6 @@
 @extends('layouts.users')
 
-@section('title', 'Forgot password')
+@section('title', 'Forgotten password?')
 
 @section('content')
     <section class="main-password">
