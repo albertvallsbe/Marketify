@@ -254,6 +254,7 @@ footer .footer__logo {
 }
 .main-home {
   border: none;
+  padding: 1%;
 }
 .main-home_title {
   font-weight: bold;
@@ -262,6 +263,7 @@ footer .footer__logo {
 
 .products {
   border: none;
+  padding: 1%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-row-gap: 20px;
@@ -270,6 +272,7 @@ footer .footer__logo {
 
 .card-style-home {
   border: none;
+  padding: 1%;
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -735,10 +738,12 @@ footer .footer__logo {
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   border: none;
+  padding: 1%;
 }
 
 .card-style-login {
   border: none;
+  padding: 1%;
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);

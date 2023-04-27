@@ -3,6 +3,31 @@
 
 ==== David
 ==== Oscar
+
+Acabar els mockups de totes les vistes .
+Temps estimat => 1h
+Temps real => 30min
+
+Maquetar la página de Landing Page(refactoritzar el codi).
+Temps estimat => 1h
+Temps real => 2h
+
+Fer que llegeixi un json i mostri productes relacionats amb les categories.
+Temps estimat => 2
+Temps real => 3h
+
+Fer que quan facis click al títol de la categoria, surtin tots el productes filtrats per aquesta.
+Temps estimat => 2h
+Temps real => 2h
+
+Fer el disseny de la Landing Page responsive.
+Temps estimat => 2h
+Temps real => 2h
+
+Arreglar l'email de confirmació
+Temps estimat => 3h
+Temps real => 
+
 ==== Albert
 Vista detall del producte
 Temps estimat => 5h -> Total 7,25h
