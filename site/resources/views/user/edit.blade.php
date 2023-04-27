@@ -60,16 +60,8 @@
             <label class="form_label_invalid">{{ $message }}</label>
         @enderror
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
-<<<<<<< HEAD
-        </form>
-    </section>
-    <a href="{{ route('user.logout') }}">Log out</a>
-    <script type="module" src="{{ asset('js/pages/user_edit.js') }}"></script>
-@endsection
-=======
             </form>
         </section>
         <a href="{{ route('user.logout') }}">Log out</a>
         <script type="module" src="{{ asset('js/pages/user_edit.js') }}"></script>
     @endsection
->>>>>>> development
