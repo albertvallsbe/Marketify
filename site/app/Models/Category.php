@@ -20,9 +20,17 @@ class Category extends Model
         return $this->belongsToMany(Product::class)->withTimeStamps();
     }
 
+
+    public static function findCategoryOfProduct($product_id){
+        return DB::table('category_product')
+        ->join('products', 'products.id', '=', 'category_product.product_id')
+        ->where('category_product.product_id', $product_id)
+        ->value('category_product.category_id');
+    }
+
     public static function findCategoryName($category_id){
         return DB::table('categories')
                 ->where('id', $category_id)
-                ->value('categoryname');
+                ->value('name');
     }
 }
