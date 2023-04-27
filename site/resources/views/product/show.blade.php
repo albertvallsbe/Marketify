@@ -9,11 +9,17 @@
         </section>
         <section class="card-style-productshow-details">
             <h1 class="card-style-productshow-details_title">{{ $product->name }}</h1>
-            <p class="card-style-productshow-details_content">Description: {{ $product->description }}</p>
-            {{-- <p class="card-style-productshow-details_content">Category: {{ $categoryname }}</p> --}}
-            <p class="card-style-productshow-details_content">Shop: {{ $shopname }}</p>
-            <p class="card-style-productshow-details_content">Price: {{ $product->price }}</p>
-            <button class="small-button btn-cart" data-product-id="{{ $product->id }}">Add to cart</button>
+            <p class="card-style-productshow-details_content"><b>Description:</b> {{ $product->description }}</p>
+            <p class="card-style-productshow-details_content"><b>Category:</b> {{ $categoryname }}</p>
+            <p class="card-style-productshow-details_content"><b>Shop:</b> {{ $shopname }}</p>         
+            <p class="card-style-productshow-details_content"><b>Price:</b> {{ $product->price }} €</p>
+            @if($shop == null)
+                <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add </button>
+            @else
+                @if($shop->id != $product->shop_id)
+                    <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add </button>
+                @endif
+            @endif
         </section>
     </section>
     <script type ="module" src="{{ asset('js/pages/product_show.js') }}"></script>

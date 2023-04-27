@@ -63,13 +63,23 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             $categories = Category::all();
             $shopName = Shop::findShopName($product->shop_id);
-            // $categoryName = Category::findCategoryName($product->category_id);
+            
+            $userId = auth()->id();
+            $usersShop = Shop::findShopUserID($userId);
+            if($usersShop){
+                $shop = Shop::findOrFail($usersShop);
+            }else{
+                $shop = 0;
+            }
+            $category_id = Category::findCategoryOfProduct($product->id);
+            $categoryName = Category::findCategoryName($category_id);
             return view('product.show', [
                 'product' => $product,
                 'categories' => $categories,
                 'options_order' => Order::$order_array,
                 'shopname' => $shopName,
-                // 'categoryname' => $categoryName
+                'shop' => $shop,
+                'categoryname' => $categoryName
         ]);
 
 
