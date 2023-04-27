@@ -14,7 +14,7 @@
     </div>
 @endif
     <h1>Shop name: {{ $shop->shopname }}</h1>
-    <img src="../{{ $shop->logo }}" width=150 height=150/>
+    <img src="{{asset($shop->logo) }}" width=150 height=150/>
     <p><b>NAME USER: </b>{{ $shop->username }}</p>
     <p><b>NIF/DNI: </b>{{ $shop->nif }}</p>
     <a href="{{ route('shop.show', $shop->url) }}">View as shopper</a>
