@@ -6,22 +6,21 @@
     <section class="headboard" style="background-color: {{ $header_color }}">
         <div class="headboard_logo_and_name">
             <img class="headboard_shoplogo" src="{{ asset($shop->logo) }}" width=150 height=150 />
-            <h1 class="headboard_shopname">{{ $shop->shopname }}</h1>
+            <h1 class="headboard_shopname headboard_label">{{ $shop->shopname }}</h1>
         </div>
         <div class="headboard_info">
-            <p class="headboard_username"><b>Owner: </b>{{ $shop->username }}</p>
-            <p class="headboard_nif"><b>NIF/DNI: </b>{{ $shop->nif }}</p>
+            <p class="headboard_username headboard_label"><b>Owner: </b>{{ $shop->username }}</p>
+            <p class="headboard_nif headboard_label"><b>NIF/DNI: </b>{{ $shop->nif }}</p>
         </div>
     </section>
+    <div class="admin-buttons">
+        <a href="{{ route('shop.edit') }}"><button class="small-button">Edit your shop</button></a>
+        <a href="{{ route('product.create') }}"><button class="small-button">Add product</button></a>
+        <a href="{{ route('shop.show', $shop->url) }}"><button class="small-button">View as customer</button></a>
+    </div>
     @if (session()->has('status'))
         <p>{{ session()->get('status') }}</p>
     @endif
-    <div class="admin-buttons">
-        <button class="small-button"><a href="{{ route('shop.edit') }}">Edit your shop</a></button>
-        <button class="small-button"><a href="{{ route('product.create') }}">Add product</a></button>
-        <button class="small-button"><a href="{{ route('shop.show', $shop->url) }}">View as customer</a></button>
-    </div>
-
     <h1 class="main_title">Products</h1>
     <div id="products" class="products">
         @forelse ($products as $key => $product)
@@ -33,8 +32,8 @@
                     <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
                 </a>
                 <div class="shop_buttons_container">
-                    <a href="{{ route('product.edit', ['id' => $product->id]) }}"><button class="shop_buttons"><img class="icon"
-                                src="{{ asset('images/pen-to-square-solid.svg') }}"></button></a>
+                    <a href="{{ route('product.edit', ['id' => $product->id]) }}"><button class="shop_buttons"><img
+                                class="icon" src="{{ asset('images/pen-to-square-solid.svg') }}"></button></a>
                     <form method="POST" action="{{ route('product.hide', ['id' => $product->id]) }}">
                         @csrf
                         <button type="submit" class="shop_buttons">
@@ -44,11 +43,12 @@
                                 <img class="icon" src="{{ asset('images/eye-slash-solid.svg') }}">
                             @endif
                         </button>
-                    </form>                    
+                    </form>
                     <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="shop_buttons"><img class="icon" src="{{ asset('images/trash-solid.svg') }}"></button>
+                        <button type="submit" class="shop_buttons"><img class="icon"
+                                src="{{ asset('images/trash-solid.svg') }}"></button>
                     </form>
                 </div>
             </div>

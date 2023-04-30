@@ -46,6 +46,13 @@
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
 
+                <label class="form_label" for="order">Shop's order:</label>
+                <select class="form_input" name="order">
+                    @foreach ($options_order as $value => $label)
+                        <option value="{{ $value }}" {{ $value == $shop->order ? 'selected' : '' }}>
+                            {{ $label }}</option>
+                    @endforeach
+                </select>
                 <button class="general-button" type="submit">Apply changes</button>
             </form>
             <p class="users-link">Customize your shop!</p>

@@ -24,8 +24,8 @@ class ShopController extends Controller {
 
     public function show($url) {
         try {
-            $shop = Shop::findShopByURL($url);
-            $products = Product::productsShop($shop->id);
+            $shop = Shop::showByURL($url);
+            $products = Product::productsShop($shop->id, $shop->order);
             $categories = Category::all();
 
         if(auth()->user()) {
@@ -52,7 +52,7 @@ class ShopController extends Controller {
             $shopID = Shop::findShopUserID($id);
             try {
                 $shop = Shop::findOrFail($shopID);
-                $products = Product::productsShop($shopID);
+                $products = Product::productsShop($shopID, $shop->order);
                 $categories = Category::all();
 
                 $header_color = Shop::findShopColor($shopID);
@@ -153,7 +153,11 @@ class ShopController extends Controller {
                 ],
                 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'header_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
+                'order' => 'required'
             ], ValidationMessages::shopValidationMessages());
+            if(Shop::generateURL($validatedData['shopname']) == ""){
+                return redirect()->back()->withErrors(['shopname' => 'The shopname has already been taken.']);
+            }
             if($request->hasFile('image')) {
                 $image = $validatedData['image'];
                 $name = uniqid('logo_') . '.' . $image->extension();
@@ -167,7 +171,8 @@ class ShopController extends Controller {
                 'url' => Shop::generateURL($validatedData['shopname']),
                 'nif' => $validatedData['nif'],
                 'logo' => $logoPath ?? $shop->logo,
-                'header_color' => $validatedData['header_color']
+                'header_color' => $validatedData['header_color'],
+                'order' => $validatedData['order']
             ]);
             session()->flash('status', "Shop edited successfully.");
             return redirect()->route('shop.admin');

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->unsignedinteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('url')->unique();
+            $table->string('order')->default('name_asc');
         });
     }
 

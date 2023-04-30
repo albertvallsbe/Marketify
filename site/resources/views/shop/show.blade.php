@@ -6,13 +6,12 @@
     <section class="headboard" style="background-color: {{ $header_color }}">
         <div class="headboard_logo_and_name">
             <img class="headboard_shoplogo" src="{{ asset($shop->logo) }}" width=150 height=150 />
-            <h1 class="headboard_shopname">{{ $shop->shopname }}</h1>
+            <h1 class="headboard_shopname headboard_label">{{ $shop->shopname }}</h1>
         </div>
         <div class="headboard_info">
-            <p class="headboard_username"><b>Owner: </b>{{ $shop->username }}</p>
+            <p class="headboard_username headboard_label"><b>Owner: </b>{{ $shop->username }}</p>
         </div>
     </section>
-
     <h1 class="main_title">Products</h1>
     <div id="products" class="products">
         @if ($products->count())

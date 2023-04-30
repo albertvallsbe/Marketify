@@ -58,6 +58,7 @@
                     <span id="cart-count" class="cart-count"></span>
                 </a>
             </div>
+            <button id="mode-toggle" class="shop_buttons"><img class="icon" src="{{ asset('images/moon-solid.svg') }}"></button>
         </div>
     </div>
 </header>

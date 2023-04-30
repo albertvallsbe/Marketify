@@ -20,10 +20,26 @@ class Shop extends Model
         'user_id',
         'logo',
         'url',
-        'header_color'
-    ];
+        'header_color',
+        'order'
+    ];    
+    
+    public static function showByURL($url){
+        $shop = Shop::where('url', $url)->orderBy('id', 'desc')->firstOrFail();
+        return $shop;
+    }
+
     public static function findShopByURL($url){
-        return Shop::where('url', $url)->orderBy('id', 'desc')->firstOrFail();
+        $shop = Shop::where('url', $url)->orderBy('id', 'desc')->first();
+        if (!$shop) {
+            return "";
+        }else{
+            if ($shop->id == Shop::findShopUserID(auth()->id())){
+                return "";
+            }else{
+        return $shop;
+            }
+        }
     }
 
     public static function findShopName($shop_id){
@@ -66,11 +82,10 @@ class Shop extends Model
     public static function generateURL($shop_name) {
         $shop_name = strtolower(str_replace(' ', '-', $shop_name));
         $shop_name = preg_replace('/[^A-Za-z0-9\-]/', '', $shop_name);
-        $urlChecker = Shop::findShopByURL($shop_name);
-        if ($urlChecker) {
-            return "";
-        }else{
+        if (Shop::findShopByURL($shop_name) == "") {
             return $shop_name;
+        }else{
+            return "";
         }
       }
 }
