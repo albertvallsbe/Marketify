@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Order;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LandingController extends Controller
 {
     public function index()
     {
+
+        Log::info('sfhfdhs4');
+        Log::debug('4342');
+        Log::error('error 500');
+
         $categories = Category::all();
         // Leemos el archivo JSON
         $json_string = file_get_contents('js/datos.json');
@@ -24,17 +30,17 @@ class LandingController extends Controller
             $activeTags[$key]['products'] = self::getProducts($category['category'],$category['amount']);
             // array_push($activeTags, $tag['tag']);
         }
-        
+
         //  dd($activeTags[0]['products'][0]['tag']);
         // dd($activeTags[0]);
         // Mostramos el contenido del array
-        
+
         return view('landing.index', [
             'categories' => $categories,
             'options_order' => Order::$order_array,
             'activeTags' => $activeTags
         ]);
-        
+
     }
     public function getProducts($category,$limit){
         return Product::query()
@@ -42,8 +48,7 @@ class LandingController extends Controller
         ->select('products.*')
         ->where('category_product.category_id', '=', $category)
         ->limit($limit)
-        ->get()
-        ;
+        ->get();
 
     }
     public function getCategories($id){
@@ -54,5 +59,5 @@ class LandingController extends Controller
         ->first()
         ;
     }
-   
+
 }
