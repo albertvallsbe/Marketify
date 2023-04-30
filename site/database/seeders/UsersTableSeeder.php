@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'email'=> 'comprador@test.com',
             'name'=>'comprador',
             'password'=> Hash::make('12345678'),
-            'role'=>'shopper',
+            'role'=>'customer',
         ]);
         User::factory()->create([
             'email'=> 'venedor@test.com',

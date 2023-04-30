@@ -19,7 +19,7 @@
               @enderror
 
               <label class="form_label" for="product_description">Description:</label>
-              <textarea class="form_input @error('product_description') is-invalid @enderror" name="product_description"
+              <textarea spellcheck="true" class="form_input_textarea @error('product_description') is-invalid @enderror" name="product_description"
                   placeholder="{{$product->description}}">{{$product->description}}</textarea>
               @error('product_description')
                   <label class="form_label_invalid">{{ $message }}</label>

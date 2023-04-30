@@ -19,16 +19,39 @@ class Shop extends Model
         'nif',
         'user_id',
         'logo',
-        'url'
-    ];
+        'url',
+        'header_color',
+        'order'
+    ];    
+    
+    public static function showByURL($url){
+        $shop = Shop::where('url', $url)->orderBy('id', 'desc')->firstOrFail();
+        return $shop;
+    }
+
     public static function findShopByURL($url){
-        return Shop::where('url', $url)->orderBy('id', 'desc')->firstOrFail();
+        $shop = Shop::where('url', $url)->orderBy('id', 'desc')->first();
+        if (!$shop) {
+            return "";
+        }else{
+            if ($shop->id == Shop::findShopUserID(auth()->id())){
+                return "";
+            }else{
+        return $shop;
+            }
+        }
     }
 
     public static function findShopName($shop_id){
         return DB::table('shops')
                 ->where('id', $shop_id)
                 ->value('shopname');
+    }
+    
+    public static function findShopColor($shop_id){
+        return DB::table('shops')
+                ->where('id', $shop_id)
+                ->value('header_color');
     }
     
     public static function findShopUserID($user_id){
@@ -38,7 +61,7 @@ class Shop extends Model
                 ->value('id');
     }
 
-    public static function makeUserShopper($user_id){
+    public static function makeUsercustomer($user_id){
         $user = User::find($user_id);
         $user->role = "seller";
         $user->save();
@@ -59,6 +82,10 @@ class Shop extends Model
     public static function generateURL($shop_name) {
         $shop_name = strtolower(str_replace(' ', '-', $shop_name));
         $shop_name = preg_replace('/[^A-Za-z0-9\-]/', '', $shop_name);
-        return $shop_name;
+        if (Shop::findShopByURL($shop_name) == "") {
+            return $shop_name;
+        }else{
+            return "";
+        }
       }
 }

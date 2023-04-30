@@ -25,7 +25,7 @@ class UserFactory extends Factory
             'expires_at' => '2023-12-12 04:26:03',
             'email_verified_at' => now(),
             // 'remember_token' => Str::random(10),
-            'role' => 'shopper',
+            'role' => 'customer',
             'avatar'=> 'images/profiles/default-avatar.jpg'
         ];
 

@@ -1,6 +1,24 @@
 body {
     margin: 0;
     background-color: $neutral_lighter;
+    color: $neutral_darker;
+}
+
+body.dark-mode {
+    background-color: #242424;
+    color: $neutral_lighter;
+
+    .product,
+    .card-style-productshow,
+    .card-style-productshow-details,
+    .card-style-edituser,
+    .card-style-account{
+        background-color: $neutral_dark;
+        color: $neutral_lighter;
+    }
+    .navbar {
+        background-color: $neutral_darker;
+    }
 }
 
 .content {
