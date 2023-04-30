@@ -34,11 +34,13 @@ class ShopController extends Controller {
         }else{
             $usersShop = 0;
         }
+        $header_color = Shop::findShopColor($shop->id);
             return view('shop.show', ['shop' => $shop,
             'categories' => $categories,
             'options_order' => Order::$order_array,
             'products' => $products,
-            'usersShop' => $usersShop]);
+            'usersShop' => $usersShop,
+            'header_color' => $header_color]);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('shop.404');
         }
@@ -53,11 +55,13 @@ class ShopController extends Controller {
                 $products = Product::productsShop($shopID);
                 $categories = Category::all();
 
+                $header_color = Shop::findShopColor($shopID);
                 return view('shop.admin', [
                     'products' => $products,
                     'shop' => $shop,
                     'categories' => $categories,
-                    'options_order' => Order::$order_array
+                    'options_order' => Order::$order_array,
+                    'header_color' => $header_color
                 ]);
             } catch (ModelNotFoundException $e) {
                 return redirect()->route('shop.index');
@@ -73,9 +77,10 @@ class ShopController extends Controller {
             'username'=>'required|string|alpha|unique:shops',
             'nif' => 'required|string|alpha_num|unique:shops',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'header_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
         ], ValidationMessages::shopValidationMessages());
         if(Shop::generateURL($validatedData['shopname']) == ""){
-
+            return redirect()->back()->withErrors(['shopname' => 'The shopname has already been taken.']);
         }
 
         if($request->hasFile('image')) {
@@ -89,6 +94,7 @@ class ShopController extends Controller {
         $store_name = $validatedData['shopname'];
         $username = $validatedData['username'];
         $nif = $validatedData['nif'];
+        $header_color = $validatedData['header_color'];
         Shop::create([
             'shopname' => $store_name,
             'username'=>$username,
@@ -96,8 +102,9 @@ class ShopController extends Controller {
             'logo' => $logoPath ?? 'images/logos/default-logo.png',
             'user_id' => $id,
             'url' => Shop::generateURL($validatedData['shopname']),
+            'header_color' => $header_color
         ]);
-        Shop::makeUserShopper($id);
+        Shop::makeUsercustomer($id);
         return redirect()->route('shop.admin');
     }
 
@@ -145,6 +152,7 @@ class ShopController extends Controller {
                     Rule::unique('shops')->ignore($shop->id),
                 ],
                 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'header_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
             ], ValidationMessages::shopValidationMessages());
             if($request->hasFile('image')) {
                 $image = $validatedData['image'];
@@ -159,6 +167,7 @@ class ShopController extends Controller {
                 'url' => Shop::generateURL($validatedData['shopname']),
                 'nif' => $validatedData['nif'],
                 'logo' => $logoPath ?? $shop->logo,
+                'header_color' => $validatedData['header_color']
             ]);
             session()->flash('status', "Shop edited successfully.");
             return redirect()->route('shop.admin');

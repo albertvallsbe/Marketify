@@ -19,7 +19,8 @@ class Shop extends Model
         'nif',
         'user_id',
         'logo',
-        'url'
+        'url',
+        'header_color'
     ];
     public static function findShopByURL($url){
         return Shop::where('url', $url)->orderBy('id', 'desc')->firstOrFail();
@@ -31,6 +32,12 @@ class Shop extends Model
                 ->value('shopname');
     }
     
+    public static function findShopColor($shop_id){
+        return DB::table('shops')
+                ->where('id', $shop_id)
+                ->value('header_color');
+    }
+    
     public static function findShopUserID($user_id){
         return DB::table('shops')
                 ->orderBy('id', 'DESC')
@@ -38,7 +45,7 @@ class Shop extends Model
                 ->value('id');
     }
 
-    public static function makeUserShopper($user_id){
+    public static function makeUsercustomer($user_id){
         $user = User::find($user_id);
         $user->role = "seller";
         $user->save();
@@ -59,6 +66,11 @@ class Shop extends Model
     public static function generateURL($shop_name) {
         $shop_name = strtolower(str_replace(' ', '-', $shop_name));
         $shop_name = preg_replace('/[^A-Za-z0-9\-]/', '', $shop_name);
-        return $shop_name;
+        $urlChecker = Shop::findShopByURL($shop_name);
+        if ($urlChecker) {
+            return "";
+        }else{
+            return $shop_name;
+        }
       }
 }

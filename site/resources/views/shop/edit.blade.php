@@ -39,6 +39,13 @@
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
 
+                <label class="form_label" for="header_color">Shop's color:</label>
+                <input type="color" class="form_input_color @error('image') is-invalid @enderror"
+                    value="{{ $shop->header_color }}" name="header_color" id="header_color">
+                @error('header_color')
+                    <label class="form_label_invalid">{{ $message }}</label>
+                @enderror
+
                 <button class="general-button" type="submit">Apply changes</button>
             </form>
             <p class="users-link">Customize your shop!</p>

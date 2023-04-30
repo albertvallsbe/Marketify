@@ -717,6 +717,13 @@ footer .footer__logo {
 .card-style-shop .form_input_textarea.is-invalid {
   background-color: #fdc3c9;
 }
+.card-style-shop .form_input_color {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.card-style-shop .form_input_color.is-invalid {
+  background-color: #fdc3c9;
+}
 .card-style-shop .form .general-button {
   border-radius: 12px;
   color: #1f1f1f;
@@ -744,6 +751,76 @@ footer .footer__logo {
   display: grid;
   text-align: center;
   justify-content: center;
+}
+
+.headboard {
+  justify-content: space-between;
+  padding: 2%;
+  display: flex;
+}
+.headboard_logo_and_name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.headboard_shoplogo {
+  margin-right: 20px;
+}
+.headboard_info {
+  margin-top: 5%;
+  text-align: right;
+}
+.headboard_shopname {
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  .headboard {
+    display: flex;
+    flex-direction: column;
+  }
+  .headboard_logo_and_name {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.shop_buttons {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.shop_buttons_container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.admin-buttons {
+  display: flex;
+  margin-top: 10px;
+  gap: 25px;
+}
+.admin-buttons .small-button {
+  border-radius: 12px;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  cursor: pointer;
+  padding: 10px;
+}
+.admin-buttons .small-button a {
+  color: #1f1f1f;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: small;
+}
+.admin-buttons .small-button:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+
+.hidden {
+  background-color: #828282;
 }
 
 .main-login {
@@ -1563,16 +1640,21 @@ body {
   cursor: pointer;
 }
 
-div.pagination {
+div.pagination,
+div.pagination_number {
   border: 1px solid #1f1f1f;
-  padding: 4px;
-  padding-inline: 8px;
   text-decoration: none;
   background-color: #fbfbfd;
   overflow: hidden;
+  display: inherit;
+  min-width: 35px;
+  max-width: 35px;
+  align-items: center;
+  justify-content: center;
 }
 
-div.pagination a {
+div.pagination a,
+div.pagination_number a {
   text-decoration: none;
   color: #1f1f1f;
 }
@@ -1593,6 +1675,12 @@ ul.pagination {
   justify-content: center;
   gap: 15px;
   text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+  div.pagination_number {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
