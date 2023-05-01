@@ -1,13 +1,22 @@
-div.pagination {
+div#pagination_container{
+}
+
+
+div.pagination,
+div.pagination_number {
     border: 1px solid $neutral_darker;
-    padding: 4px;
-    padding-inline: 8px;
     text-decoration: none;
     background-color: $neutral_lighter;
     overflow: hidden;
+    display: inherit;
+    min-width: 35px;
+    max-width: 35px;
+    align-items: center;
+    justify-content: center;
 }
 
-div.pagination a {
+div.pagination a, 
+div.pagination_number a{
     text-decoration: none;
     color: $neutral_darker;
 }
@@ -28,3 +37,9 @@ ul.pagination {
     gap: 15px;
     text-decoration: none;
 }
+
+@media screen and (max-width: 767px) {
+    div.pagination_number {
+      display: none;
+    }
+  }

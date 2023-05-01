@@ -41,7 +41,7 @@
                     <ul class="menu-list">
                         @can('seller')
                             <li><a href="{{ route('shop.admin') }}">Your shop</a></li>
-                        @elsecan('shopper')
+                        @elsecan('customer')
                             <li><a href="{{ route('shop.index') }}">Create shop</a></li>
                         @endcan
                         <li><a href="{{ route('user.logout') }}" class="logout">Log Out</a></li>
@@ -58,6 +58,7 @@
                     <span id="cart-count" class="cart-count"></span>
                 </a>
             </div>
+            <button id="mode-toggle" class="shop_buttons"><img class="icon" src="{{ asset('images/moon-solid.svg') }}"></button>
         </div>
     </div>
 </header>
