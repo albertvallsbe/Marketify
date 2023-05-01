@@ -25,3 +25,5 @@ yarn-error.log
 
 /vagrant
 /vagrant/.vagrant
+
+/public/css
