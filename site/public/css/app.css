@@ -253,7 +253,7 @@ footer .footer__logo {
   }
 }
 .main-home {
-  border: 3px solid #f43e3e;
+  border: none;
 }
 .main-home_title {
   font-weight: bold;
@@ -820,11 +820,11 @@ footer .footer__logo {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  border: 3px solid #f43e3e;
+  border: none;
 }
 
 .card-style-login {
-  border: 3px solid #f43e3e;
+  border: none;
   color: #1f1f1f;
   background-color: #fbfbfd;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
