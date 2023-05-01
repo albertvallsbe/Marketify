@@ -8,9 +8,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 
@@ -80,7 +80,7 @@ Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
     //     return view('dashboard');
     // })->name('dashboard');
-    
-    
+
+
     // Route::resource('dashboard', App\Http\Controllers\DashboardController::class)
     //     ->middleware('auth');
