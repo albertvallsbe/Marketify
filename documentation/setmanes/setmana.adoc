@@ -63,14 +63,14 @@ Temps real =>
 ==== Albert
 Vista detall del producte
 Temps estimat => 5h -> Total 7,25h
-Temps Real => 2,5h -> venia de la setmana anterior 
+Temps Real => 2,5h -> venia de la setmana anterior
 
 Diccionari javascript
-Temps estimat => 3h 
-Temps Real => 2,5h 
+Temps estimat => 3h
+Temps Real => 2,5h
 
 Realitzar Comanda
-Temps estimat => 15h 
+Temps estimat => 15h
 Temps Real => 1,75 -> conctinua encara
 
 === Setmana 8

@@ -23,6 +23,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $header = new Header($request);
+        Log::debug('Hola2');
 
         $categories = Category::all();
         if ($request->session()->has('request_categories') == "") {
@@ -43,7 +44,7 @@ class ProductController extends Controller
             $arrayCart = "[]";
         }
         setcookie("arrayCart",$arrayCart);
-        
+
         $usersShop = Shop::findShopUserID($userId);
         if($usersShop){
             $shop = Shop::findOrFail($usersShop);
@@ -63,7 +64,7 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             $categories = Category::all();
             $shopName = Shop::findShopName($product->shop_id);
-            
+
             $userId = auth()->id();
             $usersShop = Shop::findShopUserID($userId);
             if($usersShop){
@@ -219,7 +220,7 @@ class ProductController extends Controller
             $arrayCart = "[]";
         }
         setcookie("arrayCart",$arrayCart);
-        
+
         $usersShop = Shop::findShopUserID($userId);
         if($usersShop){
             $shop = Shop::findOrFail($usersShop);
@@ -227,7 +228,7 @@ class ProductController extends Controller
             $shop = 0;
         }
         $categories = Category::all();
-        
+
         $products = Product::filterCategory($id);
         return view('product.index', [
             'products' => $products,
