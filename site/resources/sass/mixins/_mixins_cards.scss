@@ -16,11 +16,11 @@
     margin: 0 auto;
     margin-top: 5%;
     height: max-content;
-    
+
     width: 75vh;
     @media screen and (max-width: 768px) {
         width: auto;
-    }    
+    }
 }
 
 @mixin cardStyle {
@@ -85,5 +85,4 @@
 @mixin outerBorder {
     // border: 3px solid $error-origin;
     border: none;
-    padding: 1%;
 }
