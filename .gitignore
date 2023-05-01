@@ -27,3 +27,5 @@ yarn-error.log
 /vagrant/.vagrant
 
 /public/css
+/public/css/*.css
+/public/css/*.map
