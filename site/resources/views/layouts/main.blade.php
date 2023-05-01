@@ -12,7 +12,7 @@
 
 <body>
     @include('components.header')
-    <div class="content">   
+    <div class="content">
         @yield('content')
     </div>
     @include('components.navigation')

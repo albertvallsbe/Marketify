@@ -43,7 +43,8 @@ namespace App\Http\Controllers;
                 return redirect()->back()->with('error', 'An error occurred while loading the home view.');
             }
         }
-        public function getProducts($category,$limit){
+        public function getProducts($category,$limit)
+        {
             try{
                 Log::channel('marketify')->info('getProducts has been loaded successfully with this category: '.$category);
 
@@ -58,7 +59,8 @@ namespace App\Http\Controllers;
                 return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
             }
         }
-        public function getCategories($id){
+        public function getCategories($id)
+        {
             try {
                 Log::channel('marketify')->info('getCategories has been loaded successfully with this category: '.$id);
 

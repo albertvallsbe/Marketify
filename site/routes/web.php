@@ -20,6 +20,7 @@ use App\Http\Controllers\DashboardController;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
+Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 
 Route::get('/search', [ProductController::class,'index'])->name('product.index');
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');

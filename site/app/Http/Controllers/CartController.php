@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
@@ -14,9 +13,6 @@ use App\Http\Controllers\Controller;
 class CartController extends Controller
 {
     public function index(Request $request) {
-        Log::info('sfhfdhs4');
-        Log::debug('4342');
-        Log::error('error 500');
         $categories = Category::all();
         $ids = $request->query('id');
         if ($ids) {
