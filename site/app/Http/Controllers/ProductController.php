@@ -23,7 +23,6 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $header = new Header($request);
-        Log::debug('Hola2');
 
         $categories = Category::all();
         if ($request->session()->has('request_categories') == "") {
@@ -81,15 +80,11 @@ class ProductController extends Controller
                 'shopname' => $shopName,
                 'shop' => $shop,
                 'categoryname' => $categoryName
-        ]);
-
-
+            ]);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('product.404');
         }
     }
-
-
 
     public function create() {
         $categories = Category::all();

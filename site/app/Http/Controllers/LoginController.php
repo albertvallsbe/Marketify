@@ -15,23 +15,23 @@ use App\Helpers\ValidationMessages;
 
 class LoginController extends Controller
 {
-    public function index(){    
+    public function index(){
         if(auth()->user()) {
             return redirect()->route('user.edit');
         }else{
             return view('login.index');
         }
     }
-    
+
     public function login(Request $request)
-    { 
+    {
         $validatedData = $request->validate([
             'login' => 'required|string|max:255',
             'current-password' => 'required|string|min:8|max:255',
         ], ValidationMessages::userValidationMessages());
 
         $loginType = filter_var($validatedData['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
-        
+
         $credentials = [
             $loginType => $validatedData['login'],
             'password' => $validatedData['current-password'],
@@ -68,7 +68,7 @@ class LoginController extends Controller
     public function rememberView(){
         return view('login.newPassword');
     }
-    
+
     public function rememberpassw(Request $request)
     {
         $validatedData = $request->validate([
