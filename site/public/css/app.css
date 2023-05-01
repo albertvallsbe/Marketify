@@ -40,6 +40,7 @@ header .navbar {
   grid-template-areas: "logo search icon";
   align-items: center;
   justify-items: center;
+  gap: 20px;
   color: #fbfbfd;
   background-color: #1f1f1f;
 }
@@ -190,6 +191,9 @@ header .menu-list a:hover {
     width: 35px;
     height: 35px;
   }
+  header .navbar__form--button-search {
+    width: 45px;
+  }
 }
 .navigation {
   position: fixed;
@@ -203,6 +207,9 @@ header .menu-list a:hover {
   color: #fbfbfd;
   background-color: #1f1f1f;
 }
+.navigation img.icon_user {
+  border-radius: 18px;
+}
 
 @media screen and (min-width: 769px) {
   div#navigation {
@@ -210,6 +217,11 @@ header .menu-list a:hover {
   }
   div#content {
     margin-bottom: 0px;
+  }
+}
+@media screen and (max-width: 768px) {
+  div.menu-container {
+    display: none;
   }
 }
 footer {
@@ -286,6 +298,7 @@ footer .footer__logo {
   max-width: 160px;
 }
 .card-style-home .product-img {
+  background-color: #fbfbfd;
   height: 125px;
   width: 125px;
   display: flex;
@@ -306,6 +319,13 @@ footer .footer__logo {
   height: 3em;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  margin-bottom: 0;
+}
+.card-style-home .product__description {
+  margin-top: 0;
+}
+.card-style-home .product__price {
+  height: 2em;
 }
 .card-style-home_a {
   text-decoration: none;
@@ -381,6 +401,7 @@ footer .footer__logo {
   max-width: 160px;
 }
 .card-style-cart .product-img {
+  background-color: #fbfbfd;
   height: 125px;
   width: 125px;
   display: flex;
@@ -818,7 +839,8 @@ footer .footer__logo {
 }
 
 .hidden {
-  background-color: #3e3e3e;
+  background-color: #272727 !important;
+  color: #d8d8d8;
 }
 
 .main-login {

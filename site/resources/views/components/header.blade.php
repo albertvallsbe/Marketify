@@ -49,7 +49,7 @@
                 </div>
             @else
                 <a href="{{ route('login.index') }}">
-                    <img class="icon" src="{{ asset('images/user-solid.svg') }}">
+                    <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
             @endif
 
             <div id="cart-icon" class="cart-icon">

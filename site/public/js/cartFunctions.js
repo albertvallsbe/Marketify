@@ -33,6 +33,7 @@ function updateLocalStorage() {
         getCountCart();
     } else {
     }
+    updateServerStorage();
 }
 
 //Contador de productes en el carret
@@ -66,7 +67,7 @@ function addToServerCart() {
             body: JSON.stringify({ cart }),
         }).then(() => {});
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -101,11 +102,10 @@ function addToCart() {
             linkPlaceholder.href = "/cart?id=" + queryString;
         }
     }
-    updateServerStorage();
+    updateLocalStorage();
 }
 export { getCountCart };
 export { addToCart };
 export { updateServerStorage };
 
-updateLocalStorage();
 addToCart();

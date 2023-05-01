@@ -41,7 +41,7 @@
         </section>
     </section>
     @if ($error)
-        <p>Some products has been removed from your cart as you are the owner.</p=>
+        <p>Some products has been removed from your cart as you are the owner.</p>
     @endif
     <script type="module" src="{{ asset('js/pages/cart_index.js') }}"></script>
 @endsection

@@ -1,5 +1,6 @@
 .main-home {
     @include outerBorder;
+
     &_title {
         @include largeTypografy;
     }
@@ -27,6 +28,16 @@
     &_title {
         @include cardStyleTitle;
         @include cardStyleTypography;
+        margin-bottom: 0;
+    }
+
+    .product {
+        &__description {
+            margin-top: 0;
+        }
+        &__price {
+            height: 2em;
+        }
     }
 
     &_a {
@@ -40,6 +51,7 @@
 }
 
 @media screen and (max-width: 768px) {
+
     div#products,
     .products {
         grid-template-columns: repeat(auto-fit, minmax(calc(150px), 1fr));

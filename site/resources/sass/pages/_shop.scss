@@ -134,5 +134,6 @@
 }
 
 .hidden {
-    background-color: $neutral_dark;
+    background-color: $disabled !important;
+    color: $neutral_light;
 }
