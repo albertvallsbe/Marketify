@@ -29,5 +29,11 @@ class UsersTableSeeder extends Seeder
             'password'=> Hash::make('12345678'),
             'role'=>'seller',
         ]);
+        User::factory()->create([
+            'email'=> 'venedor2@test.com',
+            'name'=>'venedor2',
+            'password'=> Hash::make('12345678'),
+            'role'=>'seller',
+        ]);
     }
 }
