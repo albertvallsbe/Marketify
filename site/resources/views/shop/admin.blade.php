@@ -44,11 +44,10 @@
                             @endif
                         </button>
                     </form>
-                    <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}">
+                    <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}" onsubmit="return confirm('Are you sure you want to delete this product?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="shop_buttons"><img class="icon"
-                                src="{{ asset('images/trash-solid.svg') }}"></button>
+                        <button type="submit" class="shop_buttons"><img class="icon" src="{{ asset('images/trash-solid.svg') }}"></button>
                     </form>
                 </div>
             </div>
