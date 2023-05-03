@@ -110,3 +110,8 @@
     grid-template-columns: repeat(5, 1fr);
     justify-content: center;
 }
+@mixin success {
+    background-color: $succes_light;
+    border: 1px solid $succes_origin;
+    padding: 5px;
+}

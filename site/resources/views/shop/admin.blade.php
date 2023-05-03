@@ -19,7 +19,7 @@
         <a href="{{ route('shop.show', $shop->url) }}"><button class="small-button">View as customer</button></a>
     </div>
     @if (session()->has('status'))
-        <p>{{ session()->get('status') }}</p>
+        <p class="session_success">{{ session()->get('status') }}</p>
     @endif
     <h1 class="main_title">Products</h1>
     <div id="products" class="products">

@@ -4,6 +4,9 @@
 
 @section('content')
     <h1>Profile page</h1>
+    @if (session()->has('status'))
+        <p class="session_success">{{ session()->get('status') }}</p>
+    @endif
     <section class="main-edituser">
         <section class="card-style-edituser">
             <h3 class="card-style-edituser_title">Change your password</h3>
@@ -11,21 +14,21 @@
                 @csrf
 
                 <label class="form_label" for="current-password">Your current password:</label>
-                <input type="text" class="form_input input-mail @error('current-password') is-invalid @enderror" name="current-password"
+                <input type="password" class="form_input input-mail @error('current-password') is-invalid @enderror" name="current-password"
                 placeholder="••••••••••••">
                 @error('current-password')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
                 
                 <label class="form_label" for="new-password">Your new password:</label>
-                <input type="text" class="form_input input-mail @error('new-password') is-invalid @enderror" name="new-password"
+                <input type="password" class="form_input input-mail @error('new-password') is-invalid @enderror" name="new-password"
                 placeholder="••••••••••••">
                 @error('new-password')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
                 
                 <label class="form_label" for="repeat-password">Repeat your new password:</label>
-                <input type="text" class="form_input input-mail @error('repeat-password') is-invalid @enderror" name="repeat-password"
+                <input type="password" class="form_input input-mail @error('repeat-password') is-invalid @enderror" name="repeat-password"
                 placeholder="••••••••••••">
                 @error('repeat-password')
                     <label class="form_label_invalid">{{ $message }}</label>
