@@ -10,8 +10,6 @@
             @if (!$product->hidden)
                 <div class="card-style-home product" id={{ $product->id }}>
                 <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
-                    {{-- </div>
-                    <div class="product__div_img"> --}}
                     <img class="product-img" src="{{ asset($product->image) }}" />
                     <h4  class="card-style-home_title product__name">{{ $product->name }}</h4>
                     <h5 class="card-style-home_title product__description">{{ $product->description }}</h5>
