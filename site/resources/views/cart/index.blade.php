@@ -36,7 +36,7 @@
             </div>
             <div class="btns-cart">
                 <button class="btn-empty general-button">EMPTY CART</button>
-                <button class="btn-buy general-button general-button_buy @if(count($products) == 0 || !auth()->user()) btn-disabled @endif " @if(count($products) == 0 || !auth()->user()) disabled @endif onclick="console.log('hola')">BUY ALL</button>
+                <button class="btn-buy general-button general-button_buy @if(count($products) == 0 || !auth()->user()) btn-disabled @endif " @if(count($products) == 0 || !auth()->user()) disabled @endif>BUY ALL</button>
                 
             </div>
             @if(!auth()->user())
