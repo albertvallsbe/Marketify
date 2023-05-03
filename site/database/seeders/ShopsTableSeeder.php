@@ -17,13 +17,13 @@ class ShopsTableSeeder extends Seeder
     public function run(): void {
 
         DB::table('shops')->delete();
-        $seller = User::where('role', 'seller')->first();
-        $seller2 = User::where('role', 'seller')->latest()->first();
+        $seller = User::where('id', '2')->first();
+        $seller2 = User::where('id', '3')->first();
         Shop::factory()->state([
             'user_id' => $seller->id,
         ])->create([
             'shopname' => 'Awesome Shop!',
-            'username' => 'Seller',
+            'username' => 'Awesome Seller',
             'nif' => '0001A',
             'url' => Shop::generateURL('Awesome Shop!'),
         ]);
@@ -31,7 +31,7 @@ class ShopsTableSeeder extends Seeder
             'user_id' => $seller2->id,
         ])->create([
             'shopname' => 'Amazing Shop!',
-            'username' => 'Seller 2',
+            'username' => 'Amazing Seller',
             'nif' => '0002B',
             'url' => Shop::generateURL('Amazing Shop!'),
         ]);

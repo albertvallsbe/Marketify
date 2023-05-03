@@ -27,6 +27,8 @@
                         @if ($shop->id != $usersShop)
                             <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to
                                 cart</button>
+                        @else
+                            <small class="card-style-home_title"><i>This product belongs to you.</i></small>
                         @endif
                     </div>
                 @endif
@@ -43,5 +45,5 @@
         {{-- {{ $products->appends(['search' => $search]) }} --}}
         {{ $products->links('vendor.pagination.default') }}
     </div>
-    <script type ="module" src="{{ asset('js/pages/shop_show.js') }}"></script>
+    <script type="module" src="{{ asset('js/pages/shop_show.js') }}"></script>
 @endsection
