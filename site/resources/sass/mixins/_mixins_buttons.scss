@@ -21,3 +21,14 @@
         @include buttonStyleHover;
     }
 }
+@mixin miniSmallButton {
+    padding: 15px 60px;
+    border-radius: 30px;
+    @include buttonStyle;
+    @include mediumTypografy;
+    width: 17%;
+
+    &:hover {
+        @include buttonStyleHover;
+    }
+}
