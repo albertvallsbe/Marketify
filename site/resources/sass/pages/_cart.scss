@@ -66,6 +66,9 @@
     }
 }
 
+.btn-disabled {
+    @include btn-disabled;
+}
 @media screen and (max-width: 900px) {
     .main-cart {
         grid-template-columns: repeat(auto-fit, minmax(calc(400px), 1fr));

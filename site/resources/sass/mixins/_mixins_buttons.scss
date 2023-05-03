@@ -21,3 +21,12 @@
         @include buttonStyleHover;
     }
 }
+
+@mixin btn-disabled {
+    background-color: $neutral_origin !important;
+    color: $neutral_darker !important;
+    border: 2px solid $neutral_origin !important;
+    &:hover{
+        cursor: not-allowed !important;
+    }
+}
