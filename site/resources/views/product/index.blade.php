@@ -18,10 +18,10 @@
                     <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
                 </a>
                 @if($shop == null)
-                    <button class="btn-cart small-button" id="button-prueba" data-product-id="{{ $product->id }}">Add </button>
+                    <button class="btn-cart small-button" id="button-prueba" data-product-id="{{ $product->id }}">Add to cart</button>
                 @else
                     @if($shop->id != $product->shop_id)
-                        <button class="btn-cart small-button" id="button-prueba" data-product-id="{{ $product->id }}">Add </button>
+                        <button class="btn-cart small-button" id="button-prueba" data-product-id="{{ $product->id }}">Add to cart</button>
                         @else
                         <small class="card-style-home_title"><i>This product belongs to you.</i></small>
                     @endif
