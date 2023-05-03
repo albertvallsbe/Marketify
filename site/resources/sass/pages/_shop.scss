@@ -137,3 +137,7 @@
     background-color: $disabled !important;
     color: $neutral_light;
 }
+
+.session_success{
+    @include success;
+}
