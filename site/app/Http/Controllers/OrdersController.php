@@ -44,12 +44,4 @@ class OrdersController extends Controller
             return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
         }
     }
-
-    public function add(Request $request) {
-        $productsArray = $request->input('cart');
-        $userId = auth()->id();
-        if($userId){
-            Cart::updateCartDB($productsArray);
-        }
-    }
 }
