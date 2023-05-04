@@ -1,0 +1,26 @@
+- El carret mostrará els productes que es trobin a la QueryString de la propia vista (/cart?id=). 
+
+- Hi ha una suma total dels costs dels productes a la dreta de la vista.
+
+- Pots buidar el carret completament, o bé, pots eliminar un producte de manera selectiva.
+
+=== Carret en local:
+Les funcions principals del carret són a JavaScript.
+
+Primer de tot, quan es carrega la pàgina, comprova la variable 'cart' al localstorage per agafar les IDs dels productes corresponents. Després comprova aquestes ID amb les dels productes mostrats a la vista per canviar l'innerText del botó de 'Add to cart' a 'Remove from cart'. Després de comprovar i executar aquesta funcionalitat, hi ha un eventlistener dins d'un forEach esperant que el botó de cualsevol producte sigui clicat.
+
+En cas de mostrar-se l'innerText com 'Remove from cart', l'script encarregat treu la ID específica de l'array allotjat al localstorage.
+
+En cas que l'innerText del butó sigui 'Add to cart', afegeix la respectiva ID a l'array amb un push, s'executa la funcionalitat contador d'elements de l'array per mostrar-ne un número sobre l'icona del carret, i es crea la querystring per mostrar els productes al carret.
+
+=== Carret en servidor:
+El carret en servidor utilitza les funcionalitats de JavaScript per funcionar. L'única variació es l'afegiment d'un script per detectar si l'usuari está autenticat a laravel, des d'una ruta feta a web.php, on retorna un boolean. 
+
+En cas que no estigués autenticat, s'allotjaria únicament al localstorage. 
+
+Si l'usuari s'ha donat d'alta i està logejat, en cada actualització (afegir/treure al carret, navegar a un altre pàgina, etc.) envia una petició POST al servidor on guarda la informació a la base de dades.
+
+=== Posibles conflictes:
+- Quan l'usuari logejat tanca sessió, el carret local es buida.
+- Quan hi ha informació al localStorage i l'usuari inicia sessió, es sobreescriu la informació local amb la del servidor.
+- Quan un usuari no autenticat ha afegit productes al carret i es registra, aquests productes són pujats a la base de dades amb el respectiu usuari.
