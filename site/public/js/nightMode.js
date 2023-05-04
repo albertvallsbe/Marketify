@@ -6,7 +6,7 @@ const sunImage = imageUrl + "moon-solid.svg";
 const moonImage = imageUrl + "sun-solid.svg";
 
 const currentMode = localStorage.getItem("mode");
-if (currentMode === "dark") {
+if (currentMode === "dark" && window.location.href.indexOf('/shop/') === -1) {
     setDarkMode();
 }
 
@@ -15,8 +15,12 @@ toggleSwitch.addEventListener("click", function () {
         localStorage.setItem("mode", "light");
         setLightMode();
     } else {
-        localStorage.setItem("mode", "dark");
-        setDarkMode();
+        if (window.location.href.indexOf('/shop/') === -1) {
+            localStorage.setItem("mode", "dark");
+            setDarkMode();            
+        }else{
+            alert("You can not set dark mode in a shop!")
+        }
     }
 });
 

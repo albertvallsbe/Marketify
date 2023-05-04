@@ -110,6 +110,7 @@
 
 .admin-buttons {
     display: flex;
+    justify-content: center;
     margin-top: 10px;
     gap: 25px;
 
@@ -136,4 +137,8 @@
 .hidden {
     background-color: $disabled !important;
     color: $neutral_light;
+}
+
+.session_success{
+    @include success;
 }

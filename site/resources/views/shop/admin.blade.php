@@ -3,6 +3,7 @@
 @section('title', 'Administrate your shop')
 
 @section('content')
+<div style="background-color: {{ $background_color }}">
     <section class="headboard" style="background-color: {{ $header_color }}">
         <div class="headboard_logo_and_name">
             <img class="headboard_shoplogo" src="{{ asset($shop->logo) }}" width=150 height=150 />
@@ -19,7 +20,7 @@
         <a href="{{ route('shop.show', $shop->url) }}"><button class="small-button">View as customer</button></a>
     </div>
     @if (session()->has('status'))
-        <p>{{ session()->get('status') }}</p>
+        <p class="session_success">{{ session()->get('status') }}</p>
     @endif
     <h1 class="main_title">Products</h1>
     <div id="products" class="products">
@@ -27,8 +28,8 @@
             <div class="card-style-home product {{ $product->hidden ? 'hidden' : '' }}" id="{{ $product->id }}">
                 <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
                     <img class="product-img" src="{{ asset($product->image) }}" />
-                    <h4 class="card-style-home_title product__name">{{ $product->name }}</h4>
-                    <h4 class="card-style-home_title product__description">{{ $product->tag }}</h4>
+                    <h4  class="card-style-home_title product__name">{{ $product->name }}</h4>
+                    <h5 class="card-style-home_title product__description">{{ $product->description }}</h5>
                     <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
                 </a>
                 <div class="shop_buttons_container">
@@ -44,11 +45,10 @@
                             @endif
                         </button>
                     </form>
-                    <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}">
+                    <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}" onsubmit="return confirm('Are you sure you want to delete this product?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="shop_buttons"><img class="icon"
-                                src="{{ asset('images/trash-solid.svg') }}"></button>
+                        <button type="submit" class="shop_buttons"><img class="icon" src="{{ asset('images/trash-solid.svg') }}"></button>
                     </form>
                 </div>
             </div>
@@ -63,5 +63,6 @@
     <div id="pagination">
         {{ $products->links('vendor.pagination.default') }}
     </div>
+</div>
     <script type="module" src="{{ asset('js/pages/shop_show.js') }}"></script>
 @endsection

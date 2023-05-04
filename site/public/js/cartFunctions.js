@@ -102,10 +102,10 @@ function addToCart() {
             linkPlaceholder.href = "/cart?id=" + queryString;
         }
     }
-    updateLocalStorage();
 }
 export { getCountCart };
 export { addToCart };
 export { updateServerStorage };
 
+updateServerStorage();
 addToCart();

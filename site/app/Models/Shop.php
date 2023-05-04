@@ -48,12 +48,18 @@ class Shop extends Model
                 ->value('shopname');
     }
     
-    public static function findShopColor($shop_id){
+    public static function findHeaderShopColor($shop_id){
         return DB::table('shops')
                 ->where('id', $shop_id)
                 ->value('header_color');
     }
-    
+
+    public static function findBackgroundShopColor($shop_id){
+        return DB::table('shops')
+                ->where('id', $shop_id)
+                ->value('background_color');
+    }
+
     public static function findShopUserID($user_id){
         return DB::table('shops')
                 ->orderBy('id', 'DESC')

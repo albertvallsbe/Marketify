@@ -33,13 +33,16 @@ class ShopController extends Controller {
         }else{
             $usersShop = 0;
         }
-        $header_color = Shop::findShopColor($shop->id);
+        $header_color = Shop::findHeaderShopColor($shop->id);
+        $background_color = Shop::findBackGroundShopColor($shop->id);
+        
             return view('shop.show', ['shop' => $shop,
             'categories' => $categories,
             'options_order' => Order::$order_array,
             'products' => $products,
             'usersShop' => $usersShop,
-            'header_color' => $header_color]);
+            'header_color' => $header_color,
+            'background_color' => $background_color]);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('shop.404');
         }
@@ -54,13 +57,15 @@ class ShopController extends Controller {
                 $products = Product::productsShop($shopID, $shop->order);
                 $categories = Category::all();
 
-                $header_color = Shop::findShopColor($shopID);
+                $header_color = Shop::findHeaderShopColor($shopID);
+                $background_color = Shop::findBackGroundShopColor($shop->id);
                 return view('shop.admin', [
                     'products' => $products,
                     'shop' => $shop,
                     'categories' => $categories,
                     'options_order' => Order::$order_array,
-                    'header_color' => $header_color
+                    'header_color' => $header_color,
+                    'background_color' => $background_color
                 ]);
             } catch (ModelNotFoundException $e) {
                 return redirect()->route('shop.index');
@@ -77,6 +82,7 @@ class ShopController extends Controller {
             'nif' => 'required|string|alpha_num|unique:shops',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'header_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
+            'background_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
         ], ValidationMessages::shopValidationMessages());
         if(Shop::generateURL($validatedData['shopname']) == ""){
             return redirect()->back()->withErrors(['shopname' => 'The shopname has already been taken.']);
@@ -94,6 +100,7 @@ class ShopController extends Controller {
         $username = $validatedData['username'];
         $nif = $validatedData['nif'];
         $header_color = $validatedData['header_color'];
+        $background_color = $validatedData['background_color'];
         Shop::create([
             'shopname' => $store_name,
             'username'=>$username,
@@ -101,7 +108,8 @@ class ShopController extends Controller {
             'logo' => $logoPath ?? 'images/logos/default-logo.png',
             'user_id' => $id,
             'url' => Shop::generateURL($validatedData['shopname']),
-            'header_color' => $header_color
+            'header_color' => $header_color,
+            'background_color' => $background_color
         ]);
         Shop::makeUsercustomer($id);
         return redirect()->route('shop.admin');
@@ -152,6 +160,7 @@ class ShopController extends Controller {
                 ],
                 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 'header_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
+                'background_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
                 'order' => 'required'
             ], ValidationMessages::shopValidationMessages());
             if(Shop::generateURL($validatedData['shopname']) == ""){
@@ -171,7 +180,8 @@ class ShopController extends Controller {
                 'nif' => $validatedData['nif'],
                 'logo' => $logoPath ?? $shop->logo,
                 'header_color' => $validatedData['header_color'],
-                'order' => $validatedData['order']
+                'order' => $validatedData['order'],
+                'background_color' => $validatedData['background_color'],
             ]);
             session()->flash('status', "Shop edited successfully.");
             return redirect()->route('shop.admin');
