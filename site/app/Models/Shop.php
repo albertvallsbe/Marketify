@@ -22,8 +22,8 @@ class Shop extends Model
         'url',
         'header_color',
         'order'
-    ];    
-    
+    ];
+
     public static function showByURL($url){
         $shop = Shop::where('url', $url)->orderBy('id', 'desc')->firstOrFail();
         return $shop;
@@ -47,7 +47,7 @@ class Shop extends Model
                 ->where('id', $shop_id)
                 ->value('shopname');
     }
-    
+
     public static function findHeaderShopColor($shop_id){
         return DB::table('shops')
                 ->where('id', $shop_id)

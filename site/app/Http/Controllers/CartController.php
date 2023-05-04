@@ -1,9 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Classes\Order;
+
 use App\Models\Cart;
 use App\Models\Shop;
-use App\Classes\Order;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $categories = Category::all();
         $ids = $request->query('id');
         if ($ids) {
@@ -29,18 +31,21 @@ class CartController extends Controller
         }
         $error = false;
         $products = Product::showByIDs($ids);
-        return view('cart.index',['categories' => $categories,
-        'options_order' => Order::$order_array,
-        'products' => $products,
-        'shop' => $shop,
-        'error'=> $error]);
-}
 
-public function add(Request $request) {
-    $productsArray = $request->input('cart');
-    $userId = auth()->id();
-    if($userId){
-        Cart::updateCartDB($productsArray);
+        return view('cart.index', [
+            'categories' => $categories,
+            'options_order' => Order::$order_array,
+            'products' => $products,
+            'shop' => $shop,
+            'error'=> $error
+        ]);
     }
+
+    public function add(Request $request) {
+        $productsArray = $request->input('cart');
+        $userId = auth()->id();
+        if($userId){
+            Cart::updateCartDB($productsArray);
+        }
     }
 }
