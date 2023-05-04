@@ -46,7 +46,7 @@ namespace App\Http\Controllers;
         public function getProducts($category,$limit)
         {
             try{
-                Log::channel('marketify')->info('getProducts has been loaded successfully with this category: '.$category);
+                Log::channel('marketify')->debug('getProducts has been loaded successfully with this category: ', ["category" => $category]);
 
                 return Product::query()
                 ->join('category_product', 'category_product.product_id', '=', 'products.id')

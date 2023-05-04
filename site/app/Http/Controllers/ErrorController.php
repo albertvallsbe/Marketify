@@ -24,7 +24,7 @@ class ErrorController extends Controller
         return view('errors.404-product',['categories' => $categories,
         'options_order' => Order::$order_array]);
     }
-    
+
     public function user404() {
         $categories = Category::all();
         return view('errors.404-user',['categories' => $categories,

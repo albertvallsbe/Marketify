@@ -36,7 +36,7 @@
             </div>
             <div class="btns-cart">
                 <button class="btn-empty general-button">EMPTY CART</button>
-                <button class="btn-buy general-button general-button_buy">BUY ALL</button>
+                <button class="btn-buy general-button general-button_buy">GENERATE ORDER</button>
             </div>
         </section>
     </section>
