@@ -41,6 +41,6 @@ return new class extends Migration
             $table->dropForeign(['user_id']);
             $table->dropForeign(['shop_id']);
         });
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('orders');
     }
 };
