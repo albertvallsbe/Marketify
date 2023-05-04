@@ -58,6 +58,11 @@
         &_buy {
             background-color: $succes-dark;
             border-color: $succes-dark;
+
+            &:hover {
+                background-color: $succes-light;
+                border-color: $succes-light;
+            }
         }
     }
 

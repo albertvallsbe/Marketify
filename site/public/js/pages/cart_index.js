@@ -3,6 +3,7 @@ import { updateServerStorage } from "../cartFunctions.js";
 
 const removeButtons = document.querySelectorAll(".btn-remove");
 const clearButton = document.querySelector(".btn-empty");
+const ordersButton = document.querySelector(".btn-buy");
 
 //FUNCTIONS
 
@@ -67,5 +68,11 @@ clearButton.addEventListener("click", function () {
     updateServerStorage();
     window.location.href = "/cart";
     }
+});
+
+ordersButton.addEventListener("click", function () {
+    // localStorage.removeItem("cart");
+    // updateServerStorage();
+    window.location.href = "/orders";
 });
 showTotalPrice();

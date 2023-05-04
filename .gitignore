@@ -31,3 +31,4 @@ yarn-error.log
 /public/css/*.map
 
 myscript_Desktop.sh
+myscript_Laptop.sh
