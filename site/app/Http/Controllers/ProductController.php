@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Category_Product;
 use App\Classes\Order;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Notification;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\View\Components\Header;
+use App\Models\Category_Product;
+use App\Helpers\ValidationMessages;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Helpers\ValidationMessages;
 
 class ProductController extends Controller
 {
@@ -39,11 +40,13 @@ class ProductController extends Controller
         $userId = auth()->id();
         if ($userId) {
             $arrayCart = Cart::showCartByUserID($userId);
+            $notificationCount = Notification::unreadCountForCurrentUser();
         } else {
             $arrayCart = "[]";
+            $notificationCount = 0;
         }
         setcookie("arrayCart",$arrayCart);
-
+         
         $usersShop = Shop::findShopUserID($userId);
         if($usersShop){
             $shop = Shop::findOrFail($usersShop);
@@ -54,7 +57,8 @@ class ProductController extends Controller
             'products' => $products,
             'categories' => $categories,
             'options_order' => Order::$order_array,
-            'shop' => $shop]);
+            'shop' => $shop,
+            'notificationCount' => $notificationCount]);
     }
 
     public function show($id)

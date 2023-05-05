@@ -19,6 +19,7 @@ class ChatController extends Controller
             if(auth()->user()){
                 $chats = chat::getByUserID();
                 $categories = Category::all();
+                session(['notificationCount' => Notification::unreadCountForCurrentUser()]);
                 return view('chat.index', [
                     'categories' => $categories,
                     'options_order' => Order::$order_array,
