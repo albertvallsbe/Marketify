@@ -107,5 +107,5 @@ export { getCountCart };
 export { addToCart };
 export { updateServerStorage };
 
-updateServerStorage();
+updateLocalStorage();
 addToCart();
