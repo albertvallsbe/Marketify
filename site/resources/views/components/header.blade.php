@@ -58,6 +58,11 @@
                     <span id="cart-count" class="cart-count"></span>
                 </a>
             </div>
+            
+            <a href="{{ route('chat.index') }}">
+                <img class="icon" src="{{ asset('images/envelope-solid.svg') }}">
+                <span id="message-count" class="message-count"></span>
+            </a>
             <button id="mode-toggle" class="shop_buttons"><img class="icon" src="{{ asset('images/moon-solid.svg') }}"></button>
         </div>
     </div>

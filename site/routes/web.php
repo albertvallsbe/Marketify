@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\chatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,9 @@ Route::get('/shop-not-found', [ErrorController::class, 'shop404'])->name('shop.4
 Route::get('/user-not-found', [ErrorController::class, 'user404'])->name('user.404');
 Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 
+
+Route::get('/messages', [ChatController::class, 'index'])->name('chat.index');
+Route::post('/message-update/{id}', [ChatController::class, 'updateMessageRead'])->name('chat.updateMessageRead');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
     //     return view('dashboard');
     // })->name('dashboard');
