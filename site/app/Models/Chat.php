@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Chat;
 use App\Models\User;
 use App\Models\Message;
+use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
 
 class chat extends Model
@@ -15,8 +17,9 @@ class chat extends Model
     public static function getByUserID(){
         $userId = auth()->id();
         return self::where('seller_id', $userId)
-        ->orWhere('customer_id', $userId)
-        ->get();
+            ->orWhere('customer_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
 
     public function seller()
@@ -27,6 +30,11 @@ class chat extends Model
     public function customer()
     {
         return $this->belongsTo(User::class, 'customer_id');
+    }
+
+    public function notification()
+    {   
+        return $this->hasOne(Notification::class);
     }
 
     public function messages()

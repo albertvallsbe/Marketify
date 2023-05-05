@@ -4,12 +4,12 @@
 
 @section('content')
 <h1 class="main_title">Your messages</h1>
-
+<div class="main_container">
     <div class="chat_container">
         @if ($chats->count())
             <ul class="chat_list">
                 @foreach ($chats as $key => $chat)
-                    <li class="chat_item" data-chat-id="{{ $chat->id }}">
+                    <li class="chat_item @if($chat->notification->read == 0 && $chat->notification->user_id === auth()->id()) unread @endif" data-chat-id="{{ $chat->id }}">
                         @if ($chat->seller_id != auth()->id())
                             <span class="chat_name">Seller: {{ $chat->seller->name }}</span>
                         @else
@@ -43,6 +43,6 @@
             <h2>You don't have messages yet!</h2>
         @endif
     </div>
-
+</div>
     <script type="module" src="{{ asset('js/pages/messages_index.js') }}"></script>
 @endsection

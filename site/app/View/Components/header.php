@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\View\Component;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 
 class header extends Component

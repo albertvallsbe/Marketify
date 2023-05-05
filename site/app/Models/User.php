@@ -62,11 +62,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function chatsAsSeller()
     {
-        return $this->hasMany(chat::class, 'seller_id');
+        return $this->hasMany(Chat::class, 'seller_id');
     }
 
     public function chatsAsCustomer()
     {
-        return $this->hasMany(chat::class, 'customer_id');
+        return $this->hasMany(Chat::class, 'customer_id');
     }
 }
