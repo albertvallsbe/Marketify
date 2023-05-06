@@ -18,8 +18,23 @@ class Orders extends Model
 
     protected $casts = [
         'products' => 'array',
-        'status' => 'boolean',
     ];
+
+    protected $enumStatus = [
+        'pending' => 0,
+        'processing' => 1,
+        'completed' => 2,
+    ];
+
+    public function getStatusAttribute($value)
+    {
+        return array_search($value, $this->enumStatus, true);
+    }
+
+    public function setStatusAttribute($value)
+    {
+        $this->attributes['status'] = $this->enumStatus[$value];
+    }
 
     public function shop()
     {

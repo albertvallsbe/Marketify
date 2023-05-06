@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->boolean('status')->default(false);
+            $table->enum('status', ['pending', 'processing', 'completed'])->default('pending');
             $table->text('products');
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('shop_id')->index();

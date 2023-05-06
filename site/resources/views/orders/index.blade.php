@@ -7,7 +7,13 @@
     <section class="main-orders">
         <section class="orders-card">
             <div class="product card-style-orders">
-                <h2 class="products-title">name</h2>
+                @foreach ($cartProducts as $cartProduct)
+                    <div class="cart-product">
+                        <h4>{{ $cartProduct['product']->name }}</h4>
+                        <p>Price: {{ $cartProduct['product']->price }}</p>
+                        <p>Shop: {{ $cartProduct['shop']->name }}</p>
+                    </div>
+                @endforeach
             </div>
         </section>
     </section>
