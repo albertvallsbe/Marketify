@@ -6,9 +6,11 @@ use App\Models\Cart;
 
 use App\Models\Shop;
 use App\Classes\Order;
+use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,34 +20,39 @@ class OrdersController extends Controller
     {
         try {
             $categories = Category::all();
-
-            $user = Auth::user();
-            $orders = Order::with('shop_id')->where('user_id', $user->id)->orderByDesc('created_at')->get();
-
-            $carts = Cart::where('user_id', $user->id)->get();
-
-            $cartProducts = [];
+            $carts = Cart::all();
             foreach ($carts as $cart) {
-                $cartProductIds = json_decode($cart->products, true);
+                $productIds = Orders::decodeIds($cart->products);
 
-                foreach ($cartProductIds as $shopId => $productIds) {
-                    $shop = Shop::findOrFail($shopId);
-
-                    foreach ($productIds as $productId) {
-                        $product = Product::findOrFail($productId);
-                        $cartProducts[] = [
-                            'product' => $product,
-                            'shop' => $shop,
-                        ];
-                    }
-                }
             }
+
+            $userId = auth()->id();
+            if ($userId) {
+                $arrayCart = Cart::showCartByUserID($userId);
+            } else {
+                $arrayCart = "[]";
+            };
+
+            $usersShop = Shop::findShopUserID($userId);
+            if($usersShop){
+                $shop = Shop::findOrFail($usersShop);
+            }else{
+                $shop = 0;
+            }
+
+
 
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => Order::$order_array,
-                'orders',
-                'cartProducts'
+                // 'cartProducts' => $cartProducts
+                'carts' => $carts,
+                'shop' => $shop,
+                'options_order' => Order::$order_array,
+                'cartProducts' => $arrayCart,
+                'productIds' => $productIds,
+                // 'arrayProductsId' => $arrayProducts
+                // 'shopname' => $shopName,
             ]);
         } catch (\Exception $e) {
                 Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
@@ -67,5 +74,27 @@ class OrdersController extends Controller
             Log::channel('marketify')->error('An error occurred while loading getProducts() '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
         }
+    }
+
+    public function decodeIds($string)
+    {
+        // Decodificar la cadena JSON
+        $decodedString = json_decode($string);
+
+        // Comprobar si la decodificación ha sido correcta
+        if (is_array($decodedString)) {
+            // Convertir los valores en el array en enteros y retornarlos
+            return array_map('intval', $decodedString);
+        } else {
+            // En caso de que la decodificación fallara, retornar un array vacío
+            return [];
+        }
+    }
+
+    public function show($id)
+    {
+        $order = Orders::find($id);
+        $decodedIds = Orders::decodeIds($order->products);
+        return view('orders.show', compact('order', 'decodedIds'));
     }
 }

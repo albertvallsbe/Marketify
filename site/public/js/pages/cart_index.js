@@ -63,10 +63,10 @@ removeButtons.forEach(function (button) {
 });
 
 clearButton.addEventListener("click", function () {
-    if (confirm('Are you sure you want to empty your cart?')) {
-    localStorage.removeItem("cart");
-    updateServerStorage();
-    window.location.href = "/cart";
+    if (confirm("Are you sure you want to empty your cart?")) {
+        localStorage.removeItem("cart");
+        updateServerStorage();
+        window.location.href = "/cart";
     }
 });
 

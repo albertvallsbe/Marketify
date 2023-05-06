@@ -7,15 +7,19 @@
     <section class="main-orders">
         <section class="orders-card">
             <div class="product card-style-orders">
-                @foreach ($cartProducts as $cartProduct)
+                @foreach ($carts as $cart)
                     <div class="cart-product">
-                        <h4>{{ $cartProduct['product']->name }}</h4>
-                        <p>Price: {{ $cartProduct['product']->price }}</p>
-                        <p>Shop: {{ $cartProduct['shop']->name }}</p>
+                        <h4>{{ $cart->id }}</h4>
+                        <p>Products: {{ $cart->products }}</p>
+                        @foreach ($cart as $productId)
+                            <p>{{ $productId }}</p>
+                        @endforeach
+                        <p>Shop: {{ $cart->user_id }}</p>
+                        <p>Shop Name: {{ $cart->shopname }}</p>
                     </div>
                 @endforeach
             </div>
         </section>
     </section>
-    <script type="module" src="{{ asset('js/pages/ordersIndex.js') }}"></script>
+    <script type="module" src="{{ asset('js/pages/cart_index.js') }}"></script>
 @endsection

@@ -36,6 +36,11 @@ class Orders extends Model
         $this->attributes['status'] = $this->enumStatus[$value];
     }
 
+    public static function decodeIds($encodedIds)
+    {
+        return json_decode($encodedIds);
+    }
+
     public function shop()
     {
         // return $this->belongsTo(Shop::class);
@@ -47,4 +52,5 @@ class Orders extends Model
         // return $this->belongsTo(User::class);
         return $this->belongsToMany(User::class)->withTimeStamps();
     }
+
  }
