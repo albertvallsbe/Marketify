@@ -22,14 +22,24 @@ class OrdersController extends Controller
         try {
             $seller_id = 3;
             $customer_id = auth()->id();
-            $chat = chat::create([
-                'seller_id' => $seller_id,
-                'customer_id' => $customer_id
-            ]);
+            $chat = Chat::chatChecker($seller_id, $customer_id);
+            if($chat === null){ 
+                $chat = Chat::create([
+                    'seller_id' => $seller_id,
+                    'customer_id' => $customer_id
+                ]);
+            }else{
+                $chat->update([
+                    'paymentDone' => false,
+                    'shipmentSend' => false,
+                    'shipmentDone' => false
+                ]);
+            }
             $message = Message::create([
                 'chat_id' => $chat->id,
                 'sender_id' => $customer_id,
-                'content' => 'Hi, I bought you a product!'
+                'automatic' => true,
+                'content' => 'Order #XXX has been confirmed. Seller must accept payment and send the products.'
             ]);
 
             /*

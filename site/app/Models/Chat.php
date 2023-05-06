@@ -13,6 +13,9 @@ class chat extends Model
     protected $fillable = [
         'seller_id',
         'customer_id',
+        'paymentDone',
+        'shipmentSend',
+        'shipmentDone'
     ];
     public static function getByUserID(){
         $userId = auth()->id();
@@ -22,6 +25,17 @@ class chat extends Model
             ->get();
     }
 
+    public static function chatChecker($sellerId, $customerId){
+        return self::where(function ($query) use ($sellerId, $customerId) {
+            $query->where('seller_id', $sellerId)
+                  ->where('customer_id', $customerId);
+        })
+        ->orWhere(function ($query) use ($sellerId, $customerId) {
+            $query->where('seller_id', $customerId)
+                  ->where('customer_id', $sellerId);
+        })
+        ->first();
+    }
     public function seller()
     {
         return $this->belongsTo(User::class, 'seller_id');

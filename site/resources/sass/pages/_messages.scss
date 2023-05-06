@@ -41,6 +41,10 @@
 
     .message-list {
       .message-item {
+        &_date{
+          text-align: center;
+          @include mediumTypografy;
+        }
         &_sender {
           text-align: left;
 
@@ -126,7 +130,6 @@
       margin: 0;
       padding: 0;
       align-items: flex-end;
-
       input {
         flex-grow: 1;
         padding: 0.8em;
@@ -145,6 +148,15 @@
   }
 
 
+  .confirmButton{
+    padding: 5px;
+    border-radius: 12px;
+    background-color: #efefef;
+    &:hover{
+      background-color: #d8d8d8;
+      cursor: pointer;
+    }
+  }
 
   .unread {
     background-color: $neutral_light;

@@ -1,16 +1,23 @@
 import "../app.js";
 
 const chatList = document.querySelector('.chat_list');
+const dataMessage = document.querySelectorAll('.message-item_date');
 const messageSections = document.querySelectorAll('.message-item');
 const chatForm = document.querySelector('#chat-form');
 
-chatList.addEventListener('click', (event) => {
-  const chatItem = event.target.closest('.chat_item');
-  if (chatItem) {
-    const chatId = chatItem.dataset.chatId;
-    chatForm.action = `/message-send/${chatId}`;
-  }
-});
+function setAction(action) {
+  document.querySelector('#action').value = action;
+  document.querySelector('form').submit();
+}
+if (chatList) {
+  chatList.addEventListener('click', (event) => {
+    const chatItem = event.target.closest('.chat_item');
+    if (chatItem) {
+      const chatId = chatItem.dataset.chatId;
+      chatForm.action = `/message-send/${chatId}`;
+    }
+  });  
+}
 
 function decrementNotificationCount() {
   const notificationCount = document.getElementById("notification-count");
@@ -21,6 +28,7 @@ function decrementNotificationCount() {
     notificationCount.style.display = "none";
   }
 }
+if (chatList) {
 chatList.addEventListener('click', e => {
   if (e.target && e.target.closest('.chat_item')) {
     const chatId = e.target.closest('.chat_item').dataset.chatId;
@@ -62,4 +70,6 @@ chatList.addEventListener('click', e => {
 if (chatList.children.length > 0) {
   const lastChat = chatList.querySelector(':last-child');
   lastChat.click();
+}
+
 }

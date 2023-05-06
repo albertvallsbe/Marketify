@@ -12,9 +12,9 @@ class Message extends Model
         'chat_id',
         'sender_id',
         'content',
+        'automatic',
     ];
-
-
+    
     public function chat()
     {
         return $this->belongsTo(Chat::class);

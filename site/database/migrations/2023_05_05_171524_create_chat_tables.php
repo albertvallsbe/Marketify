@@ -13,6 +13,9 @@ class CreateChatTables extends Migration
             
             $table->unsignedBigInteger('seller_id')->index();
             $table->unsignedBigInteger('customer_id')->index();
+            $table->boolean('paymentDone')->default(false);
+            $table->boolean('shipmentSend')->default(false);
+            $table->boolean('shipmentDone')->default(false);
             $table->timestamps();
             
             $table->foreign('seller_id')->references('id')->on('users')->cascadeOnDelete();
@@ -24,6 +27,7 @@ class CreateChatTables extends Migration
             $table->integer('chat_id')->unsigned();
             $table->unsignedBigInteger('sender_id')->index();
             $table->text('content');
+            $table->boolean('automatic')->default(false);
             $table->timestamps();
 
             $table->foreign('chat_id')->references('id')->on('chats')->cascadeOnDelete();

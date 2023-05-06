@@ -87,6 +87,7 @@ Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 Route::get('/messages', [ChatController::class, 'index'])->name('chat.index');
 Route::post('/message-read/{id}', [ChatController::class, 'updateMessageRead'])->name('chat.updateMessageRead');
 Route::post('/message-send/{id}', [ChatController::class, 'messageSend'])->name('chat.messageSend');
+Route::post('/confirmSeller/{id}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
     //     return view('dashboard');
     // })->name('dashboard');
