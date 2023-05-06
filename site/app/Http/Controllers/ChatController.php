@@ -17,7 +17,8 @@ class ChatController extends Controller
     {
         try {  
             if(auth()->user()){
-                $chats = chat::getByUserID();
+                $chats = Chat::getByUserID();
+                // $chats = Chat::with('messages')->getByUserID();
                 $categories = Category::all();
                 session(['notificationCount' => Notification::unreadCountForCurrentUser()]);
                 return view('chat.index', [
@@ -37,5 +38,21 @@ class ChatController extends Controller
     {
         $notification = Notification::findOrFail($id);
         $notification->markAsRead();
+    }
+    
+    public function messageSend(Request $request, $id)
+    {
+    
+        $validatedData = $request->validate([
+            'messagetext' => 'required|string',
+        ]);
+
+        
+        $message = Message::create([
+            'chat_id' => $id,
+            'sender_id' => auth()->id(),
+            'content' => $validatedData['messagetext']
+        ]);
+        return redirect()->route('chat.index');
     }
 }

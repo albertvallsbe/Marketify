@@ -31,6 +31,20 @@ class OrdersController extends Controller
                 'sender_id' => $customer_id,
                 'content' => 'Hi, I bought you a product!'
             ]);
+
+            /*
+            $message = Message::create([
+                'chat_id' => $chat->id,
+                'sender_id' => $customer_id,
+                'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente totam itaque at distinctio nam nobis praesentium repellendus possimus eum in cum doloremque, error sint repellat quisquam accusamus, aliquid veniam animi."
+            ]);
+            
+            $message = Message::create([
+                'chat_id' => $chat->id,
+                'sender_id' => $seller_id,
+                'content' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente totam itaque at distinctio nam nobis praesentium repellendus possimus eum in cum doloremque, error sint repellat quisquam accusamus, aliquid veniam animi."
+            ]);
+            */
             
             $notification = Notification::create([
                 'user_id' => $seller_id,

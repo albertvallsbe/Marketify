@@ -2,6 +2,15 @@ import "../app.js";
 
 const chatList = document.querySelector('.chat_list');
 const messageSections = document.querySelectorAll('.message-item');
+const chatForm = document.querySelector('#chat-form');
+
+chatList.addEventListener('click', (event) => {
+  const chatItem = event.target.closest('.chat_item');
+  if (chatItem) {
+    const chatId = chatItem.dataset.chatId;
+    chatForm.action = `/message-send/${chatId}`;
+  }
+});
 
 function decrementNotificationCount() {
   const notificationCount = document.getElementById("notification-count");
@@ -16,7 +25,7 @@ chatList.addEventListener('click', e => {
   if (e.target && e.target.closest('.chat_item')) {
     const chatId = e.target.closest('.chat_item').dataset.chatId;
 
-    fetch("/message-update/" + chatId, {
+    fetch("/message-read/" + chatId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +47,7 @@ chatList.addEventListener('click', e => {
     chatList.querySelectorAll('.chat_item').forEach(item => {
       if (item.dataset.chatId === chatId) {
         item.classList.add('selected');
-        
+
         if (item.classList.contains("unread")) {
           decrementNotificationCount();
           item.classList.remove('unread');
