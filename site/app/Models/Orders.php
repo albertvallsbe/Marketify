@@ -36,9 +36,19 @@ class Orders extends Model
         $this->attributes['status'] = $this->enumStatus[$value];
     }
 
-    public static function decodeIds($encodedIds)
+    public static function decodeIds($idsString)
     {
-        return json_decode($encodedIds);
+    // Eliminar cualquier carácter que no sea un número o coma
+    $cleanedIdsString = preg_replace("/[^0-9,]/", "", $idsString);
+
+    // Convertir la cadena de ids en un array
+    $productIds = explode(",", $cleanedIdsString);
+
+    // Eliminar cualquier elemento vacío
+    $productIds = array_filter($productIds);
+
+    // Devolver el array de ids
+    return $productIds;
     }
 
     public function shop()

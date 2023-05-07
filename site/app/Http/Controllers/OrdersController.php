@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
-
-use App\Models\Shop;
 use App\Classes\Order;
+use App\Models\Cart;
+use App\Models\Shop;
 use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Category;
@@ -21,38 +20,57 @@ class OrdersController extends Controller
         try {
             $categories = Category::all();
             $carts = Cart::all();
+
             foreach ($carts as $cart) {
                 $productIds = Orders::decodeIds($cart->products);
-
             }
 
-            $userId = auth()->id();
-            if ($userId) {
-                $arrayCart = Cart::showCartByUserID($userId);
-            } else {
-                $arrayCart = "[]";
-            };
+            $shops = Shop::all();
 
-            $usersShop = Shop::findShopUserID($userId);
-            if($usersShop){
-                $shop = Shop::findOrFail($usersShop);
-            }else{
-                $shop = 0;
+            foreach ($shops as $shop) {
+                $shopname = $shop->shopname;
             }
+
+            $products = Product::all();
+
+            // $productIds = Orders::decodeIds($cart->products);
+            $productsByShop = [];
+            foreach ($productIds as $productId) {
+                $product = $products->where('id', $productId)->first();
+                if ($product && $product->shop_id == $shop->id) {
+                    $productsByShop[] = $product;
+                }
+            }
+
+            // $userId = auth()->id();
+            // if ($userId) {
+            //     $arrayCart = Cart::showCartByUserID($userId);
+            // } else {
+            //     $arrayCart = "[]";
+            // };
+
+            // $usersShop = Shop::findShopUserID($userId);
+            // if($usersShop){
+            //     $shop = Shop::findOrFail($usersShop);
+            // }else{
+            //     $shop = 0;
+            // }
 
 
 
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => Order::$order_array,
-                // 'cartProducts' => $cartProducts
                 'carts' => $carts,
-                'shop' => $shop,
-                'options_order' => Order::$order_array,
-                'cartProducts' => $arrayCart,
+                'products' => $products,
                 'productIds' => $productIds,
+                'shopname' => $shopname,
+                'shops' => $shops,
+                'productsByShop' => $productsByShop
+                // 'cartProducts' => $cartProducts
+                // 'shop' => $shop,
+                // 'cartProducts' => $arrayCart,
                 // 'arrayProductsId' => $arrayProducts
-                // 'shopname' => $shopName,
             ]);
         } catch (\Exception $e) {
                 Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
@@ -76,25 +94,27 @@ class OrdersController extends Controller
         }
     }
 
-    public function decodeIds($string)
-    {
-        // Decodificar la cadena JSON
-        $decodedString = json_decode($string);
 
-        // Comprobar si la decodificación ha sido correcta
-        if (is_array($decodedString)) {
-            // Convertir los valores en el array en enteros y retornarlos
-            return array_map('intval', $decodedString);
-        } else {
-            // En caso de que la decodificación fallara, retornar un array vacío
-            return [];
-        }
-    }
 
-    public function show($id)
-    {
-        $order = Orders::find($id);
-        $decodedIds = Orders::decodeIds($order->products);
-        return view('orders.show', compact('order', 'decodedIds'));
-    }
 }
+
+//  @foreach ($shops as $shop)
+//     <div class="cart-product">
+//         <h4>Shop: {{ $shop->shopname }}</h4>
+//         @foreach ($products as $product)
+//             @foreach ($productIds as $productId)
+//             {{-- <p>{{ $productId }} {{$shop->shopname}}</p> --}}
+//                 @if ($product->shop_id === $shop->id )
+//                     <p>{{ $productId }} {{$shop->shopname}}</p>
+//                 @endif
+//             @endforeach
+
+//             {{-- <p>Shop: {{ $shopname}}</p> --}}
+//             {{-- <h4>{{ $cart->id }}</h4> --}}
+//             {{-- <p>Products: {{ $cart->products }}</p> --}}
+//             {{-- <p>Shop Name: {{ $cart->shopname }}</p> --}}
+//             {{-- <p>Shop: {{ $shop->username}}</p> --}}
+
+//         @endforeach
+//     </div>
+// @endforeach
