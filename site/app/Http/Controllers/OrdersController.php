@@ -93,9 +93,6 @@ class OrdersController extends Controller
             return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
         }
     }
-
-
-
 }
 
 //  @foreach ($shops as $shop)
