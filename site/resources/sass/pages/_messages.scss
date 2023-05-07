@@ -162,3 +162,25 @@
     background-color: $neutral_light;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .content{
+    padding-bottom: 15px !important;
+  }
+  .chat_container {
+    display: flex;
+    overflow-x: auto;
+    flex-direction: column;
+  }
+  .chat_list{
+    display: contents;
+  }
+  .chat_open {
+    height: 100vh;
+    .message-list {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

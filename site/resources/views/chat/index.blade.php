@@ -71,7 +71,7 @@
                                 </li>
                             @endforeach
                             
-                            <form method="post" action="{{ route('chat.confirmSeller', ['id' => $chat->id]) }}">
+                            <form class="chat-form-buttons chat-{{ $chat->id }}" method="post" action="{{ route('chat.confirmSeller', ['id' => $chat->id]) }}">
                                 @csrf
                                 <input type="hidden" name="actionValue" id="actionValue">
                                 @if($chat->seller_id == auth()->id() && $chat->paymentDone == false)
@@ -87,7 +87,7 @@
                                 <button type="submit" style="display: none;">Submit</button>
                             </form>
                             
-                            <form id="chat-form" method="post" class="chat_open_form" action="{{ route('chat.messageSend', ['id' => $chat->id]) }}">
+                            <form method="post" class="chat-form chat_open_form chat-{{ $chat->id }}" action="{{ route('chat.messageSend', ['id' => $chat->id]) }}">
                                 @csrf
                                 <input type="text" name="messagetext" id="messagetext" placeholder="Write your message here..."
                                     autocomplete="off">

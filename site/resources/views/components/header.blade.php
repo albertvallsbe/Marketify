@@ -58,18 +58,20 @@
                     <span id="cart-count" class="cart-count"></span>
                 </a>
             </div>
-            
+
             <div id="chat-icon" class="chat-icon">
-            <a href="{{ route('chat.index') }}">
-                <img class="icon" src="{{ asset('images/envelope-solid.svg') }}">
-                @if(session('notificationCount') != 0)
-                <span id="notification-count" class="notification-count">
-                {{session('notificationCount')}}
-                </span>
-                @endif
-            </a>
-        </div>
-            <button id="mode-toggle" class="shop_buttons"><img class="icon" src="{{ asset('images/moon-solid.svg') }}"></button>
+                <a href="{{ route('chat.index') }}">
+                    <img class="icon" src="{{ asset('images/envelope-solid.svg') }}">
+                    @if (session('notificationCount') != 0)
+                        <span id="notification-count" class="notification-count">
+                            {{ session('notificationCount') }}
+                        </span>
+                    @endif
+                </a>
+            </div>
+            
+            <button id="mode-toggle" class="shop_buttons"><img class="icon"
+                    src="{{ asset('images/moon-solid.svg') }}"></button>
         </div>
     </div>
 </header>

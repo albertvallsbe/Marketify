@@ -159,6 +159,9 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+    div#navbar__icons div.chat-icon {
+        display: none;
+    }
     div#navbar__icons img.icon_user {
         display: none;
     }
