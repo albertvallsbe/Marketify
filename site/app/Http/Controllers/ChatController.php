@@ -34,10 +34,10 @@ class ChatController extends Controller
                 return redirect()->back()->with('error', 'An error occurred while loading the home view.');
             }
     } 
-    public function updateMessageRead($id)
-    {
-        $notification = Notification::findOrFail($id);
-        $notification->markAsRead();
+    public function updateMessageRead($chatId)
+    { 
+        $notification = Notification::showbyChatID($chatId)->latest()->first();
+        $notification->markAsRead($chatId);
     }
     
     public function messageSend(Request $request, $id)
@@ -48,17 +48,35 @@ class ChatController extends Controller
         ]);
 
         
+        $chat = Chat::findOrFail($id);
         $message = Message::create([
-            'chat_id' => $id,
+            'chat_id' => $chat->id,
             'sender_id' => auth()->id(),
             'content' => $validatedData['messagetext']
         ]);
+        if ($chat->seller_id == auth()->id()) {
+            $notification = Notification::create([
+                'user_id' => $chat->customer_id,
+                'chat_id' => $chat->id,
+                'read' => false
+            ]);
+        }else{
+            $notification = Notification::create([
+                'user_id' => $chat->seller_id,
+                'chat_id' => $chat->id,
+                'read' => false
+            ]);
+        }
+        LOG::INFO($chat);
+        LOG::INFO($notification);
         return redirect()->route('chat.index');
     }
 
     public function confirmSeller(Request $request, $id){
         $action = $request->input('actionValue');
+        LOG::INFO($action);
         $chat = Chat::findOrFail($id);
+        LOG::INFO($id);
         $fieldsToUpdate = [];
         $messageContent = '';
         
@@ -86,7 +104,12 @@ class ChatController extends Controller
                 'content' => $messageContent
             ]);
         }
-        
+        $notification = Notification::create([
+            'user_id' => $chat->customer_id,
+            'chat_id' => $chat->id,
+            'read' => false
+        ]);
+        LOG::INFO($chat);
         return redirect()->route('chat.index');
     }
     

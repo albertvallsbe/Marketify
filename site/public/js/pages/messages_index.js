@@ -6,11 +6,6 @@ const messageSections = document.querySelectorAll('.message-item');
 const chatForm = document.querySelectorAll('.chat-form');
 const chatFormButtons = document.querySelectorAll('.chat-form-buttons');
 
-
-function setAction(action) {
-  document.querySelector('#action').value = action;
-  document.querySelector('form').submit();
-}
 if (chatList) {
   chatList.addEventListener('click', (event) => {
     const chatItem = event.target.closest('.chat_item');
@@ -35,6 +30,7 @@ if (chatList) {
     if (e.target && e.target.closest('.chat_item')) {
       const chatId = e.target.closest('.chat_item').dataset.chatId;
 
+      console.log(chatId);
       fetch("/message-read/" + chatId, {
         method: "POST",
         headers: {

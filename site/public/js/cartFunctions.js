@@ -40,9 +40,9 @@ function updateLocalStorage() {
 function getCountCart() {
     let value = localStorage.getItem("cart");
     let number = document.getElementById("cart-count");
-    value = JSON.parse(value);
 
     if (value) {
+        value = JSON.parse(value);
         if (value.length != 0) {
             number.style.display = "block";
             number.textContent = value.length;

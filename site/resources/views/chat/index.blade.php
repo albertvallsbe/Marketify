@@ -46,7 +46,7 @@
                                         @elseif($message->created_at->isYesterday())
                                             Yesterday
                                         @else
-                                            {{ $message->created_at->format('l, F jS, Y, H:i') }}
+                                            {{ $message->created_at->format('l, F jS, Y') }}
                                         @endif
                                     </h1>
                                     @php
@@ -73,19 +73,17 @@
                             
                             <form class="chat-form-buttons chat-{{ $chat->id }}" method="post" action="{{ route('chat.confirmSeller', ['id' => $chat->id]) }}">
                                 @csrf
-                                <input type="hidden" name="actionValue" id="actionValue">
                                 @if($chat->seller_id == auth()->id() && $chat->paymentDone == false)
-                                    <button type="button" class="confirmButton" onclick="document.getElementById('actionValue').value = 'confirmPayment'; this.form.submit();">Confirm Payment</button>
+                                    <button type="submit" name="actionValue" value="confirmPayment" class="confirmButton">Confirm Payment</button>
                                 @endif
                                 @if($chat->seller_id == auth()->id() && $chat->shipmentSend == false && $chat->paymentDone == true)
-                                    <button type="button" class="confirmButton" onclick="document.getElementById('actionValue').value = 'shipmentSend'; this.form.submit();">Confirm shipment</button>
+                                    <button type="submit" name="actionValue" value="shipmentSend" class="confirmButton">Confirm shipment</button>
                                 @endif
-                                
                                 @if($chat->customer_id == auth()->id() && $chat->shipmentSend == true && $chat->shipmentDone == false)
-                                    <button type="button" class="confirmButton" onclick="document.getElementById('actionValue').value = 'shipmentDone'; this.form.submit();">Order received</button>
+                                    <button type="submit" name="actionValue" value="shipmentDone" class="confirmButton">Order received</button>
                                 @endif
-                                <button type="submit" style="display: none;">Submit</button>
                             </form>
+                            
                             
                             <form method="post" class="chat-form chat_open_form chat-{{ $chat->id }}" action="{{ route('chat.messageSend', ['id' => $chat->id]) }}">
                                 @csrf
