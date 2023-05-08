@@ -17,13 +17,15 @@ class OrdersController extends Controller
 {
     public function index(Request $request)
     {
-        try {
-            $categories = Category::all();
-            $carts = Cart::all();
 
-            foreach ($carts as $cart) {
-                $productIds = Orders::decodeIds($cart->products);
-            }
+        // try {
+            $categories = Category::all();
+            $userId = auth()->id();
+            //coge el usuario
+            $cart = Cart::showCartByUserID($userId);
+            // dd($cart);
+            $productIds = Orders::decodeIds($cart);
+            // dd($productIds);
 
             $shops = Shop::all();
 
@@ -34,13 +36,19 @@ class OrdersController extends Controller
             $products = Product::all();
 
             // $productIds = Orders::decodeIds($cart->products);
-            $productsByShop = [];
-            foreach ($productIds as $productId) {
-                $product = $products->where('id', $productId)->first();
-                if ($product && $product->shop_id == $shop->id) {
-                    $productsByShop[] = $product;
+            $productsByShop = array();
+            $shopName = array();
+            for ($i=0 ; $i< count($shops); $i++) {
+               $shopName[$i] = $shops[$i]->shopname;
+                for ($j=0 ; $j< count($productIds); $j++) {
+                    $product = $products->where('id', $productIds[$j])->first();
+                    if ($product && $product->shop_id == $shops[$i]->id) {
+
+                        $productsByShop[$i][$j] = $product;
+                    }
                 }
             }
+            // dd($shopName);
 
             // $userId = auth()->id();
             // if ($userId) {
@@ -61,21 +69,22 @@ class OrdersController extends Controller
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => Order::$order_array,
-                'carts' => $carts,
+                'cart' => $cart,
                 'products' => $products,
                 'productIds' => $productIds,
-                'shopname' => $shopname,
+                // 'shopname' => $shopname,
                 'shops' => $shops,
-                'productsByShop' => $productsByShop
+                'productsByShop' => $productsByShop,
+                'shopName' => $shopName,
                 // 'cartProducts' => $cartProducts
                 // 'shop' => $shop,
                 // 'cartProducts' => $arrayCart,
                 // 'arrayProductsId' => $arrayProducts
             ]);
-        } catch (\Exception $e) {
-                Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
-                return redirect()->back()->with('error', 'An error occurred while loading the home view.');
-            }
+        // } catch (\Exception $e) {
+        //         Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
+        //         return redirect()->back()->with('error', 'An error occurred while loading the home view.');
+        //     }
     }
 
     public function getProducts($id)
@@ -94,24 +103,3 @@ class OrdersController extends Controller
         }
     }
 }
-
-//  @foreach ($shops as $shop)
-//     <div class="cart-product">
-//         <h4>Shop: {{ $shop->shopname }}</h4>
-//         @foreach ($products as $product)
-//             @foreach ($productIds as $productId)
-//             {{-- <p>{{ $productId }} {{$shop->shopname}}</p> --}}
-//                 @if ($product->shop_id === $shop->id )
-//                     <p>{{ $productId }} {{$shop->shopname}}</p>
-//                 @endif
-//             @endforeach
-
-//             {{-- <p>Shop: {{ $shopname}}</p> --}}
-//             {{-- <h4>{{ $cart->id }}</h4> --}}
-//             {{-- <p>Products: {{ $cart->products }}</p> --}}
-//             {{-- <p>Shop Name: {{ $cart->shopname }}</p> --}}
-//             {{-- <p>Shop: {{ $shop->username}}</p> --}}
-
-//         @endforeach
-//     </div>
-// @endforeach

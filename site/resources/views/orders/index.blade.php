@@ -7,25 +7,20 @@
     <section class="main-orders">
         <section class="orders-card">
             <div class="product card-style-orders">
-                @foreach ($shops as $shop)
-                    <div class="cart-product">
-                        <h4>Shop: {{ $shop->shopname }}</h4>
-                        @foreach ($carts as $cart)
-                            @if (count($productsByShop) > 0)
-                                <div class="cart-product">
-                                    @foreach ($productsByShop as $product)
-                                        <p>{{ $product->name }}{{$product->id}}</p>
-                                    @endforeach
-                                </div>
-                            @else
-                                <p>No products</p>
-                            @endif
-                        @endforeach
-                    </div>
+                @foreach ($productsByShop as $key => $shopByProduct)
+                    <h2>{{ $shopName[$key] }}</h2>
+                    <ul>
+                    @foreach ($shopByProduct as $productOrder )
+
+                        <li>{{ $productOrder->name }}, {{ $productOrder->price }} €</li>
+
+                    @endforeach
+                    </ul>
                 @endforeach
+
 
             </div>
         </section>
     </section>
-    <script type="module" src="{{ asset('js/pages/cart_index.js') }}"></script>
+    <script type="module" src="{{ asset('js/pages/order_index.js') }}"></script>
 @endsection

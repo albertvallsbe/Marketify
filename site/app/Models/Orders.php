@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Orders extends Model
 {
@@ -49,6 +49,17 @@ class Orders extends Model
 
     // Devolver el array de ids
     return $productIds;
+    }
+
+    public static function updateOrderDB($productsArray) {
+        $userId = auth()->id();
+        $existingOrder = Orders::where('user_id', $userId)->first();
+        if (!$existingOrder) {
+            $existingOrder = new Cart();
+            $existingOrder->user_id = $userId;
+        }
+        $existingOrder->products = json_encode($productsArray);
+        $existingOrder->save();
     }
 
     public function shop()
