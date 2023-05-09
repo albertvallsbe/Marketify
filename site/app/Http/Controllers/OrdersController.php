@@ -48,24 +48,6 @@ class OrdersController extends Controller
                     }
                 }
             }
-            // dd($shopName);
-
-            // $userId = auth()->id();
-            // if ($userId) {
-            //     $arrayCart = Cart::showCartByUserID($userId);
-            // } else {
-            //     $arrayCart = "[]";
-            // };
-
-            // $usersShop = Shop::findShopUserID($userId);
-            // if($usersShop){
-            //     $shop = Shop::findOrFail($usersShop);
-            // }else{
-            //     $shop = 0;
-            // }
-
-
-
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => Order::$order_array,
@@ -81,10 +63,6 @@ class OrdersController extends Controller
                 // 'cartProducts' => $arrayCart,
                 // 'arrayProductsId' => $arrayProducts
             ]);
-        // } catch (\Exception $e) {
-        //         Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
-        //         return redirect()->back()->with('error', 'An error occurred while loading the home view.');
-        //     }
     }
 
     public function getProducts($id)
@@ -100,6 +78,14 @@ class OrdersController extends Controller
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred while loading getProducts() '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
+        }
+    }
+
+    public function add(Request $request) {
+        $productsArray = $request->input('orders');
+        $userId = auth()->id();
+        if($userId){
+            Orders::updateOrdersDB($productsArray);
         }
     }
 }

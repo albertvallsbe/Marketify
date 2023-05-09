@@ -33,7 +33,7 @@ function updateLocalStorage() {
         getCountCart();
     } else {
     }
-    updateServerStorage();
+    updateCartServerStorage();
 }
 
 //Contador de productes en el carret
@@ -72,7 +72,7 @@ function addToServerCart() {
 }
 
 //Comprova si hi ha una sessió iniciada
-const updateServerStorage = () => {
+const updateCartServerStorage = () => {
     try {
         fetch("/auth")
             .then((response) => response.json())
@@ -105,7 +105,7 @@ function addToCart() {
 }
 export { getCountCart };
 export { addToCart };
-export { updateServerStorage };
+export { updateCartServerStorage };
 
 updateLocalStorage();
 addToCart();

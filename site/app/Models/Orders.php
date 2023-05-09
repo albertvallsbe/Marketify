@@ -53,9 +53,10 @@ class Orders extends Model
 
     public static function updateOrderDB($productsArray) {
         $userId = auth()->id();
-        $existingOrder = Orders::where('user_id', $userId)->first();
+        $existingOrder = Cart::where('user_id', $userId)->first();
+        dd($existingOrder);
         if (!$existingOrder) {
-            $existingOrder = new Cart();
+            $existingOrder = new Orders();
             $existingOrder->user_id = $userId;
         }
         $existingOrder->products = json_encode($productsArray);
@@ -73,5 +74,4 @@ class Orders extends Model
         // return $this->belongsTo(User::class);
         return $this->belongsToMany(User::class)->withTimeStamps();
     }
-
  }

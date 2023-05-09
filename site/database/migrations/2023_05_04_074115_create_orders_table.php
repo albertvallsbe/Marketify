@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->enum('status', ['pending', 'processing', 'completed'])->default('pending');
             $table->text('products');
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('shop_id')->index();
 
+            $table->enum('status', ['pending', 'payed', 'sending', 'completed'])->default('pending');
 
             $table->foreign('user_id')
                     ->references('id')->on('users')

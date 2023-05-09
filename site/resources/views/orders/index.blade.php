@@ -11,16 +11,21 @@
                     <h2>{{ $shopName[$key] }}</h2>
                     <ul>
                     @foreach ($shopByProduct as $productOrder )
-
                         <li>{{ $productOrder->name }}, {{ $productOrder->price }} €</li>
-
                     @endforeach
                     </ul>
                 @endforeach
-
-
             </div>
+            <div class="btns-cart">
+                <button class="btn-order general-button general-button_order
+                    @if(count($products) == 0 || !auth()->user()) btn-disabled @endif "
+                    @if(count($products) == 0 || !auth()->user()) disabled @endif>ORDER NOW
+                </button>
+            </div>
+            @if(!auth()->user())
+                <i><a href="/login">Log in</a> to buy in our website.</i>
+            @endif
         </section>
     </section>
-    <script type="module" src="{{ asset('js/pages/order_index.js') }}"></script>
+    <script type="module" src="{{ asset('js/pages/orders_index.js') }}"></script>
 @endsection

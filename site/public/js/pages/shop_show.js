@@ -14,6 +14,6 @@ function isDarkColor(color) {
 }
 
 const buttonLabel = document.getElementById("button-prueba");
-console.log(buttonLabel);
-console.log(words);
+// console.log(buttonLabel);
+// console.log(words);
 buttonLabel.innerText = words.buttons.add;
