@@ -17,7 +17,7 @@
     <div id="products" class="products">
         @if ($products->count())
             @foreach ($products as $key => $product)
-                @if (!$product->hidden)
+                @if ($product->status = 'active')
                     <div class="card-style-home product" id={{ $product->id }}>
                         <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
                             <img class="product-img" src="{{ asset($product->image) }}" />

@@ -27,12 +27,12 @@ class Cart extends Model
     }
 
     public static function showCartByUserID($userId){
-    $cart = Cart::where('user_id', $userId)->first();
-    if (isset($cart->products)) {
-        $arrayProducts = $cart->products;
-        return json_decode($arrayProducts);
-    }else{
-        return "[]";
-    }
+        $cart = Cart::where('user_id', $userId)->first();
+        if (isset($cart->products)) {
+            $arrayProducts = $cart->products;
+            return json_decode($arrayProducts);
+        }else{
+            return "[]";
+        }
     }
 }

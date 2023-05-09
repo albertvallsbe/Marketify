@@ -1,6 +1,6 @@
 import { getCountCart } from "./cartFunctions.js";
 import { addToCart } from "./cartFunctions.js";
-import { updateServerStorage } from "./cartFunctions.js";
+import { updateCartServerStorage } from "./cartFunctions.js";
 import words from "./dictionaryWords.js";
 //FUNCTIONS
 
@@ -36,7 +36,7 @@ function clickButtonAction(productId, button) {
         });
         button.innerText = words.buttons.add;
     }
-    updateServerStorage();
+    updateCartServerStorage();
     getCountCart();
 }
 

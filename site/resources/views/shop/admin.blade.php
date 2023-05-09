@@ -25,7 +25,7 @@
     <h1 class="main_title">Products</h1>
     <div id="products" class="products">
         @forelse ($products as $key => $product)
-            <div class="card-style-home product {{ $product->hidden ? 'hidden' : '' }}" id="{{ $product->id }}">
+            <div class="card-style-home product {{ $product->status == 'hidden' ? 'hidden' : '' }}" id="{{ $product->id }}">
                 <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
                     <img class="product-img" src="{{ asset($product->image) }}" />
                     <h4  class="card-style-home_title product__name">{{ $product->name }}</h4>
@@ -38,7 +38,7 @@
                     <form method="POST" action="{{ route('product.hide', ['id' => $product->id]) }}">
                         @csrf
                         <button type="submit" class="shop_buttons">
-                            @if ($product->hidden)
+                            @if ($product->status == 'hidden')
                                 <img class="icon" src="{{ asset('images/eye-solid.svg') }}">
                             @else
                                 <img class="icon" src="{{ asset('images/eye-slash-solid.svg') }}">

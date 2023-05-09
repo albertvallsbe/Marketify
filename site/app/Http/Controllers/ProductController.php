@@ -183,11 +183,11 @@ class ProductController extends Controller
     public function hide(Request $request, $id)
     {
         $product = Product::find($id);
-        if ($product->hidden == true) {
-            $product->hidden = false;
+        if ($product->status == 'hidden') {
+            $product->status = 'active';
             session()->flash('status', "Product '$product->name' has been set to visible successfully.");
         } else {
-            $product->hidden = true;
+            $product->status = 'hidden';
             session()->flash('status', "Product '$product->name' has been hidden successfully.");
         }
         $product->save();

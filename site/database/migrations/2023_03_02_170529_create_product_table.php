@@ -24,8 +24,7 @@
                 $table->decimal('price', 6, 2);
                 $table->unsignedBigInteger('shop_id');
                 $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
-                $table->boolean('hidden')->default('0');
-
+                $table->enum('status', ['hidden', 'active', 'sold'])->default('active');
             });
         }
 

@@ -31,7 +31,7 @@ class CartController extends Controller
         }
         $error = false;
         $products = Product::showByIDs($ids);
-
+        // dd($ids);
         return view('cart.index', [
             'categories' => $categories,
             'options_order' => Order::$order_array,
