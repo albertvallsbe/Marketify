@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,7 +27,7 @@ class UserController extends Controller
             return view('user.show', [
                 'user' => $user,
                 'categories' => $categories,
-                'options_order' => Order::$order_array
+                'options_order' => HeaderVariables::$order_array
             ]);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('user.404');
@@ -45,7 +45,7 @@ class UserController extends Controller
         return view('user.edit', [
             'user' => $user,
             'categories' => $categories,
-            'options_order' => Order::$order_array
+            'options_order' => HeaderVariables::$order_array
         ]);
     }
 

@@ -31,7 +31,6 @@ function updateLocalStorage() {
         localStorage.removeItem("cart");
         localStorage.setItem("cart", arrayCart);
         getCountCart();
-    } else {
     }
     updateCartServerStorage();
 }
@@ -40,9 +39,9 @@ function updateLocalStorage() {
 function getCountCart() {
     let value = localStorage.getItem("cart");
     let number = document.getElementById("cart-count");
-    value = JSON.parse(value);
 
     if (value) {
+        value = JSON.parse(value);
         if (value.length != 0) {
             number.style.display = "block";
             number.textContent = value.length;
@@ -103,9 +102,10 @@ function addToCart() {
         }
     }
 }
+
+
 export { getCountCart };
 export { addToCart };
 export { updateCartServerStorage };
 
-updateLocalStorage();
 addToCart();

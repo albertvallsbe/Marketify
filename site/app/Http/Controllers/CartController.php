@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
 
 use App\Models\Cart;
 use App\Models\Shop;
@@ -34,7 +34,7 @@ class CartController extends Controller
         // dd($ids);
         return view('cart.index', [
             'categories' => $categories,
-            'options_order' => Order::$order_array,
+            'options_order' => HeaderVariables::$order_array,
             'products' => $products,
             'shop' => $shop,
             'error'=> $error

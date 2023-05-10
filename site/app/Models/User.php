@@ -5,7 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
 use Illuminate\Support\Str;
 use GuzzleHttp\Psr7\Request;
 use Laravel\Sanctum\HasApiTokens;
@@ -59,4 +59,14 @@ class User extends Authenticatable implements MustVerifyEmail
     // {
     //     return $this->hasMany(Product::class);
     // }
+
+    public function chatsAsSeller()
+    {
+        return $this->hasMany(Chat::class, 'seller_id');
+    }
+
+    public function chatsAsCustomer()
+    {
+        return $this->hasMany(Chat::class, 'customer_id');
+    }
 }
