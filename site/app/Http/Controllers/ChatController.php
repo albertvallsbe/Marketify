@@ -54,21 +54,29 @@ class ChatController extends Controller
             'sender_id' => auth()->id(),
             'content' => $validatedData['messagetext']
         ]);
-        if ($chat->seller_id == auth()->id()) {
-            $notification = Notification::create([
-                'user_id' => $chat->customer_id,
-                'chat_id' => $chat->id,
-                'read' => false
-            ]);
-        }else{
-            $notification = Notification::create([
-                'user_id' => $chat->seller_id,
-                'chat_id' => $chat->id,
-                'read' => false
-            ]);
-        }
-        LOG::INFO($chat);
-        LOG::INFO($notification);
+    $notification = Notification::where('chat_id', $chat->id)->first();
+
+    if ($notification) {
+        $notification->read = false;
+        $notification->save();
+    } else {
+    $notifications = Notification::where('chat_id', $chat->id)->get();
+
+    if ($notifications->isNotEmpty()) {
+        $notifications->each(function ($notification) {
+            $notification->read = false;
+            $notification->save();
+        });
+    } else {
+        $chatId = $chat->id;
+        $userId = $chat->seller_id == auth()->id() ? $chat->customer_id : $chat->seller_id;
+        
+        Notification::updateOrCreate(
+            ['chat_id' => $chatId, 'user_id' => $userId],
+            ['read' => false]
+        );  
+    }
+}
         return redirect()->route('chat.index');
     }
 
@@ -104,12 +112,10 @@ class ChatController extends Controller
                 'content' => $messageContent
             ]);
         }
-        $notification = Notification::create([
-            'user_id' => $chat->customer_id,
-            'chat_id' => $chat->id,
-            'read' => false
-        ]);
-        LOG::INFO($chat);
+        Notification::updateOrCreate(
+            ['chat_id' => $chat->id, 'user_id' => $chat->customer_id],
+            ['read' => false]
+        );  
         return redirect()->route('chat.index');
     }
     
