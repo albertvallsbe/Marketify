@@ -6,6 +6,7 @@ header {
         grid-template-areas: "logo search icon";
         align-items: center;
         justify-items: center;
+        gap: 20px;
         @include mainStyle;
 
         &__form {
@@ -127,6 +128,7 @@ header {
     .menu-list li {
         border-bottom: 1px solid #ddd;
     }
+
     .menu-list a {
         display: block;
         padding: 10px 20px;
@@ -152,5 +154,15 @@ header {
     div#navbar div.logo {
         width: 35px;
         height: 35px;
+    }
+
+    header {
+        .navbar {
+            &__form {
+                &--button-search {
+                    width: 45px;
+                }
+            }
+        }
     }
 }

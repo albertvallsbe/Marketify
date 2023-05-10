@@ -16,7 +16,7 @@
       @foreach ($elements as $element)
         {{-- "Three Dots" Separator --}}
         @if (is_string($element))
-            <div class="disabled pagination" aria-disabled="true"><span>{{ $element }}</span></div>
+            <div class="disabled pagination_number" aria-disabled="true"><span>{{ $element }}</span></div>
         @endif
 
         {{-- Array Of Links --}}
@@ -25,7 +25,7 @@
             @if ($page == $paginator->currentPage())
               <div class="active pagination" aria-current="page"><span>{{ $page }}</span></div>
             @else
-              <div class="pagination"><a href="{{ $url }}">{{ $page }}</a></div>
+              <div class="pagination_number"><a href="{{ $url }}">{{ $page }}</a></div>
             @endif
           @endforeach
         @endif

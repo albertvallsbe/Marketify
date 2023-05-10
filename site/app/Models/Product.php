@@ -50,11 +50,10 @@ class Product extends Model
         ->paginate(18);
     }
 
-    public static function productsShop($shopId, $order = 'name_asc'){
+    public static function productsShop($shopId, $order){
         $order_explode = explode("_", $order);
         $orderBy = $order_explode[0];
         $orderDirection = $order_explode[1];
-
         return self::query()
         ->where('products.shop_id', $shopId)
         ->orderBy($orderBy, $orderDirection)
@@ -74,8 +73,14 @@ class Product extends Model
         ->paginate(18);
     }
 
-    // public function shop()
-    // {
-    //     return $this->belongsToOne(Shop::class);
-    // }
+    public static function getProducts($category,$limit){
+        return Product::query()
+                ->join('category_product', 'category_product.product_id', '=', 'products.id')
+                ->select('products.*')
+                ->where('category_product.category_id', '=', $category)
+                ->limit($limit)
+                ->get();
+    }
+    
+
 }

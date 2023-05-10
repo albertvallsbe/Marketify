@@ -2,6 +2,38 @@
 === Setmana 9
 
 ==== David
+Administrador de tenda (crear, modificar, afegir logo, afegir URLs)
+Temps estimat => 4h 
+Temps Real => 5h
+
+Afegir, editar, esborrar i amagar productes des de la vista administrador de la tenda
+Temps estimat => 3h 
+Temps Real => 4h
+
+Venedor no pot afegir al carret els seus productes
+Temps estimat => 1h 
+Temps Real => 2h
+
+Modificar tots els formularis per mostrar el feedback correctament (missatges d'error, color vermell...)
+Temps estimat => 3h 
+Temps Real => 2h
+
+Afegir vista als formularis de la tenda
+Temps estimat => 2h 
+Temps Real => 2h
+
+Afegir llista real de categories
+Temps estimat => 1h 
+Temps Real => 1h
+
+Canviar rutes per noms més apropiats
+Temps estimat => 1h 
+Temps Real => 1h
+
+Test de totes les rutes
+Temps estimat => 2h 
+Temps Real => 3h
+
 ==== Oscar
 
 Acabar els mockups de totes les vistes .
@@ -31,14 +63,14 @@ Temps real =>
 ==== Albert
 Vista detall del producte
 Temps estimat => 5h -> Total 7,25h
-Temps Real => 2,5h -> venia de la setmana anterior 
+Temps Real => 2,5h -> venia de la setmana anterior
 
 Diccionari javascript
-Temps estimat => 3h 
-Temps Real => 2,5h 
+Temps estimat => 3h
+Temps Real => 2,5h
 
 Realitzar Comanda
-Temps estimat => 15h 
+Temps estimat => 15h
 Temps Real => 1,75 -> conctinua encara
 
 === Setmana 8

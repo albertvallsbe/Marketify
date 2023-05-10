@@ -45,7 +45,7 @@ class ValidationMessages
             'current-password.required' => 'The current password field is required.',
             'current-password.max' => 'The current password may not be greater than :max characters.',
             'current-password.min' => 'The current password must be at least :min characters.',
-            
+
             'new-password.required' => 'The new password field is required.',
             'new-password.max' => 'The new password may not be greater than :max characters.',
             'new-password.min' => 'The new password must be at least :min characters.',
@@ -57,7 +57,7 @@ class ValidationMessages
             'repeat-password.same' => 'The new password and repeat password do not match.',
         ];
     }
-    
+
     public static function shopValidationMessages()
     {
         return [

@@ -1,12 +1,12 @@
 .main-home {
     @include outerBorder;
+
     &_title {
         @include largeTypografy;
     }
 }
 
 .products {
-    @include outerBorder;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc(160px * 1.125), 1fr));
     grid-row-gap: 20px;
@@ -15,7 +15,6 @@
 }
 
 .card-style-home {
-    @include outerBorder;
     @include cardStyle;
     // @include cardPosition;
     @include miniCardStyle;
@@ -27,6 +26,16 @@
     &_title {
         @include cardStyleTitle;
         @include cardStyleTypography;
+        margin-bottom: 0;
+    }
+
+    .product {
+        &__description {
+            margin-top: 0;
+        }
+        &__price {
+            height: 2em;
+        }
     }
 
     &_a {
@@ -40,6 +49,7 @@
 }
 
 @media screen and (max-width: 768px) {
+
     div#products,
     .products {
         grid-template-columns: repeat(auto-fit, minmax(calc(150px), 1fr));

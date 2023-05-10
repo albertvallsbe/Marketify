@@ -19,10 +19,12 @@ return new class extends Migration
             $table->string('shopname')->unique();
             $table->string('username')->unique();
             $table->text('logo')->default('images/logos/default-logo.png');
+            $table->text('header_color')->default('#84FF9B');
             $table->string('nif')->unique();
             $table->unsignedinteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('url')->unique();
+            $table->string('order')->default('name_asc');
         });
     }
 

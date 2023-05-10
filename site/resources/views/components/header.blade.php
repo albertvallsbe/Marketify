@@ -41,7 +41,7 @@
                     <ul class="menu-list">
                         @can('seller')
                             <li><a href="{{ route('shop.admin') }}">Your shop</a></li>
-                        @elsecan('shopper')
+                        @elsecan('customer')
                             <li><a href="{{ route('shop.index') }}">Create shop</a></li>
                         @endcan
                         <li><a href="{{ route('user.logout') }}" class="logout">Log Out</a></li>
@@ -49,7 +49,7 @@
                 </div>
             @else
                 <a href="{{ route('login.index') }}">
-                    <img class="icon" src="{{ asset('images/user-solid.svg') }}">
+                    <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
             @endif
 
             <div id="cart-icon" class="cart-icon">
@@ -58,6 +58,7 @@
                     <span id="cart-count" class="cart-count"></span>
                 </a>
             </div>
+            <button id="mode-toggle" class="shop_buttons"><img class="icon" src="{{ asset('images/moon-solid.svg') }}"></button>
         </div>
     </div>
 </header>

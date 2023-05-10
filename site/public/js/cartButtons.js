@@ -58,6 +58,7 @@ function changeButton() {
 //CODE
 document.addEventListener("DOMContentLoaded", function () {
     changeButton();
+    getCountCart();
     const buttons = document.getElementsByClassName("btn-cart");
 
     Array.from(buttons).forEach((button) => {

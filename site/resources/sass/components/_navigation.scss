@@ -8,6 +8,9 @@
     justify-items: center;
     padding: 0.5rem;
     @include mainStyle;
+    img.icon_user {
+        border-radius: 18px;
+    }
 }
 
 @media screen and (min-width: 769px) {
@@ -17,5 +20,10 @@
 
     div#content {
         margin-bottom: 0px;
+    }
+}
+@media screen and (max-width: 768px) {
+    div.menu-container {
+        display: none;
     }
 }
