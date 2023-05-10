@@ -73,13 +73,13 @@
                             
                             <form class="chat-form-buttons chat-{{ $chat->id }}" method="post" action="{{ route('chat.confirmSeller', ['id' => $chat->id]) }}">
                                 @csrf
-                                @if($chat->seller_id == auth()->id() && $chat->paymentDone == false)
+                                @if($chat->seller_id == auth()->id() && $chat->status == 'pending')
                                     <button type="submit" name="actionValue" value="confirmPayment" class="confirmButton">Confirm Payment</button>
                                 @endif
-                                @if($chat->seller_id == auth()->id() && $chat->shipmentSend == false && $chat->paymentDone == true)
+                                @if($chat->seller_id == auth()->id() && $chat->status == 'payed')
                                     <button type="submit" name="actionValue" value="shipmentSend" class="confirmButton">Confirm shipment</button>
                                 @endif
-                                @if($chat->customer_id == auth()->id() && $chat->shipmentSend == true && $chat->shipmentDone == false)
+                                @if($chat->customer_id == auth()->id() && $chat->status == 'sending')
                                     <button type="submit" name="actionValue" value="shipmentDone" class="confirmButton">Order received</button>
                                 @endif
                             </form>

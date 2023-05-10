@@ -5,7 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
 use Illuminate\Support\Str;
 use GuzzleHttp\Psr7\Request;
 use Laravel\Sanctum\HasApiTokens;

@@ -13,10 +13,8 @@ class CreateChatTables extends Migration
             
             $table->unsignedBigInteger('seller_id')->index();
             $table->unsignedBigInteger('customer_id')->index();
-            $table->boolean('paymentDone')->default(false);
-            $table->boolean('shipmentSend')->default(false);
-            $table->boolean('shipmentDone')->default(false);
             $table->timestamps();
+            $table->enum('status', ['pending', 'payed', 'sending', 'completed'])->default('pending');
             
             $table->foreign('seller_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('customer_id')->references('id')->on('users')->cascadeOnDelete();

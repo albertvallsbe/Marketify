@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Shop;
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Notification;
@@ -56,7 +56,7 @@ class ProductController extends Controller
         return view('product.index', [
             'products' => $products,
             'categories' => $categories,
-            'options_order' => Order::$order_array,
+            'options_order' => HeaderVariables::$order_array,
             'shop' => $shop,
             'notificationCount' => $notificationCount]);
     }
@@ -80,7 +80,7 @@ class ProductController extends Controller
             return view('product.show', [
                 'product' => $product,
                 'categories' => $categories,
-                'options_order' => Order::$order_array,
+                'options_order' => HeaderVariables::$order_array,
                 'shopname' => $shopName,
                 'shop' => $shop,
                 'categoryname' => $categoryName
@@ -94,7 +94,7 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('product.create', [
             'categories' => $categories,
-            'options_order' => Order::$order_array
+            'options_order' => HeaderVariables::$order_array
         ]);
     }
 
@@ -187,11 +187,11 @@ class ProductController extends Controller
     public function hide(Request $request, $id)
     {
         $product = Product::find($id);
-        if ($product->hidden == true) {
-            $product->hidden = false;
+        if ($product->status == 'hidden') {
+            $product->status = 'active';
             session()->flash('status', "Product '$product->name' has been set to visible successfully.");
         } else {
-            $product->hidden = true;
+            $product->status = 'hidden';
             session()->flash('status', "Product '$product->name' has been hidden successfully.");
         }
         $product->save();
@@ -205,7 +205,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('product.edit', [
             'categories' => $categories,
-            'options_order' => Order::$order_array,
+            'options_order' => HeaderVariables::$order_array,
             'product' => $product
         ]);
     }
@@ -232,7 +232,7 @@ class ProductController extends Controller
         return view('product.index', [
             'products' => $products,
             'categories' => $categories,
-            'options_order' => Order::$order_array,
+            'options_order' => HeaderVariables::$order_array,
             'shop' => $shop
         ]);
     }

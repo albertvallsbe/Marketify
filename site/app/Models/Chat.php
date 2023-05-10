@@ -13,9 +13,7 @@ class chat extends Model
     protected $fillable = [
         'seller_id',
         'customer_id',
-        'paymentDone',
-        'shipmentSend',
-        'shipmentDone'
+        'status'
     ];
     public static function getByUserID(){
         $userId = auth()->id();

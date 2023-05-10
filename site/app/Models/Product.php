@@ -68,7 +68,7 @@ class Product extends Model
     public static function filterCategory($id){
         return self::query()
         ->join('category_product', 'category_product.product_id', '=', 'products.id')
-        -> select('products.*')
+        ->select('products.*')
         ->where('category_product.category_id', '=', $id)
         ->paginate(18);
     }

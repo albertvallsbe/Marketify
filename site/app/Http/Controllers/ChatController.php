@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Order;
+use App\Models\Chat;
+use App\Models\Order;
 use App\Models\Message;
 use App\Models\Category;
-use App\Models\Chat;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Classes\HeaderVariables;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
@@ -18,12 +19,11 @@ class ChatController extends Controller
         try {  
             if(auth()->user()){
                 $chats = Chat::getByUserID();
-                // $chats = Chat::with('messages')->getByUserID();
                 $categories = Category::all();
                 session(['notificationCount' => Notification::unreadCountForCurrentUser()]);
                 return view('chat.index', [
                     'categories' => $categories,
-                    'options_order' => Order::$order_array,
+                    'options_order' => HeaderVariables::$order_array,
                     'chats' => $chats
                 ]);
             } else{
@@ -80,25 +80,24 @@ class ChatController extends Controller
         return redirect()->route('chat.index');
     }
 
-    public function confirmSeller(Request $request, $id){
+    public function confirmSeller(Request $request, $id)
+    {
         $action = $request->input('actionValue');
-        LOG::INFO($action);
         $chat = Chat::findOrFail($id);
-        LOG::INFO($id);
         $fieldsToUpdate = [];
         $messageContent = '';
         
         switch ($action) {
             case 'confirmPayment':
-                $fieldsToUpdate = ['paymentDone' => true];
-                $messageContent = 'Payment has been accepted. Seller must send your order in next 72h.';
+                $fieldsToUpdate = ['status' => 'payed'];
+                $messageContent = 'Payment has been accepted. Seller must send your order in the next 72 hours.';
                 break;
             case 'shipmentSend':
-                $fieldsToUpdate = ['shipmentSend' => true];
+                $fieldsToUpdate = ['status' => 'sending'];
                 $messageContent = 'Your order has been sent. You will receive it within 5 working days.';
                 break;
             case 'shipmentDone':
-                $fieldsToUpdate = ['shipmentDone' => true];
+                $fieldsToUpdate = ['status' => 'completed'];
                 $messageContent = 'Customer has received the order!';
                 break;
         }
@@ -112,11 +111,21 @@ class ChatController extends Controller
                 'content' => $messageContent
             ]);
         }
+        
         Notification::updateOrCreate(
             ['chat_id' => $chat->id, 'user_id' => $chat->customer_id],
             ['read' => false]
         );  
+        
         return redirect()->route('chat.index');
     }
+    
+
+
+
+
+
+
+
     
 }
