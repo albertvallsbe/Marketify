@@ -30,7 +30,6 @@ if (chatList) {
     if (e.target && e.target.closest('.chat_item')) {
       const chatId = e.target.closest('.chat_item').dataset.chatId;
 
-      console.log(chatId);
       fetch("/message-read/" + chatId, {
         method: "POST",
         headers: {

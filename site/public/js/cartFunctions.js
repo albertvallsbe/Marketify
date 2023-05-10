@@ -31,7 +31,6 @@ function updateLocalStorage() {
         localStorage.removeItem("cart");
         localStorage.setItem("cart", arrayCart);
         getCountCart();
-    } else {
     }
     updateCartServerStorage();
 }
@@ -103,9 +102,10 @@ function addToCart() {
         }
     }
 }
+
+
 export { getCountCart };
 export { addToCart };
 export { updateCartServerStorage };
 
-updateLocalStorage();
 addToCart();
