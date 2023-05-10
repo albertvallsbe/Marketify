@@ -24,8 +24,8 @@ class Cart extends Model
         }
         $existingCart->products = json_encode($productsArray);
         $existingCart->save();
+        // dd($existingCart);
     }
-
     public static function showCartByUserID($userId){
         $cart = Cart::where('user_id', $userId)->first();
         if (isset($cart->products)) {

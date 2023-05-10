@@ -66,6 +66,7 @@ class Order extends Model
         }
         $existingOrder->products = json_encode($productsArray);
         $existingOrder->save();
+        dd($existingOrder);
     }
 
     public function shop()

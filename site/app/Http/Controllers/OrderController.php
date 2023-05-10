@@ -52,7 +52,7 @@ class OrderController extends Controller
                             $seller_id = $shops[$i]->user_id;
                             $customer_id = auth()->id();
                             $chat = Chat::chatChecker($seller_id, $customer_id);
-                            if($chat === null){ 
+                            if($chat === null){
                                 $chat = Chat::create([
                                     'seller_id' => $seller_id,
                                     'customer_id' => $customer_id
@@ -63,7 +63,7 @@ class OrderController extends Controller
                                     'status' => 'pending'
                                 ]);
                             }
-                        
+
                         $message = Message::create([
                             'chat_id' => $chat->id,
                             'sender_id' => $customer_id,
@@ -80,6 +80,7 @@ class OrderController extends Controller
                     }
                 }
             }
+            // dd($productsByShop);
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
@@ -97,21 +98,6 @@ class OrderController extends Controller
             ]);
     }
 
-    public function getProducts($id)
-    {
-        try{
-            Log::channel('marketify')->debug('getProducts has been loaded successfully with this category: ');
-
-            return Product::query()
-            ->select('products.shop_id')
-            ->where('id', '=', $id)
-            ->get();
-
-        } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred while loading getProducts() '.$e->getMessage());
-            return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
-        }
-    }
 
     public function add(Request $request) {
         $productsArray = $request->input('orders');
