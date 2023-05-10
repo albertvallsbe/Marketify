@@ -13,7 +13,18 @@
     min-width: 90vw;
     min-height: 30vh;
     height: max-content;
-    .small-button {
-        @include smallButton;
+
+    .general-button {
+        @include mediumButton;
+
+        &_order {
+            background-color: $succes-dark;
+            border-color: $succes-dark;
+
+            &:hover {
+                background-color: $succes-light;
+                border-color: $succes-light;
+            }
+        }
     }
 }

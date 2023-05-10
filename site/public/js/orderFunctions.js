@@ -17,7 +17,8 @@ const updateOrdersServerStorage = () => {
 //crida la funció per ruta
 function addToServerOrder() {
     try {
-        const orders = localStorage.getItem("cart") || "[]";
+        const order = localStorage.getItem("cart") || "[]";
+        console.log(order);
         fetch("/orders", {
             method: "POST",
             headers: {
@@ -26,13 +27,13 @@ function addToServerOrder() {
                     .querySelector('meta[name="csrf-token"]')
                     .getAttribute("content"),
             },
-            body: JSON.stringify({ orders }),
+            body: JSON.stringify({ order }),
         }).then(() => {});
     } catch (error) {
         console.error(error);
     }
 }
-
+export { addToServerOrder };
 export { updateOrdersServerStorage };
 
 // //Carret del servidor

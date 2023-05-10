@@ -39,7 +39,7 @@ class OrdersController extends Controller
             $productsByShop = array();
             $shopName = array();
             for ($i=0 ; $i< count($shops); $i++) {
-               $shopName[$i] = $shops[$i]->shopname;
+                $shopName[$i] = $shops[$i]->shopname;
                 for ($j=0 ; $j< count($productIds); $j++) {
                     $product = $products->where('id', $productIds[$j])->first();
                     if ($product && $product->shop_id == $shops[$i]->id) {
@@ -48,6 +48,7 @@ class OrdersController extends Controller
                     }
                 }
             }
+            // dd($productsByShop);
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => Order::$order_array,
@@ -65,27 +66,14 @@ class OrdersController extends Controller
             ]);
     }
 
-    public function getProducts($id)
-    {
-        try{
-            Log::channel('marketify')->debug('getProducts has been loaded successfully with this category: ');
-
-            return Product::query()
-            ->select('products.shop_id')
-            ->where('id', '=', $id)
-            ->get();
-
-        } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred while loading getProducts() '.$e->getMessage());
-            return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
-        }
-    }
 
     public function add(Request $request) {
         $productsArray = $request->input('orders');
         $userId = auth()->id();
         if($userId){
-            Orders::updateOrdersDB($productsArray);
+            $ordersDDBB = Orders::updateOrdersDB($productsArray);
+            // dd($ordersDDBB);
         }
+
     }
 }
