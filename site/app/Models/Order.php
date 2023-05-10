@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Orders extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -49,6 +49,11 @@ class Orders extends Model
 
     // Devolver el array de ids
     return $productIds;
+    }
+
+    public static function getByChatID($chat_id) {
+        $chat = Chat::where('id', $chat_id)->first();
+        return $chat;
     }
 
     public static function updateOrderDB($productsArray) {

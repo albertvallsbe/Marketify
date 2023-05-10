@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-    use App\Classes\Order;
+    use App\Classes\HeaderVariables;
     use App\Models\Product;
     use App\Models\Category;
     use Illuminate\Http\Request;
@@ -35,7 +35,7 @@ namespace App\Http\Controllers;
 
                 return view('landing.index', [
                     'categories' => $categories,
-                    'options_order' => Order::$order_array,
+                    'options_order' => HeaderVariables::$order_array,
                     'activeTags' => $activeTags
                 ]);
             } catch (\Exception $e) {

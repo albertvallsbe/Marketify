@@ -86,8 +86,25 @@ header {
                     @include iconSmall;
                 }
             }
+            
+            .chat-icon {
+                position: relative;
+            .notification-count {
+                display:block;
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background-color: $primary_origin;
+                color: #000;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 14px;
+                line-height: 20px;
+                @include iconSmall;
+            }
         }
     }
+}
 
     .logo {
         @include logo;
@@ -142,6 +159,9 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+    div#navbar__icons div.chat-icon {
+        display: none;
+    }
     div#navbar__icons img.icon_user {
         display: none;
     }
@@ -161,6 +181,9 @@ header {
             &__form {
                 &--button-search {
                     width: 45px;
+                }
+                #mode-toggle {
+                    display:none;
                 }
             }
         }
