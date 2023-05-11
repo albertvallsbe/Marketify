@@ -14,10 +14,10 @@
             <p class="card-style-productshow-details_content"><b>Shop:</b> {{ $shopname }}</p>         
             <p class="card-style-productshow-details_content"><b>Price:</b> {{ $product->price }} €</p>
             @if($shop == null)
-                <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add </button>
+                <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
             @else
                 @if($shop->id != $product->shop_id)
-                    <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add </button>
+                    <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
                     @else
                     <small class="card-style-home_title"><i>This product belongs to you.</i></small>
                 @endif

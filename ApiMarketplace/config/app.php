@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 return [
+    
+    'port'=>env('APP_PORT',8080),
 
     /*
     |--------------------------------------------------------------------------

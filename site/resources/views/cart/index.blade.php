@@ -36,8 +36,14 @@
             </div>
             <div class="btns-cart">
                 <button class="btn-empty general-button">EMPTY CART</button>
-                <button class="btn-buy general-button general-button_buy">BUY ALL</button>
+                <button class="btn-buy general-button general-button_buy
+                    @if(count($products) == 0 || !auth()->user()) btn-disabled @endif "
+                    @if(count($products) == 0 || !auth()->user()) disabled @endif>GENERATE ORDER
+                </button>
             </div>
+            @if(!auth()->user())
+                <i><a href="/login">Log in</a> to buy in our website.</i>
+            @endif
         </section>
     </section>
     @if ($error)

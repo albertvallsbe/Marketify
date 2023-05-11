@@ -1,8 +1,9 @@
 import "../app.js";
-import { updateServerStorage } from "../cartFunctions.js";
+import { updateCartServerStorage } from "../cartFunctions.js";
 
 const removeButtons = document.querySelectorAll(".btn-remove");
 const clearButton = document.querySelector(".btn-empty");
+const ordersButton = document.querySelector(".btn-buy");
 
 //FUNCTIONS
 
@@ -62,8 +63,16 @@ removeButtons.forEach(function (button) {
 });
 
 clearButton.addEventListener("click", function () {
-    localStorage.removeItem("cart");
-    updateServerStorage();
-    window.location.href = "/cart";
+    if (confirm("Are you sure you want to empty your cart?")) {
+        localStorage.removeItem("cart");
+        updateCartServerStorage();
+        window.location.href = "/cart";
+    }
+});
+
+ordersButton.addEventListener("click", function () {
+    // localStorage.removeItem("cart");
+    // updateCartServerStorage();
+    window.location.href = "/orders";
 });
 showTotalPrice();

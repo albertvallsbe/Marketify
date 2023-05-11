@@ -3,6 +3,7 @@
 @section('title', $shop->shopname)
 
 @section('content')
+<div style="background-color: {{ $background_color }}">
     <section class="headboard" style="background-color: {{ $header_color }}">
         <div class="headboard_logo_and_name">
             <img class="headboard_shoplogo" src="{{ asset($shop->logo) }}" width=150 height=150 />
@@ -16,17 +17,19 @@
     <div id="products" class="products">
         @if ($products->count())
             @foreach ($products as $key => $product)
-                @if (!$product->hidden)
+                @if ($product->status = 'active')
                     <div class="card-style-home product" id={{ $product->id }}>
                         <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
                             <img class="product-img" src="{{ asset($product->image) }}" />
-                            <h4 class="card-style-home_title product__name">{{ $product->name }}</h4>
-                            <h4 class="card-style-home_title product__description">{{ $product->tag }}</h4>
+                            <h4  class="card-style-home_title product__name">{{ $product->name }}</h4>
+                            <h5 class="card-style-home_title product__description">{{ $product->description }}</h5>
                             <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
                         </a>
                         @if ($shop->id != $usersShop)
                             <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to
                                 cart</button>
+                        @else
+                        <button class="btn-cart small-button btn-disabled" disabled>Add to cart</button>
                         @endif
                     </div>
                 @endif
@@ -43,5 +46,6 @@
         {{-- {{ $products->appends(['search' => $search]) }} --}}
         {{ $products->links('vendor.pagination.default') }}
     </div>
-    <script type ="module" src="{{ asset('js/pages/shop_show.js') }}"></script>
+</div>
+    <script type="module" src="{{ asset('js/pages/shop_show.js') }}"></script>
 @endsection

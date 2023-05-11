@@ -58,6 +58,11 @@
         &_buy {
             background-color: $succes-dark;
             border-color: $succes-dark;
+
+            &:hover {
+                background-color: $succes-light;
+                border-color: $succes-light;
+            }
         }
     }
 
@@ -66,6 +71,9 @@
     }
 }
 
+.btn-disabled {
+    @include btn-disabled;
+}
 @media screen and (max-width: 900px) {
     .main-cart {
         grid-template-columns: repeat(auto-fit, minmax(calc(400px), 1fr));

@@ -16,15 +16,18 @@ return new class extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
             $table->string('shopname')->unique();
             $table->string('username')->unique();
             $table->text('logo')->default('images/logos/default-logo.png');
             $table->text('header_color')->default('#84FF9B');
+            $table->text('background_color')->default('#D9FFE0');
             $table->string('nif')->unique();
-            $table->unsignedinteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->index();
             $table->string('url')->unique();
             $table->string('order')->default('name_asc');
+
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 

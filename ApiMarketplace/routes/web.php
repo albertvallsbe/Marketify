@@ -19,4 +19,3 @@ Route::get('/', function () {
 });
 
 
-Route::get('/images', [ImageController::class, 'index'])->name('image.index');

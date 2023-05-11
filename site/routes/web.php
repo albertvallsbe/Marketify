@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -21,6 +22,9 @@ use App\Http\Controllers\DashboardController;
 */
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
+
+Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
+Route::post('/orders', [OrdersController::class, 'add'])->name('orders.add');
 
 Route::get('/search', [ProductController::class,'index'])->name('product.index');
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');

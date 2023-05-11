@@ -93,6 +93,12 @@
     padding-bottom: 1rem;
 }
 
+@mixin oneColumnsMode {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+}
+
 @mixin twoColumnsMode {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -109,4 +115,10 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     justify-content: center;
+}
+@mixin success {
+    background-color: $succes_light;
+    border: 1px solid $succes_origin;
+    color: #000 !important;
+    padding: 5px;
 }

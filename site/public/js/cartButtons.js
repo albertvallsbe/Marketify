@@ -1,7 +1,7 @@
 import { getCountCart } from "./cartFunctions.js";
 import { addToCart } from "./cartFunctions.js";
+import { updateCartServerStorage } from "./cartFunctions.js";
 import words from "./dictionaryWords.js";
-
 //FUNCTIONS
 
 //Afegeix el producte al localstorage
@@ -36,6 +36,7 @@ function clickButtonAction(productId, button) {
         });
         button.innerText = words.buttons.add;
     }
+    updateCartServerStorage();
     getCountCart();
 }
 
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.getElementsByClassName("btn-cart");
 
     Array.from(buttons).forEach((button) => {
-        button.innerText = words.buttons.add;
+        // button.innerText = words.buttons.add;
         button.addEventListener("click", (event) => {
             const productId = button.dataset.productId;
             clickButtonAction(productId, button);
