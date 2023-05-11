@@ -15,6 +15,7 @@ function removeFromLocalCart(id) {
         cart.splice(index, 1);
     }
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartServerStorage();
     location.reload();
 }
 
