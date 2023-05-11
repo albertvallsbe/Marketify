@@ -4,13 +4,29 @@
     width: 100%;
     overflow: hidden;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     justify-items: center;
     padding: 0.5rem;
     @include mainStyle;
     img.icon_user {
         border-radius: 18px;
     }
+    .chat-icon {
+        position: relative;
+    .notification-count {
+        display:block;
+        position: absolute;
+        top: -7.5px;
+        right: -10px;
+        background-color: $primary_origin;
+        color: #000;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 14px;
+        line-height: 20px;
+        @include iconSmall;
+    }
+}
 }
 
 @media screen and (min-width: 769px) {

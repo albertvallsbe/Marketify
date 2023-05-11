@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Mail\RememberPassword;

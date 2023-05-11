@@ -36,7 +36,7 @@
                         <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
                     </a>
                     <div class="menu-toggle">
-                        <button class="toggle-button">v</button>
+                        <img class="toggle-button" src="{{ asset('images/circle-chevron-down-solid.svg') }}">
                     </div>
                     <ul class="menu-list">
                         @can('seller')
@@ -58,7 +58,20 @@
                     <span id="cart-count" class="cart-count"></span>
                 </a>
             </div>
-            <button id="mode-toggle" class="shop_buttons"><img class="icon" src="{{ asset('images/moon-solid.svg') }}"></button>
+
+            <div id="chat-icon" class="chat-icon">
+                <a href="{{ route('chat.index') }}">
+                    <img class="icon" src="{{ asset('images/envelope-solid.svg') }}">
+                    @if (session('notificationCount') != 0)
+                        <span id="notification-count" class="notification-count">
+                            {{ session('notificationCount') }}
+                        </span>
+                    @endif
+                </a>
+            </div>
+            
+            <button id="mode-toggle" class="shop_buttons"><img class="icon"
+                    src="{{ asset('images/moon-solid.svg') }}"></button>
         </div>
     </div>
 </header>

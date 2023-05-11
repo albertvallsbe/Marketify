@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\User;
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class ShopController extends Controller {
     public function index() {
         $categories = Category::all();
         return view('shop.index',['categories' => $categories,
-        'options_order' => Order::$order_array]);
+        'options_order' => HeaderVariables::$order_array]);
     }
 
     public function show($url) {
@@ -38,7 +38,7 @@ class ShopController extends Controller {
         
             return view('shop.show', ['shop' => $shop,
             'categories' => $categories,
-            'options_order' => Order::$order_array,
+            'options_order' => HeaderVariables::$order_array,
             'products' => $products,
             'usersShop' => $usersShop,
             'header_color' => $header_color,
@@ -63,7 +63,7 @@ class ShopController extends Controller {
                     'products' => $products,
                     'shop' => $shop,
                     'categories' => $categories,
-                    'options_order' => Order::$order_array,
+                    'options_order' => HeaderVariables::$order_array,
                     'header_color' => $header_color,
                     'background_color' => $background_color
                 ]);
@@ -123,7 +123,7 @@ class ShopController extends Controller {
                 $shop = Shop::findOrFail($shopID);
                 $categories = Category::all();
                 return view('shop.edit', ['categories' => $categories,
-                'options_order' => Order::$order_array,
+                'options_order' => HeaderVariables::$order_array,
                 'shop' => $shop]);
             } catch (ModelNotFoundException $e) {
                 return redirect()->route('shop.index');

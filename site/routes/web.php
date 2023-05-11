@@ -8,12 +8,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\OrdeRcontroller;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\chatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,8 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 
-Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
-Route::post('/orders', [OrdersController::class, 'add'])->name('orders.add');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::post('/orders', [OrderController::class, 'add'])->name('orders.add');
 
 Route::get('/search', [ProductController::class,'index'])->name('product.index');
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');
@@ -82,6 +83,11 @@ Route::get('/shop-not-found', [ErrorController::class, 'shop404'])->name('shop.4
 Route::get('/user-not-found', [ErrorController::class, 'user404'])->name('user.404');
 Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 
+
+Route::get('/messages', [ChatController::class, 'index'])->name('chat.index');
+Route::post('/message-read/{chatId}', [ChatController::class, 'updateMessageRead'])->name('chat.updateMessageRead');
+Route::post('/message-send/{id}', [ChatController::class, 'messageSend'])->name('chat.messageSend');
+Route::post('/confirmSeller/{id}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
     //     return view('dashboard');
     // })->name('dashboard');

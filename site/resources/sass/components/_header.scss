@@ -86,8 +86,25 @@ header {
                     @include iconSmall;
                 }
             }
+            
+            .chat-icon {
+                position: relative;
+            .notification-count {
+                display:block;
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background-color: $primary_origin;
+                color: #000;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 14px;
+                line-height: 20px;
+                @include iconSmall;
+            }
         }
     }
+}
 
     .logo {
         @include logo;
@@ -95,7 +112,7 @@ header {
 
     .menu-container {
         position: relative;
-        display: inline-block;
+        display: flex;
 
         a {
             text-decoration: none;
@@ -103,11 +120,13 @@ header {
     }
 
     .menu-toggle {
+        margin-top:10px;
         display: inline-block;
     }
 
     .toggle-button {
-        background-color: #000;
+        width: 20px;
+        height: 20px;
         color: #fff;
         cursor: pointer;
     }
@@ -115,7 +134,7 @@ header {
     .menu-list {
         position: absolute;
         top: 100%;
-        left: 0;
+        right: 0;
         background-color: $neutral_lighter;
         border: 1px solid #ddd;
         padding: 0;
@@ -123,6 +142,7 @@ header {
         list-style: none;
         display: none;
         z-index: 1;
+        width: max-content;
     }
 
     .menu-list li {
@@ -142,6 +162,9 @@ header {
 }
 
 @media screen and (max-width: 768px) {
+    div#navbar__icons div.chat-icon {
+        display: none;
+    }
     div#navbar__icons img.icon_user {
         display: none;
     }
@@ -161,6 +184,9 @@ header {
             &__form {
                 &--button-search {
                     width: 45px;
+                }
+                #mode-toggle {
+                    display:none;
                 }
             }
         }

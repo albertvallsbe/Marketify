@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Category_Product;
-use App\Classes\Order;
+use App\Classes\HeaderVariables;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Notification;
 
-use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\View\Components\Header;
+use App\Models\Category_Product;
+use App\Helpers\ValidationMessages;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Helpers\ValidationMessages;
 
 class ProductController extends Controller
 {
@@ -39,11 +40,13 @@ class ProductController extends Controller
         $userId = auth()->id();
         if ($userId) {
             $arrayCart = Cart::showCartByUserID($userId);
+            $notificationCount = Notification::unreadCountForCurrentUser();
         } else {
             $arrayCart = "[]";
+            $notificationCount = 0;
         }
         setcookie("arrayCart",$arrayCart);
-
+         
         $usersShop = Shop::findShopUserID($userId);
         if($usersShop){
             $shop = Shop::findOrFail($usersShop);
@@ -53,8 +56,9 @@ class ProductController extends Controller
         return view('product.index', [
             'products' => $products,
             'categories' => $categories,
-            'options_order' => Order::$order_array,
-            'shop' => $shop]);
+            'options_order' => HeaderVariables::$order_array,
+            'shop' => $shop,
+            'notificationCount' => $notificationCount]);
     }
 
     public function show($id)
@@ -76,7 +80,7 @@ class ProductController extends Controller
             return view('product.show', [
                 'product' => $product,
                 'categories' => $categories,
-                'options_order' => Order::$order_array,
+                'options_order' => HeaderVariables::$order_array,
                 'shopname' => $shopName,
                 'shop' => $shop,
                 'categoryname' => $categoryName
@@ -90,7 +94,7 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('product.create', [
             'categories' => $categories,
-            'options_order' => Order::$order_array
+            'options_order' => HeaderVariables::$order_array
         ]);
     }
 
@@ -201,7 +205,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('product.edit', [
             'categories' => $categories,
-            'options_order' => Order::$order_array,
+            'options_order' => HeaderVariables::$order_array,
             'product' => $product
         ]);
     }
@@ -228,7 +232,7 @@ class ProductController extends Controller
         return view('product.index', [
             'products' => $products,
             'categories' => $categories,
-            'options_order' => Order::$order_array,
+            'options_order' => HeaderVariables::$order_array,
             'shop' => $shop
         ]);
     }

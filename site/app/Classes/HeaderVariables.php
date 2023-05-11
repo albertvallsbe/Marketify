@@ -2,7 +2,7 @@
 
 namespace App\Classes;
 
-class order
+class HeaderVariables
 {
 
     public static $order_array = [

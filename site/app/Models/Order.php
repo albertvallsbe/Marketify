@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Chat;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Orders extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -51,16 +52,22 @@ class Orders extends Model
     return $productIds;
     }
 
+    public static function getByChatID($chat_id) {
+        $chat = Chat::where('id', $chat_id)->first();
+        return $chat;
+    }
+
     public static function updateOrderDB($productsArray) {
         $userId = auth()->id();
         $existingOrder = Cart::where('user_id', $userId)->first();
         dd($existingOrder);
         if (!$existingOrder) {
-            $existingOrder = new Orders();
+            $existingOrder = new Order();
             $existingOrder->user_id = $userId;
         }
         $existingOrder->products = json_encode($productsArray);
         $existingOrder->save();
+        dd($existingOrder);
     }
 
     public function shop()

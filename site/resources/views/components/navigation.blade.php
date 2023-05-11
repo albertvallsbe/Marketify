@@ -20,4 +20,15 @@
         <a href="{{ route('login.index') }}">
             <img class="icon" src="{{ asset('images/user-solid.svg') }}">
     @endif
+
+    <div id="chat-icon" class="chat-icon">
+        <a href="{{ route('chat.index') }}">
+            <img class="icon" src="{{ asset('images/envelope-solid.svg') }}">
+            @if (session('notificationCount') != 0)
+                <span id="notification-count" class="notification-count">
+                    {{ session('notificationCount') }}
+                </span>
+            @endif
+        </a>
+    </div>
 </div>
