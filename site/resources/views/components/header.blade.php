@@ -36,7 +36,7 @@
                         <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
                     </a>
                     <div class="menu-toggle">
-                        <button class="toggle-button">v</button>
+                        <img class="toggle-button" src="{{ asset('images/circle-chevron-down-solid.svg') }}">
                     </div>
                     <ul class="menu-list">
                         @can('seller')

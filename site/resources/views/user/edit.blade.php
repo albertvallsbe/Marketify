@@ -7,6 +7,9 @@
     @if (session()->has('status'))
         <p class="session_success">{{ session()->get('status') }}</p>
     @endif
+    <section class="card-logout">
+    <a href="{{ route('user.logout') }}">Log out</a>
+    </section>
     <section class="main-edituser">
         <section class="card-style-edituser">
             <h3 class="card-style-edituser_title">Change your password</h3>
@@ -65,6 +68,5 @@
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
             </form>
         </section>
-        <a href="{{ route('user.logout') }}">Log out</a>
         <script type="module" src="{{ asset('js/pages/user_edit.js') }}"></script>
     @endsection

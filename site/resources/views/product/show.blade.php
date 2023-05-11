@@ -19,7 +19,7 @@
                 @if($shop->id != $product->shop_id)
                     <button class="btn-cart small-button" data-product-id="{{ $product->id }}">Add to cart</button>
                     @else
-                    <small class="card-style-home_title"><i>This product belongs to you.</i></small>
+                    <small class="card-style-home_property"><i>This product belongs to you.</i></small>
                 @endif
             @endif
         </section>
