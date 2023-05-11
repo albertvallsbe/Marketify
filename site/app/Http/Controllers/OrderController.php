@@ -21,89 +21,60 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
-        // try {
+        try {
             $categories = Category::all();
-            $userId = auth()->id();
-            //coge el usuario
-            $cart = Cart::showCartByUserID($userId);
-            // dd($cart);
-            $productIds = Order::decodeIds($cart);
-            // dd($productIds);
-
+            // $userId = auth()->id();
+            // //coge el usuario
+            // $cart = Cart::showCartByUserID($userId);
+            // $productIds = Order::decodeIds($cart);
             $shops = Shop::all();
-
-            foreach ($shops as $shop) {
-                $shopname = $shop->shopname;
-            }
-
             $products = Product::all();
 
-            // $productIds = Order::decodeIds($cart->products);
-            $productsByShop = array();
             $shopName = array();
             for ($i=0 ; $i< count($shops); $i++) {
-                $firstProduct = true;
                 $shopName[$i] = $shops[$i]->shopname;
-                for ($j=0 ; $j< count($productIds); $j++) {
-                    $product = $products->where('id', $productIds[$j])->first();
-                    if ($product && $product->shop_id == $shops[$i]->id) {
-                        $productsByShop[$i][$j] = $product;
-                        if($firstProduct){
-                            $seller_id = $shops[$i]->user_id;
-                            $customer_id = auth()->id();
-                            $chat = Chat::chatChecker($seller_id, $customer_id);
-                            if($chat === null){
-                                $chat = Chat::create([
-                                    'seller_id' => $seller_id,
-                                    'customer_id' => $customer_id
-                                ]);
-                            }else{
-                                $order = Order::getByChatID($chat->id);
-                                $order->update([
-                                    'status' => 'pending'
-                                ]);
-                            }
-
-                        $message = Message::create([
-                            'chat_id' => $chat->id,
-                            'sender_id' => $customer_id,
-                            'automatic' => true,
-                            'content' => 'Order #XXX has been confirmed. Seller must accept payment and send the products.'
-                        ]);
-                        $notification = Notification::create([
-                            'user_id' => $seller_id,
-                            'chat_id' => $chat->id,
-                            'read' => false
-                        ]);
-                        $firstProduct = false;
-                        }
-                    }
-                }
             }
+
+            $productsByShop = Order::findShopAndCartProducts();
+
             // dd($productsByShop);
+
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
-                'cart' => $cart,
+                // 'cart' => $cart,
+                // 'productIds' => $productIds,
                 'products' => $products,
-                'productIds' => $productIds,
-                // 'shopname' => $shopname,
                 'shops' => $shops,
                 'productsByShop' => $productsByShop,
                 'shopName' => $shopName,
-                // 'cartProducts' => $cartProducts
-                // 'shop' => $shop,
-                // 'cartProducts' => $arrayCart,
-                // 'arrayProductsId' => $arrayProducts
             ]);
+        } catch (\Exception $e) {
+                Log::channel('marketify')->error('An error occurred in OrderController: '.$e->getMessage());
+                return redirect()->back()->with('error', 'An error occurred in OrderController.');
+        }
     }
 
 
     public function add(Request $request) {
-        $productsArray = $request->input('orders');
-        $userId = auth()->id();
-        if($userId){
-            Order::updateOrdersDB($productsArray);
+        $productsByShop = Order::findShopAndCartProducts();
+        $shops = Shop::all();
+        $shopName = array();
+            for ($i=0 ; $i< count($shops); $i++) {
+                $shopName[$i] = $shops[$i]->id;
+            }
+        foreach ($productsByShop as $key => $shopByProduct) {
+
+            $shopId = $shops[$key]->id;
+
+            // $shop_id = $shopByProduct[$key]->id;
+            // dump($shopId);
+            Order::create([
+                'products' => "[23,25,67]",
+                'user_id' => auth()->id(),
+                'shop_id' => $shopId
+            ]);
+
         }
     }
 }

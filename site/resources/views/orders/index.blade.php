@@ -17,10 +17,13 @@
                 @endforeach
             </div>
             <div class="btns-cart">
-                <button class="btn-order general-button general-button_order
-                    @if(count($products) == 0 || !auth()->user()) btn-disabled @endif "
-                    @if(count($products) == 0 || !auth()->user()) disabled @endif>ORDER NOW
-                </button>
+                <form method="POST" action="{{ route('orders.add')}}">
+                    @csrf
+                    <button class="btn-order general-button general-button_order" type="submit" >ORDER NOW
+                    </button>
+
+
+                </form>
             </div>
             @if(!auth()->user())
                 <i><a href="/login">Log in</a> to buy in our website.</i>
