@@ -1,7 +1,20 @@
 .main-edituser {
     @include threeColumnsMode;
 }
-
+.card-logout {
+    @include cardStyle;
+    width: fit-content;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: $primary_origin;
+    a {
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
 .card-style-edituser {
     @include cardStyle;
     @include cardPosition;
