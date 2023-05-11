@@ -6,6 +6,11 @@
         @include cardStyleTitle;
         max-height: fit-content;
     }
+    
+    &_property {
+        margin-block: auto;
+        text-align: center;
+    }
 
     .form {
         @include formInput;
