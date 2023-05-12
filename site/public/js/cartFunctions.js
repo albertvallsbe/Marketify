@@ -32,7 +32,6 @@ function updateLocalStorage() {
         localStorage.setItem("cart", arrayCart);
         getCountCart();
     }
-    updateCartServerStorage();
 }
 
 //Contador de productes en el carret
@@ -108,4 +107,5 @@ export { getCountCart };
 export { addToCart };
 export { updateCartServerStorage };
 
+updateLocalStorage();
 addToCart();
