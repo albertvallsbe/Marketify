@@ -24,10 +24,6 @@ class OrderController extends Controller
     {
         try {
             $categories = Category::all();
-            // $userId = auth()->id();
-            // //coge el usuario
-            // $cart = Cart::showCartByUserID($userId);
-            // $productIds = Order::decodeIds($cart);
             $shops = Shop::all();
             $products = Product::all();
 
@@ -38,13 +34,10 @@ class OrderController extends Controller
 
             $productsByShop = Order::findShopAndCartProducts();
 
-            // dd($productsByShop);
 
             return view('orders.index', [
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
-                // 'cart' => $cart,
-                // 'productIds' => $productIds,
                 'products' => $products,
                 'shops' => $shops,
                 'productsByShop' => $productsByShop,
@@ -58,31 +51,32 @@ class OrderController extends Controller
 
 
     public function add() {
-        $productsByShop = Order::findShopAndCartProducts();
-        $shops = Shop::all();
-        $shopName = array();
+        try{
+            $productsByShop = Order::findShopAndCartProducts();
+            $shops = Shop::all();
+            $shopName = array();
             for ($i=0 ; $i< count($shops); $i++) {
                 $shopName[$i] = $shops[$i]->id;
             }
-        foreach ($productsByShop as $key => $shopByProduct) {
-
-            $shopId = $shops[$key]->id;
-
-            $order = Order::create([
-                'user_id' => auth()->id(),
-                'shop_id' => $shopId
-            ]);
+            foreach ($productsByShop as $key => $shopByProduct) {
+                $shopId = $shops[$key]->id;
+                    $order = Order::create([
+                        'user_id' => auth()->id(),
+                        'shop_id' => $shopId
+                    ]);
+            $chat = Chat::createChatByOrder($shops[$key], $order->id);
             foreach ($shopByProduct as $key => $products) {
-
-
                 OrderItems::create([
                     'order_id' => $order->id,
                     'shop_id' => $shopId,
                     'product_id' => $products->id
                 ]);
             }
-            // $shop_id = $shopByProduct[$key]->id;
-            // dump($shopId);
+        }
+            return redirect()->route('chat.index');
+        } catch (\Exception $e) {
+            Log::channel('marketify')->error('An error occurred creating orders: '.$e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred in OrderController.');
         }
     }
 }

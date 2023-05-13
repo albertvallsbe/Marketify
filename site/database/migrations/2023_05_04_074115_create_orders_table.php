@@ -15,11 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            // $table->text('products');
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('shop_id')->index();
 
-            $table->enum('status', ['pending', 'payed', 'sending', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'paid', 'sending', 'completed'])->default('pending');
 
             $table->foreign('user_id')
                     ->references('id')->on('users')
@@ -28,7 +27,6 @@ return new class extends Migration
             $table->foreign('shop_id')
                     ->references('id')->on('shops')
                     ->cascadeOnDelete();
-
         });
     }
 
