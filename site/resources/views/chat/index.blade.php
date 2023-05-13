@@ -12,9 +12,9 @@
                         <li class="chat_item @if ($chat->notification->read == 0 && $chat->notification->user_id === auth()->id()) unread @endif"
                             data-chat-id="{{ $chat->id }}">
                             @if ($chat->seller_id != auth()->id())
-                                <span class="chat_name">Seller: {{ $chat->seller->name }}</span>
+                            <span class="chat_name">Buying Order: #{{ $chat->order->id }}</span>
                             @else
-                                <span class="chat_name">Customer: {{ $chat->customer->name }}</span>
+                            <span class="chat_name">Selling Order: #{{ $chat->order->id }}</span>
                             @endif
                             <br>
 
@@ -71,15 +71,15 @@
                                 </li>
                             @endforeach
                             
-                            <form class="chat-form-buttons chat-{{ $chat->id }}" method="post" action="{{ route('chat.confirmSeller', ['id' => $chat->id]) }}">
+                            <form class="chat-form-buttons chat-{{ $chat->id }}" method="post" action="{{ route('chat.confirmSeller', ['chatId' => $chat->id,'orderId' => $chat->order->id]) }}">
                                 @csrf
-                                @if($chat->seller_id == auth()->id() && $chat->status == 'pending')
+                                @if($chat->seller_id == auth()->id() && $chat->order->status == 'pending')
                                     <button type="submit" name="actionValue" value="confirmPayment" class="confirmButton">Confirm Payment</button>
                                 @endif
-                                @if($chat->seller_id == auth()->id() && $chat->status == 'payed')
+                                @if($chat->seller_id == auth()->id() && $chat->order->status == 'paid')
                                     <button type="submit" name="actionValue" value="shipmentSend" class="confirmButton">Confirm shipment</button>
                                 @endif
-                                @if($chat->customer_id == auth()->id() && $chat->status == 'sending')
+                                @if($chat->customer_id == auth()->id() && $chat->order->status == 'sending')
                                     <button type="submit" name="actionValue" value="shipmentDone" class="confirmButton">Order received</button>
                                 @endif
                             </form>

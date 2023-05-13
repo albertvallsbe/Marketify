@@ -9,20 +9,21 @@ class CreateChatTables extends Migration
     public function up()
     {
         Schema::create('chats', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             
             $table->unsignedBigInteger('seller_id')->index();
+            $table->unsignedBigInteger('order_id')->index();
             $table->unsignedBigInteger('customer_id')->index();
             $table->timestamps();
-            $table->enum('status', ['pending', 'payed', 'sending', 'completed'])->default('pending');
             
+            $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
             $table->foreign('seller_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('customer_id')->references('id')->on('users')->cascadeOnDelete();
         });
 
         Schema::create('messages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('chat_id')->unsigned();
+            $table->id();
+            $table->unsignedBigInteger('chat_id')->unsigned();
             $table->unsignedBigInteger('sender_id')->index();
             $table->text('content');
             $table->boolean('automatic')->default(false);
@@ -33,9 +34,9 @@ class CreateChatTables extends Migration
         });
 
         Schema::create('notifications', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->integer('chat_id')->unsigned();
+            $table->unsignedBigInteger('chat_id')->unsigned();
             $table->boolean('read')->default(false);
             $table->timestamps();
 
@@ -57,6 +58,7 @@ class CreateChatTables extends Migration
         Schema::table('chats', function (Blueprint $table) {
             $table->dropForeign(['seller_id']);
             $table->dropForeign(['customer_id']);
+            $table->dropForeign(['order_id']);
         });
 
         Schema::dropIfExists('notifications');

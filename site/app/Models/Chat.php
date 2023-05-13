@@ -6,12 +6,14 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class chat extends Model
 {
     protected $fillable = [
         'seller_id',
         'customer_id',
+        'order_id',
         'status'
     ];
     public static function getByUserID(){
@@ -22,17 +24,28 @@ class chat extends Model
             ->get();
     }
 
-    public static function chatChecker($sellerId, $customerId){
-        return self::where(function ($query) use ($sellerId, $customerId) {
-            $query->where('seller_id', $sellerId)
-                    ->where('customer_id', $customerId);
-        })
-        ->orWhere(function ($query) use ($sellerId, $customerId) {
-            $query->where('seller_id', $customerId)
-                    ->where('customer_id', $sellerId);
-        })
-        ->first();
+    public static function createChatByOrder($shop, $order_id){
+            $seller_id = $shop->user_id;
+            $customer_id = auth()->id();
+                $chat = Chat::create([
+                    'seller_id' => $seller_id,
+                    'customer_id' => $customer_id,
+                    'order_id' => $order_id
+                ]);            
+
+        $message = Message::create([
+            'chat_id' => $chat->id,
+            'sender_id' => $customer_id,
+            'automatic' => true,
+            'content' => "Order #$order_id has been confirmed. Seller must accept payment and send the products."
+        ]);
+        $notification = Notification::create([
+            'user_id' => $seller_id,
+            'chat_id' => $chat->id,
+            'read' => false
+        ]);
     }
+
     public function seller()
     {
         return $this->belongsTo(User::class, 'seller_id');
@@ -57,5 +70,8 @@ class chat extends Model
     {
         return $this->findOrFail($chatId)->messages;
     }
-
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

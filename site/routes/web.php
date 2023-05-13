@@ -77,21 +77,12 @@ Route::get('/auth', function () {
     return response()->json(['authenticated' => $authenticated]);
 });
 
-
 Route::get('/product-not-found', [ErrorController::class, 'product404'])->name('product.404');
 Route::get('/shop-not-found', [ErrorController::class, 'shop404'])->name('shop.404');
 Route::get('/user-not-found', [ErrorController::class, 'user404'])->name('user.404');
 Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 
-
 Route::get('/messages', [ChatController::class, 'index'])->name('chat.index');
 Route::post('/message-read/{chatId}', [ChatController::class, 'updateMessageRead'])->name('chat.updateMessageRead');
 Route::post('/message-send/{id}', [ChatController::class, 'messageSend'])->name('chat.messageSend');
-Route::post('/confirmSeller/{id}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-    //     return view('dashboard');
-    // })->name('dashboard');
-
-
-    // Route::resource('dashboard', App\Http\Controllers\DashboardController::class)
-    //     ->middleware('auth');
+Route::post('/confirmSeller/{chatId}/{orderId}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');

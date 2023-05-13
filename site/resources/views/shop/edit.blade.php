@@ -39,14 +39,14 @@
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
 
-                <label class="form_label" for="header_color">Shop's color:</label>
+                <label class="form_label" for="header_color">Shop's header color:</label>
                 <input type="color" class="form_input_color @error('image') is-invalid @enderror"
                     value="{{ $shop->header_color }}" name="header_color" id="header_color">
                 @error('header_color')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
 
-                <label class="form_label" for="background_color">Shop's color:</label>
+                <label class="form_label" for="background_color">Shop's background color:</label>
                 <input type="color" class="form_input_color @error('image') is-invalid @enderror"
                     value="{{ $shop->background_color }}" name="background_color" id="background_color">
                 @error('background_color')
