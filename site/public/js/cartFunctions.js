@@ -63,7 +63,7 @@ function addToServerCart() {
                     .getAttribute("content"),
             },
             body: JSON.stringify({ cart }),
-        }).then(() => {});
+        });
     } catch (error) {
         console.error(error);
     }

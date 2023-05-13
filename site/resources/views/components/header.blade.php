@@ -25,7 +25,7 @@
             </select>
 
             <button class="navbar__form--button-search" id="form__buttonsearch" type="submit">
-                <img class="icon" src="{{ asset('images/magnifying-glass-solid.svg') }}">
+                <img class="icon" src="{{ asset('images/icons/magnifying-glass-solid.svg') }}">
             </button>
         </form>
         <div id="navbar__icons" class="navbar__icons">
@@ -36,7 +36,7 @@
                         <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
                     </a>
                     <div class="menu-toggle">
-                        <img class="toggle-button" src="{{ asset('images/circle-chevron-down-solid.svg') }}">
+                        <img class="toggle-button" src="{{ asset('images/icons/circle-chevron-down-solid.svg') }}">
                     </div>
                     <ul class="menu-list">
                         @can('seller')
@@ -49,19 +49,19 @@
                 </div>
             @else
                 <a href="{{ route('login.index') }}">
-                    <img class="icon icon_user" src="{{ asset('images/user-solid.svg') }}">
+                    <img class="icon icon_user" src="{{ asset('images/icons/user-solid.svg') }}">
             @endif
 
             <div id="cart-icon" class="cart-icon">
                 <a id="cart-link" href="{{ route('cart.index') }}">
-                    <img class="icon" src="{{ asset('images/cart-shopping-solid.svg') }}">
+                    <img class="icon" src="{{ asset('images/icons/cart-shopping-solid.svg') }}">
                     <span id="cart-count" class="cart-count"></span>
                 </a>
             </div>
 
             <div id="chat-icon" class="chat-icon">
                 <a href="{{ route('chat.index') }}">
-                    <img class="icon" src="{{ asset('images/envelope-solid.svg') }}">
+                    <img class="icon" src="{{ asset('images/icons/envelope-solid.svg') }}">
                     @if (session('notificationCount') != 0)
                         <span id="notification-count" class="notification-count">
                             {{ session('notificationCount') }}
@@ -71,7 +71,7 @@
             </div>
             
             <button id="mode-toggle" class="shop_buttons"><img class="icon"
-                    src="{{ asset('images/moon-solid.svg') }}"></button>
+                    src="{{ asset('images/icons/moon-solid.svg') }}"></button>
         </div>
     </div>
 </header>

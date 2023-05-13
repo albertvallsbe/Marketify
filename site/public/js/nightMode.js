@@ -1,7 +1,7 @@
 const toggleSwitch = document.querySelector("#mode-toggle");
 const img = toggleSwitch.querySelector("img");
 
-const imageUrl = window.location.origin + "/images/";
+const imageUrl = window.location.origin + "/images/icons/";
 const sunImage = imageUrl + "moon-solid.svg";
 const moonImage = imageUrl + "sun-solid.svg";
 
