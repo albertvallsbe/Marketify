@@ -18,13 +18,14 @@ class ChatController extends Controller
     {
         try {  
             if(auth()->user()){
-                $chats = Chat::getByUserID();                
+                $chats = Chat::getByUserID();
                 $categories = Category::all();
                 session(['notificationCount' => Notification::unreadCountForCurrentUser()]);
                 return view('chat.index', [
                     'categories' => $categories,
                     'options_order' => HeaderVariables::$order_array,
-                    'chats' => $chats
+                    'chats' => $chats,
+                    'selectedChat' => null
                 ]);
             } else{
                 return redirect()->route('login.index');
@@ -34,6 +35,30 @@ class ChatController extends Controller
                 return redirect()->back()->with('error', 'An error occurred while loading the home view.');
             }
     } 
+
+    public function show(Request $request, $id)
+    {
+        try {  
+            if(auth()->user()){
+                $chat = Chat::findOrFail($id);
+                $chats = Chat::getByUserID();
+                $categories = Category::all();
+                session(['notificationCount' => Notification::unreadCountForCurrentUser()]);
+                return view('chat.show', [
+                    'categories' => $categories,
+                    'options_order' => HeaderVariables::$order_array,
+                    'chats' => $chats,
+                    'selectedChat' => $chat
+                ]);
+            } else{
+                return redirect()->route('login.index');
+            }
+            } catch (\Exception $e) {
+                Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
+                return redirect()->back()->with('error', 'An error occurred while loading the home view.');
+            }
+    } 
+
     public function updateMessageRead($chatId) {   
         try {
             $notification = Notification::showbyChatID($chatId)->latest()->first();
@@ -70,13 +95,13 @@ class ChatController extends Controller
                     $chatId = $chat->id;
                     $userId = $chat->seller_id == auth()->id() ? $chat->customer_id : $chat->seller_id;
                     
-                    Notification::updateOrCreate(
+                    Notification::Create(
                         ['chat_id' => $chatId, 'user_id' => $userId],
                         ['read' => false]
                     );  
                 }
             }
-                return redirect()->route('chat.index');
+                return redirect()->route('chat.show', ['id' => $chat->id]);
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred creating message: '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
@@ -111,11 +136,11 @@ class ChatController extends Controller
                     'content' => $messageContent
                 ]);
             }
-            Notification::updateOrCreate(
+            Notification::Create(
                 ['chat_id' => $chat->id, 'user_id' => $chat->customer_id],
                 ['read' => false]
             );
-            return redirect()->route('chat.index');
+            return redirect()->route('chat.show', ['id' => $chat->id]);
 
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred updating order status: '.$e->getMessage());

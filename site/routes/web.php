@@ -83,6 +83,7 @@ Route::get('/user-not-found', [ErrorController::class, 'user404'])->name('user.4
 Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 
 Route::get('/messages', [ChatController::class, 'index'])->name('chat.index');
+Route::get('/messages/{id}', [ChatController::class, 'show'])->name('chat.show');
 Route::post('/message-read/{chatId}', [ChatController::class, 'updateMessageRead'])->name('chat.updateMessageRead');
 Route::post('/message-send/{id}', [ChatController::class, 'messageSend'])->name('chat.messageSend');
 Route::post('/confirmSeller/{chatId}/{orderId}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');

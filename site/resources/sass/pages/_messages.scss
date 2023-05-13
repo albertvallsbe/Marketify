@@ -11,6 +11,10 @@
     max-height: 100%;
     flex-basis: 30%;
   }
+  .link_show{
+    text-decoration: none;
+    color: #000;
+  }
 
   .chat_item {
     padding: 1rem;
@@ -37,10 +41,13 @@
     background-color: #e3e3e3;
     padding: 1rem;
     max-height: 400px;
+    min-height: 400px;
     overflow-x: auto;
     display: inline-grid;
+    align-items: end;    
 
     .message-list {
+      list-style: none;
       .message-item {
         &_date{
           text-align: center;
