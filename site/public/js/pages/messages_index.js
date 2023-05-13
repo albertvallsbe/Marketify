@@ -41,32 +41,6 @@ if (chatList) {
         body: { chatId },
       }).catch(error => console.error(error));
 
-      messageSections.forEach(section => {
-        if (section.classList.contains(`chat-${chatId}`)) {
-          section.style.display = 'block';
-        } else {
-          section.style.display = 'none';
-        }
-      });
-
-      chatForm.forEach(chatForm => {
-        const chatId = e.target.closest('.chat_item').dataset.chatId;
-        if (chatForm.classList.contains(`chat-${chatId}`)) {
-          chatForm.style.display = 'flex';
-        } else {
-          chatForm.style.display = 'none';
-        }
-      });
-
-      chatFormButtons.forEach(chatFormButtons => {
-        const chatId = e.target.closest('.chat_item').dataset.chatId;
-        if (chatFormButtons.classList.contains(`chat-${chatId}`)) {
-          chatFormButtons.style.display = 'flex';
-        } else {
-          chatFormButtons.style.display = 'none';
-        }
-      });
-
       chatList.querySelectorAll('.chat_item').forEach(item => {
         if (item.dataset.chatId === chatId) {
           item.classList.add('selected');
@@ -81,10 +55,4 @@ if (chatList) {
       });
     }
   });
-
-  if (chatList.children.length > 0) {
-    const lastChat = chatList.querySelector(':last-child');
-    lastChat.click();
-  }
-
 }
