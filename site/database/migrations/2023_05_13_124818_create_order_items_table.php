@@ -11,24 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            // $table->text('products');
-            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('order_id')->index();
             $table->unsignedBigInteger('shop_id')->index();
-
+            $table->unsignedBigInteger('product_id')->index();
             $table->enum('status', ['pending', 'payed', 'sending', 'completed'])->default('pending');
 
-            $table->foreign('user_id')
-                    ->references('id')->on('users')
-                    ->cascadeOnDelete();
-
+            $table->foreign('order_id')
+                ->references('id')->on('orders')
+                ->cascadeOnDelete();
             $table->foreign('shop_id')
-                    ->references('id')->on('shops')
-                    ->cascadeOnDelete();
-
+                ->references('id')->on('shops')
+                ->cascadeOnDelete();
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->cascadeOnDelete();
         });
     }
 
@@ -37,10 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['shop_id']);
-        });
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_items');
     }
 };

@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\Message;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\OrderItems;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Classes\HeaderVariables;
@@ -56,7 +57,7 @@ class OrderController extends Controller
     }
 
 
-    public function add(Request $request) {
+    public function add() {
         $productsByShop = Order::findShopAndCartProducts();
         $shops = Shop::all();
         $shopName = array();
@@ -67,14 +68,21 @@ class OrderController extends Controller
 
             $shopId = $shops[$key]->id;
 
-            // $shop_id = $shopByProduct[$key]->id;
-            // dump($shopId);
-            Order::create([
-                'products' => "[23,25,67]",
+            $order = Order::create([
                 'user_id' => auth()->id(),
                 'shop_id' => $shopId
             ]);
+            foreach ($shopByProduct as $key => $products) {
 
+
+                OrderItems::create([
+                    'order_id' => $order->id,
+                    'shop_id' => $shopId,
+                    'product_id' => $products->id
+                ]);
+            }
+            // $shop_id = $shopByProduct[$key]->id;
+            // dump($shopId);
         }
     }
 }
