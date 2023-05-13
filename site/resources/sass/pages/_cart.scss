@@ -5,7 +5,7 @@
 .products-cart {
     display: grid;
     width: 60vw;
-    grid-template-columns: repeat(auto-fit, minmax(calc(160px * 1.125), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc(250px * 1.125), 1fr));
     grid-row-gap: 20px;
     grid-column-gap: 0px;
     .small-button {

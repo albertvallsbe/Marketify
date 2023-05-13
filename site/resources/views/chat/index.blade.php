@@ -89,7 +89,7 @@
                                 @csrf
                                 <input type="text" name="messagetext" id="messagetext" placeholder="Write your message here..."
                                     autocomplete="off">
-                                <button type="submit"><img class="icon" src="{{ asset('images/circle-arrow-right-solid.svg') }}"></button>
+                                <button type="submit"><img class="icon" src="{{ asset('images/icons/circle-arrow-right-solid.svg') }}"></button>
                             </form>
                         @endforeach
                     </ul>

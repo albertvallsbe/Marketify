@@ -34,21 +34,21 @@
                 </a>
                 <div class="shop_buttons_container">
                     <a href="{{ route('product.edit', ['id' => $product->id]) }}"><button class="shop_buttons"><img
-                                class="icon" src="{{ asset('images/pen-to-square-solid.svg') }}"></button></a>
+                                class="icon" src="{{ asset('images/icons/pen-to-square-solid.svg') }}"></button></a>
                     <form method="POST" action="{{ route('product.hide', ['id' => $product->id]) }}">
                         @csrf
                         <button type="submit" class="shop_buttons">
                             @if ($product->status == 'hidden')
-                                <img class="icon" src="{{ asset('images/eye-solid.svg') }}">
+                                <img class="icon" src="{{ asset('images/icons/eye-solid.svg') }}">
                             @else
-                                <img class="icon" src="{{ asset('images/eye-slash-solid.svg') }}">
+                                <img class="icon" src="{{ asset('images/icons/eye-slash-solid.svg') }}">
                             @endif
                         </button>
                     </form>
                     <form method="POST" action="{{ route('product.destroy', ['id' => $product->id]) }}" onsubmit="return confirm('Are you sure you want to delete this product?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="shop_buttons"><img class="icon" src="{{ asset('images/trash-solid.svg') }}"></button>
+                        <button type="submit" class="shop_buttons"><img class="icon" src="{{ asset('images/icons/trash-solid.svg') }}"></button>
                     </form>
                 </div>
             </div>

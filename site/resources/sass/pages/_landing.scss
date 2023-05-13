@@ -10,6 +10,7 @@
     .container-slogan {
         @include landingMainCard;
         transition: transform .2s;
+        color: #000;
 
         .logo {
             @include logoIntro;

@@ -32,6 +32,7 @@
   }
 
   .chat_open {
+    color: #000;
     flex-grow: 1;
     background-color: #e3e3e3;
     padding: 1rem;
@@ -166,7 +167,7 @@
 
 @media screen and (max-width: 768px) {
   .content{
-    padding-bottom: 15px !important;
+    padding-bottom: 15px;
   }
   .chat_container {
     display: flex;
