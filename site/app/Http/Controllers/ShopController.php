@@ -78,7 +78,7 @@ class ShopController extends Controller {
     public function create(Request $request) {
         $validatedData = $request->validate([
             'shopname' => 'required|string|regex:/[a-zA-Z0-9\s]+/|unique:shops',
-            'username'=>'required|string|alpha|unique:shops',
+            'username'=>'required|string|unique:shops',
             'nif' => 'required|string|alpha_num|unique:shops',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'header_color' => ['required', 'regex:/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/'],
@@ -149,7 +149,6 @@ class ShopController extends Controller {
                 'username' => [
                     'required',
                     'string',
-                    'alpha',
                     Rule::unique('shops')->ignore($shop->id),
                 ],
                 'nif' => [
