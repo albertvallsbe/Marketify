@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Chat;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Notification;
@@ -26,11 +25,11 @@ class chat extends Model
     public static function chatChecker($sellerId, $customerId){
         return self::where(function ($query) use ($sellerId, $customerId) {
             $query->where('seller_id', $sellerId)
-                  ->where('customer_id', $customerId);
+                    ->where('customer_id', $customerId);
         })
         ->orWhere(function ($query) use ($sellerId, $customerId) {
             $query->where('seller_id', $customerId)
-                  ->where('customer_id', $sellerId);
+                    ->where('customer_id', $sellerId);
         })
         ->first();
     }
@@ -45,18 +44,18 @@ class chat extends Model
     }
 
     public function notification()
-    {   
+    {
         return $this->hasOne(Notification::class);
     }
 
     public function messages()
     {
         return $this->hasMany(Message::class)->orderBy('created_at', 'asc');
-    }    
+    }
 
     public function getMessagesById($chatId)
     {
         return $this->findOrFail($chatId)->messages;
     }
-    
+
 }

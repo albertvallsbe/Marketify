@@ -1,11 +1,12 @@
 //Comprova si hi ha una sessió iniciada
-const updateOrdersServerStorage = () => {
+const updateOrdersServerStorage = (arrayOrderToServer, shop_id) => {
     try {
         fetch("/auth")
             .then((response) => response.json())
             .then((data) => {
                 if (data.authenticated) {
-                    addToServerOrder();
+                    // console.log(`uptadeOrdersSErver... ${arrayOrderToServer}`);
+                    addToServerOrder(arrayOrderToServer, shop_id);
                 }
             });
     } catch (error) {
@@ -17,18 +18,19 @@ const updateOrdersServerStorage = () => {
 //crida la funció per ruta
 function addToServerOrder() {
     try {
-        const order = localStorage.getItem("cart") || "[]";
-        console.log(order);
-        fetch("/orders", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute("content"),
-            },
-            body: JSON.stringify({ order }),
-        }).then(() => {});
+        // // let shop_id = "2";
+        // // let arrayOrderToServer = ["1", "3", "4"];
+        // // arrayOrderToServer = JSON.stringify(arrayOrderToServer);
+        // fetch("/orders/", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "X-CSRF-TOKEN": document
+        //             .querySelector('meta[name="csrf-token"]')
+        //             .getAttribute("content"),
+        //     },
+        //     // body: JSON.stringify({ arrayOrderToServer }),
+        // }).then(() => {});
     } catch (error) {
         console.error(error);
     }
