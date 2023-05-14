@@ -24,8 +24,9 @@ use App\Http\Controllers\chatController;
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-Route::post('/orders', [OrderController::class, 'add'])->name('orders.add');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::post('/order', [OrderController::class, 'add'])->name('order.add');
+Route::get('/order/failed', [OrderController::class, 'error'])->name('order.error');
 
 Route::get('/search', [ProductController::class,'index'])->name('product.index');
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');
