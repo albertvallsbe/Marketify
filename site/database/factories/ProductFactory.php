@@ -18,12 +18,14 @@ class ProductFactory extends Factory
     public function definition()
     {
         $faker = Faker::create('es_ES');
-        // $shop = Shop::where('id', 1)->first();
-        // $shop2 = Shop::where('id', 2)->first();
+        $name = $faker->unique()->words($nb = $faker->numberBetween(1, 2), $asText = true);
+        while (strlen($name) < 5) {
+            $name = $faker->unique()->words($nb = $faker->numberBetween(1, 2), $asText = true);
+        }
         $shops = Shop::all();
 
         return [
-            'name' => $faker->unique()->word(5),
+            'name' => $name,
             'description' => $faker->sentence(20),
             'tag' => $faker->name(),
             'image' =>  "images/products/".rand(1, 4).".jpg",
