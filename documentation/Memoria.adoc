@@ -10,64 +10,43 @@ include::setmanes/setmana.adoc[]
 == Disseny base de dades
 
 == Usuaris
-
-=== Register
-
-=== Login
-
-=== Recordar contrassenya
+include::documentacio/users.adoc[]
 
 == Productes
-
-=== Planificació a la base de dades
-
-=== Tags
-
-=== Categories
+include::documentacio/products.adoc[]
 
 == Busqueda i filtre
-
-=== Categories
-
-=== Barra de cerca
-
-=== Ordre
+include::documentacio/search.adoc[]
 
 == Carret
 include::documentacio/cart.adoc[]
 
 == Shops
-
-=== Rols de usuaris
-
-=== Formulari de creació
-
-==== URLs
-
-=== Administració de shop
-
-==== Editar shop
-
-==== Afegir, editar, amagar i esborrar productes
-
-=== Mostrar shops alienes
+include::documentacio/shop.adoc[]
 
 == Realitzar comanda
+include::documentacio/order.adoc[]
 
 == Missatgeria Interna
+include::documentacio/chat.adoc[]
 
 == Flux de compra
+include::documentacio/flow.adoc[]
 
 == Pàgina històric de comandes
+include::documentacio/history.adoc[]
 
 == API d'imatges
+include::documentacio/api.adoc[]
 
 == Entorns de desplegament
+include::documentacio/environment.adoc[]
 
 == Pàgines d'error personalitzat
-
+include::documentacio/errors.adoc[]
 
 == Mockup d'interficies
+include::documentacio/mockups.adoc[]
 
 == Guía d'estils
 include::estils/Estils.adoc[]
