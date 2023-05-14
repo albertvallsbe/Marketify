@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use App\Models\Shop;
-use App\Models\Category;
+use App\Models\User;
+use GuzzleHttp\Client;
 use App\Models\Product;
+use App\Models\Category;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,19 +28,29 @@ class ProductFactory extends Factory
             'name' => $faker->word(),
             'description' => $faker->sentence(),
             'tag' => $faker->name(),
-            'image' =>  "images/products/".rand(1, 4).".jpg",
+            'image' =>  "images/products/" . rand(1, 4) . ".jpg",
             'price' => $faker->numberBetween(10, 6000),
             'shop_id' => $faker->randomElement($shops),
             'status' => 'active'
         ];
     }
-    // public function configure()
-    // {
-    //     return $this->afterCreating(function (User $user) {
-    //         $user->tenant_id = Tenant::factory()->create([
-    //             'owner_id' => $user->id
-    //         ]);
-    //         $user->save();
-    //     });
-    // }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Product $product) {
+            // URL de la API
+            $url = 'http://localhost:8080/api/insert';
+
+            // Crear instancia de Guzzle HTTP Client
+            $client = new Client();
+
+            // Realizar petición HTTP GET a la API
+            $response = $client->post($url);
+
+            // Obtener el contenido de la respuesta
+            $contenido = $response->getBody()->getContents();
+
+            return $contenido;
+        });
+    }
 }

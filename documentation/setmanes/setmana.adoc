@@ -12,6 +12,26 @@ Temps Real ⇒ 2h
 
 ==== Oscar
 
+Poner los mensajes de Log Info en diferentes páginas
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1:30h
+
+Eliminar una imatge en concret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1:30h
+
+Eliminar totes les imatges d'un producte en concret 
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1:30h
+
+Pujar una imatge en concret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1:30h
+
+Crear el disseny del Historic de Comandes
+Temps estimat ⇒ 2h
+Temps Real ⇒ 
+
 ==== Albert
 
 === Setmana 11
@@ -43,6 +63,26 @@ Temps estimat ⇒ 16h
 Temps Real ⇒ 22h
 
 ==== Oscar
+
+Crear el nou projecte d'API 
+Temps estimat ⇒ 1h
+Temps Real ⇒ 30min
+
+Crear la taula de Imatges
+Temps estimat ⇒ 1h
+Temps Real ⇒ 30min
+
+Obtenir una imatge en concret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 3h
+
+Obtenir totes les imatges d'un producte 
+Temps estimat ⇒ 1:30h
+Temps Real ⇒ 1:30h
+
+Poner los mensajes de Log Info en diferentes páginas
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1:30h
 
 ==== Albert
 
