@@ -7,8 +7,8 @@
     @include miniCardStyle;
 
     grid-template-rows: 30vh 1fr;
-    grid-row-gap: 20px;
-    grid-column-gap: 20px;
+    grid-row-gap: $size-medium;
+    grid-column-gap: $size-medium;
     display: grid;
     min-width: 90vw;
     min-height: 30vh;

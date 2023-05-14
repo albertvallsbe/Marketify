@@ -1,6 +1,6 @@
 .landing-container {
     display: grid;
-    row-gap: 10px;
+    row-gap: $size-smaller;
     margin-inline: -5%;
 
     a {
@@ -34,8 +34,8 @@
     .container-products {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(calc(300px), 1fr));
-        column-gap: 10px;
-        row-gap: 10px;
+        column-gap: $size-smaller;
+        row-gap: $size-smaller;
         background-color: $neutral_lighter;
 
         .container-product {
@@ -88,8 +88,8 @@
     .products-section {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(calc(300px), 1fr));
-        grid-row-gap: 20px;
-        grid-column-gap: 0px;
+        grid-row-gap: $size-medium;
+        grid-column-gap: $size-none;
 
         .product {
             max-width: 400px;
