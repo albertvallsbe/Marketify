@@ -120,19 +120,19 @@
 
     .small-button {
         border-radius: 12px;
-        background-color: #ff5208;
-        border: 3px #ff5208 solid;
+        background-color: $primary_origin;
+        border: 3px $primary_origin solid;
         cursor: pointer;
         padding: 10px;
-        color: #1f1f1f;
+        color: $neutral_darker;
         text-decoration: none;
         font-weight: bold;
         font-size: small;
     }
 
     .small-button:hover {
-        background-color: #ff9680;
-        border: 3px #ff9680 solid;
+        background-color: $primary_light;
+        border: 3px $primary_light solid;
     }
 }
 

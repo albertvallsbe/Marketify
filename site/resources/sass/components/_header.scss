@@ -78,7 +78,7 @@ header {
                     top: -10px;
                     right: -10px;
                     background-color: $primary_origin;
-                    color: #000;
+                    color: $neutral_darkest;
                     border-radius: 50%;
                     text-align: center;
                     font-size: 14px;
@@ -95,7 +95,7 @@ header {
                     top: -10px;
                     right: -10px;
                     background-color: $primary_origin;
-                    color: #000;
+                    color: $neutral_darkest;
                     border-radius: 50%;
                     text-align: center;
                     font-size: 14px;
@@ -127,7 +127,7 @@ header {
     .toggle-button {
         width: 20px;
         height: 20px;
-        color: #fff;
+        color: $neutral_lighter;
         cursor: pointer;
     }
 
@@ -136,7 +136,7 @@ header {
         top: 100%;
         right: 0;
         background-color: $neutral_lighter;
-        border: 1px solid #ddd;
+        border: 1px solid $neutral_light;
         padding: 0;
         margin: 0;
         list-style: none;
@@ -146,18 +146,18 @@ header {
     }
 
     .menu-list li {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $neutral_light;
     }
 
     .menu-list a {
         display: block;
         padding: 10px 20px;
-        color: #333 !important;
+        color: $neutral_dark !important;
         text-decoration: none;
     }
 
     .menu-list a:hover {
-        background-color: #ddd;
+        background-color: $neutral_light;
     }
 }
 
