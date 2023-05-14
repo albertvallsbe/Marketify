@@ -1,0 +1,38 @@
+=== Rols de usuaris
+Per determinar si un usuari és propietari d’una tenda o no, hem afegit els rols de ‘venedor’ i ‘comprador’, establint aquest últim com el valor per defecte.
+Depenent del rol de l’usuari, canviaran opcions al menú i icones a les pàgines.
+En el menú, l’usuari veurà l’opció de ‘Crear tenda’ o ‘Administrar tenda’.
+En la versió Mobile, la icona del home es canviarà per la icona d’una tenda. L’usuari sempre tindrà a disposició el botó amb el logotip per retornar a la landing page.
+
+=== Formulari de creació
+El formulari de creació de tenda està fet aprofitant un mixin del SASS dedicat als formularis. Aquest formulari demana el nom de la tenda, nom complet i DNI del venedor, logotip, colors de la capçalera i del fons, ...
+
+==== URLs
+Les URL es generen automàticament segons el nom de la tenda. Les lletres passen a ser totes minúscules, els espais són substituïts per guions i els caràcters especials eliminats.
+En cas d’una combinació estranya amb caràcters especials, els noms de les tendes no poden ser desats si com a resultat dona una URL ja existent. 
+
+=== Administració de shop
+La tenda disposa d'una vista per al propietari. El propietari será l'únic en accedir a l'administració de la seva tenda.
+
+==== Editar shop
+Es pot editar tots els camps de la tenda: 
+· Nom de la tenda
+
+· Nom complet del propietari
+
+· DNI/NIF del propietari
+
+· Logotip de la tenda
+
+· Color de capçelera de la tenda
+
+· Color de fons de la tenda
+
+· Ordre d'aparició dels productes
+
+Es reaprofita el mixin utilitzat pel formulari de creació.
+
+==== Afegir, editar, amagar i esborrar productes
+Des de la vista d'administrador, l'usuari propietari és capaç de crear productes, esborrar-los, editar-los i amagar-los.
+
+Menys l'adició, aquestes opcions apagueren en cada producte en forma de icones.

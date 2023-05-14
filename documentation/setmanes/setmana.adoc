@@ -1,7 +1,6 @@
 === Setmana 12
 
 ==== David
-
 Ajudar a Albert amb la creació d’orders
 Temps estimat ⇒ 2h
 Temps Real ⇒ 4h
@@ -10,6 +9,29 @@ Solucionar errors del xat
 Temps estimat ⇒ 2h
 Temps Real ⇒ 2h
 
+Xat funcionant jutament amb les commandes
+Temps estimat ⇒ 3h
+Temps Real ⇒ 7h
+
+Solucionar errors del carret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 3h
+
+Millorar diversos elements de l'estil
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Xat funcionant amb diferents enllaços // route(chat.show)
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Comprovar l'estat del producte abans de realitzar una comanda
+Temps estimat ⇒ 6h
+Temps Real ⇒ 5h
+
+Afegir LOGs a Cart, Chat, Order, Product i Shop Controllers
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1h
 ==== Oscar
 
 ==== Albert
