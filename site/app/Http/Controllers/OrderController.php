@@ -99,7 +99,7 @@ class OrderController extends Controller
             Cart::where('user_id', auth()->id())->delete();
             return redirect()->route('chat.index');
             } else{
-                Log::channel('marketify')->error("Order of $order->user_id could not be created. Product with status 'sold' detected.");
+                Log::channel('marketify')->error("Order could not be created. Product with status 'sold' detected.");
                 return redirect()->route('order.error');
             }
         } catch (\Exception $e) {
