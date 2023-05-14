@@ -21,8 +21,6 @@
                     @csrf
                     <button class="btn-order general-button general-button_order" type="submit" >ORDER NOW
                     </button>
-
-
                 </form>
             </div>
             @if(!auth()->user())

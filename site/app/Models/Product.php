@@ -72,9 +72,4 @@ class Product extends Model
         ->where('category_product.category_id', '=', $id)
         ->paginate(18);
     }
-
-    // public function shop()
-    // {
-    //     return $this->belongsToOne(Shop::class);
-    // }
 }
