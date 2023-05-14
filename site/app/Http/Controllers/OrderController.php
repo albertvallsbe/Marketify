@@ -78,6 +78,9 @@ class OrderController extends Controller
                     $product->save();
                 }
             }
+
+            // Borrar el contenido del campo 'products' en la tabla 'carts' del usuario
+            Cart::where('user_id', auth()->id())->delete();
         }
             return redirect()->route('chat.index');
         } catch (\Exception $e) {
