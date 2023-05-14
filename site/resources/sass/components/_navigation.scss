@@ -13,23 +13,23 @@
     }
     .chat-icon {
         position: relative;
-    .notification-count {
-        display:block;
-        position: absolute;
-        top: -7.5px;
-        right: -10px;
-        background-color: $primary_origin;
-        color: #000;
-        border-radius: 50%;
-        text-align: center;
-        font-size: 14px;
-        line-height: 20px;
-        @include iconSmall;
+        .notification-count {
+            display: block;
+            position: absolute;
+            top: -7.5px;
+            right: -10px;
+            background-color: $primary_origin;
+            color: $neutral_darker;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 14px;
+            line-height: 20px;
+            @include iconSmall;
+        }
     }
 }
-}
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 780px) {
     div#navigation {
         display: none;
     }

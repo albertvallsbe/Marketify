@@ -34,8 +34,6 @@
     }
 
     .form {
-        // display: grid;
-        // grid-template-columns: 1fr;
         @include formInput;
 
         &_label {
