@@ -71,6 +71,12 @@ class OrderController extends Controller
                     'shop_id' => $shopId,
                     'product_id' => $products->id
                 ]);
+                // Modificar el campo "status" del producto a "sold"
+                $product = Product::find($products->id);
+                if ($product) {
+                    $product->status = 'sold';
+                    $product->save();
+                }
             }
         }
             return redirect()->route('chat.index');

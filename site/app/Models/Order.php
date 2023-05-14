@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Models\Cart;
 use App\Models\Chat;
 use App\Models\Shop;
-use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -81,7 +80,7 @@ class Order extends Model
     {
         return $this->belongsToMany(User::class)->withTimeStamps();
     }
-    
+
     public function chat()
     {
         return $this->hasOne(Chat::class, 'order_id');
