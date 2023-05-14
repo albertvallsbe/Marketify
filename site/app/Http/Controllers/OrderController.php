@@ -64,17 +64,17 @@ class OrderController extends Controller
             }
             foreach ($productsByShop as $key => $shopByProduct) {
                 $shopId = $shops[$key]->id;
-                
+
             foreach ($shopByProduct as $key => $products) {
                 if ($products->status == 'sold') {
                     $productSold = true;
                 }
             }
         }
-            if (!$productSold) {       
+            if (!$productSold) {
                 foreach ($productsByShop as $key => $shopByProduct) {
                     $shopId = $shops[$key]->id;
-                         
+
                 $order = Order::create([
                     'user_id' => auth()->id(),
                     'shop_id' => $shopId

@@ -16,35 +16,35 @@ class CategoryFactory extends Factory
      * @return array<string, mixed>
      */
 
-     protected $model = Category::class;
+    protected $model = Category::class;
 
-     public function definition()
-     {
-         $categories = [
-             'Electronics',
-             'Clothing',
-             'Beauty',
-             'Home & Garden',
-             'Toys & Games',
-             'Sports & Outdoors',
-             'Books',
-             'Jewelry',
-             'Health & Wellness',
-             'Baby & Kids',
-             'Food & Beverage',
-             'Office Supplies',
-             'Automotive',
-             'Pet Supplies',
-             'Music & Movies',
-             'Travel',
-             'Art & Crafts',
-             'Party Supplies',
-             'Musical Instruments',
-             'Industrial & Scientific'
-         ];
- 
-         return [
+    public function definition()
+    {
+        $categories = [
+            'Electronics',
+            'Clothing',
+            'Beauty',
+            'Home & Garden',
+            'Toys & Games',
+            'Sports & Outdoors',
+            'Books',
+            'Jewelry',
+            'Health & Wellness',
+            'Baby & Kids',
+            'Food & Beverage',
+            'Office Supplies',
+            'Automotive',
+            'Pet Supplies',
+            'Music & Movies',
+            'Travel',
+            'Art & Crafts',
+            'Party Supplies',
+            'Musical Instruments',
+            'Industrial & Scientific'
+        ];
+
+        return [
             'name' => $this->faker->unique()->randomElement($categories),
-         ];
-     }
- }
+        ];
+    }
+}
