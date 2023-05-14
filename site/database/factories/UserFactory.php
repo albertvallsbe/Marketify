@@ -24,19 +24,9 @@ class UserFactory extends Factory
             'password' => $this->faker->password(8),
             'expires_at' => '2023-12-12 04:26:03',
             'email_verified_at' => now(),
-            // 'remember_token' => Str::random(10),
             'role' => 'customer',
             'avatar'=> 'images/profiles/default-avatar.jpg'
         ];
-
-        // return [
-        //     'name' => $this->faker->name(),
-        //     'email' => $this->faker->unique()->safeEmail(),
-        //     'email_verified_at' => now(),
-        //     'password' => $this->faker->text(), // password
-        //     // 'remember_token' => Str::random(10),
-        //     // 'api_token' => fake()->unique(),
-        // ];
     }
 
     /**
