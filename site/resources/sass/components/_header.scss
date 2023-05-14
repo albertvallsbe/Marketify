@@ -6,7 +6,7 @@ header {
         grid-template-areas: "logo search icon";
         align-items: center;
         justify-items: center;
-        gap: 20px;
+        gap: $size-medium;
         @include mainStyle;
 
         &__form {
@@ -62,7 +62,7 @@ header {
 
         &__icons {
             display: grid;
-            grid-gap: 20px;
+            grid-gap: $size-medium;
             grid-auto-flow: column;
 
             img.icon_user {
@@ -86,25 +86,25 @@ header {
                     @include iconSmall;
                 }
             }
-            
+
             .chat-icon {
                 position: relative;
-            .notification-count {
-                display:block;
-                position: absolute;
-                top: -10px;
-                right: -10px;
-                background-color: $primary_origin;
-                color: #000;
-                border-radius: 50%;
-                text-align: center;
-                font-size: 14px;
-                line-height: 20px;
-                @include iconSmall;
+                .notification-count {
+                    display: block;
+                    position: absolute;
+                    top: -10px;
+                    right: -10px;
+                    background-color: $primary_origin;
+                    color: #000;
+                    border-radius: 50%;
+                    text-align: center;
+                    font-size: 14px;
+                    line-height: 20px;
+                    @include iconSmall;
+                }
             }
         }
     }
-}
 
     .logo {
         @include logo;
@@ -120,7 +120,7 @@ header {
     }
 
     .menu-toggle {
-        margin-top:10px;
+        margin-top: 10px;
         display: inline-block;
     }
 
@@ -186,7 +186,7 @@ header {
                     width: 45px;
                 }
                 #mode-toggle {
-                    display:none;
+                    display: none;
                 }
             }
         }

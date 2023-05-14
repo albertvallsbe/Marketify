@@ -6,7 +6,7 @@
         @include cardStyleTitle;
         max-height: fit-content;
     }
-    
+
     &_property {
         margin-block: auto;
         text-align: center;
@@ -51,7 +51,6 @@
                 margin-right: 5%;
             }
         }
-
 
         .general-button {
             @include mediumButton;
@@ -109,15 +108,15 @@
     &_container {
         display: flex;
         justify-content: center;
-        gap: 15px;
+        gap: $size-small;
     }
 }
 
 .admin-buttons {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    gap: 25px;
+    margin-top: $size-smaller;
+    gap: $size-medium;
 
     .small-button {
         border-radius: 12px;
@@ -131,18 +130,16 @@
         font-size: small;
     }
 
-
     .small-button:hover {
         background-color: #ff9680;
         border: 3px #ff9680 solid;
     }
-
 }
 
 .hidden {
     background-color: $disabled;
 }
 
-.session_success{
+.session_success {
     @include success;
 }

@@ -76,8 +76,8 @@
 
         justify-content: center;
         align-items: center;
-        grid-row-gap: 1rem;
-        grid-column-gap: 1rem;
+        grid-row-gap: $size-small;
+        grid-column-gap: $size-small;
     }
     .card-style-edituser {
         min-width: 300px;
