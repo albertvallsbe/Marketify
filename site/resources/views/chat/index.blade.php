@@ -32,77 +32,7 @@
                     @endforeach
                 </ul>
                 <section class="chat_open">
-                    @if ($selectedChat)
-                        <ul class="message-list">
-                            @php
-                                $currentDate = null;
-                            @endphp
-                            @foreach ($selectedChat->messages as $message)
-                                <li class="message-item chat-{{ $selectedChat->id }}">
-                                    @php
-                                        $messageDate = $message->created_at->format('Y-m-d');
-                                    @endphp
-                                    @if ($currentDate != $messageDate)
-                                        <h1 class="message-item_date">
-                                            @if ($message->created_at->isToday())
-                                                Today
-                                            @elseif($message->created_at->isYesterday())
-                                                Yesterday
-                                            @else
-                                                {{ $message->created_at->format('l, F jS, Y') }}
-                                            @endif
-                                        </h1>
-                                        @php
-                                            $currentDate = $messageDate;
-                                        @endphp
-                                    @endif
-                                    <div
-                                        class="message-item_{{ $message->sender_id == auth()->id() ? 'receiver' : 'sender' }}">
-                                        <div class="message-content">
-                                            <p class="message-p">
-                                                {{ $message->content }}
-                                                @if ($message->automatic == true)
-                                                    <br>
-                                                    <small><i>This message has been sent automatically.</i></small>
-                                                @endif
-
-                                                <small class="message-time">
-                                                    {{ $message->created_at->format('H:i') }}
-                                                </small>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                            @endforeach
-
-                            <form class="chat-form-buttons chat-{{ $selectedChat->id }}" method="post"
-                                action="{{ route('chat.confirmSeller', ['chatId' => $selectedChat->id, 'orderId' => $selectedChat->order->id]) }}">
-                                @csrf
-                                @if ($selectedChat->seller_id == auth()->id() && $selectedChat->order->status == 'pending')
-                                    <button type="submit" name="actionValue" value="confirmPayment"
-                                        class="confirmButton">Confirm Payment</button>
-                                @endif
-                                @if ($selectedChat->seller_id == auth()->id() && $selectedChat->order->status == 'paid')
-                                    <button type="submit" name="actionValue" value="shipmentSend"
-                                        class="confirmButton">Confirm shipment</button>
-                                @endif
-                                @if ($selectedChat->customer_id == auth()->id() && $selectedChat->order->status == 'sending')
-                                    <button type="submit" name="actionValue" value="shipmentDone"
-                                        class="confirmButton">Order received</button>
-                                @endif
-                            </form>
-
-
-                            <form method="post" class="chat-form chat_open_form chat-{{ $selectedChat->id }}"
-                                action="{{ route('chat.messageSend', ['id' => $selectedChat->id]) }}">
-                                @csrf
-                                <input type="text" name="messagetext" id="messagetext"
-                                    placeholder="Write your message here..." autocomplete="off">
-                                <button type="submit"><img class="icon"
-                                        src="{{ asset('images/icons/circle-arrow-right-solid.svg') }}"></button>
-                            </form>
-                        </ul>
-                    @else
+                    @if (!$selectedChat)
                         <h3>Open a chat!</h3>
                     @endif
                 </section>
