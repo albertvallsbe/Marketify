@@ -28,7 +28,7 @@
                         </div>
                     @endforeach
                     <div class="total-container">
-                        <h3>Total : </h3>
+                        <h3 class="total-price"></h3>
                     </div>
                 </div>
             </div>
@@ -37,5 +37,5 @@
             </div>
         </form>
     </div>
-
+    <script type="module" src="{{ asset('js/pages/historical.js') }}"></script>
 @endsection

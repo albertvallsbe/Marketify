@@ -20,7 +20,6 @@ class HistoricControllerk extends Controller
     public function index()
     {
         $categories = Category::all();
-        // $orders = Order::all();
 
         $id = auth()->user()->id;
 
@@ -103,21 +102,21 @@ class HistoricControllerk extends Controller
         $shop = Shop::findOrFail($idShop);
         if ($request->has('btn-download')) {
 
-            // Crear una instancia de Dompdf
+            // CREO UNA INSTANCIA DEL DOMPDF
             $pdf = new Dompdf();
-            // Cargar la vista
+            // CARGO LA VISTA 
             $contenido = View::make('order.pdf ',[
                 'order' => $order,
                 'products' => $products,
                 'shop' => $shop,
             ])->render();
-            // Generar el contenido del PDF
+            // GENERO EL CONTENIDO DEL PDF
             $pdf->loadHtml($contenido);
 
-            // Renderizar el contenido del PDF
+            // RENDERIZO EL CONTENIDO DEL PDF
             $pdf->render();
 
-            // Descargar el archivo PDF en el navegador del usuario
+            // DESCARGO EL ARCHIVO PDF EN EL NAVEGADOR DEL USUARIO
             return $pdf->stream('order '.$order->id.' pdf');
         }
     }

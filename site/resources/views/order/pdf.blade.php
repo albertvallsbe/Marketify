@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Order {{$order->id}}.pdf</title>
+    <title>Order {{ $order->id }}.pdf</title>
 </head>
+
 <body>
     <div class="ticket-container">
         <div class="product-info">
@@ -26,8 +28,10 @@
                 </div>
             @endforeach
             <div class="total-container">
-                <h3>Total : </h3>
+                <h3 class="total-price"> </h3>
             </div>
         </div>
 </body>
+<script type="module" src="{{ asset('js/pages/historical.js') }}"></script>
+
 </html>
