@@ -33,4 +33,12 @@ class Category extends Model
                 ->where('id', $category_id)
                 ->value('name');
     }
+
+    public static function getCategories($id){
+        return Category::query()
+                ->join('category_product', 'category_product.category_id', '=', 'categories.id')
+                ->select('categories.*')
+                ->where('category_product.category_id', '=', $id)
+                ->first();
+    }
 }

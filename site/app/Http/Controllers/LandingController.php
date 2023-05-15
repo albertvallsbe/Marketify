@@ -1,5 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
+
+use Exception;
+use App\Models\Order;
 
     use App\Classes\HeaderVariables;
     use App\Models\Product;
@@ -7,15 +11,14 @@ namespace App\Http\Controllers;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Log;
 
-    class LandingController extends Controller
+class LandingController extends Controller
+{
+    public function index()
     {
-        public function index()
-        {
-            try {
+        try {
 
-                $categories = Category::all();
-                // Leemos el archivo JSON
-                $json_string = file_get_contents('js/datos.json');
+            $categories = Category::all();
+            $json_string = file_get_contents('../datos.json');
 
                 // Decodificamos la cadena JSON en un array PHP
                 $data = json_decode($json_string, true);
@@ -42,38 +45,31 @@ namespace App\Http\Controllers;
                 Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
                 return redirect()->back()->with('error', 'An error occurred while loading the home view.');
             }
-        }
-        public function getProducts($category,$limit)
-        {
-            try{
-                Log::channel('marketify')->debug('getProducts has been loaded successfully with this category: ', ["category" => $category]);
 
-                return Product::query()
-                ->join('category_product', 'category_product.product_id', '=', 'products.id')
-                ->select('products.*')
-                ->where('category_product.category_id', '=', $category)
-                ->limit($limit)
-                ->get();
-            } catch (\Exception $e) {
-                Log::channel('marketify')->error('An error occurred while loading getProducts() '.$e->getMessage());
-                return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
-            }
-        }
-        public function getCategories($id)
-        {
-            try {
-                Log::channel('marketify')->info('getCategories has been loaded successfully with this category: '.$id);
-
-                return Category::query()
-                ->join('category_product', 'category_product.category_id', '=', 'categories.id')
-                ->select('categories.*')
-                ->where('category_product.category_id', '=', $id)
-                ->first()
-                ;
-            } catch (\Exception $e) {
-                Log::channel('marketify')->error('An error occurred while loading getCategories() '.$e->getMessage());
-                return redirect()->back()->with('error', 'An error occurred while loading getCategories() ');
-            }
-        }
-
+        
     }
+    public function getProducts($category, $limit)
+    {
+        try {
+            Log::channel('marketify')->info('getProducts has been loaded successfully with this category: ', ["category" => $category]);
+
+            $products = Product::getProducts($category, $limit);
+            return $products;
+        } catch (\Exception $e) {
+            Log::channel('marketify')->error('An error occurred while loading getProducts() ' ,["e"=> $e->getMessage()]);
+            return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
+        }
+    }
+    public function getCategories($id)
+    {
+        try {
+            Log::channel('marketify')->info('getCategories has been loaded successfully with this category: ', ["id" => $id]);
+
+            $categories = Category::getCategories($id);
+            return $categories;
+        } catch (\Exception $e) {
+            Log::channel('marketify')->error('An error occurred while loading getCategories() ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred while loading getCategories() ');
+        }
+    }
+}

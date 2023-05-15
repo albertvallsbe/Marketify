@@ -17,6 +17,7 @@ use App\Classes\HeaderVariables;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -121,4 +122,5 @@ class OrderController extends Controller
                 return redirect()->back()->with('error', 'An error occurred in OrderController.');
         }
     }
+   
 }

@@ -1,0 +1,96 @@
+.historical-container {
+    display: grid;
+    margin-top: 20px;
+    row-gap: 20px;
+    padding: 5px;
+
+    a {
+        @include links;
+    }
+
+    .historical-title {
+        border-bottom: 3px solid $neutral_darker;
+        padding: 10px;
+    }
+
+    .container-order {
+        @include twoColumnsMode;
+        box-shadow: 0px 10px 15px $neutral_darker;
+        transition: transform .2s;
+        background-color: $neutral_lighter;
+        color: $neutral_darker;
+        padding: $size-medium;
+
+        .date-container {
+            padding: 5px;
+            display: grid;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+    }
+
+
+
+    .container-order:hover {
+        transform: scale(0.98);
+    }
+}
+
+.ticket-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    .product-info {
+        width: 40vh;
+        height: 70vh;
+        display: grid;
+        box-shadow: 0px 10px 15px $neutral_darker;
+
+        .ticket-title {
+            border-bottom: 3px solid $neutral_darker;
+            width: 95%;
+            padding: 5px;
+            margin-left: 10px;
+        }
+
+        .shop-ticket{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+        }
+        .total-container{
+            width: 95%;
+            margin-left: 10px;
+            border-top: 3px solid $neutral_darker;
+            padding: $size-medium;
+        }
+    }
+}
+
+.order-products {
+    height: 5vh;
+    padding: $size-medium;
+    .products-tickets {
+        @include twoColumnsMode;
+        padding: 10px;
+
+        .price-product {
+            display: grid;
+            justify-content: flex-end;
+        }
+    }
+
+}
+
+.btn-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    margin-top: 10px;
+    .btn-download {
+        @include miniSmallButton;
+        width: 100%;
+    }
+}

@@ -13,7 +13,7 @@
             <form class="form" method='POST'action="{{ route('login.rememberpassw') }}">
                 @csrf
                 <label class="form_label" for="remember-password">Your email:</label>
-                <input type="email" class="form_input rememberpassw" placeholder="Introduce your email" name="email">
+                <input type="email" class="form_input rememberpassw" placeholder="Introduce your email" name="email1">
                 <label class="form_label" for="remember-password">Your new password:</label>
                 <input type="password" class="form_input rememberpassw" placeholder="Introduce your new password" name="remember-password">
                 <label class="form_label" for="remember-password">Repeat your new password:</label>

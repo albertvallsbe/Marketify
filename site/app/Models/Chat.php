@@ -8,7 +8,7 @@ use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
-class chat extends Model
+class Chat extends Model
 {
     protected $fillable = [
         'seller_id',
