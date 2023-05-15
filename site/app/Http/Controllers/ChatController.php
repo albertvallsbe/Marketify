@@ -139,6 +139,12 @@ class ChatController extends Controller {
                 case 'confirmFail':
                     $order->status = 'failed';
                     $messageContent = 'The seller has declared the order as incorrect. Something went wrong with the order!';
+
+                    $orderItems = $order->orderItems;
+                    foreach ($orderItems as $orderItem) {
+                        $orderItem->product->status = 'active';
+                        $orderItem->product->save();                    
+                    }
                     break;
             }
             $order->save();
