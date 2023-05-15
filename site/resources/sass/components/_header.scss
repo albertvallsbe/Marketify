@@ -6,7 +6,7 @@ header {
         grid-template-areas: "logo search icon";
         align-items: center;
         justify-items: center;
-        gap: 20px;
+        gap: $size-medium;
         @include mainStyle;
 
         &__form {
@@ -62,7 +62,7 @@ header {
 
         &__icons {
             display: grid;
-            grid-gap: 20px;
+            grid-gap: $size-medium;
             grid-auto-flow: column;
 
             img.icon_user {
@@ -78,7 +78,7 @@ header {
                     top: -10px;
                     right: -10px;
                     background-color: $primary_origin;
-                    color: #000;
+                    color: $neutral_darkest;
                     border-radius: 50%;
                     text-align: center;
                     font-size: 14px;
@@ -86,25 +86,25 @@ header {
                     @include iconSmall;
                 }
             }
-            
+
             .chat-icon {
                 position: relative;
-            .notification-count {
-                display:block;
-                position: absolute;
-                top: -10px;
-                right: -10px;
-                background-color: $primary_origin;
-                color: #000;
-                border-radius: 50%;
-                text-align: center;
-                font-size: 14px;
-                line-height: 20px;
-                @include iconSmall;
+                .notification-count {
+                    display: block;
+                    position: absolute;
+                    top: -10px;
+                    right: -10px;
+                    background-color: $primary_origin;
+                    color: $neutral_darkest;
+                    border-radius: 50%;
+                    text-align: center;
+                    font-size: 14px;
+                    line-height: 20px;
+                    @include iconSmall;
+                }
             }
         }
     }
-}
 
     .logo {
         @include logo;
@@ -120,14 +120,14 @@ header {
     }
 
     .menu-toggle {
-        margin-top:10px;
+        margin-top: 10px;
         display: inline-block;
     }
 
     .toggle-button {
         width: 20px;
         height: 20px;
-        color: #fff;
+        color: $neutral_lighter;
         cursor: pointer;
     }
 
@@ -136,7 +136,7 @@ header {
         top: 100%;
         right: 0;
         background-color: $neutral_lighter;
-        border: 1px solid #ddd;
+        border: 1px solid $neutral_light;
         padding: 0;
         margin: 0;
         list-style: none;
@@ -146,18 +146,18 @@ header {
     }
 
     .menu-list li {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $neutral_light;
     }
 
     .menu-list a {
         display: block;
         padding: 10px 20px;
-        color: #333 !important;
+        color: $neutral_dark !important;
         text-decoration: none;
     }
 
     .menu-list a:hover {
-        background-color: #ddd;
+        background-color: $neutral_light;
     }
 }
 
@@ -186,7 +186,7 @@ header {
                     width: 45px;
                 }
                 #mode-toggle {
-                    display:none;
+                    display: none;
                 }
             }
         }

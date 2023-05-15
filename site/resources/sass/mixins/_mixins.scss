@@ -119,6 +119,6 @@
 @mixin success {
     background-color: $succes_light;
     border: 1px solid $succes_origin;
-    color: #000 !important;
+    color: $neutral_darker !important;
     padding: 5px;
 }

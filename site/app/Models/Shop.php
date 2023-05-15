@@ -72,8 +72,12 @@ class Shop extends Model
         $user->role = "seller";
         $user->save();
     }
-
-
+    public static function catchShop($id){
+        return self::query()
+        ->where('id','=',$id)
+        ->get();
+    }
+    
 
     public function user()
     {

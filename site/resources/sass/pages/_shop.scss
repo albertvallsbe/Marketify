@@ -6,7 +6,7 @@
         @include cardStyleTitle;
         max-height: fit-content;
     }
-    
+
     &_property {
         margin-block: auto;
         text-align: center;
@@ -51,7 +51,6 @@
                 margin-right: 5%;
             }
         }
-
 
         .general-button {
             @include mediumButton;
@@ -109,41 +108,38 @@
     &_container {
         display: flex;
         justify-content: center;
-        gap: 15px;
+        gap: $size-small;
     }
 }
 
 .admin-buttons {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    gap: 25px;
+    margin-top: $size-smaller;
+    gap: $size-medium;
 
     .small-button {
         border-radius: 12px;
-        background-color: #ff5208;
-        border: 3px #ff5208 solid;
+        background-color: $primary_origin;
+        border: 3px $primary_origin solid;
         cursor: pointer;
         padding: 10px;
-        color: #1f1f1f;
+        color: $neutral_darker;
         text-decoration: none;
         font-weight: bold;
         font-size: small;
     }
 
-
     .small-button:hover {
-        background-color: #ff9680;
-        border: 3px #ff9680 solid;
+        background-color: $primary_light;
+        border: 3px $primary_light solid;
     }
-
 }
 
 .hidden {
-    background-color: $disabled !important;
-    color: $neutral_light;
+    background-color: $disabled;
 }
 
-.session_success{
+.session_success {
     @include success;
 }

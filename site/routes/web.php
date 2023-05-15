@@ -8,13 +8,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\OrdeRcontroller;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\chatController;
+use App\Http\Controllers\HistoricControllerk;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,9 @@ use App\Http\Controllers\chatController;
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-Route::post('/orders', [OrderController::class, 'add'])->name('orders.add');
+Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+Route::post('/order', [OrderController::class, 'add'])->name('order.add');
+Route::get('/order/failed', [OrderController::class, 'error'])->name('order.error');
 
 Route::get('/search', [ProductController::class,'index'])->name('product.index');
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');
@@ -77,21 +79,18 @@ Route::get('/auth', function () {
     return response()->json(['authenticated' => $authenticated]);
 });
 
-
 Route::get('/product-not-found', [ErrorController::class, 'product404'])->name('product.404');
 Route::get('/shop-not-found', [ErrorController::class, 'shop404'])->name('shop.404');
 Route::get('/user-not-found', [ErrorController::class, 'user404'])->name('user.404');
 Route::fallback([ErrorController::class, 'generic404'])->name('generic.404');
 
-
 Route::get('/messages', [ChatController::class, 'index'])->name('chat.index');
+Route::get('/messages/{id}', [ChatController::class, 'show'])->name('chat.show');
 Route::post('/message-read/{chatId}', [ChatController::class, 'updateMessageRead'])->name('chat.updateMessageRead');
 Route::post('/message-send/{id}', [ChatController::class, 'messageSend'])->name('chat.messageSend');
-Route::post('/confirmSeller/{id}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-    //     return view('dashboard');
-    // })->name('dashboard');
+Route::post('/confirmSeller/{chatId}/{orderId}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');
 
 
-    // Route::resource('dashboard', App\Http\Controllers\DashboardController::class)
-    //     ->middleware('auth');
+Route::get('/historical', [HistoricControllerk::class, 'index'])->name('historical.index');
+Route::get('/historical/{id}', [HistoricControllerk::class, 'details'])->name('historical.details');
+Route::post('/historical/{id}', [HistoricControllerk::class, 'downloadFile'])->name('historical.downloadFile'); 

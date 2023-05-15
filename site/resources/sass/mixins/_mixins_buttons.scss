@@ -21,7 +21,15 @@
         @include buttonStyleHover;
     }
 }
-<<<<<<< HEAD
+
+@mixin btn-disabled {
+    background-color: $neutral_origin !important;
+    color: $neutral_darker !important;
+    border: 2px solid $neutral_origin !important;
+    &:hover{
+        cursor: not-allowed !important;
+    }
+}
 @mixin miniSmallButton {
     padding: 15px 60px;
     border-radius: 30px;
@@ -31,14 +39,5 @@
 
     &:hover {
         @include buttonStyleHover;
-=======
-
-@mixin btn-disabled {
-    background-color: $neutral_origin !important;
-    color: $neutral_darker !important;
-    border: 2px solid $neutral_origin !important;
-    &:hover{
-        cursor: not-allowed !important;
->>>>>>> c9d75544944f2a51c6d0a4b3fab3855efef71cf5
     }
 }

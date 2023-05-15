@@ -82,5 +82,10 @@ class Product extends Model
                 ->get();
     }
     
-
+    public static function getIdProducts($id){
+        return self::query()
+        ->select('*')
+        ->where('id',"=", $id)
+        ->first();
+    }
 }

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -35,5 +35,26 @@ class UsersTableSeeder extends Seeder
             'password'=> Hash::make('12345678'),
             'role'=>'seller',
         ]);
+        User::factory()->create([
+            'email'=> 'david@marketify.com',
+            'name'=>'david',
+            'password'=> Hash::make('12345678'),
+            'role'=>'seller',
+        ]);
+        User::factory()->create([
+            'email'=> 'oscar@marketify.com',
+            'name'=>'oscar',
+            'password'=> Hash::make('12345678'),
+            'role'=>'seller',
+        ]);
+        User::factory()->create([
+            'email'=> 'albert@marketify.com',
+            'name'=>'albert',
+            'password'=> Hash::make('12345678'),
+            'role'=>'seller',
+        ]);
+        User::factory()
+            ->count(10)
+            ->create();
     }
 }

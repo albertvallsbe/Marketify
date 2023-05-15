@@ -15,6 +15,7 @@ function removeFromLocalCart(id) {
         cart.splice(index, 1);
     }
     localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartServerStorage();
     location.reload();
 }
 
@@ -73,6 +74,6 @@ clearButton.addEventListener("click", function () {
 ordersButton.addEventListener("click", function () {
     // localStorage.removeItem("cart");
     // updateCartServerStorage();
-    window.location.href = "/orders";
+    window.location.href = "/order";
 });
 showTotalPrice();

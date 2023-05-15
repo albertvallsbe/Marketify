@@ -19,14 +19,15 @@ class ProductFactory extends Factory
     public function definition()
     {
         $faker = Faker::create('es_ES');
-        $shop = Shop::where('id', 1)->first();
-        $shop2 = Shop::where('id', 2)->first();
-        $shops = [$shop->id, $shop2->id];
+        $name = $faker->unique()->words($nb = $faker->numberBetween(1, 2), $asText = true);
+        while (strlen($name) < 5) {
+            $name = $faker->unique()->words($nb = $faker->numberBetween(1, 2), $asText = true);
+        }
+        $shops = Shop::all();
 
         return [
-            // 'user_id' => User::factory(),
-            'name' => $faker->word(),
-            'description' => $faker->sentence(),
+            'name' => $name,
+            'description' => $faker->sentence(20),
             'tag' => $faker->name(),
             'image' =>  "images/products/" . rand(1, 4) . ".jpg",
             'price' => $faker->numberBetween(10, 6000),
@@ -35,22 +36,22 @@ class ProductFactory extends Factory
         ];
     }
 
-    public function configure()
-    {
-        return $this->afterCreating(function (Product $product) {
-            // URL de la API
-            $url = 'http://localhost:8080/api/insert';
+    // public function configure()
+    // {
+    //     return $this->afterCreating(function (Product $product) {
+    //         // URL de la API
+    //         $url = 'http://localhost:8080/api/insert';
 
-            // Crear instancia de Guzzle HTTP Client
-            $client = new Client();
+    //         // Crear instancia de Guzzle HTTP Client
+    //         $client = new Client();
 
-            // Realizar petición HTTP GET a la API
-            $response = $client->post($url);
+    //         // Realizar petición HTTP GET a la API
+    //         $response = $client->post($url);
 
-            // Obtener el contenido de la respuesta
-            $contenido = $response->getBody()->getContents();
+    //         // Obtener el contenido de la respuesta
+    //         $contenido = $response->getBody()->getContents();
 
-            return $contenido;
-        });
-    }
+    //         return $contenido;
+    //     });
+    // }
 }

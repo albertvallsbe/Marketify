@@ -1,6 +1,5 @@
-div#pagination_container{
+div#pagination_container {
 }
-
 
 div.pagination,
 div.pagination_number {
@@ -15,8 +14,8 @@ div.pagination_number {
     justify-content: center;
 }
 
-div.pagination a, 
-div.pagination_number a{
+div.pagination a,
+div.pagination_number a {
     text-decoration: none;
     color: $neutral_darker;
 }
@@ -34,12 +33,12 @@ ul.pagination {
     display: flex;
     font-size: 1.4em;
     justify-content: center;
-    gap: 15px;
+    gap: $size-small;
     text-decoration: none;
 }
 
 @media screen and (max-width: 767px) {
     div.pagination_number {
-      display: none;
+        display: none;
     }
-  }
+}

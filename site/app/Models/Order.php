@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Cart;
 use App\Models\Chat;
+use App\Models\Shop;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,26 +18,6 @@ class Order extends Model
         'products',
         'status',
     ];
-
-    protected $casts = [
-        'products' => 'array',
-    ];
-
-    protected $enumStatus = [
-        'pending' => 0,
-        'processing' => 1,
-        'completed' => 2,
-    ];
-
-    public function getStatusAttribute($value)
-    {
-        return array_search($value, $this->enumStatus, true);
-    }
-
-    public function setStatusAttribute($value)
-    {
-        $this->attributes['status'] = $this->enumStatus[$value];
-    }
 
     public static function decodeIds($idsString)
     {
@@ -52,33 +34,65 @@ class Order extends Model
     return $productIds;
     }
 
-    public static function getByChatID($chat_id) {
-        $chat = Chat::where('id', $chat_id)->first();
-        return $chat;
-    }
-
-    public static function updateOrderDB($productsArray) {
+    public static function updateOrdersDB($productsArray) {
         $userId = auth()->id();
         $existingOrder = Cart::where('user_id', $userId)->first();
-        dd($existingOrder);
         if (!$existingOrder) {
             $existingOrder = new Order();
             $existingOrder->user_id = $userId;
         }
         $existingOrder->products = json_encode($productsArray);
         $existingOrder->save();
-        dd($existingOrder);
     }
 
+    public static function findShopAndCartProducts(){
+        $userId = auth()->id();
+        $cart = Cart::showCartByUserID($userId);
+        $productIds = Order::decodeIds($cart);
+        $shops = Shop::all();
+        $products = Product::all();
+        $productsByShop = array();
+        for ($i=0 ; $i< count($shops); $i++) {
+            for ($j=0 ; $j< count($productIds); $j++) {
+                $product = $products->where('id', $productIds[$j])->first();
+                if ($product && $product->shop_id == $shops[$i]->id) {
+                    $productsByShop[$i][$j] = $product;
+                }
+            }
+        }
+
+        return $productsByShop;
+    }
+
+    public static function getByUserID(){
+        $userId = auth()->id();
+        return self::where('user_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+    public static function searchOrderByUser($id){
+        return self::query()
+        ->where('user_id','=',$id)
+        ->paginate(4);
+    }
+    public static function catchIdShop($id){
+        return self::query()
+        ->select('shop_id')
+        ->where('id','=',$id)
+        ->get();
+    }
     public function shop()
     {
-        // return $this->belongsTo(Shop::class);
         return $this->belongsToMany(Shop::class)->withTimeStamps();
     }
 
     public function user()
     {
-        // return $this->belongsTo(User::class);
         return $this->belongsToMany(User::class)->withTimeStamps();
     }
- }
+
+    public function chat()
+    {
+        return $this->hasOne(Chat::class, 'order_id');
+    }
+}

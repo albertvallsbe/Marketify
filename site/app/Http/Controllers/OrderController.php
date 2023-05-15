@@ -10,100 +10,117 @@ use App\Models\Order;
 use App\Models\Message;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\OrderItems;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Classes\HeaderVariables;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     public function index(Request $request)
     {
-        // try {
-            $categories = Category::all();
-            $userId = auth()->id();
-            //coge el usuario
-            $cart = Cart::showCartByUserID($userId);
-            // dd($cart);
-            $productIds = Order::decodeIds($cart);
-            // dd($productIds);
+        try {
+            if ($request->isMethod('get')) {
+                $categories = Category::all();
+                $shops = Shop::all();
+                $products = Product::all();
 
-            $shops = Shop::all();
+                $shopName = array();
+                for ($i=0 ; $i< count($shops); $i++) {
+                    $shopName[$i] = $shops[$i]->shopname;
+                }
+                $productsByShop = Order::findShopAndCartProducts();
 
-            foreach ($shops as $shop) {
-                $shopname = $shop->shopname;
+                Log::channel('marketify')->info('order.index view loaded');
+                return view('order.index', [
+                    'categories' => $categories,
+                    'options_order' => HeaderVariables::$order_array,
+                    'products' => $products,
+                    'shops' => $shops,
+                    'productsByShop' => $productsByShop,
+                    'shopName' => $shopName,
+                ]);
+            } else {
+                return redirect()->route('landing.index');
             }
+        } catch (\Exception $e) {
+                Log::channel('marketify')->error('An error occurred showing order view: '.$e->getMessage());
+                return redirect()->back()->with('error', 'An error occurred in OrderController.');
+        }
+    }
 
-            $products = Product::all();
 
-            // $productIds = Order::decodeIds($cart->products);
-            $productsByShop = array();
+    public function add() {
+        try{
+            $productsByShop = Order::findShopAndCartProducts();
+            $shops = Shop::all();
             $shopName = array();
+            $productSold = false;
             for ($i=0 ; $i< count($shops); $i++) {
-                $firstProduct = true;
-                $shopName[$i] = $shops[$i]->shopname;
-                for ($j=0 ; $j< count($productIds); $j++) {
-                    $product = $products->where('id', $productIds[$j])->first();
-                    if ($product && $product->shop_id == $shops[$i]->id) {
-                        $productsByShop[$i][$j] = $product;
-                        if($firstProduct){
-                            $seller_id = $shops[$i]->user_id;
-                            $customer_id = auth()->id();
-                            $chat = Chat::chatChecker($seller_id, $customer_id);
-                            if($chat === null){
-                                $chat = Chat::create([
-                                    'seller_id' => $seller_id,
-                                    'customer_id' => $customer_id
-                                ]);
-                            }else{
-                                $order = Order::getByChatID($chat->id);
-                                $order->update([
-                                    'status' => 'pending'
-                                ]);
-                            }
+                $shopName[$i] = $shops[$i]->id;
+            }
+            foreach ($productsByShop as $key => $shopByProduct) {
+                $shopId = $shops[$key]->id;
 
-                        $message = Message::create([
-                            'chat_id' => $chat->id,
-                            'sender_id' => $customer_id,
-                            'automatic' => true,
-                            'content' => 'Order #XXX has been confirmed. Seller must accept payment and send the products.'
-                        ]);
-                        $notification = Notification::create([
-                            'user_id' => $seller_id,
-                            'chat_id' => $chat->id,
-                            'read' => false
-                        ]);
-                        $firstProduct = false;
-                        }
+            foreach ($shopByProduct as $key => $products) {
+                if ($products->status == 'sold') {
+                    $productSold = true;
+                }
+            }
+        }
+            if (!$productSold) {
+                foreach ($productsByShop as $key => $shopByProduct) {
+                    $shopId = $shops[$key]->id;
+
+                $order = Order::create([
+                    'user_id' => auth()->id(),
+                    'shop_id' => $shopId
+                ]);
+                Log::channel('marketify')->info("Order #$order->id of $order->user_id has created");
+                $chat = Chat::createChatByOrder($shops[$key], $order->id);
+                foreach ($shopByProduct as $key => $products) {
+                    OrderItems::create([
+                        'order_id' => $order->id,
+                        'shop_id' => $shopId,
+                        'product_id' => $products->id
+                    ]);
+                    // Modificar el campo "status" del producto a "sold"
+                    $product = Product::find($products->id);
+                    if ($product) {
+                        $product->status = 'sold';
+                        $product->save();
                     }
                 }
             }
-            // dd($productsByShop);
-            return view('orders.index', [
-                'categories' => $categories,
-                'options_order' => HeaderVariables::$order_array,
-                'cart' => $cart,
-                'products' => $products,
-                'productIds' => $productIds,
-                // 'shopname' => $shopname,
-                'shops' => $shops,
-                'productsByShop' => $productsByShop,
-                'shopName' => $shopName,
-                // 'cartProducts' => $cartProducts
-                // 'shop' => $shop,
-                // 'cartProducts' => $arrayCart,
-                // 'arrayProductsId' => $arrayProducts
-            ]);
-    }
-
-
-    public function add(Request $request) {
-        $productsArray = $request->input('orders');
-        $userId = auth()->id();
-        if($userId){
-            Order::updateOrdersDB($productsArray);
+            // Borrar el contenido del campo 'products' en la tabla 'carts' del usuario
+            Cart::where('user_id', auth()->id())->delete();
+            return redirect()->route('chat.index');
+            } else{
+                Log::channel('marketify')->error("Order could not be created. Product with status 'sold' detected.");
+                return redirect()->route('order.error');
+            }
+        } catch (\Exception $e) {
+            Log::channel('marketify')->error('An error occurred creating orders: '.$e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred in OrderController.');
         }
     }
+
+    public function error(Request $request)
+    {
+        try {
+            $categories = Category::all();
+            return view('order.error', [
+                'categories' => $categories,
+                'options_order' => HeaderVariables::$order_array
+            ]);
+        } catch (\Exception $e) {
+                Log::channel('marketify')->error('An error occurred showing order fail view: '.$e->getMessage());
+                return redirect()->back()->with('error', 'An error occurred in OrderController.');
+        }
+    }
+   
 }

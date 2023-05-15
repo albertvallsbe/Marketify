@@ -1,6 +1,7 @@
 @import "base/globals";
 @import "base/colors";
 @import "base/typographys";
+@import "base/sizes";
 
 @import "mixins/mixins";
 @import "mixins/mixins_typographys";
@@ -25,6 +26,8 @@
 @import "pages/user_edit";
 @import "pages/productDetails";
 @import "pages/messages";
+@import "pages/historic";
+
 
 @import "themes/theme";
 @import "themes/pagination";

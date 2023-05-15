@@ -5,22 +5,22 @@ body {
 }
 
 body.dark-mode {
-    background-color: #242424;
+    background-color: $neutral_darker;
     color: $neutral_lighter;
 
     .product,
     .card-style-productshow,
     .card-style-productshow-details,
     .card-style-edituser,
-    .card-style-account{
+    .card-style-account {
         background-color: $neutral_dark;
         color: $neutral_lighter;
     }
     .navbar {
         background-color: $neutral_darker;
     }
-    a{
-        color: #fff;
+    a {
+        color: $neutral_lighter;
     }
 }
 

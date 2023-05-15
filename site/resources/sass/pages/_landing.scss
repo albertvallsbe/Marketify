@@ -1,6 +1,6 @@
 .landing-container {
     display: grid;
-    row-gap: 10px;
+    row-gap: $size-smaller;
     margin-inline: -5%;
 
     a {
@@ -9,7 +9,8 @@
 
     .container-slogan {
         @include landingMainCard;
-        transition: transform .2s;
+        transition: transform 0.2s;
+        color: $neutral_darker;
 
         .logo {
             @include logoIntro;
@@ -32,21 +33,21 @@
 
     .container-products {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(calc(160px * 1.5), 1fr));
-        column-gap: 10px;
-        row-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(calc(300px), 1fr));
+        column-gap: $size-smaller;
+        row-gap: $size-smaller;
         background-color: $neutral_lighter;
 
         .container-product {
             @include landingCards;
-            background-image: linear-gradient($shadow_color , $shadow_color), url(../images/woman.jpg);
+            background-image: linear-gradient($shadow_color, $shadow_color),
+                url(../images/woman.jpg);
             background-repeat: no-repeat;
 
             .title-product {
                 color: $neutral_lighter;
                 margin-right: 10px;
                 @include largeTypografy;
-
             }
         }
 
@@ -56,14 +57,14 @@
 
         .container-product2 {
             @include landingCards;
-            background-image: linear-gradient($shadow_color , $shadow_color), url(../images/men.webp);
+            background-image: linear-gradient($shadow_color, $shadow_color),
+                url(../images/men.webp);
             background-repeat: no-repeat;
 
             h2.title-product {
                 color: $neutral_lighter;
                 margin-right: 10px;
                 @include largeTypografy;
-
             }
         }
 
@@ -76,7 +77,6 @@
         display: grid;
         width: 100%;
 
-
         h2 {
             margin-left: 10px;
             @include largeTypografy;
@@ -87,14 +87,13 @@
 
     .products-section {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(calc(260px * 1.125), 1fr));
-        grid-row-gap: 20px;
-        grid-column-gap: 0px;
+        grid-template-columns: repeat(auto-fit, minmax(calc(300px), 1fr));
+        grid-row-gap: $size-medium;
+        grid-column-gap: $size-none;
 
         .product {
             max-width: 400px;
             width: 250px;
-
         }
     }
 
@@ -120,16 +119,11 @@
 @media screen and (max-width: 900px) {
     .products-section {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(calc(160px * 1.125), 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(calc(300px), 1fr));
 
         .product {
-            max-width: 160px;
-            width: 160px;
+            max-width: 400px;
+            width: 250px;
         }
-    }
-
-    .container-product2 {
-        background-repeat: no-repeat;
-        background-size: 50%;  
     }
 }

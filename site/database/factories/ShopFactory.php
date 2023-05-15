@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Shop;
 use App\Models\User;
+use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,20 @@ class ShopFactory extends Factory
      */
     public function definition()
     {
+        $faker = Faker::create('es_ES');
+        $userIds = User::pluck('id');
+        $user_id = $faker->unique()->randomElement($userIds);
+        $shopname = $faker->unique()->word();
+        $nifNumber = mt_rand(10000000, 99999999);
+        $nifLetter = chr(mt_rand(65, 90));
+        $nif = $nifNumber . $nifLetter;
+
         return [
+            'shopname' => $shopname,
+            'username' => $faker->unique()->name(),
+            'url' => $shopname."shop",
+            'nif' => $nif,
+            'user_id' => $user_id,
         ];
     }
 }
