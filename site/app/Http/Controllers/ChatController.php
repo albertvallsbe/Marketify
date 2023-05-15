@@ -119,7 +119,7 @@ class ChatController extends Controller {
         try {
             $action = $request->input('actionValue');
             $chat = Chat::findOrFail($chatId);
-            $order = Order::findOrFail($orderId);
+            $order = $chat->order;
             $messageContent = '';
             
             //Según el botón presionado en la vista, elige un caso u otro
@@ -135,6 +135,16 @@ class ChatController extends Controller {
                 case 'shipmentDone':
                     $order->status = 'completed';
                     $messageContent = 'Customer has received the order!';
+                    break;
+                case 'confirmFail':
+                    $order->status = 'failed';
+                    $messageContent = 'The seller has declared the order as incorrect. Something went wrong with the order!';
+
+                    $orderItems = $order->orderItems;
+                    foreach ($orderItems as $orderItem) {
+                        $orderItem->product->status = 'active';
+                        $orderItem->product->save();                    
+                    }
                     break;
             }
             $order->save();

@@ -89,6 +89,10 @@
                                     <button type="submit" name="actionValue" value="shipmentDone"
                                         class="confirmButton">Order received</button>
                                 @endif
+                                @if ($selectedChat->seller_id == auth()->id() && $selectedChat->order->status != 'failed')
+                                    <button type="submit" name="actionValue" value="confirmFail"
+                                        class="confirmButton">Order Failed</button>
+                                @endif
                             </form>
 
 

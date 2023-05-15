@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('shop_id')->index();
 
-            $table->enum('status', ['pending', 'paid', 'sending', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'paid', 'sending', 'completed', 'failed'])->default('pending');
 
             $table->foreign('user_id')
                     ->references('id')->on('users')

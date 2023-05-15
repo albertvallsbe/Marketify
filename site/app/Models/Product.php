@@ -79,4 +79,8 @@ class Product extends Model
         ->where('products.status', 'active')
         ->paginate(18);
     }
+    public function orderItem()
+    {
+    return $this->hasOne(OrderItem::class);
+    }
 }
