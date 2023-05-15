@@ -25,17 +25,21 @@ class Product extends Model
         return $this->belongsToMany(Category::class)->withTimeStamps();
     }
 
-    public static function searchAll($search, $order = 'name_asc'){
+    public static function searchAll($search, $order = 'name_asc') {
         $order_explode = explode("_", $order);
         $orderBy = $order_explode[0];
         $orderDirection = $order_explode[1];
-
+    
         return self::query()
-        ->where('products.name', 'LIKE', '%' . $search . '%' )
-        ->orWhere('tag','LIKE','%'. $search . '%')
-        ->orderBy($orderBy, $orderDirection)
-        ->paginate(18);
-    }
+            ->where(function ($query) use ($search) {
+                $query->where('products.name', 'LIKE', '%' . $search . '%')
+                    ->orWhere('tag', 'LIKE', '%' . $search . '%');
+            })
+            ->where('products.status', 'active')
+            ->orderBy($orderBy, $orderDirection)
+            ->paginate(18);
+        }
+
     public static function searchSpecific($search, $filter, $order = 'name_asc'){
         $order_explode = explode("_", $order);
         $orderBy = $order_explode[0];
@@ -46,6 +50,7 @@ class Product extends Model
         ->select('products.*')
         ->where('products.name', 'LIKE', '%' . $search . '%' )
         ->where('category_product.category_id', '=', $filter)
+        ->where('products.status', 'active')
         ->orderBy($orderBy, $orderDirection)
         ->paginate(18);
     }
@@ -56,6 +61,7 @@ class Product extends Model
         $orderDirection = $order_explode[1];
         return self::query()
         ->where('products.shop_id', $shopId)
+        ->where('products.status', 'active')
         ->orderBy($orderBy, $orderDirection)
         ->paginate(18);
     }
@@ -70,6 +76,7 @@ class Product extends Model
         ->join('category_product', 'category_product.product_id', '=', 'products.id')
         ->select('products.*')
         ->where('category_product.category_id', '=', $id)
+        ->where('products.status', 'active')
         ->paginate(18);
     }
 }
