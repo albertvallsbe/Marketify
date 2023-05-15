@@ -100,7 +100,7 @@ class ChatController extends Controller {
                     $chatId = $chat->id;
                     $userId = $chat->seller_id == auth()->id() ? $chat->customer_id : $chat->seller_id;
                     
-                    Notification::Create(
+                    Notification::updateOrCreate(
                         ['chat_id' => $chatId, 'user_id' => $userId],
                         ['read' => false]
                     );  
@@ -144,7 +144,7 @@ class ChatController extends Controller {
                 'automatic' => true,
                 'content' => $messageContent
             ]);            
-            Notification::Create(
+            Notification::updateOrCreate(
                 ['chat_id' => $chat->id, 'user_id' => $chat->customer_id],
                 ['read' => false]
             );
