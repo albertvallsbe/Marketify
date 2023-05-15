@@ -35,7 +35,7 @@ class Product extends Model
                 $query->where('products.name', 'LIKE', '%' . $search . '%')
                     ->orWhere('tag', 'LIKE', '%' . $search . '%');
             })
-            ->where('products.status', 'active')
+            ->where('products.status', '!=', 'sold')
             ->orderBy($orderBy, $orderDirection)
             ->paginate(18);
         }
@@ -50,7 +50,7 @@ class Product extends Model
         ->select('products.*')
         ->where('products.name', 'LIKE', '%' . $search . '%' )
         ->where('category_product.category_id', '=', $filter)
-        ->where('products.status', 'active')
+        ->where('products.status', '!=', 'sold')
         ->orderBy($orderBy, $orderDirection)
         ->paginate(18);
     }
@@ -61,7 +61,7 @@ class Product extends Model
         $orderDirection = $order_explode[1];
         return self::query()
         ->where('products.shop_id', $shopId)
-        ->where('products.status', 'active')
+        ->where('products.status', '!=', 'sold')
         ->orderBy($orderBy, $orderDirection)
         ->paginate(18);
     }
@@ -76,7 +76,7 @@ class Product extends Model
         ->join('category_product', 'category_product.product_id', '=', 'products.id')
         ->select('products.*')
         ->where('category_product.category_id', '=', $id)
-        ->where('products.status', 'active')
+        ->where('products.status', '!=', 'sold')
         ->paginate(18);
     }
     public function orderItem()
