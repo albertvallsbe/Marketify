@@ -74,7 +74,7 @@
 .btn-disabled {
     @include btn-disabled;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 750px) {
     .products-cart {
         grid-template-columns: repeat(auto-fit, minmax(calc(300px), 1fr));
 
@@ -83,8 +83,4 @@
         grid-row-gap: $size-small;
         grid-column-gap: $size-small;
     }
-
-    // .card-style-cart {
-    //     min-width: 350px;
-    // }
 }
