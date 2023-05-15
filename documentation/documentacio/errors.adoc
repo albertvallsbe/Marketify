@@ -1,0 +1,11 @@
+=== Error de producte
+Quan no es troba cap producte amb la ID proporcionada a la ruta 'product.show', es mostra una pàgina amb l'URL '/product-not-found', la qual informa a l'usuari que el producte desitjat no existeix.
+
+=== Error de tenda
+Quan no es troba cap tenda amb l'URL proporcionada a la ruta 'shop.show', es mostra una pàgina amb l'URL '/shop-not-found', la qual informa a l'usuari que la tenda desitjada no existeix.
+
+=== Error d'usuari
+Quan no es troba cap usuari amb la ID proporcionada a la ruta 'user.show', es mostra una pàgina amb l'URL '/user-not-found', la qual informa a l'usuari que l'usuari desitjat no existeix.
+
+=== Error de pàgina
+Quan no es troba cap pàgina amb l'URL proporcionada, es mostra una pàgina d'error però conservant l'URL, gràcies al fallback establit al fitxer de les rutes.

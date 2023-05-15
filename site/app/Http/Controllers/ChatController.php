@@ -100,7 +100,7 @@ class ChatController extends Controller {
                     $chatId = $chat->id;
                     $userId = $chat->seller_id == auth()->id() ? $chat->customer_id : $chat->seller_id;
                     
-                    Notification::Create(
+                    Notification::updateOrCreate(
                         ['chat_id' => $chatId, 'user_id' => $userId],
                         ['read' => false]
                     );  
@@ -119,7 +119,7 @@ class ChatController extends Controller {
         try {
             $action = $request->input('actionValue');
             $chat = Chat::findOrFail($chatId);
-            $order = Order::findOrFail($orderId);
+            $order = $chat->order;
             $messageContent = '';
             
             //Según el botón presionado en la vista, elige un caso u otro
@@ -136,6 +136,16 @@ class ChatController extends Controller {
                     $order->status = 'completed';
                     $messageContent = 'Customer has received the order!';
                     break;
+                case 'confirmFail':
+                    $order->status = 'failed';
+                    $messageContent = 'The seller has declared the order as incorrect. Something went wrong with the order!';
+
+                    $orderItems = $order->orderItems;
+                    foreach ($orderItems as $orderItem) {
+                        $orderItem->product->status = 'active';
+                        $orderItem->product->save();                    
+                    }
+                    break;
             }
             $order->save();
             $message = Message::create([
@@ -144,7 +154,7 @@ class ChatController extends Controller {
                 'automatic' => true,
                 'content' => $messageContent
             ]);            
-            Notification::Create(
+            Notification::updateOrCreate(
                 ['chat_id' => $chat->id, 'user_id' => $chat->customer_id],
                 ['read' => false]
             );

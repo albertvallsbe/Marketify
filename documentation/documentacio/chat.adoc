@@ -1,0 +1,28 @@
+=== Creació del xat
+El xat es creat una vegada que s'ha creat l'ordre. Agafa la ID de l'usuari comprador i la ID de l'usuari venedor per crear-ho. Aquest xat inicia amb un missatge automàtic per part de l'usuari comprador ón confirma i presenta la ordre.
+
+==== Missatges automàtics
+Els missatges automàtics estan determinats per l'estat de l'ordre, que pot ser un dels quatre següents:
+
+- Pendent: Quan l'ordre encara no s'ha processat completament.
+- Pagat: Quan el pagament ha estat confirmat pel venedor.
+- Enviat: Quan el venedor ha confirmat l'enviament dels productes.
+- Rebut: Quan el comprador ha confirmat la recepció dels productes.
+
+El canvi d'estat de l'ordre és responsabilitat de l'usuari, ja que és el venedor qui confirma el pagament i l'enviament, mentre que és el comprador qui confirma la recepció dels productes.
+
+==== Missatges manuals
+
+Els missatges són enviats mitjançant un formulari amb un camp d'entrada de text i un botó de tipus 'submit'. Un cop rebuts, es validen al controlador i s'afegeixen a la base de dades. Posteriorment, la pàgina es refresca per mostrar el nou missatge.
+
+A la base de dades, els missatges s'emmagatzemen amb la següent informació: la ID de l'usuari que ha enviat el missatge, el contingut del missatge i un booleà per indicar si el missatge és automàtic. Aquesta última opció només es considera veritable (true) si es marca així mitjançant la creació d'un missatge dins d'una funció del controlador.
+
+==== Notificacions
+Quan es crea un xat, es generen les notificacions dels usuaris, que inclouen la ID de l'usuari i un booleà que indica si el missatge ha estat llegit o no. Cada xat té dues notificacions, una per a cada participant. En el moment en què l'usuari marca el missatge com a llegit, el booleà es canvia a true en lloc de crear una nova fila.
+
+=== Funcionament del xat
+El xat i les notificacions no són asíncrons; cal actualitzar la pàgina per veure la informació més recent. La pàgina de missatges mostra una llista de tots els xats als quals l'usuari pertany, tant si és un venedor com un comprador, i inclou una secció on es mostren els missatges. Aquesta secció utilitza la funció "show" en el controlador de xats.
+
+
+=== Posibles conflictes:
+- Si l'usuari introdueix manualment una ID a l'URL que no correspon a aquest usuari, el xat no es mostrarà.

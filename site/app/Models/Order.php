@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Cart;
 use App\Models\Chat;
 use App\Models\Shop;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -94,5 +95,10 @@ class Order extends Model
     public function chat()
     {
         return $this->hasOne(Chat::class, 'order_id');
+    }
+    
+    public function orderItems()
+    {
+    return $this->hasMany(OrderItems::class);
     }
 }

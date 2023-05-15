@@ -74,29 +74,49 @@ class ProductController extends Controller {
             $product = Product::findOrFail($id);
             $categories = Category::all();
             $shopName = Shop::findShopName($product->shop_id);
-
-            //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
-            $userId = auth()->id();
-            $usersShop = Shop::findShopUserID($userId);
-            if($usersShop){
-                $shop = Shop::findOrFail($usersShop);
-            }else{
-                $shop = 0;
-            }
-            $category_id = Category::findCategoryOfProduct($product->id);
-            $categoryName = Category::findCategoryName($category_id);
             
-            Log::channel('marketify')->info('product.show view loaded');
-            return view('product.show', [
-                'product' => $product,
-                'categories' => $categories,
-                'options_order' => HeaderVariables::$order_array,
-                'shopname' => $shopName,
-                'shop' => $shop,
-                'categoryname' => $categoryName
-            ]);
-        } catch (ModelNotFoundException $e) {
-            Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
+                //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
+                $userId = auth()->id();
+                $usersShop = Shop::findShopUserID($userId);
+                if(!$usersShop){
+                    $shop = 0;
+                    if ($product->status != "hidden") {
+                        $category_id = Category::findCategoryOfProduct($product->id);
+                        $categoryName = Category::findCategoryName($category_id);
+                        
+                        Log::channel('marketify')->info('product.show view loaded');
+                        return view('product.show', [
+                            'product' => $product,
+                            'categories' => $categories,
+                            'options_order' => HeaderVariables::$order_array,
+                            'shopname' => $shopName,
+                            'shop' => $shop,
+                            'categoryname' => $categoryName
+                        ]);
+                    } else {
+                        return redirect()->route('product.index');
+                    }
+                }else{
+                    $shop = Shop::findOrFail($usersShop);
+                    if ($product->status != "hidden" ||$product->shop_id == $shop->id) {
+                        $category_id = Category::findCategoryOfProduct($product->id);
+                        $categoryName = Category::findCategoryName($category_id);
+                        
+                        Log::channel('marketify')->info('product.show view loaded');
+                        return view('product.show', [
+                            'product' => $product,
+                            'categories' => $categories,
+                            'options_order' => HeaderVariables::$order_array,
+                            'shopname' => $shopName,
+                            'shop' => $shop,
+                            'categoryname' => $categoryName
+                        ]);
+                    } else {
+                        return redirect()->route('product.index');
+                    }
+                }
+                } catch (ModelNotFoundException $e) {
+                    Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
             return redirect()->route('product.404');
         }
     }
