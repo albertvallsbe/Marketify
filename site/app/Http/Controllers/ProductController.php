@@ -168,7 +168,7 @@ class ProductController extends Controller {
                 'image' => $imagePath ?? 'images/products/default-product.png',
             ]);
 
-            Log::channel('marketify')->info("Product #$product->id created succesfully");
+            Log::channel('marketify')->info("Product created succesfully");
             $category_product = Category_product::create([
             'product_id' => $product->id,
             'category_id' => $validatedData['product_category'],
@@ -213,7 +213,7 @@ class ProductController extends Controller {
                 'category_id' => $validatedData['product_category'],
             ]);
 
-            Log::channel('marketify')->info("Product #$product->id updated succesfully");
+            Log::channel('marketify')->info("Product updated succesfully");
             session()->flash('status', "Product '$product->name' edited successfully.");
             return redirect()->route('shop.admin');
         } catch (\Exception $e) {
@@ -227,7 +227,7 @@ class ProductController extends Controller {
             $product = Product::find($id);
             $product->delete();
 
-            Log::channel('marketify')->info("Product #$product->id deleted succesfully");
+            Log::channel('marketify')->info("Product deleted succesfully");
             session()->flash('status', "Product '$product->name' deleted successfully.");
             return redirect()->route('shop.admin');
         } catch (\Exception $e) {
@@ -242,11 +242,11 @@ class ProductController extends Controller {
             if ($product->status == 'hidden') {
                 $product->status = 'active';
                 session()->flash('status', "Product '$product->name' has been set to visible successfully.");
-                Log::channel('marketify')->info("Product #$product->id set to visible successfully");
+                Log::channel('marketify')->info("Product set to visible successfully");
             } else {
                 $product->status = 'hidden';
                 session()->flash('status', "Product '$product->name' has been hidden successfully.");
-                Log::channel('marketify')->info("Product #$product->id hidden successfully");
+                Log::channel('marketify')->info("Product hidden successfully");
             }
             $product->save();
             return redirect()->route('shop.admin');

@@ -134,7 +134,7 @@ class ShopController extends Controller {
                 'background_color' => $background_color
             ]);
             Shop::makeUsercustomer($id);
-            Log::channel('marketify')->info("Shop #$shop->id has been created");
+            Log::channel('marketify')->info("Shop has been created");
             return redirect()->route('shop.admin');
         } catch (ModelNotFoundException $e) {
             Log::channel('marketify')->error('An error occurred creatig a shop: '.$e->getMessage());
@@ -218,7 +218,7 @@ class ShopController extends Controller {
                     'background_color' => $validatedData['background_color'],
                 ]);
                 
-                Log::channel('marketify')->info("Shop #$shop->id has been updated");
+                Log::channel('marketify')->info("Shop has been updated");
                 session()->flash('status', "Shop edited successfully.");
                 return redirect()->route('shop.admin');
             } catch (ModelNotFoundException $e) {

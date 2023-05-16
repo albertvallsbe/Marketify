@@ -79,7 +79,7 @@ class OrderController extends Controller
                     'user_id' => auth()->id(),
                     'shop_id' => $shopId
                 ]);
-                Log::channel('marketify')->info("Order #$order->id of $order->user_id has created");
+                Log::channel('marketify')->info("Order has created");
                 $chat = Chat::createChatByOrder($shops[$key], $order->id);
                 foreach ($shopByProduct as $key => $products) {
                     OrderItems::create([
