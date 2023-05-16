@@ -1,8 +1,9 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/bullseye64"
-  config.vm.hostname = "javamariadb"
-  config.vm.define "javamariadb"
-  config.vm.network "private_network", ip: "172.16.0.100"
+  config.vm.hostname = "marketify"
+  config.vm.define "marketify"
+  config.vm.synced_folder "../../marketplace/", "/home/marketify"
+  config.vm.network "private_network", ip: "172.16.50.50"
   config.vm.provision "shell", path: "bootstrap.sh"
   config.vm.provider "virtualbox" do |vb|
 	vb.name = "Marketplace_Group3" 
