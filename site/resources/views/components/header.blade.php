@@ -39,6 +39,7 @@
                         <img class="toggle-button" src="{{ asset('images/icons/circle-chevron-down-solid.svg') }}">
                     </div>
                     <ul class="menu-list">
+                        <li><a href="{{ route('historical.index') }}">Your orders</a></li>
                         @can('seller')
                             <li><a href="{{ route('shop.admin') }}">Your shop</a></li>
                         @elsecan('customer')

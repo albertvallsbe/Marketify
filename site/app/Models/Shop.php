@@ -67,6 +67,13 @@ class Shop extends Model
                 ->value('id');
     }
 
+    public static function findUserShopID($shop_id){
+        return DB::table('shops')
+                ->orderBy('id', 'DESC')
+                ->where('id', $shop_id)
+                ->value('user_id');
+    }
+
     public static function makeUsercustomer($user_id){
         $user = User::find($user_id);
         $user->role = "seller";
