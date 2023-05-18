@@ -12,9 +12,9 @@ class ImageController extends Controller
 
         if ($images && $images->count() > 0) {
             return response($images,200);
-           
+
         }else {
-           abort(404);
+        abort(404);
         }
 
     }
@@ -24,9 +24,9 @@ class ImageController extends Controller
 
         if ($images && $images->count() > 0) {
             return response($images,200);
-           
+
         }else {
-           abort(404);
+        abort(404);
         }
     }
 
@@ -36,7 +36,7 @@ class ImageController extends Controller
             'path'=> $request['path'],
             'product_id'=>$request['product_id'],
             'main'=>$request['main']
-        ]); 
+        ]);
     }
 
     public function deleteImage($id){
@@ -45,11 +45,11 @@ class ImageController extends Controller
         if ($image && $image->count() > 0) {
             $image->delete();
             return "La imagen ". $id ." ha sido borrada";
-           
+
         }else {
-           abort(404);
+        abort(404);
         }
-        
+
     }
     public function deleteAll($id){
         $images = Image::where('product_id',$id);
@@ -57,10 +57,10 @@ class ImageController extends Controller
         if ($images && $images->count() > 0) {
             $images->delete();
             return "Las imagenes del producto ". $id ." han sido borradas.";
-           
+
         }else {
-           abort(404);
+        abort(404);
         }
-        
+
     }
 }

@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 class ChatController extends Controller {
-    //Vista principal del chat 
+    /**
+     * Vista principal del chat
+     */
     public function index(Request $request) {
-        try {  
+        try {
             if(auth()->user()) {
                 $chats = Chat::getByUserID();
                 $categories = Category::all();
@@ -35,11 +37,13 @@ class ChatController extends Controller {
             Log::channel('marketify')->error('An error occurred showing chat view: '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
         }
-    } 
+    }
 
-    //Vista selectiva del chat
+    /**
+     * Vista selectiva del chat
+     */
     public function show(Request $request, $id) {
-        try {  
+        try {
             if(auth()->user()) {
                 $chat = Chat::findOrFail($id);
                 $chats = Chat::getByUserID();
@@ -60,10 +64,12 @@ class ChatController extends Controller {
             Log::channel('marketify')->error('An error occurred showing chat show: '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
         }
-    } 
+    }
 
-    //Marcar notificación como leída
-    public function updateMessageRead($chatId) {   
+    /**
+     * Marcar notificación como leída
+     */
+    public function updateMessageRead($chatId) {
         try {
             $notification = Notification::showbyChatID($chatId)->latest()->first();
             $notification->markAsRead($chatId);
@@ -72,13 +78,15 @@ class ChatController extends Controller {
             Log::channel('marketify')->error("An error occurred updating read status in chat #$chatId: ".$e->getMessage());
         }
     }
-    
-    //Envíar mensaje y notificación al otro usuario
+
+    /**
+     * Envíar mensaje y notificación al otro usuario
+     */
     public function messageSend(Request $request, $id) {
-        try {    
+        try {
             $validatedData = $request->validate([
                 'messagetext' => 'required|string',
-            ]);        
+            ]);
             $chat = Chat::findOrFail($id);
             $message = Message::create([
                 'chat_id' => $chat->id,
@@ -90,7 +98,7 @@ class ChatController extends Controller {
                 $notification->read = false;
                 $notification->save();
             } else {
-                $notifications = Notification::where('chat_id', $chat->id)->get();  
+                $notifications = Notification::where('chat_id', $chat->id)->get();
                 if ($notifications->isNotEmpty()) {
                     $notifications->each(function ($notification) {
                         $notification->read = false;
@@ -99,11 +107,11 @@ class ChatController extends Controller {
                 } else {
                     $chatId = $chat->id;
                     $userId = $chat->seller_id == auth()->id() ? $chat->customer_id : $chat->seller_id;
-                    
+
                     Notification::updateOrCreate(
                         ['chat_id' => $chatId, 'user_id' => $userId],
                         ['read' => false]
-                    );  
+                    );
                 }
             }
             Log::channel('marketify')->info("Created message and notification for chat #$chatId");
@@ -114,15 +122,19 @@ class ChatController extends Controller {
         }
     }
 
-    //Actualizar estado del pedido
+    /**
+     * Actualizar estado del pedido
+     */
     public function confirmSeller(Request $request, $chatId, $orderId) {
         try {
             $action = $request->input('actionValue');
             $chat = Chat::findOrFail($chatId);
             $order = $chat->order;
             $messageContent = '';
-            
-            //Según el botón presionado en la vista, elige un caso u otro
+
+            /**
+             * Según el botón presionado en la vista, elige un caso u otro
+             */
             switch ($action) {
                 case 'confirmPayment':
                     $order->status = 'paid';
@@ -143,7 +155,7 @@ class ChatController extends Controller {
                     $orderItems = $order->orderItems;
                     foreach ($orderItems as $orderItem) {
                         $orderItem->product->status = 'active';
-                        $orderItem->product->save();                    
+                        $orderItem->product->save();
                     }
                     break;
             }
@@ -153,7 +165,7 @@ class ChatController extends Controller {
                 'sender_id' => auth()->id(),
                 'automatic' => true,
                 'content' => $messageContent
-            ]);            
+            ]);
             Notification::updateOrCreate(
                 ['chat_id' => $chat->id, 'user_id' => $chat->customer_id],
                 ['read' => false]

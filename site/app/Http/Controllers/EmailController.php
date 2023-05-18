@@ -9,13 +9,29 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
+    /**
+     * Retorno de la confirmación de email.
+     */
     public function return(){
-        return view('emails.confirm');
+        try{
+
+            Log::channel('marketify')->info('Return confirmation email');
+
+            return view('emails.confirm');
+
+        }catch (\Exception $e) {
+
+            Log::channel('marketify')->info('The email has not been sent.', ["e" => $e->getMessage()]);
+            return redirect(route('login.index'));
+        }
     }
+
+    /**
+     * Envio de email
+     */
     public function sendEmail($value)
     {
         try{
-
 
             $correo = new ConfirmMail;
             Mail::to($value)->send($correo);
@@ -26,8 +42,7 @@ class EmailController extends Controller
 
             Log::channel('marketify')->info('The email has not been sent.', ["e" => $e->getMessage()]);
             return redirect(route('login.index'));
-        
+
         }
-        
     }
 }
