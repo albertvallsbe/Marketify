@@ -76,8 +76,8 @@ class ProductController extends Controller {
     public function show($id) {
         try {
             $product = Product::findOrFail($id);
+            $productShop = $product->shop;
             $categories = Category::all();
-            $shopName = Shop::findShopName($product->shop_id);
 
                 //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
                 $userId = auth()->id();
@@ -93,8 +93,8 @@ class ProductController extends Controller {
                             'product' => $product,
                             'categories' => $categories,
                             'options_order' => HeaderVariables::$order_array,
-                            'shopname' => $shopName,
                             'shop' => $shop,
+                            'productShop' => $productShop,
                             'categoryname' => $categoryName
                         ]);
                     } else {
