@@ -67,19 +67,34 @@ class Shop extends Model
                 ->value('id');
     }
 
+    public static function findUserShopID($shop_id){
+        return DB::table('shops')
+                ->orderBy('id', 'DESC')
+                ->where('id', $shop_id)
+                ->value('user_id');
+    }
+
     public static function makeUsercustomer($user_id){
         $user = User::find($user_id);
         $user->role = "seller";
         $user->save();
     }
-
-
+    public static function catchShop($id){
+        return self::query()
+        ->where('id','=',$id)
+        ->get();
+    }
+    
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToOne(User::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'shop_id');
+    }
     // public function products()
     // {
     //     return $this->belongsToMany(Product::class);

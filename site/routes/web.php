@@ -15,6 +15,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\chatController;
+use App\Http\Controllers\HistoricController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::get('/search', [ProductController::class,'index'])->name('product.index')
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');
 // Route::get('/products', [RegisterController::class, 'index'])->name('products.index');
 
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
 // Route::post('/product', [ProductController::class, 'store'])->name('products');
 Route::post('/product', [ProductController::class, 'store'])->name('product.store');
@@ -88,3 +89,8 @@ Route::get('/messages/{id}', [ChatController::class, 'show'])->name('chat.show')
 Route::post('/message-read/{chatId}', [ChatController::class, 'updateMessageRead'])->name('chat.updateMessageRead');
 Route::post('/message-send/{id}', [ChatController::class, 'messageSend'])->name('chat.messageSend');
 Route::post('/confirmSeller/{chatId}/{orderId}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');
+
+
+Route::get('/historical', [HistoricController::class, 'index'])->name('historical.index');
+Route::get('/historical/{id}', [HistoricController::class, 'details'])->name('historical.details');
+Route::post('/historical/{id}', [HistoricController::class, 'downloadFile'])->name('historical.downloadFile');

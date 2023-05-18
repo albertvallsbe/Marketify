@@ -17,9 +17,13 @@ use App\Classes\HeaderVariables;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    /**
+     * Crear las orders del carrito de servidor
+     */
     public function index(Request $request)
     {
         try {
@@ -52,7 +56,9 @@ class OrderController extends Controller
         }
     }
 
-
+    /**
+     * Añadir a la base de datos una order por cada vendedor del carrito del usuario
+     */
     public function add() {
         try{
             $productsByShop = Order::findShopAndCartProducts();
@@ -95,7 +101,9 @@ class OrderController extends Controller
                     }
                 }
             }
-            // Borrar el contenido del campo 'products' en la tabla 'carts' del usuario
+            /**
+             * Borrar el contenido del campo 'products' en la tabla 'carts' del usuario
+             */
             Cart::where('user_id', auth()->id())->delete();
             return redirect()->route('chat.index');
             } else{
@@ -108,6 +116,9 @@ class OrderController extends Controller
         }
     }
 
+    /**
+     * Error al crear la order
+     */
     public function error(Request $request)
     {
         try {
@@ -121,4 +132,5 @@ class OrderController extends Controller
                 return redirect()->back()->with('error', 'An error occurred in OrderController.');
         }
     }
+
 }

@@ -15,12 +15,20 @@ use App\Helpers\ValidationMessages;
 
 class RegisterController extends Controller
 {
-    public function index(){    
-        if(auth()->user()) {
-            return redirect()->route('user.edit');
-        }else{
-            return view('register.index');
+    public function index(){  
+        try {
+            if(auth()->user()) {
+                return redirect()->route('user.edit');
+            }else{
+                return view('register.index');
+            }
+        } catch(\Exception $e) {
+
+            Log::channel('marketify')->info('The register page do not charge.', ["e" => $e->getMessage()]);
+            return redirect(route('login.index'));
+        
         }
+        
     }
     
     public function register(Request $request)

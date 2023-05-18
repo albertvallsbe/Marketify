@@ -1,0 +1,25 @@
+{
+    "variableCategories": [
+        {
+            "category":2,
+            "amount": 5
+        },
+        {
+            "category":4,
+            "amount": 5
+        },
+        {
+            "category":3,
+            "amount": 5
+        },
+        {
+            "category":5,
+            "amount": 5
+        }
+        ,{
+            "category":7,
+            "amount": 5
+        }
+    ]
+}
+

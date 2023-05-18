@@ -16,6 +16,12 @@ class OrderItems extends Model
         'status',
     ];
 
+    public static function catchIdProduct($id){
+        return self::query()
+        ->select('product_id')
+        ->where('order_id','=',$id)
+        ->get();
+    }
     public function order()
     {
         return $this->belongsTo(Order::class);
@@ -24,4 +30,5 @@ class OrderItems extends Model
     {
     return $this->belongsTo(Product::class);
     }
+    
 }

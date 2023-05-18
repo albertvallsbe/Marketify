@@ -11,6 +11,13 @@
         @include landingMainCard;
         transition: transform 0.2s;
         color: $neutral_darker;
+        background-image: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0) 0,
+            rgba(255, 255, 255, 1) 100%
+        ),
+        url(../images/background_landing.png);
+        background-size: cover;
 
         .logo {
             @include logoIntro;
@@ -22,8 +29,10 @@
 
         .title-slogan {
             @include largeTypografy;
-            margin-left: 40px;
-            margin-top: -300px;
+            background-color: #fff;
+            padding-inline: 5px;
+            border-radius: 12px;
+            margin-inline: 50px;
         }
     }
 
@@ -41,7 +50,7 @@
         .container-product {
             @include landingCards;
             background-image: linear-gradient($shadow_color, $shadow_color),
-                url(../images/woman.jpg);
+                url(../images/background_products_landing.jpg);
             background-repeat: no-repeat;
 
             .title-product {
@@ -58,7 +67,7 @@
         .container-product2 {
             @include landingCards;
             background-image: linear-gradient($shadow_color, $shadow_color),
-                url(../images/men.webp);
+                url(../images/background_products_landing.jpg);
             background-repeat: no-repeat;
 
             h2.title-product {
@@ -78,7 +87,8 @@
         width: 100%;
 
         h2 {
-            margin-left: 10px;
+            
+        margin-inline: 50px;
             @include largeTypografy;
             @include line;
             max-height: 80px;
@@ -96,6 +106,24 @@
             width: 250px;
         }
     }
+
+    .section-btn {
+        margin-top: 35px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+
+        .view-title {
+            @include largeTypografy;
+        }
+
+        .btn-see-more {
+            @include miniSmallButton;
+            width: 100%;
+
+        }
+    }
+
 }
 
 @media screen and (max-width: 900px) {

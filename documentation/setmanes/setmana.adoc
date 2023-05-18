@@ -1,3 +1,47 @@
+
+=== Setmana 13
+
+==== David
+Comprovar l'estat del producto abans de comprar (en la vista del carret, vista de l'ordre i al presionar le botó de comprar)
+Temps estimat ⇒ 2h
+Temps Real ⇒ 4h
+
+Controlar errors al crear noves ordres:
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1h
+
+Afegir LOGs als següents controladors: Cart, Chat, Order, Product i Shop
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Esborrar codi mort, codi de test i comentar funcions
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1h
+
+Solucionar error de notificacions, error de paginació
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Posibilitat de marcar com fallida una ordre, tornar a posar a la venta els productes
+Temps estimat ⇒ 3h
+Temps Real ⇒ 2h
+
+Modificar consulta per modificar el 'display' dels productes
+Temps estimat ⇒ 1h
+Temps Real ⇒ 2h
+
+Modificar el vagrant per incluir el projecte laravel a la ip 172.16.50.50 (connexió HTTP)
+Temps estimat ⇒ 6h
+Temps Real ⇒ 4h
+
+Permetre Connexió HTTPS i redirecció desde HTTP 
+Temps estimat ⇒ 3h
+Temps Real ⇒ 5h
+
+==== Oscar
+
+==== Albert
+
 === Setmana 12
 
 ==== David
@@ -32,10 +76,40 @@ Temps Real ⇒ 5h
 Afegir LOGs a Cart, Chat, Order, Product i Shop Controllers
 Temps estimat ⇒ 1h
 Temps Real ⇒ 1h
+
 ==== Oscar
+Poner los mensajes de Log Info en diferentes páginas
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1:30h
+
+Eliminar una imatge en concret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1:30h
+
+Eliminar totes les imatges d'un producte en concret 
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1:30h
+
+Pujar una imatge en concret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1:30h
+
+Crear el disseny del Historic de Comandes
+Temps estimat ⇒ 2h
+Temps Real ⇒ 
 
 ==== Albert
+Comentar funcions i afegir logs
+Temps estimat => 5h 
+Temps Real => 1,5h -> continua encara
 
+Update vista d'orders i estils
+Temps estimat => 2h 
+Temps Real => 2,25h 
+
+Documentació
+Temps estimat => 5h 
+Temps Real => 1,5h -> continua encara
 === Setmana 11
 
 ==== David
@@ -66,7 +140,50 @@ Temps Real ⇒ 22h
 
 ==== Oscar
 
+Crear el nou projecte d'API 
+Temps estimat ⇒ 1h
+Temps Real ⇒ 30min
+
+Crear la taula de Imatges
+Temps estimat ⇒ 1h
+Temps Real ⇒ 30min
+
+Obtenir una imatge en concret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 3h
+
+Obtenir totes les imatges d'un producte 
+Temps estimat ⇒ 1:30h
+Temps Real ⇒ 1:30h
+
+Poner los mensajes de Log Info en diferentes páginas
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1:30h
+
 ==== Albert
+Update factories and seeders
+Temps estimat => 3h 
+Temps Real => 2,5h 
+
+Update product status to sold
+Temps estimat => 2h 
+Temps Real => 1,75h 
+
+Estandarització de mediaqueries
+Temps estimat => 1h 
+Temps Real => 1,25h 
+
+Resoldre problemes amb l'orders
+Temps estimat => 1h 
+Temps Real => 1,75h 
+
+Crear new repository
+Temps estimat => 1h 
+Temps Real => 1,5h 
+
+Crear orders
+Temps estimat => 10h -> Total  22,5h
+Temps Real => 6,25h -> venia de la setmana anterior
 
 === Setmana 10
 
@@ -103,6 +220,13 @@ Temps Real ⇒ 2h
 ==== Oscar
 
 ==== Albert
+Crear orders
+Temps estimat => 10h 
+Temps Real => 16,25h -> continua encara
+
+Crear logInfo Marketify
+Temps estimat => 2h -> Total 2,5h
+Temps Real => 0,5h -> venia de la setmana anterior
 
 === Setmana 9
 
@@ -166,6 +290,10 @@ Temps estimat => 3h
 Temps real => 
 
 ==== Albert
+Crear logInfo Marketify
+Temps estimat => 2h 
+Temps Real => 2h -> continua encara
+
 Vista detall del producte
 Temps estimat => 5h -> Total 7,25h
 Temps Real => 2,5h -> venia de la setmana anterior
@@ -176,7 +304,7 @@ Temps Real => 2,5h
 
 Realitzar Comanda
 Temps estimat => 15h
-Temps Real => 1,75 -> conctinua encara
+Temps Real => 1,75 -> continua encara
 
 === Setmana 8
 

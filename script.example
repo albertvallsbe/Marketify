@@ -2,10 +2,10 @@
 # chmod +x /ruta/a/myscript.sh
 # ./myscript.sh
 
-cd /e/Repositoris/0.-Daw/2023/2023_ProjecteGrup/marketplace/vagrant
+cd /c/Users/Usuario/Desktop/CURS 20-21/marketplace-1/vagrant
 vagrant up
 
-cd /e/Repositoris/0.-Daw/2023/2023_ProjecteGrup/marketplace/site
+cd /c/Users/Usuario/Desktop/CURS 20-21/marketplace-1//site
 
 git pull
 php artisan queue:restart

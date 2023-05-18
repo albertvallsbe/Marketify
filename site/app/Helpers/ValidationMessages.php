@@ -2,10 +2,17 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Log;
+
 class ValidationMessages
 {
+    /**
+     * Mensajes de validación.
+     */
     public static function productValidationMessages()
     {
+        Log::channel('marketify')->info('message from: productValidationMessages() ');
+
         return [
             'product_name.required' => 'The name field is required.',
             'product_name.string' => 'The name field must be a string.',
@@ -24,8 +31,13 @@ class ValidationMessages
         ];
     }
 
+    /**
+     * Mensajes de validación de usuarios
+     */
     public static function userValidationMessages()
     {
+        Log::channel('marketify')->info('message from: userValidationMessages() ');
+
         return [
             'email.required' => 'The email field is required.',
             'email.email' => 'The email must be a valid email address.',
@@ -57,9 +69,13 @@ class ValidationMessages
             'repeat-password.same' => 'The new password and repeat password do not match.',
         ];
     }
-
+    /**
+     * Mensajes de validación de la tienda.
+     */
     public static function shopValidationMessages()
     {
+        Log::channel('marketify')->info('message from: shopValidationMessages() ');
+
         return [
             'shopname.required' => 'The store name field is required.',
             'shopname.string' => 'The store name field must be a string.',

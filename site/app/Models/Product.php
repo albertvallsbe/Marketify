@@ -79,8 +79,29 @@ class Product extends Model
         ->where('products.status', '!=', 'sold')
         ->paginate(18);
     }
+    public static function getProducts($category,$limit){
+        return Product::query()
+                ->join('category_product', 'category_product.product_id', '=', 'products.id')
+                ->select('products.*')
+                ->where('category_product.category_id', '=', $category)
+                ->limit($limit)
+                ->get();
+    }
+    
+    public static function getIdProducts($id){
+        return self::query()
+        ->select('*')
+        ->where('id',"=", $id)
+        ->first();
+    }
+
     public function orderItem()
     {
     return $this->hasOne(OrderItem::class);
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class, 'shop_id');
     }
 }

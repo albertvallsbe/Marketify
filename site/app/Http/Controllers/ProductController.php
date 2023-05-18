@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductController extends Controller {
-    //Vista principal de los productos
+    /**
+     * Vista principal de los productos
+     */
     public function index(Request $request) {
         try {
             $header = new Header($request);
@@ -47,7 +49,7 @@ class ProductController extends Controller {
                 $notificationCount = 0;
             }
             setcookie("arrayCart",$arrayCart);
-            
+
             //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
             $usersShop = Shop::findShopUserID($userId);
             if($usersShop){
@@ -68,13 +70,15 @@ class ProductController extends Controller {
         }
     }
 
-    //Vista detalle del producto
+    /**
+     * Vista detalle del producto
+     */
     public function show($id) {
         try {
             $product = Product::findOrFail($id);
+            $productShop = $product->shop;
             $categories = Category::all();
-            $shopName = Shop::findShopName($product->shop_id);
-            
+
                 //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
                 $userId = auth()->id();
                 $usersShop = Shop::findShopUserID($userId);
@@ -83,14 +87,14 @@ class ProductController extends Controller {
                     if ($product->status != "hidden") {
                         $category_id = Category::findCategoryOfProduct($product->id);
                         $categoryName = Category::findCategoryName($category_id);
-                        
+
                         Log::channel('marketify')->info('product.show view loaded');
                         return view('product.show', [
                             'product' => $product,
                             'categories' => $categories,
                             'options_order' => HeaderVariables::$order_array,
-                            'shopname' => $shopName,
                             'shop' => $shop,
+                            'productShop' => $productShop,
                             'categoryname' => $categoryName
                         ]);
                     } else {
@@ -101,7 +105,7 @@ class ProductController extends Controller {
                     if ($product->status != "hidden" ||$product->shop_id == $shop->id) {
                         $category_id = Category::findCategoryOfProduct($product->id);
                         $categoryName = Category::findCategoryName($category_id);
-                        
+
                         Log::channel('marketify')->info('product.show view loaded');
                         return view('product.show', [
                             'product' => $product,
@@ -121,7 +125,9 @@ class ProductController extends Controller {
         }
     }
 
-    //Vista para creación de producto
+    /**
+     * Vista para creación de producto
+     */
     public function create() {
         try {
             $categories = Category::all();
@@ -136,7 +142,9 @@ class ProductController extends Controller {
         }
     }
 
-    //Función que trata petición POST para guardar un nuevo producto
+    /**
+     * Función que trata petición POST para guardar un nuevo producto
+     */
     public function store(Request $request) {
         try {
             $validatedData = $request->validate([
@@ -179,7 +187,9 @@ class ProductController extends Controller {
         }
     }
 
-    //Función que trata petición POST para actualizar un producto
+    /**
+     * Función que trata petición POST para actualizar un producto
+     */
     public function update(Request $request, $id) {
         try {
             $validatedData = $request->validate([
@@ -221,7 +231,9 @@ class ProductController extends Controller {
         }
     }
 
-    //Función que trata petición POST para borrar un producto
+    /**
+     * Función que trata petición POST para borrar un producto
+     */
     public function destroy($id) {
         try {
             $product = Product::find($id);
@@ -235,7 +247,9 @@ class ProductController extends Controller {
         }
     }
 
-    //Función que trata petición POST para esconder/mostrar un producto
+    /**
+     * Función que trata petición POST para esconder/mostrar un producto
+     */
     public function hide(Request $request, $id) {
         try {
             $product = Product::find($id);
@@ -255,12 +269,14 @@ class ProductController extends Controller {
         }
     }
 
-    //Vista para editar un producto
+    /**
+     * Vista para editar un producto
+     */
     public function edit($id) {
         try {
             $categories = Category::all();
             $product = Product::find($id);
-            
+
             Log::channel('marketify')->info('product.edit view loaded');
             return view('product.edit', [
                 'categories' => $categories,
@@ -273,7 +289,9 @@ class ProductController extends Controller {
         }
     }
 
-    //Vista para filtrar según la categoria seleccionada en la landing page
+    /**
+      * Vista para filtrar según la categoria seleccionada en la landing page
+     */
     public function filterCategory($id) {
         try {
             $userId = auth()->id();
