@@ -29,27 +29,24 @@ sudo apt-get install -y composer
 sudo composer create-project --prefer-dist laravel/laravel /home/marketify/site
 
 # Configurar Apache para Laravel
-sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null <<EOF
-<VirtualHost *:80>
-    ServerAdmin webmaster@localhost
-    DocumentRoot /home/marketify/site/public
+# sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null <<EOF
+# <VirtualHost *:80>
+#     ServerAdmin webmaster@localhost
+#     DocumentRoot /home/marketify/site/public
 
-    <Directory /home/marketify/site/public>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
+#     <Directory /home/marketify/site/public>
+#         Options Indexes FollowSymLinks
+#         AllowOverride All
+#         Require all granted
+#     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-EOF
+#     ErrorLog ${APACHE_LOG_DIR}/error.log
+#     CustomLog ${APACHE_LOG_DIR}/access.log combined
+# </VirtualHost>
+# EOF
 
 sudo a2enmod rewrite
 sudo service apache2 restart
-
-# sudo a2enmod php8.2
-# sudo service apache2 restart
 
 # Cambiar el propietario de los archivos y directorios de Laravel al usuario de Apache
 sudo chown -R www-data:www-data /home/marketify/site
@@ -85,3 +82,78 @@ sudo systemctl restart mariadb
 
 cd /home/marketify/site
 php artisan migrate:refresh --seed
+
+#CREAR CERTIFICADO PARA CONEXIÓN HTTPS
+
+# Habilitar el módulo SSL de Apache
+sudo a2enmod ssl
+
+# Reiniciar Apache para aplicar los cambios
+sudo systemctl restart apache2
+
+# Generar una clave privada de 2048 bits y guardarla en /etc/ssl/private/selfsigned.key
+sudo openssl genrsa -out /etc/ssl/private/selfsigned.key 2048
+
+#Generar una solicitud de firma de certificado (CSR) utilizando la clave privada generada anteriormente y guardarla en /etc/ssl/certs/selfsigned.csr
+sudo openssl req -new -key /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.csr \
+  -subj "/C=ES/ST=Barcelona/L=Terrassa/O=Marketify/CN=Marketify_Nicolau/emailAddress=info@marketify.es"
+
+# El certificado resultante se guardará en /etc/ssl/certs/selfsigned.crt
+sudo openssl x509 -req -days 365 -in /etc/ssl/certs/selfsigned.csr -signkey /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt
+
+# Establecer los permisos adecuados para la clave privada
+sudo chmod 600 /etc/ssl/private/selfsigned.key
+
+# Establecer los permisos adecuados para el certificado
+sudo chmod 644 /etc/ssl/certs/selfsigned.crt
+
+# Reiniciar Apache para cargar el certificado y la clave privada
+sudo systemctl restart apache2
+
+# Modificar la configuración del archivo default-ssl.conf para cambiar la ubicación del DocumentRoot
+sudo sed -i 's#DocumentRoot /var/www/html#DocumentRoot /home/marketify/site/public#' /etc/apache2/sites-available/default-ssl.conf
+
+# Habilitar el sitio SSL predeterminado
+sudo a2ensite default-ssl
+
+# Reiniciar Apache nuevamente para aplicar los cambios de configuración
+sudo systemctl restart apache2
+
+# Configurar el archivo 000-default.conf con el VirtualHost para el puerto 80 y 443, además de forzar la redirección a HTTPS
+sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null <<EOF
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /home/marketify/site/public
+
+    <Directory /home/marketify/site/public> 
+        Options Indexes FollowSymLinks      
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /home/marketify/site/public
+
+    <Directory /home/marketify/site/public> 
+        Options Indexes FollowSymLinks      
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/selfsigned.crt
+    SSLCertificateKeyFile /etc/ssl/private/selfsigned.key
+</VirtualHost>
+EOF
