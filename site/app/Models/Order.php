@@ -71,11 +71,13 @@ class Order extends Model
             ->orderBy('created_at', 'desc')
             ->get();
     }
-    public static function searchOrderByUser($id){
-        return self::query()
-        ->where('user_id','=',$id)
-        ->paginate(4);
+    public static function searchOrder($id, $shopID){
+        return Order::where(function ($query) use ($id, $shopID) {
+            $query->where('user_id', $id)
+                ->orWhere('shop_id', $shopID);
+        })->paginate(4);
     }
+    
     public static function catchIdShop($id){
         return self::query()
         ->select('shop_id')

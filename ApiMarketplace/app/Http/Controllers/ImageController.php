@@ -31,12 +31,13 @@ class ImageController extends Controller
     }
 
     public function insertImage(Request $request){
+
         Image::create([
             'name'=> $request['name'],
             'path'=> $request['path'],
             'product_id'=>$request['product_id'],
             'main'=>$request['main']
-        ]);
+        ]); 
     }
 
     public function deleteImage($id){

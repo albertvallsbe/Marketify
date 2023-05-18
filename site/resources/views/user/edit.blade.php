@@ -10,6 +10,9 @@
     <section class="card-logout">
     <a href="{{ route('user.logout') }}">Log out</a>
     </section>
+    <section class="card-historical">
+    <a href="{{ route('historical.index') }}">Your orders</a>
+    </section>
     <section class="main-edituser">
         <section class="card-style-edituser">
             <h3 class="card-style-edituser_title">Change your password</h3>

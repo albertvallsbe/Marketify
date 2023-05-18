@@ -1,7 +1,8 @@
 .main-edituser {
     @include threeColumnsMode;
 }
-.card-logout {
+.card-logout,
+.card-historical {
     @include cardStyle;
     width: fit-content;
     margin-top: 0;
