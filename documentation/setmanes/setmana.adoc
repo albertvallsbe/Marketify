@@ -1,3 +1,47 @@
+
+=== Setmana 13
+
+==== David
+Comprovar l'estat del producto abans de comprar (en la vista del carret, vista de l'ordre i al presionar le botó de comprar)
+Temps estimat ⇒ 2h
+Temps Real ⇒ 4h
+
+Controlar errors al crear noves ordres:
+Temps estimat ⇒ 2h
+Temps Real ⇒ 1h
+
+Afegir LOGs als següents controladors: Cart, Chat, Order, Product i Shop
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Esborrar codi mort, codi de test i comentar funcions
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1h
+
+Solucionar error de notificacions, error de paginació
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Posibilitat de marcar com fallida una ordre, tornar a posar a la venta els productes
+Temps estimat ⇒ 3h
+Temps Real ⇒ 2h
+
+Modificar consulta per modificar el 'display' dels productes
+Temps estimat ⇒ 1h
+Temps Real ⇒ 2h
+
+Modificar el vagrant per incluir el projecte laravel a la ip 172.16.50.50 (connexió HTTP)
+Temps estimat ⇒ 6h
+Temps Real ⇒ 4h
+
+Permetre Connexió HTTPS i redirecció desde HTTP 
+Temps estimat ⇒ 3h
+Temps Real ⇒ 5h
+
+==== Oscar
+
+==== Albert
+
 === Setmana 12
 
 ==== David
@@ -32,8 +76,8 @@ Temps Real ⇒ 5h
 Afegir LOGs a Cart, Chat, Order, Product i Shop Controllers
 Temps estimat ⇒ 1h
 Temps Real ⇒ 1h
-==== Oscar
 
+==== Oscar
 Poner los mensajes de Log Info en diferentes páginas
 Temps estimat ⇒ 1h
 Temps Real ⇒ 1:30h
