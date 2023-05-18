@@ -23,7 +23,6 @@ use App\Http\Controllers\HistoricController;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
-Route::get('/landing', [LandingController::class, 'index'])->name('landing.index');
 
 Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 Route::post('/order', [OrderController::class, 'add'])->name('order.add');
@@ -31,18 +30,13 @@ Route::get('/order/failed', [OrderController::class, 'error'])->name('order.erro
 
 Route::get('/search', [ProductController::class,'index'])->name('product.index');
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');
-// Route::get('/products', [RegisterController::class, 'index'])->name('products.index');
 
-// Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-// Route::post('/product', [ProductController::class, 'store'])->name('products');
 Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
-// Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::put('/product/edit/{id}', [ProductController::class, 'update'])->name('product.update');
 Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
 Route::post('/product/hide/{id}', [ProductController::class, 'hide'])->name('product.hide');
-
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
