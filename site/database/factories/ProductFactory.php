@@ -29,29 +29,34 @@ class ProductFactory extends Factory
             'name' => $name,
             'description' => $faker->sentence(20),
             'tag' => $faker->name(),
-            'image' =>  "images/products/" . rand(1, 4) . ".jpg",
             'price' => $faker->numberBetween(10, 6000),
             'shop_id' => $faker->randomElement($shops),
             'status' => 'active'
         ];
     }
 
-    // public function configure()
-    // {
-    //     return $this->afterCreating(function (Product $product) {
-    //         // URL de la API
-    //         $url = 'http://localhost:8080/api/insert';
+    public function configure()
+    {
+        return $this->afterCreating(function (Product $product) {
 
-    //         // Crear instancia de Guzzle HTTP Client
-    //         $client = new Client();
+            $client = new Client();
 
-    //         // Realizar petición HTTP GET a la API
-    //         $response = $client->post($url);
+            $main = true;
+            for ($i=0; $i < 4; $i++) { 
 
-    //         // Obtener el contenido de la respuesta
-    //         $contenido = $response->getBody()->getContents();
+                $client->post('http://localhost:8080/api/insert', [
+                    'json' => [
+                        'name' => $product->name,
+                        'path' => "images/products/" . rand(1, 4) . ".jpg",
+                        'product_id' => $product->id,
+                        'main' => $main,
+                    ]
 
-    //         return $contenido;
-    //     });
-    // }
+                ]);
+                $main = false;    
+                
+            }           
+            
+        });
+    }
 }
