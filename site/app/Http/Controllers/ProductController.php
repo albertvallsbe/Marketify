@@ -160,16 +160,19 @@ class ProductController extends Controller {
                 // 'image' => $imagePath ?? 'images/products/default-product.png',
             ]);
 
-            
-            $client->post('http://localhost:8080/api/insert', [
-                'json' => [
-                    'name' => $name,
-                    'path' => $imagePath,
-                    'product_id' => 1,
-                    'main' => true,
-                ]
+            /** 
+             * FUNCIONALIDAD POR TERMINAR(SUBIR UNA IMAGEN A LA API AL CREAR EL PRODUCTO )
+            */
 
-            ]);
+            // $client->post('http://localhost:8080/api/insert', [
+            //     'json' => [
+            //         'name' => $name,
+            //         'path' => $imagePath,
+            //         'product_id' => 1,
+            //         'main' => true,
+            //     ]
+
+            // ]);
 
             Log::channel('marketify')->info("Product #$product->id created succesfully");
             $category_product = Category_product::create([
