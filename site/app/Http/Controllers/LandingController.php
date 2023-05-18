@@ -13,6 +13,9 @@ use App\Models\Order;
 
 class LandingController extends Controller
 {
+    /**
+     * Controlador de la pagina principal
+     */
     public function index()
     {
         try {
@@ -27,12 +30,7 @@ class LandingController extends Controller
                 foreach($data as $key => $category) {
                     $activeTags[$key]['name'] = self::getCategories($category['category']);
                     $activeTags[$key]['products'] = self::getProducts($category['category'],$category['amount']);
-                    // array_push($activeTags, $tag['tag']);
                 }
-
-                //  dd($activeTags[0]['products'][0]['tag']);
-                // dd($activeTags[0]);
-                // Mostramos el contenido del array
 
                 Log::channel('marketify')->info('The home view has been loaded successfully.');
 
@@ -46,8 +44,12 @@ class LandingController extends Controller
                 return redirect()->back()->with('error', 'An error occurred while loading the home view.');
             }
 
-        
+
     }
+
+    /**
+     * Obtener productos para la landing page.
+     */
     public function getProducts($category, $limit)
     {
         try {
@@ -60,6 +62,10 @@ class LandingController extends Controller
             return redirect()->back()->with('error', 'An error occurred while loading getProducts() ');
         }
     }
+
+    /**
+     * Obtener las categorias para la pagina principal
+     */
     public function getCategories($id)
     {
         try {

@@ -568,7 +568,7 @@ footer .footer__logo {
   cursor: not-allowed !important;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 750px) {
   .products-cart {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-content: center;
@@ -1753,6 +1753,71 @@ footer .footer__logo {
     justify-content: center;
   }
 }
+.main-orders {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+}
+
+.orders-card {
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 1.5rem;
+  display: grid;
+  min-height: min-content;
+  height: min-content;
+  justify-items: center;
+}
+.orders-card .card-style-orders .card-seller {
+  color: #1f1f1f;
+  background-color: #fbfbfd;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 2px;
+  margin: 2%;
+  padding: 2%;
+  gap: 1.5rem;
+  min-width: 90vw;
+  text-decoration: none;
+}
+.orders-card .card-style-orders .card-seller .card-items-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+.orders-card .card-style-orders .card-seller .card-items-list .align-text {
+  text-align: left;
+  justify-self: flex-start;
+}
+.orders-card .general-button_order {
+  border-radius: 12px;
+  color: #1f1f1f;
+  background-color: #ff5208;
+  border: 3px #ff5208 solid;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: medium;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+  max-height: 2.5rem;
+  margin: 2%;
+  padding: 2%;
+  background-color: #638a5c;
+  border-color: #638a5c;
+  max-height: 3.5rem;
+}
+.orders-card .general-button_order:hover {
+  background-color: #ff9680;
+  border: 3px #ff9680 solid;
+}
+.orders-card .general-button_order:hover {
+  background-color: #b3ffbd;
+  border-color: #b3ffbd;
+}
+
 .chat_container {
   display: flex;
   max-height: 400px;
