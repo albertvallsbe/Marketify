@@ -10,54 +10,73 @@ include::setmanes/setmana.adoc[]
 == Disseny base de dades
 
 == Usuaris
+// Albert
 include::documentacio/users.adoc[]
 
 == Productes
+// Oscar
 include::documentacio/products.adoc[]
 
 == Busqueda i filtre
+// Oscar
 include::documentacio/search.adoc[]
 
 == Carret
-include::documentacio/cart.adoc[]
+// David
+include::documentacio/cart.adoc[] 
 
 == Shops
-include::documentacio/shop.adoc[]
+// David
+include::documentacio/shop.adoc[] 
 
 == Realitzar comanda
+// Albert
 include::documentacio/order.adoc[]
 
 == Missatgeria Interna
-include::documentacio/chat.adoc[]
+// David
+include::documentacio/chat.adoc[] 
 
 == Flux de compra
+// David
 include::documentacio/flow.adoc[]
 
 == Pàgina històric de comandes
+// Oscar
 include::documentacio/history.adoc[]
 
 == API d'imatges
+// Oscar
 include::documentacio/api.adoc[]
 
 == Entorns de desplegament
+// Albert
 include::documentacio/environment.adoc[]
 
 == Pàgines d'error personalitzat
-include::documentacio/errors.adoc[]
+// David
+include::documentacio/errors.adoc[] 
 
 == Mockup d'interficies
+// image::Recursos Memoria/BDD.png[align="center"]
 include::documentacio/mockups.adoc[]
 
 == Guía d'estils
+//Albert
 include::estils/Estils.adoc[]
 
 == Confecció del manual d’instal·lació/distribució de l’aplicació.
+// David
 
 == Confecció del manual d’usuari.
+// Albert
 
 == Línies futures
+// Oscar
 
 == Conclusions. Desviacions en la planificació. Aportacions del projecte als coneixements de l’alumne.
+// Oscar
+
 
 == Glossari. Webgrafia. Altres recursos de consulta.
 
