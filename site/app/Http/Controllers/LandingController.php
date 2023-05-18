@@ -26,6 +26,7 @@ class LandingController extends Controller
                 $activeTags = array();
                 foreach($data as $key => $category) {
                     $activeTags[$key]['name'] = self::getCategories($category['category']);
+                    
                     $activeTags[$key]['products'] = self::getProducts($category['category'],$category['amount']);
                     // array_push($activeTags, $tag['tag']);
                 }

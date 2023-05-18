@@ -24,10 +24,14 @@ class HistoricControllerk extends Controller
         $id = auth()->user()->id;
 
         $orders = Order::searchOrderByUser($id);
-
+        
+        // $idShop = Order::catchIdShop($id);
+        // $shop = Shop::findOrFail($idShop);
+        // dd($shop);
         return view('order.historic', [
             'categories' => $categories,
-            'orders' => $orders,
+            'orders' => $orders,    
+            // 'shop'=> $shop,
             'options_order' => HeaderVariables::$order_array,
         ]);
     }
@@ -71,8 +75,8 @@ class HistoricControllerk extends Controller
         ]);
     }
 
-    public function downloadFile(Request $request,$id)
-    {   
+    public function downloadFile(Request $request, $id)
+    {
         $categories = Category::all();
         $order = Order::findOrFail($id);
         // COJO EL ID DEL PRODUCTO EN LA TABLA ORDER_ITEMS
@@ -82,6 +86,8 @@ class HistoricControllerk extends Controller
         // FILTRO CON ESE ID EN LA TABLA DE PRODUCTS Y CONSIGO DICHOS PRODUCTOS
         $arrayOrder = [];
         $products = [];
+        $prices = [];
+        $total = 0;
 
         if ($orders->count() > 1) {
             // SI HAY MÁS DE 1 REGISTRO DEVUELVE UN ARRAY DE PRODUCTOS   
@@ -90,7 +96,12 @@ class HistoricControllerk extends Controller
             }
             foreach ($arrayOrder as $idProduct) {
                 $product = Product::getIdProducts($idProduct);
+                $price = Product::getPrice($idProduct);
                 array_push($products, $product);
+                array_push($prices, $price->price);
+            }
+            foreach ($prices as $price) {
+                $total += $price;
             }
         } else {
             // SI HAY 1 REGISTRO DEVUELVE EL PRODUCTO
@@ -100,15 +111,17 @@ class HistoricControllerk extends Controller
         // FILTRO POR EL SHOP_ID EN LA TABLA DE SHOPS Y DEVUELVO LA TIENDA
         $idShop = Order::catchIdShop($id);
         $shop = Shop::findOrFail($idShop);
+
         if ($request->has('btn-download')) {
 
             // CREO UNA INSTANCIA DEL DOMPDF
             $pdf = new Dompdf();
             // CARGO LA VISTA 
-            $contenido = View::make('order.pdf ',[
+            $contenido = View::make('order.pdf ', [
                 'order' => $order,
                 'products' => $products,
-                'shop' => $shop,
+                'total' => $total,
+                'shop' => $shop
             ])->render();
             // GENERO EL CONTENIDO DEL PDF
             $pdf->loadHtml($contenido);
@@ -117,7 +130,7 @@ class HistoricControllerk extends Controller
             $pdf->render();
 
             // DESCARGO EL ARCHIVO PDF EN EL NAVEGADOR DEL USUARIO
-            return $pdf->stream('order '.$order->id.' pdf');
+            return $pdf->stream('order ' . $order->id . ' pdf');
         }
     }
 }

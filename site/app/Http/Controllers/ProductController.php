@@ -15,12 +15,15 @@ use App\Models\Category_Product;
 use App\Helpers\ValidationMessages;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProductController extends Controller {
+class ProductController extends Controller
+{
     //Vista principal de los productos
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         try {
             $header = new Header($request);
 
@@ -46,13 +49,13 @@ class ProductController extends Controller {
                 $arrayCart = "[]";
                 $notificationCount = 0;
             }
-            setcookie("arrayCart",$arrayCart);
-            
+            setcookie("arrayCart", $arrayCart);
+
             //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
             $usersShop = Shop::findShopUserID($userId);
-            if($usersShop){
+            if ($usersShop) {
                 $shop = Shop::findOrFail($usersShop);
-            }else{
+            } else {
                 $shop = 0;
             }
             Log::channel('marketify')->info('product.index view loaded');
@@ -61,68 +64,71 @@ class ProductController extends Controller {
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
                 'shop' => $shop,
-                'notificationCount' => $notificationCount]);
+                'notificationCount' => $notificationCount
+            ]);
         } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred showing product view: '.$e->getMessage());
+            Log::channel('marketify')->error('An error occurred showing product view: ' . $e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
         }
     }
 
     //Vista detalle del producto
-    public function show($id) {
+    public function show($id)
+    {
         try {
             $product = Product::findOrFail($id);
             $categories = Category::all();
             $shopName = Shop::findShopName($product->shop_id);
-            
-                //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
-                $userId = auth()->id();
-                $usersShop = Shop::findShopUserID($userId);
-                if(!$usersShop){
-                    $shop = 0;
-                    if ($product->status != "hidden") {
-                        $category_id = Category::findCategoryOfProduct($product->id);
-                        $categoryName = Category::findCategoryName($category_id);
-                        
-                        Log::channel('marketify')->info('product.show view loaded');
-                        return view('product.show', [
-                            'product' => $product,
-                            'categories' => $categories,
-                            'options_order' => HeaderVariables::$order_array,
-                            'shopname' => $shopName,
-                            'shop' => $shop,
-                            'categoryname' => $categoryName
-                        ]);
-                    } else {
-                        return redirect()->route('product.index');
-                    }
-                }else{
-                    $shop = Shop::findOrFail($usersShop);
-                    if ($product->status != "hidden" ||$product->shop_id == $shop->id) {
-                        $category_id = Category::findCategoryOfProduct($product->id);
-                        $categoryName = Category::findCategoryName($category_id);
-                        
-                        Log::channel('marketify')->info('product.show view loaded');
-                        return view('product.show', [
-                            'product' => $product,
-                            'categories' => $categories,
-                            'options_order' => HeaderVariables::$order_array,
-                            'shopname' => $shopName,
-                            'shop' => $shop,
-                            'categoryname' => $categoryName
-                        ]);
-                    } else {
-                        return redirect()->route('product.index');
-                    }
+
+            //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
+            $userId = auth()->id();
+            $usersShop = Shop::findShopUserID($userId);
+            if (!$usersShop) {
+                $shop = 0;
+                if ($product->status != "hidden") {
+                    $category_id = Category::findCategoryOfProduct($product->id);
+                    $categoryName = Category::findCategoryName($category_id);
+
+                    Log::channel('marketify')->info('product.show view loaded');
+                    return view('product.show', [
+                        'product' => $product,
+                        'categories' => $categories,
+                        'options_order' => HeaderVariables::$order_array,
+                        'shopname' => $shopName,
+                        'shop' => $shop,
+                        'categoryname' => $categoryName
+                    ]);
+                } else {
+                    return redirect()->route('product.index');
                 }
-                } catch (ModelNotFoundException $e) {
-                    Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
+            } else {
+                $shop = Shop::findOrFail($usersShop);
+                if ($product->status != "hidden" || $product->shop_id == $shop->id) {
+                    $category_id = Category::findCategoryOfProduct($product->id);
+                    $categoryName = Category::findCategoryName($category_id);
+
+                    Log::channel('marketify')->info('product.show view loaded');
+                    return view('product.show', [
+                        'product' => $product,
+                        'categories' => $categories,
+                        'options_order' => HeaderVariables::$order_array,
+                        'shopname' => $shopName,
+                        'shop' => $shop,
+                        'categoryname' => $categoryName
+                    ]);
+                } else {
+                    return redirect()->route('product.index');
+                }
+            }
+        } catch (ModelNotFoundException $e) {
+            Log::channel('marketify')->error('An error occurred showing product show view: ' . $e->getMessage());
             return redirect()->route('product.404');
         }
     }
 
     //Vista para creación de producto
-    public function create() {
+    public function create()
+    {
         try {
             $categories = Category::all();
             Log::channel('marketify')->info('product.create view loaded');
@@ -131,13 +137,70 @@ class ProductController extends Controller {
                 'options_order' => HeaderVariables::$order_array
             ]);
         } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred showing product create view: '.$e->getMessage());
+            Log::channel('marketify')->error('An error occurred showing product create view: ' . $e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
         }
     }
 
     //Función que trata petición POST para guardar un nuevo producto
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'product_name' => 'required|string|max:255',
+                'product_description' => 'required|string',
+                'product_price' => 'required|numeric|min:0',
+                'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'product_tag' => 'nullable|string',
+                'product_category' => 'required|exists:categories,id',
+            ], ValidationMessages::productValidationMessages());
+
+            $client = new Client();
+            if ($request->hasFile('product_image')) {
+                $image = $validatedData['product_image'];
+
+                $name = uniqid('product_') . '.' . $image->extension();
+                $path = 'images/products/';
+                $image->move($path, $name);
+                $imagePath = $path . $name;
+            }
+            dd($imagePath);
+            $id = Auth::user()->id;
+            $shopID = Shop::findShopUserID($id);
+            $product = Product::create([
+                'name' => $validatedData['product_name'],
+                'description' => $validatedData['product_description'],
+                'price' => $validatedData['product_price'],
+                'tag' => $validatedData['product_tag'],
+                'shop_id' => $shopID,
+                // 'image' => $imagePath ?? 'images/products/default-product.png',
+            ]);
+
+            
+            $client->post('http://localhost:8080/api/insert', [
+                'json' => [
+                    'name' => $name,
+                    'path' => $imagePath,
+                    'product_id' => 1,
+                    'main' => true,
+                ]
+
+            ]);
+
+            Log::channel('marketify')->info("Product #$product->id created succesfully");
+            $category_product = Category_product::create([
+                'product_id' => $product->id,
+                'category_id' => $validatedData['product_category'],
+            ]);
+            return redirect()->route('shop.admin');
+        } catch (\Exception $e) {
+            Log::channel('marketify')->error('An error occurred creating a new product: ' . $e->getMessage());
+        }
+    }
+
+    //Función que trata petición POST para actualizar un producto
+    public function update(Request $request, $id)
+    {
         try {
             $validatedData = $request->validate([
                 'product_name' => 'required|string|max:255',
@@ -156,50 +219,7 @@ class ProductController extends Controller {
                 $image->move($path, $name);
                 $imagePath = $path . $name;
             }
-
-                $id = Auth::user()->id;
-                $shopID = Shop::findShopUserID($id);
-                $product = Product::create([
-                'name' => $validatedData['product_name'],
-                'description' => $validatedData['product_description'],
-                'price' => $validatedData['product_price'],
-                'tag' => $validatedData['product_tag'],
-                'shop_id' => $shopID,
-                'image' => $imagePath ?? 'images/products/default-product.png',
-            ]);
-
-            Log::channel('marketify')->info("Product #$product->id created succesfully");
-            $category_product = Category_product::create([
-            'product_id' => $product->id,
-            'category_id' => $validatedData['product_category'],
-            ]);
-            return redirect()->route('shop.admin');
-        } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred creating a new product: '.$e->getMessage());
-        }
-    }
-
-    //Función que trata petición POST para actualizar un producto
-    public function update(Request $request, $id) {
-        try {
-            $validatedData = $request->validate([
-            'product_name' => 'required|string|max:255',
-            'product_description' => 'required|string',
-            'product_price' => 'required|numeric|min:0',
-            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'product_tag' => 'nullable|string',
-            'product_category' => 'required|exists:categories,id',
-        ], ValidationMessages::productValidationMessages());
-
-        if ($request->hasFile('product_image')) {
-            $image = $validatedData['product_image'];
-
-            $name = uniqid('product_') . '.' . $image->extension();
-            $path = 'images/products/';
-            $image->move($path, $name);
-            $imagePath = $path . $name;
-        }
-        $product=Product::findOrFail($id);
+            $product = Product::findOrFail($id);
 
             $product->update([
                 'name' => $validatedData['product_name'],
@@ -217,26 +237,31 @@ class ProductController extends Controller {
             session()->flash('status', "Product '$product->name' edited successfully.");
             return redirect()->route('shop.admin');
         } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred updating an existing product: '.$e->getMessage());
+            Log::channel('marketify')->error('An error occurred updating an existing product: ' . $e->getMessage());
         }
     }
 
     //Función que trata petición POST para borrar un producto
-    public function destroy($id) {
+    public function destroy($id)
+    {
         try {
             $product = Product::find($id);
             $product->delete();
+
+            $client = new Client();
+            $client->post('http://localhost:8080/api/delete/product' . $id);
 
             Log::channel('marketify')->info("Product #$product->id deleted succesfully");
             session()->flash('status', "Product '$product->name' deleted successfully.");
             return redirect()->route('shop.admin');
         } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred deleting an existing product: '.$e->getMessage());
+            Log::channel('marketify')->error('An error occurred deleting an existing product: ' . $e->getMessage());
         }
     }
 
     //Función que trata petición POST para esconder/mostrar un producto
-    public function hide(Request $request, $id) {
+    public function hide(Request $request, $id)
+    {
         try {
             $product = Product::find($id);
             if ($product->status == 'hidden') {
@@ -251,16 +276,17 @@ class ProductController extends Controller {
             $product->save();
             return redirect()->route('shop.admin');
         } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred hidding an existing product: '.$e->getMessage());
+            Log::channel('marketify')->error('An error occurred hidding an existing product: ' . $e->getMessage());
         }
     }
 
     //Vista para editar un producto
-    public function edit($id) {
+    public function edit($id)
+    {
         try {
             $categories = Category::all();
             $product = Product::find($id);
-            
+
             Log::channel('marketify')->info('product.edit view loaded');
             return view('product.edit', [
                 'categories' => $categories,
@@ -268,13 +294,14 @@ class ProductController extends Controller {
                 'product' => $product
             ]);
         } catch (\Exception $e) {
-            Log::channel('marketify')->error('An error occurred showing product edit view: '.$e->getMessage());
+            Log::channel('marketify')->error('An error occurred showing product edit view: ' . $e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
         }
     }
 
     //Vista para filtrar según la categoria seleccionada en la landing page
-    public function filterCategory($id) {
+    public function filterCategory($id)
+    {
         try {
             $userId = auth()->id();
             if ($userId) {
@@ -282,12 +309,12 @@ class ProductController extends Controller {
             } else {
                 $arrayCart = "[]";
             }
-            setcookie("arrayCart",$arrayCart);
+            setcookie("arrayCart", $arrayCart);
 
             $usersShop = Shop::findShopUserID($userId);
-            if($usersShop){
+            if ($usersShop) {
                 $shop = Shop::findOrFail($usersShop);
-            }else{
+            } else {
                 $shop = 0;
             }
             $categories = Category::all();
@@ -301,8 +328,8 @@ class ProductController extends Controller {
                 'shop' => $shop
             ]);
         } catch (\Exception $e) {
-        Log::channel('marketify')->error('An error occurred showing product index with filter view: '.$e->getMessage());
-        return redirect()->back()->with('error', 'An error occurred.');
+            Log::channel('marketify')->error('An error occurred showing product index with filter view: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred.');
         }
     }
 }
