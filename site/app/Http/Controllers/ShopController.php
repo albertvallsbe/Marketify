@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class ShopController extends Controller {
     //Vista principal de la tienda
     public function index() {
-        try {  
+        try {
             $categories = Category::all();
             Log::channel('marketify')->info('shop.index view loaded');
             return view('shop.index',['categories' => $categories,
@@ -43,7 +43,7 @@ class ShopController extends Controller {
             }
             $header_color = Shop::findHeaderShopColor($shop->id);
             $background_color = Shop::findBackGroundShopColor($shop->id);
-            
+
             Log::channel('marketify')->info('shop.show view loaded');
                 return view('shop.show', ['shop' => $shop,
                 'categories' => $categories,
@@ -71,7 +71,7 @@ class ShopController extends Controller {
 
                     $header_color = Shop::findHeaderShopColor($shopID);
                     $background_color = Shop::findBackGroundShopColor($shop->id);
-                    
+
                     Log::channel('marketify')->info('shop.admin view loaded');
                     return view('shop.admin', [
                         'products' => $products,
@@ -92,7 +92,7 @@ class ShopController extends Controller {
         } catch (ModelNotFoundException $e) {
             Log::channel('marketify')->error('An error occurred showing admin shop view: '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
-        }            
+        }
     }
 
     //Petición post de creación de tienda
@@ -134,11 +134,11 @@ class ShopController extends Controller {
                 'background_color' => $background_color
             ]);
             Shop::makeUsercustomer($id);
-            Log::channel('marketify')->info("Shop #$shop->id has been created");
+            Log::channel('marketify')->info("Shop has been created");
             return redirect()->route('shop.admin');
         } catch (ModelNotFoundException $e) {
             Log::channel('marketify')->error('An error occurred creatig a shop: '.$e->getMessage());
-        }               
+        }
     }
 
     //Vista para editar tienda
@@ -163,7 +163,7 @@ class ShopController extends Controller {
         } catch (ModelNotFoundException $e) {
             Log::channel('marketify')->error('An error occurred showing edit shop: '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
-        }  
+        }
     }
 
 
@@ -217,15 +217,15 @@ class ShopController extends Controller {
                     'order' => $validatedData['order'],
                     'background_color' => $validatedData['background_color'],
                 ]);
-                
+
                 Log::channel('marketify')->info("Shop #$shop->id has been updated");
                 session()->flash('status', "Shop edited successfully.");
                 return redirect()->route('shop.admin');
             } catch (ModelNotFoundException $e) {
                 return redirect()->route('shop.index');
-            }    
+            }
         } catch (ModelNotFoundException $e) {
             Log::channel('marketify')->error('An error occurred with edit shop: '.$e->getMessage());
-        } 
+        }
     }
 }

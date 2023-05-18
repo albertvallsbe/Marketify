@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 
-class HistoricControllerk extends Controller
+class HistoricController extends Controller
 {
     /**
      * Retorna historic de compres de l'usuari

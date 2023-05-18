@@ -30,12 +30,3 @@
     </section>
     <script type="module" src="{{ asset('js/pages/product_show.js') }}"></script>
 @endsection
-
-{{--
-
-$array=[];
-
-
-@foreach ($array as $id)
-    getProducts($id);
-@endforeach --}}
