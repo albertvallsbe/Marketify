@@ -15,7 +15,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\chatController;
-use App\Http\Controllers\HistoricControllerk;
+use App\Http\Controllers\HistoricController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +91,6 @@ Route::post('/message-send/{id}', [ChatController::class, 'messageSend'])->name(
 Route::post('/confirmSeller/{chatId}/{orderId}', [ChatController::class, 'confirmSeller'])->name('chat.confirmSeller');
 
 
-Route::get('/historical', [HistoricControllerk::class, 'index'])->name('historical.index');
-Route::get('/historical/{id}', [HistoricControllerk::class, 'details'])->name('historical.details');
-Route::post('/historical/{id}', [HistoricControllerk::class, 'downloadFile'])->name('historical.downloadFile'); 
+Route::get('/historical', [HistoricController::class, 'index'])->name('historical.index');
+Route::get('/historical/{id}', [HistoricController::class, 'details'])->name('historical.details');
+Route::post('/historical/{id}', [HistoricController::class, 'downloadFile'])->name('historical.downloadFile');

@@ -10,19 +10,27 @@
                 <div class="product card-style-orders">
 
                     @foreach ($productsByShop as $key => $shopByProduct)
-                        <h2>{{ $shopName[$key] }}</h2>
-                        <ul>
-                            @foreach ($shopByProduct as $productOrder)
-                                <li>{{ $productOrder->name }}, {{ $productOrder->price }} €</li>
-                                @php
-                                    if ($productOrder->status != 'active') {
-                                        $productError = true;
-                                    } else {
-                                        $productError = false;
-                                    }
-                                @endphp
-                            @endforeach
-                        </ul>
+                        <div class="card-seller">
+                            <h2>{{ $shopName[$key] }}</h2>
+                                @foreach ($shopByProduct as $productOrder)
+                                    <div class="card-items-list">
+                                        <div class="align-text">
+                                            {{  $productOrder->name }},
+                                        </div>
+                                        <div>
+                                            {{ $productOrder->price }}€
+                                        </div>
+                                    </div>
+                                    @php
+                                        if ($productOrder->status != 'active') {
+                                            $productError = true;
+                                        } else {
+                                            $productError = false;
+                                        }
+                                    @endphp
+                                @endforeach
+                            </ul>
+                        </div>
                     @endforeach
                 </div>
                 <div class="btns-cart">

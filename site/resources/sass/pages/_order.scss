@@ -3,23 +3,48 @@
 }
 
 .orders-card {
-    @include cardStyle;
-    @include miniCardStyle;
+    // @include cardStyle;
+    // @include miniCardStyle;
 
-    grid-template-rows: 30vh 1fr;
     grid-row-gap: $size-medium;
     grid-column-gap: $size-medium;
     display: grid;
-    min-width: 90vw;
-    min-height: 30vh;
-    height: max-content;
+    min-height: min-content;
+    height: min-content;
+    justify-items: center;
+
+    .card-style-orders {
+        .card-seller {
+            @include cardStyle;
+            @include marginPadding2;
+
+            gap: $size-medium;
+            min-width: 90vw;
+            text-decoration: none;
+
+            .card-items-list {
+                @include twoColumnsMode;
+
+                display: grid;
+                justify-items: center;
+                // justify-content: flex-start;
+
+                .align-text {
+                    text-align: left;
+                    justify-self: flex-start;
+                }
+            }
+        }
+    }
 
     .general-button {
-        @include mediumButton;
-
         &_order {
+            @include mediumButton;
+            @include marginPadding2;
+
             background-color: $succes-dark;
             border-color: $succes-dark;
+            max-height: $size-biggest;
 
             &:hover {
                 background-color: $succes-light;

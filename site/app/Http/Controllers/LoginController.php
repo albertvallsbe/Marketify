@@ -16,7 +16,9 @@ use App\Helpers\ValidationMessages;
 class LoginController extends Controller
 {
 
-
+    /**
+     * Control del login de usuario
+     */
     public function index()
     {
         try {
@@ -33,6 +35,9 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * Login de usuario
+     */
     public function login(Request $request)
     {
 
@@ -68,11 +73,17 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * Control del password
+     */
     public function password()
     {
         return view('login.password');
     }
 
+    /**
+     * Remember del password de usuario
+     */
     public function remember(Request $request)
     {
         try {
@@ -93,21 +104,20 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * Vista de recordar password
+     */
     public function rememberView()
     {
         return view('login.newPassword');
     }
 
+    /**
+     * Recordar el password olvidado
+     */
     public function rememberpassw(Request $request)
     {
-       
-        // $validatedData = $request->validate([
-        //     'email' => 'required|string|email1|max:255|unique:users',
-        //     'remember-password' => 'required|string|min:8|max:255|same:remember-password',
-        //     'repeat-password' => 'required|string|min:8|max:255|same:repeat-password',
-        // ], ValidationMessages::userValidationMessages());
 
-        
         $email = $request['email1'];
         $password = $request['remember-password'];
         $repeatpassword = $request['repeat-password'];
@@ -115,12 +125,12 @@ class LoginController extends Controller
         $value = $email;
         $id_user = User::catchId($value);
         // dd($id_user);
-        
+
         if ($password == $repeatpassword) {
-            
+
             $users = User::updatePassword($id_user, $password);
             $users->save();
-           
+
             return redirect(route('login.index'));
         } else {
             session()->flash('status', 'Passwords do not match.');

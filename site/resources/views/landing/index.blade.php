@@ -12,10 +12,10 @@
         </a>
         <div class="container-products">
             <div class="container-product">
-                <h2 class="title-product">producto</h2>
+                <h2 class="title-product">Product</h2>
             </div>
             <div class="container-product2">
-                <h2 class="title-product">producto</h2>
+                <h2 class="title-product">Product</h2>
             </div>
         </div>
         @foreach ($activeTags as $tag)

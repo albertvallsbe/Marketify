@@ -19,11 +19,11 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProductController extends Controller
-{
-    //Vista principal de los productos
-    public function index(Request $request)
-    {
+class ProductController extends Controller {
+    /**
+     * Vista principal de los productos
+     */
+    public function index(Request $request) {
         try {
             $header = new Header($request);
 
@@ -72,63 +72,47 @@ class ProductController extends Controller
         }
     }
 
-    //Vista detalle del producto
-    public function show($id)
-    {
+    /**
+     * Vista detalle del producto
+     */
+    public function show($id) {
         try {
             $product = Product::findOrFail($id);
+            $productShop = $product->shop;
             $categories = Category::all();
-            $shopName = Shop::findShopName($product->shop_id);
 
-            //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
-            $userId = auth()->id();
-            $usersShop = Shop::findShopUserID($userId);
-            if (!$usersShop) {
-                $shop = 0;
-                if ($product->status != "hidden") {
-                    $category_id = Category::findCategoryOfProduct($product->id);
-                    $categoryName = Category::findCategoryName($category_id);
+                //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
+                $userId = auth()->id();
+                $usersShop = Shop::findShopUserID($userId);
+                if(!$usersShop){
+                    $shop = 0;
+                    if ($product->status != "hidden") {
+                        $category_id = Category::findCategoryOfProduct($product->id);
+                        $categoryName = Category::findCategoryName($category_id);
 
-                    Log::channel('marketify')->info('product.show view loaded');
-                    return view('product.show', [
-                        'product' => $product,
-                        'categories' => $categories,
-                        'options_order' => HeaderVariables::$order_array,
-                        'shopname' => $shopName,
-                        'shop' => $shop,
-                        'categoryname' => $categoryName
-                    ]);
-                } else {
-                    return redirect()->route('product.index');
+                        Log::channel('marketify')->info('product.show view loaded');
+                        return view('product.show', [
+                            'product' => $product,
+                            'categories' => $categories,
+                            'options_order' => HeaderVariables::$order_array,
+                            'shop' => $shop,
+                            'productShop' => $productShop,
+                            'categoryname' => $categoryName
+                        ]);
+                    } else {
+                        return redirect()->route('product.index');
+                    }
                 }
-            } else {
-                $shop = Shop::findOrFail($usersShop);
-                if ($product->status != "hidden" || $product->shop_id == $shop->id) {
-                    $category_id = Category::findCategoryOfProduct($product->id);
-                    $categoryName = Category::findCategoryName($category_id);
-
-                    Log::channel('marketify')->info('product.show view loaded');
-                    return view('product.show', [
-                        'product' => $product,
-                        'categories' => $categories,
-                        'options_order' => HeaderVariables::$order_array,
-                        'shopname' => $shopName,
-                        'shop' => $shop,
-                        'categoryname' => $categoryName
-                    ]);
-                } else {
-                    return redirect()->route('product.index');
-                }
-            }
         } catch (ModelNotFoundException $e) {
             Log::channel('marketify')->error('An error occurred showing product show view: ' . $e->getMessage());
             return redirect()->route('product.404');
         }
     }
 
-    //Vista para creación de producto
-    public function create()
-    {
+    /**
+     * Vista para creación de producto
+     */
+    public function create() {
         try {
             $categories = Category::all();
             Log::channel('marketify')->info('product.create view loaded');
@@ -198,28 +182,29 @@ class ProductController extends Controller
         }
     }
 
-    //Función que trata petición POST para actualizar un producto
-    public function update(Request $request, $id)
-    {
+    /**
+     * Función que trata petición POST para actualizar un producto
+     */
+    public function update(Request $request, $id) {
         try {
             $validatedData = $request->validate([
-                'product_name' => 'required|string|max:255',
-                'product_description' => 'required|string',
-                'product_price' => 'required|numeric|min:0',
-                'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'product_tag' => 'nullable|string',
-                'product_category' => 'required|exists:categories,id',
-            ], ValidationMessages::productValidationMessages());
+            'product_name' => 'required|string|max:255',
+            'product_description' => 'required|string',
+            'product_price' => 'required|numeric|min:0',
+            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_tag' => 'nullable|string',
+            'product_category' => 'required|exists:categories,id',
+        ], ValidationMessages::productValidationMessages());
 
-            if ($request->hasFile('product_image')) {
-                $image = $validatedData['product_image'];
+        if ($request->hasFile('product_image')) {
+            $image = $validatedData['product_image'];
 
-                $name = uniqid('product_') . '.' . $image->extension();
-                $path = 'images/products/';
-                $image->move($path, $name);
-                $imagePath = $path . $name;
-            }
-            $product = Product::findOrFail($id);
+            $name = uniqid('product_') . '.' . $image->extension();
+            $path = 'images/products/';
+            $image->move($path, $name);
+            $imagePath = $path . $name;
+        }
+        $product=Product::findOrFail($id);
 
             $product->update([
                 'name' => $validatedData['product_name'],
@@ -241,9 +226,10 @@ class ProductController extends Controller
         }
     }
 
-    //Función que trata petición POST para borrar un producto
-    public function destroy($id)
-    {
+    /**
+     * Función que trata petición POST para borrar un producto
+     */
+    public function destroy($id) {
         try {
             $product = Product::find($id);
             $product->delete();
@@ -259,9 +245,10 @@ class ProductController extends Controller
         }
     }
 
-    //Función que trata petición POST para esconder/mostrar un producto
-    public function hide(Request $request, $id)
-    {
+    /**
+     * Función que trata petición POST para esconder/mostrar un producto
+     */
+    public function hide(Request $request, $id) {
         try {
             $product = Product::find($id);
             if ($product->status == 'hidden') {
@@ -280,9 +267,10 @@ class ProductController extends Controller
         }
     }
 
-    //Vista para editar un producto
-    public function edit($id)
-    {
+    /**
+     * Vista para editar un producto
+     */
+    public function edit($id) {
         try {
             $categories = Category::all();
             $product = Product::find($id);
@@ -299,9 +287,10 @@ class ProductController extends Controller
         }
     }
 
-    //Vista para filtrar según la categoria seleccionada en la landing page
-    public function filterCategory($id)
-    {
+    /**
+      * Vista para filtrar según la categoria seleccionada en la landing page
+     */
+    public function filterCategory($id) {
         try {
             $userId = auth()->id();
             if ($userId) {

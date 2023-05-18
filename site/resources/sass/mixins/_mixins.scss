@@ -79,6 +79,11 @@
     padding: 2%;
 }
 
+@mixin marginPadding2 {
+    margin: 2%;
+    padding: 2%;
+}
+
 @mixin margin {
     margin-left: 5%;
     margin-right: 5%;
