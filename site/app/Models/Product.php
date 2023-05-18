@@ -94,8 +94,14 @@ class Product extends Model
         ->where('id',"=", $id)
         ->first();
     }
+
     public function orderItem()
     {
     return $this->hasOne(OrderItem::class);
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class, 'shop_id');
     }
 }
