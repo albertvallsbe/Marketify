@@ -103,8 +103,8 @@ class ProductController extends Controller {
                         return redirect()->route('product.index');
                     }
                 }
-        } catch (ModelNotFoundException $e) {
-            Log::channel('marketify')->error('An error occurred showing product show view: ' . $e->getMessage());
+            } catch (ModelNotFoundException $e) {
+                Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
             return redirect()->route('product.404');
         }
     }
@@ -160,7 +160,7 @@ class ProductController extends Controller {
                 // 'image' => $imagePath ?? 'images/products/default-product.png',
             ]);
 
-            /** 
+            /**
              * FUNCIONALIDAD POR TERMINAR(SUBIR UNA IMAGEN A LA API AL CREAR EL PRODUCTO )
             */
 

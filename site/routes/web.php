@@ -28,6 +28,8 @@ Route::get('/order', [OrderController::class, 'index'])->name('order.index');
 Route::post('/order', [OrderController::class, 'add'])->name('order.add');
 Route::get('/order/failed', [OrderController::class, 'error'])->name('order.error');
 
+Route::get('/management', [OrderController::class, 'management'])->name('order.management');
+
 Route::get('/search', [ProductController::class,'index'])->name('product.index');
 Route::get('/search/{id}', [ProductController::class, 'filterCategory'])->name('product.filter');
 
