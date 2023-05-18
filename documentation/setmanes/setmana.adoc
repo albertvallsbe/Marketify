@@ -99,7 +99,17 @@ Temps estimat ⇒ 2h
 Temps Real ⇒ 
 
 ==== Albert
+Comentar funcions i afegir logs
+Temps estimat => 5h 
+Temps Real => 1,5h -> continua encara
 
+Update vista d'orders i estils
+Temps estimat => 2h 
+Temps Real => 2,25h 
+
+Documentació
+Temps estimat => 5h 
+Temps Real => 1,5h -> continua encara
 === Setmana 11
 
 ==== David
@@ -151,6 +161,29 @@ Temps estimat ⇒ 1h
 Temps Real ⇒ 1:30h
 
 ==== Albert
+Update factories and seeders
+Temps estimat => 3h 
+Temps Real => 2,5h 
+
+Update product status to sold
+Temps estimat => 2h 
+Temps Real => 1,75h 
+
+Estandarització de mediaqueries
+Temps estimat => 1h 
+Temps Real => 1,25h 
+
+Resoldre problemes amb l'orders
+Temps estimat => 1h 
+Temps Real => 1,75h 
+
+Crear new repository
+Temps estimat => 1h 
+Temps Real => 1,5h 
+
+Crear orders
+Temps estimat => 10h -> Total  22,5h
+Temps Real => 6,25h -> venia de la setmana anterior
 
 === Setmana 10
 
@@ -187,6 +220,13 @@ Temps Real ⇒ 2h
 ==== Oscar
 
 ==== Albert
+Crear orders
+Temps estimat => 10h 
+Temps Real => 16,25h -> continua encara
+
+Crear logInfo Marketify
+Temps estimat => 2h -> Total 2,5h
+Temps Real => 0,5h -> venia de la setmana anterior
 
 === Setmana 9
 
@@ -250,6 +290,10 @@ Temps estimat => 3h
 Temps real => 
 
 ==== Albert
+Crear logInfo Marketify
+Temps estimat => 2h 
+Temps Real => 2h -> continua encara
+
 Vista detall del producte
 Temps estimat => 5h -> Total 7,25h
 Temps Real => 2,5h -> venia de la setmana anterior
@@ -260,7 +304,7 @@ Temps Real => 2,5h
 
 Realitzar Comanda
 Temps estimat => 15h
-Temps Real => 1,75 -> conctinua encara
+Temps Real => 1,75 -> continua encara
 
 === Setmana 8
 
