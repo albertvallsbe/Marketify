@@ -14,7 +14,6 @@ class Product extends Model
     protected $fillable = [
         'name',
         'description',
-        'image',
         'tag',
         'price',
         'shop_id'
@@ -91,6 +90,12 @@ class Product extends Model
     public static function getIdProducts($id){
         return self::query()
         ->select('*')
+        ->where('id',"=", $id)
+        ->first();
+    }
+    public static function getPrice($id){
+        return self::query()
+        ->select('price')
         ->where('id',"=", $id)
         ->first();
     }
