@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
+
+    /** 
+     * EXPLICAR EL PORQUE HE CAMBIADO LA FUNCIÓN EN LA DOCUMENTACIÓN 
+    */
+     
     public function index(){
-        $images = Image::all();
+        $images = Image::where('main',true);
 
         if ($images && $images->count() > 0) {
             return response($images,200);
 
         }else {
-        abort(404);
+        abort(404); 
         }
 
     }
@@ -37,12 +42,7 @@ class ImageController extends Controller
             'path'=> $request['path'],
             'product_id'=>$request['product_id'],
             'main'=>$request['main']
-<<<<<<< HEAD
-        ]); 
-
-=======
         ]);
->>>>>>> 65d9d44f55bd43d0d2059ff282f3d641b4f1c953
     }
 
     public function deleteImage($id){
