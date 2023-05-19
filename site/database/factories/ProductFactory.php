@@ -29,35 +29,34 @@ class ProductFactory extends Factory
             'name' => $name,
             'description' => $faker->sentence(20),
             'tag' => $faker->name(),
-            'image' =>  "images/products/" . rand(1, 4) . ".jpg",
             'price' => $faker->numberBetween(10, 6000),
             'shop_id' => $faker->randomElement($shops),
             'status' => 'active'
         ];
     }
 
-    // public function configure()
-    // {
-    //     return $this->afterCreating(function (Product $product) {
+    public function configure()
+    {
+        return $this->afterCreating(function (Product $product) {
 
-    //         $client = new Client();
+            $client = new Client();
 
-    //         $main = true;
-    //         for ($i=0; $i < 4; $i++) {
+            $main = true;
+            for ($i=0; $i < 4; $i++) {
 
-    //             $client->post('http://localhost:8080/api/insert', [
-    //                 'json' => [
-    //                     'name' => $product->name,
-    //                     'path' => "images/products/" . rand(1, 4) . ".jpg",
-    //                     'product_id' => $product->id,
-    //                     'main' => $main,
-    //                 ]
+                $client->post('http://localhost:8080/api/insert', [
+                    'json' => [
+                        'name' => $product->name,
+                        'path' => "images/products/" . rand(1, 4) . ".jpg",
+                        'product_id' => $product->id,
+                        'main' => $main,
+                    ]
 
-    //             ]);
-    //             $main = false;
+                ]);
+                $main = false;
 
-    //         }
+            }
 
-    //     });
-    // }
+        });
+    }
 }
