@@ -73,7 +73,7 @@ class ShopTest extends TestCase
 
         $this->expectException(\Illuminate\Database\QueryException::class);
         Shop::factory()->create(['url' => $url, 'user_id' => $user->id]);
-        
+
         $response = $this->get('/shop/' . $url);
         $response->assertStatus(200);
     }

@@ -59,7 +59,7 @@ class UserTest extends TestCase {
             'password' => ['max:25']
         ];
 
-        $validator = \Validator::make($user->toArray(), $rules);
+        $validator = Validator::make($user->toArray(), $rules);
 
         $this->assertTrue($validator->fails());
         $this->assertCount(2, $validator->errors());

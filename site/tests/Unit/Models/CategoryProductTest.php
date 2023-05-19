@@ -5,7 +5,6 @@ namespace Tests\Unit\Models;
 use Tests\TestCase;
 use App\Models\Shop;
 use App\Models\User;
-// use Illuminate\Database\Eloquent\Collection;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Foundation\Testing\WithFaker;
