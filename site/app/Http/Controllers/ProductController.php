@@ -4,26 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Shop;
-use App\Classes\HeaderVariables;
+use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Notification;
 
 use Illuminate\Http\Request;
 use App\View\Components\Header;
+use App\Classes\HeaderVariables;
 use App\Models\Category_Product;
+use Illuminate\Http\UploadedFile;
 use App\Helpers\ValidationMessages;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProductController extends Controller {
+class ProductController extends Controller
+{
     /**
      * Vista principal de los productos
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         try {
             $header = new Header($request);
 
@@ -51,6 +54,19 @@ class ProductController extends Controller {
             }
             setcookie("arrayCart", $arrayCart);
 
+            // Hacemos la petición a la api
+            $client = new Client();
+
+            $response = $client->get('http://localhost:8080/api/images/');
+            $data = json_decode($response->getBody(), true);
+            
+            
+            $paths = [];
+            foreach ($data as $ruta ) {
+                array_push($paths,$ruta);        
+                     
+            }
+
             //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
             $usersShop = Shop::findShopUserID($userId);
             if ($usersShop) {
@@ -64,6 +80,7 @@ class ProductController extends Controller {
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
                 'shop' => $shop,
+                'paths'=>$paths,
                 'notificationCount' => $notificationCount
             ]);
         } catch (\Exception $e) {
@@ -75,36 +92,53 @@ class ProductController extends Controller {
     /**
      * Vista detalle del producto
      */
-    public function show($id) {
+    public function show($id)
+    {
         try {
             $product = Product::findOrFail($id);
             $productShop = $product->shop;
             $categories = Category::all();
 
-                //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
-                $userId = auth()->id();
-                $usersShop = Shop::findShopUserID($userId);
-                if(!$usersShop){
-                    $shop = 0;
-                    if ($product->status != "hidden") {
-                        $category_id = Category::findCategoryOfProduct($product->id);
-                        $categoryName = Category::findCategoryName($category_id);
+            $client = new Client();
 
-                        Log::channel('marketify')->info('product.show view loaded');
-                        return view('product.show', [
-                            'product' => $product,
-                            'categories' => $categories,
-                            'options_order' => HeaderVariables::$order_array,
-                            'shop' => $shop,
-                            'productShop' => $productShop,
-                            'categoryname' => $categoryName
-                        ]);
-                    } else {
-                        return redirect()->route('product.index');
-                    }
+            $response = $client->get('http://localhost:8080/api/images/'.$id);
+            $data = json_decode($response->getBody(), true);
+            
+            
+            $paths = [];
+            foreach ($data as $ruta ) {
+                array_push($paths,$ruta);        
+                     
+            }
+
+            //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
+            $userId = auth()->id();
+            $usersShop = Shop::findShopUserID($userId);
+            if (!$usersShop) {
+                $shop = 0;
+                
+                if ($product->status != "hidden") {
+                    $category_id = Category::findCategoryOfProduct($product->id);
+                    $categoryName = Category::findCategoryName($category_id);
+             
+                    Log::channel('marketify')->info('product.show view loaded');
+                    return view('product.show', [
+                        'product' => $product,
+                        'categories' => $categories,
+                        'options_order' => HeaderVariables::$order_array,
+                        'shop' => $shop,
+                        'productShop' => $productShop,
+                        'paths'=> $paths,
+                        'categoryname' => $categoryName
+                    ]);
+                } else {
+                    return redirect()->route('product.index');
                 }
-            } catch (ModelNotFoundException $e) {
-                Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
+            }else{
+                dd('hola');
+            }
+        } catch (ModelNotFoundException $e) {
+            Log::channel('marketify')->error('An error occurred showing product show view: ' . $e->getMessage());
             return redirect()->route('product.404');
         }
     }
@@ -112,7 +146,8 @@ class ProductController extends Controller {
     /**
      * Vista para creación de producto
      */
-    public function create() {
+    public function create()
+    {
         try {
             $categories = Category::all();
             Log::channel('marketify')->info('product.create view loaded');
@@ -148,7 +183,6 @@ class ProductController extends Controller {
                 $image->move($path, $name);
                 $imagePath = $path . $name;
             }
-            dd($imagePath);
             $id = Auth::user()->id;
             $shopID = Shop::findShopUserID($id);
             $product = Product::create([
@@ -162,23 +196,30 @@ class ProductController extends Controller {
 
             /**
              * FUNCIONALIDAD POR TERMINAR(SUBIR UNA IMAGEN A LA API AL CREAR EL PRODUCTO )
-            */
+             */
 
-            // $client->post('http://localhost:8080/api/insert', [
-            //     'json' => [
-            //         'name' => $name,
-            //         'path' => $imagePath,
-            //         'product_id' => 1,
-            //         'main' => true,
-            //     ]
+            $uploadedFile = new UploadedFile($imagePath, basename($imagePath));
 
-            // ]);
+            // dd($uploadedFile); 
+
+            $client = new Client();
+
+            $client->post('http://localhost:8080/api/insert', [
+                'multipart' => [
+                    'name' => $name,
+                    'path' => fopen($uploadedFile->getPathname(), 'r'),
+                    'product_id' => 1,
+                    'main' => true,
+                ]
+
+            ]);
 
             Log::channel('marketify')->info("Product #$product->id created succesfully");
             $category_product = Category_product::create([
                 'product_id' => $product->id,
                 'category_id' => $validatedData['product_category'],
             ]);
+            
             return redirect()->route('shop.admin');
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred creating a new product: ' . $e->getMessage());
@@ -188,26 +229,27 @@ class ProductController extends Controller {
     /**
      * Función que trata petición POST para actualizar un producto
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         try {
             $validatedData = $request->validate([
-            'product_name' => 'required|string|max:255',
-            'product_description' => 'required|string',
-            'product_price' => 'required|numeric|min:0',
-            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'product_tag' => 'nullable|string',
-            'product_category' => 'required|exists:categories,id',
-        ], ValidationMessages::productValidationMessages());
+                'product_name' => 'required|string|max:255',
+                'product_description' => 'required|string',
+                'product_price' => 'required|numeric|min:0',
+                'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'product_tag' => 'nullable|string',
+                'product_category' => 'required|exists:categories,id',
+            ], ValidationMessages::productValidationMessages());
 
-        if ($request->hasFile('product_image')) {
-            $image = $validatedData['product_image'];
+            if ($request->hasFile('product_image')) {
+                $image = $validatedData['product_image'];
 
-            $name = uniqid('product_') . '.' . $image->extension();
-            $path = 'images/products/';
-            $image->move($path, $name);
-            $imagePath = $path . $name;
-        }
-        $product=Product::findOrFail($id);
+                $name = uniqid('product_') . '.' . $image->extension();
+                $path = 'images/products/';
+                $image->move($path, $name);
+                $imagePath = $path . $name;
+            }
+            $product = Product::findOrFail($id);
 
             $product->update([
                 'name' => $validatedData['product_name'],
@@ -232,7 +274,8 @@ class ProductController extends Controller {
     /**
      * Función que trata petición POST para borrar un producto
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         try {
             $product = Product::find($id);
             $product->delete();
@@ -248,7 +291,8 @@ class ProductController extends Controller {
     /**
      * Función que trata petición POST para esconder/mostrar un producto
      */
-    public function hide(Request $request, $id) {
+    public function hide(Request $request, $id)
+    {
         try {
             $product = Product::find($id);
             if ($product->status == 'hidden') {
@@ -270,7 +314,8 @@ class ProductController extends Controller {
     /**
      * Vista para editar un producto
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         try {
             $categories = Category::all();
             $product = Product::find($id);
@@ -288,9 +333,10 @@ class ProductController extends Controller {
     }
 
     /**
-      * Vista para filtrar según la categoria seleccionada en la landing page
+     * Vista para filtrar según la categoria seleccionada en la landing page
      */
-    public function filterCategory($id) {
+    public function filterCategory($id)
+    {
         try {
             $userId = auth()->id();
             if ($userId) {
