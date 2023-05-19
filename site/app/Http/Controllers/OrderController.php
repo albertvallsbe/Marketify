@@ -105,7 +105,7 @@ class OrderController extends Controller
              * Borrar el contenido del campo 'products' en la tabla 'carts' del usuario
              */
             Cart::where('user_id', auth()->id())->delete();
-            return redirect()->route('chat.index');
+            return redirect()->route('order.management');
             } else{
                 Log::channel('marketify')->error("Order could not be created. Product with status 'sold' detected.");
                 return redirect()->route('order.error');
@@ -129,6 +129,19 @@ class OrderController extends Controller
             ]);
         } catch (\Exception $e) {
                 Log::channel('marketify')->error('An error occurred showing order fail view: '.$e->getMessage());
+                return redirect()->back()->with('error', 'An error occurred in OrderController.');
+        }
+    }
+
+    public function management(){
+        try{
+            $categories = Category::all();
+            return view('order.management', [
+                'categories' => $categories,
+                'options_order' => HeaderVariables::$order_array
+            ]);
+        } catch (\Exception $e) {
+                Log::channel('marketify')->error('An error occurred showing management order fail view: '.$e->getMessage());
                 return redirect()->back()->with('error', 'An error occurred in OrderController.');
         }
     }

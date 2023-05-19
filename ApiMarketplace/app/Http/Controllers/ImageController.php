@@ -19,7 +19,7 @@ class ImageController extends Controller
             return response($images,200);
 
         }else {
-        abort(404); 
+        abort(404);
         }
 
     }

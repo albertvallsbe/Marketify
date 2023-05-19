@@ -54,18 +54,18 @@ class ProductController extends Controller
             }
             setcookie("arrayCart", $arrayCart);
 
-            // // Hacemos la petición a la api
-            // $client = new Client();
+            // Hacemos la petición a la api
+            $client = new Client();
 
-            // $response = $client->get('http://localhost:8080/api/images/');
-            // $data = json_decode($response->getBody(), true);
+            $response = $client->get('http://localhost:8080/api/images/');
+            $data = json_decode($response->getBody(), true);
             
             
-            // $paths = [];
-            // foreach ($data as $ruta ) {
-            //     array_push($paths,$ruta);        
+            $paths = [];
+            foreach ($data as $ruta ) {
+                array_push($paths,$ruta);        
                      
-            // }
+            }
 
             //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
             $usersShop = Shop::findShopUserID($userId);
@@ -80,7 +80,7 @@ class ProductController extends Controller
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
                 'shop' => $shop,
-                // 'paths'=>$paths,
+                'paths'=>$paths,
                 'notificationCount' => $notificationCount
             ]);
         } catch (\Exception $e) {
@@ -194,7 +194,7 @@ class ProductController extends Controller
                 // 'image' => $imagePath ?? 'images/products/default-product.png',
             ]);
 
-            /** 
+            /**
              * FUNCIONALIDAD POR TERMINAR(SUBIR UNA IMAGEN A LA API AL CREAR EL PRODUCTO )
              */
 
