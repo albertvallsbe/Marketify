@@ -59,20 +59,20 @@ function changeButton() {
 //CODE
 function loadButtons() {
     document.addEventListener("DOMContentLoaded", function () {
-    changeButton();
-    getCountCart();
-    const buttons = document.getElementsByClassName("btn-cart");
+        changeButton();
+        getCountCart();
+        const buttons = document.getElementsByClassName("btn-cart");
 
-    Array.from(buttons).forEach((button) => {
-        if (button.innerText != words.buttons.remove) {
-            button.innerText = words.buttons.add;            
-        }
-        button.addEventListener("click", (event) => {
-            const productId = button.dataset.productId;
-            clickButtonAction(productId, button);
-            addToCart();
+        Array.from(buttons).forEach((button) => {
+            if (button.innerText != words.buttons.remove) {
+                button.innerText = words.buttons.add;
+            }
+            button.addEventListener("click", (event) => {
+                const productId = button.dataset.productId;
+                clickButtonAction(productId, button);
+                addToCart();
+            });
         });
     });
-});
 }
 loadButtons();
