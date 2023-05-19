@@ -84,7 +84,7 @@ class Shop extends Model
         ->where('id','=',$id)
         ->get();
     }
-    
+
 
     public function user()
     {
@@ -95,10 +95,7 @@ class Shop extends Model
     {
         return $this->hasMany(Product::class, 'shop_id');
     }
-    // public function products()
-    // {
-    //     return $this->belongsToMany(Product::class);
-    // }
+
 
     public static function generateURL($shop_name) {
         $shop_name = strtolower(str_replace(' ', '-', $shop_name));

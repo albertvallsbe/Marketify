@@ -62,8 +62,5 @@ class ShopSeeder extends Seeder
             'nif' => '33654321A',
             'url' => Shop::generateURL('Titu Shop!'),
         ]);
-        Shop::factory()
-            ->count(5)
-            ->create();
     }
 }

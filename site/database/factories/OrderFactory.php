@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
  */
-class OrdersFactory extends Factory
+class OrderFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,10 +19,9 @@ class OrdersFactory extends Factory
     public function definition(): array
     {
         return [
-            'status' => false,
-            'user_id' => rand(1, 10),
-            'shop_id' => rand(1, 5),
-            'products' => '[186,207,428,709,90,726,186]',
+            'user_id' => User::factory(),
+            'shop_id' => Shop::factory(),
+            'status' => $this->faker->randomElement(['pending', 'paid', 'sending', 'completed', 'failed']),
         ];
     }
 }

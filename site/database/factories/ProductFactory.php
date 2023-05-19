@@ -42,7 +42,7 @@ class ProductFactory extends Factory
             $client = new Client();
 
             $main = true;
-            for ($i=0; $i < 4; $i++) { 
+            for ($i=0; $i < 4; $i++) {
 
                 $client->post('http://localhost:8080/api/insert', [
                     'json' => [
@@ -53,10 +53,10 @@ class ProductFactory extends Factory
                     ]
 
                 ]);
-                $main = false;    
-                
-            }           
-            
+                $main = false;
+
+            }
+
         });
     }
 }

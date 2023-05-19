@@ -2,12 +2,13 @@
 
 namespace Tests\Unit\Models;
 
+use Tests\TestCase;
+use App\Models\Shop;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
-use Tests\TestCase;
-// use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CategoryProductTest extends TestCase
 {
@@ -15,9 +16,17 @@ class CategoryProductTest extends TestCase
 
     public function test_category_can_have_products()
     {
+        $user = User::factory()->create();
+        $shop = Shop::factory()->create([
+            'user_id' => $user->id
+        ]);
         $category = Category::factory()->create();
-        $product1 = Product::factory()->create();
-        $product2 = Product::factory()->create();
+        $product1 = Product::factory()->create([
+            'shop_id' => $shop->id,
+        ]);
+        $product2 = Product::factory()->create([
+            'shop_id' => $shop->id,
+        ]);
 
         $category->product()->attach([$product1->id, $product2->id]);
 
@@ -27,7 +36,13 @@ class CategoryProductTest extends TestCase
 
     public function test_product_can_have_categories()
     {
-        $product = Product::factory()->create();
+        $user = User::factory()->create();
+        $shop = Shop::factory()->create([
+            'user_id' => $user->id
+        ]);
+        $product = Product::factory()->create([
+            'shop_id' => $shop->id,
+        ]);
         $category1 = Category::factory()->create();
         $category2 = Category::factory()->create();
 

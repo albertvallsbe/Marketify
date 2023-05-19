@@ -16,7 +16,6 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'shop_id',
-        'products',
         'status',
     ];
 
@@ -77,7 +76,7 @@ class Order extends Model
                 ->orWhere('shop_id', $shopID);
         })->paginate(4);
     }
-    
+
     public static function catchIdShop($id){
         return self::query()
         ->select('shop_id')
@@ -98,7 +97,7 @@ class Order extends Model
     {
         return $this->hasOne(Chat::class, 'order_id');
     }
-    
+
     public function orderItems()
     {
     return $this->hasMany(OrderItems::class);
