@@ -27,7 +27,7 @@
                 <a href="{{ route('register.index') }}">Register</a>
             </p>
             <p class="users-link text">Do you forgot the password?
-                <a href="{{ route('login.password') }}">Remember it.</a>
+                <a href="{{ route('login.formEmail') }}">Remember it.</a>
             </p>
         </section>
         <section class="login-text intro-style-login">

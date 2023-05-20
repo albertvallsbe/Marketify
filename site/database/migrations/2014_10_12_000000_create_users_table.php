@@ -20,8 +20,7 @@ return new class extends Migration
             $table->text('password')->unique()->default('12345678');
             $table->timestamp('expires_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            // $table->rememberToken();
-            // $table->string('api_token')->unique();
+            $table->rememberToken();
             $table->enum('role' , ['seller','customer','administrator'])->default('customer');
             $table->text('avatar')->default('images/profiles/default-avatar.jpg');
         });
