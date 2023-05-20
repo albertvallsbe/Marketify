@@ -1,0 +1,93 @@
+== Manual d'Instal·lació: Configuració de l'Aplicació
+Aquest manual d'instal·lació descriu els passos necessaris per configurar correctament l'aplicació. Sigueu atents i seguiu les instruccions de manera precisa per assegurar-vos que tot funciona adequadament.
+
+=== Pas 1: Configuració de la Base de Dades
+Els dos projectes Laravel, l'API i el lloc web, requereixen una configuració adequada per connectar-se correctament a la base de dades. Assegureu-vos d'incloure les següents configuracions en els arxius de configuració corresponents:
+
+Arxiu de Configuració dels Projectes Laravel
+Modifiqueu l'arxiu de configuració dels dos projectes Laravel (API i lloc web) amb les següents dades de connexió a la base de dades:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=172.16.50.50
+DB_PORT=3306
+DB_DATABASE=marketifyBBDD
+DB_USERNAME=admin
+DB_PASSWORD=1234
+```
+=== Configuració específica del lloc web
+Afegiu la següent línia de codi a l'arxiu .env del lloc web per establir la IP de l'API:
+
+```
+API_IP=172.16.50.60
+```
+
+=== Pas 2: Creació de la Màquina Virtual per al Lloc Web
+Ara que la connexió està configurada, heu de crear una màquina virtual per al lloc web. Seguiu aquests passos:
+
+1. Obriu una nova terminal.
+2. Executeu les comandes següents:
+```
+cd vagrantSITE
+vagrant up
+vagrant ssh
+```
+*Generació del Certificat HTTPS*
+
+Quan se us demani una contrasenya, introduïu '1234'. A continuació, executeu les comandes següents:
+
+```
+sudo openssl genpkey -algorithm RSA -out /etc/ssl/private/selfsigned.key -aes128
+```
+```
+sudo openssl req -new -x509 -sha256 -key /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt -days 3650
+```
+```
+sudo systemctl restart apache2
+```
+
+=== Pas 3: Creació de la Màquina Virtual per a l'API d'Imatges
+Ara heu de crear una màquina virtual per a l'API d'imatges. Seguiu aquests passos:
+
+1. Obriu una nova terminal.
+2. Executeu les comandes següents:
+```
+cd vagrantAPI
+vagrant up
+vagrant ssh
+```
+*Generació del Certificat HTTPS*
+Quan se us demani una contrasenya, introduïu '1234'. A continuació, executeu les comandes següents:
+
+```
+sudo openssl genpkey -algorithm RSA -out /etc/ssl/private/selfsigned.key -aes128
+```
+```
+sudo openssl req -new -x509 -sha256 -key /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt -days 3650
+```
+```
+sudo systemctl restart apache2
+```
+Ja heu generat els dos certificats HTTPS necessaris per al funcionament de l'aplicació.
+
+=== Pas 4: Execució de les Migracions i Poblament de la Base de Dades
+Ara, aneu a la terminal on heu tractat el vagrant del lloc web (vagrantSITE) i executeu les comandes següents:
+
+```
+cd /home/marketify/site
+php artisan migrate:refresh
+```
+
+Torneu a la terminal on heu tractat el vagrant de l'API (vagrantAPI) i executeu les comandes següents:
+```
+cd /home/marketify/ApiMarketPlace
+php artisan migrate:refresh
+```
+Torneu a la terminal vagrantSITE (estant en /home/marketify/site) i executeu:
+```
+php artisan db:seed
+```
+=== Pas 5: Finalització de la Configuració
+Felicitats! Heu acabat amb èxit la configuració. Ara, obriu el navegador i introduïu la següent adreça IP per accedir al lloc web:
+
+https://172.16.50.50
