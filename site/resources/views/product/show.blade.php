@@ -5,16 +5,29 @@
 @section('content')
     <section class="main-productshow">
         <section class="card-style-productshow">
-            @for ($i = 0; $i < count($paths); $i++)
-                <img src="{{ asset($paths[$i]['path']) }}" height="auto" width="100px">
-            @endfor
+            <div class="slider">
+                @for ($i = 0; $i < count($paths); $i++)
+                    <div class="slide">
+                        <img id="slide{{ $i }}" src="{{ asset($paths[$i]['path']) }}"
+                            alt="Slide {{ $i + 1 }}">
+                    </div>
+                @endfor
+            </div>
+
+            <div class="slider-buttons">
+                @for ($i = 0; $i < count($paths); $i++)
+                    <button class="slide-button{{ $i === 0 ? ' active' : '' }}"
+                        data-slide-index="{{ $i }}">{{ $i + 1 }}</button>
+                @endfor
+            </div>
         </section>
         <section class="card-style-productshow-details">
             <h1 class="card-style-productshow-details_title">{{ $product->name }}</h1>
             <p class="card-style-productshow-details_content"><b>Description:</b> {{ $product->description }}</p>
             <p class="card-style-productshow-details_content"><b>Category:</b> {{ $categoryname }}</p>
             <p class="card-style-productshow-details_content"><b>Shop:</b><a
-                    href="{{ route('shop.show', $productShop->url) }}" target="_blank"> {{ $productShop->shopname }}</a></p>
+                    href="{{ route('shop.show', $productShop->url) }}" target="_blank"> {{ $productShop->shopname }}</a>
+            </p>
             <p class="card-style-productshow-details_content"><b>Price:</b> {{ $product->price }} €</p>
             @if ($product->status == 'active')
                 @if ($shop == null)
