@@ -80,9 +80,6 @@ EOF
 # Reiniciar MariaDB
 sudo systemctl restart mariadb
 
-cd /home/marketify/site
-php artisan migrate:refresh --seed
-
 #CREAR CERTIFICADO PARA CONEXIÓN HTTPS
 
 # Habilitar el módulo SSL de Apache

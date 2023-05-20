@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('path');
-            $table->unsignedBigInteger('product_id')->index();
+            $table->unsignedBigInteger('product_id');
             $table->boolean('main');
             $table->timestamps();
 
@@ -28,6 +28,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('images', function (Blueprint $table) {
+            $table->dropForeign(['product_id']);
+        });
         Schema::dropIfExists('images');
     }
 };
