@@ -57,12 +57,10 @@ class ProductController extends Controller
             // Hacemos la petición a la api
             $client = new Client();
 
-            // $response = $client->get('https://172.16.50.60:443/api/images/');
-            $response = $client->get('https://172.16.50.60:443/api/images', [
+            $response = $client->get('https://'.env('API_IP').':443/api/images', [
                 'verify' => false
             ]);
-            $data = json_decode($response->getBody(), true);           
-            // dd($data);
+            $data = json_decode($response->getBody(), true);
             
             $paths = [];
             foreach ($data as $ruta ) {
@@ -102,8 +100,7 @@ class ProductController extends Controller
 
             $client = new Client();
 
-            // $response = $client->get('https://172.16.50.60:443/api/images/'.$id);
-            $response = $client->request('GET', 'https://172.16.50.60:443/api/images/'.$id, [
+            $response = $client->request('GET', 'https://'.env('API_IP').':443/api/images/'.$id, [
                 'verify' => false
             ]);
             
@@ -220,9 +217,6 @@ class ProductController extends Controller
              */
 
             $uploadedFile = new UploadedFile($imagePath, basename($imagePath));
-
-            // dd($uploadedFile); 
-
             $client = new Client();
 
             $client->post('http://localhost:8080/api/insert', [

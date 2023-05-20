@@ -102,7 +102,6 @@ function addToCart() {
     }
 }
 
-
 export { getCountCart };
 export { addToCart };
 export { updateCartServerStorage };

@@ -1,5 +1,4 @@
 import "../app.js";
-import words from "../dictionaryWords.js";
 
 const headboard = document.querySelector(".headboard");
 const textColor = isDarkColor(headboard.style.backgroundColor)

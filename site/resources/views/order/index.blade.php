@@ -12,23 +12,23 @@
                     @foreach ($productsByShop as $key => $shopByProduct)
                         <div class="card-seller">
                             <h2>{{ $shopName[$key] }}</h2>
-                                @foreach ($shopByProduct as $productOrder)
-                                    <div class="card-items-list">
-                                        <div class="align-text">
-                                            {{  $productOrder->name }},
-                                        </div>
-                                        <div>
-                                            {{ $productOrder->price }}€
-                                        </div>
+                            @foreach ($shopByProduct as $productOrder)
+                                <div class="card-items-list">
+                                    <div class="align-text">
+                                        {{ $productOrder->name }},
                                     </div>
-                                    @php
-                                        if ($productOrder->status != 'active') {
-                                            $productError = true;
-                                        } else {
-                                            $productError = false;
-                                        }
-                                    @endphp
-                                @endforeach
+                                    <div>
+                                        {{ $productOrder->price }}€
+                                    </div>
+                                </div>
+                                @php
+                                    if ($productOrder->status != 'active') {
+                                        $productError = true;
+                                    } else {
+                                        $productError = false;
+                                    }
+                                @endphp
+                            @endforeach
                             </ul>
                         </div>
                     @endforeach

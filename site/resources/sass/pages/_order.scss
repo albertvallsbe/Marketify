@@ -3,9 +3,6 @@
 }
 
 .orders-card {
-    // @include cardStyle;
-    // @include miniCardStyle;
-
     grid-row-gap: $size-medium;
     grid-column-gap: $size-medium;
     display: grid;
@@ -27,7 +24,6 @@
 
                 display: grid;
                 justify-items: center;
-                // justify-content: flex-start;
 
                 .align-text {
                     text-align: left;

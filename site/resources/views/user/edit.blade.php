@@ -8,10 +8,10 @@
         <p class="session_success">{{ session()->get('status') }}</p>
     @endif
     <section class="card-logout">
-    <a href="{{ route('user.logout') }}">Log out</a>
+        <a href="{{ route('user.logout') }}">Log out</a>
     </section>
     <section class="card-historical">
-    <a href="{{ route('historical.index') }}">Your orders</a>
+        <a href="{{ route('historical.index') }}">Your orders</a>
     </section>
     <section class="main-edituser">
         <section class="card-style-edituser">
@@ -20,22 +20,22 @@
                 @csrf
 
                 <label class="form_label" for="current-password">Your current password:</label>
-                <input type="password" class="form_input input-mail @error('current-password') is-invalid @enderror" name="current-password"
-                placeholder="••••••••••••">
+                <input type="password" class="form_input input-mail @error('current-password') is-invalid @enderror"
+                    name="current-password" placeholder="••••••••••••">
                 @error('current-password')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
-                
+
                 <label class="form_label" for="new-password">Your new password:</label>
-                <input type="password" class="form_input input-mail @error('new-password') is-invalid @enderror" name="new-password"
-                placeholder="••••••••••••">
+                <input type="password" class="form_input input-mail @error('new-password') is-invalid @enderror"
+                    name="new-password" placeholder="••••••••••••">
                 @error('new-password')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
-                
+
                 <label class="form_label" for="repeat-password">Repeat your new password:</label>
-                <input type="password" class="form_input input-mail @error('repeat-password') is-invalid @enderror" name="repeat-password"
-                placeholder="••••••••••••">
+                <input type="password" class="form_input input-mail @error('repeat-password') is-invalid @enderror"
+                    name="repeat-password" placeholder="••••••••••••">
                 @error('repeat-password')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
@@ -46,7 +46,8 @@
             <span>
                 <label class="form_label" for="avatar">Avatar:</label><br>
                 <img src="{{ asset(Auth::user()->avatar) }}" alt="Actual avatar" width="150" height="150"><br>
-                <input type="file" name="avatar" id="avatar" class="@error('avatar') is-invalid @enderror" accept="image/*">
+                <input type="file" name="avatar" id="avatar" class="@error('avatar') is-invalid @enderror"
+                    accept="image/*">
                 @error('avatar')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
@@ -64,10 +65,11 @@
             <h5 class="card-style-edituser_title">Current username: <i>{{ $user->name }}</i></h5>
 
             <label class="form_label" for="name">Your new username:</label>
-            <input class="form_input @error('name') is-invalid @enderror" type="text" name="name" placeholder="{{ $user->name }}">
+            <input class="form_input @error('name') is-invalid @enderror" type="text" name="name"
+                placeholder="{{ $user->name }}">
             @error('name')
-            <label class="form_label_invalid">{{ $message }}</label>
-        @enderror
+                <label class="form_label_invalid">{{ $message }}</label>
+            @enderror
             <button class="general-button btn-password" name="btn-username" id="btn-username">CHANGE</button>
             </form>
         </section>

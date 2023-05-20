@@ -53,8 +53,6 @@
     @include cardStyle;
     @include cardPosition;
 
-    // margin-top: 20%;
-    // margin-left: 1rem;
     padding-bottom: 2rem;
     min-width: 250px;
 
@@ -94,7 +92,6 @@
         grid-column-gap: $size-small;
     }
     .card-style-productshow-details {
-        // min-width: 350px;
 
         text-align: center;
         align-items: center;
