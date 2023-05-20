@@ -3,7 +3,6 @@
 @section('title', 'Your messages')
 
 @section('content')
-{{-- <script>console.log("pepe")</script> --}}
     <h1 class="main_title">Your messages</h1>
     <div class="main_container">
         <div class="chat_container">

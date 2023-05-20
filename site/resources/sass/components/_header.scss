@@ -29,7 +29,6 @@ header {
                 @include searchBar;
 
                 &::placeholder {
-                    /* Chrome, Firefox, Opera, Safari 10.1+ */
                     color: $neutral_darker;
                 }
 

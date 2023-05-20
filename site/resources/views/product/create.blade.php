@@ -10,25 +10,26 @@
                 @csrf
 
                 <label class="form_label" for="product_name">Name:</label>
-                <input type="text" class="form_input @error('product_name') is-invalid @enderror" placeholder="Premium Product X""
-                    name="product_name" value="{{ old('product_name') }}">
-                    @error('product_name')
-                        <label class="form_label_invalid">{{ $message }}</label>
-                    @enderror
+                <input type="text" class="form_input @error('product_name') is-invalid @enderror"
+                    placeholder="Premium Product X"" name="product_name" value="{{ old('product_name') }}">
+                @error('product_name')
+                    <label class="form_label_invalid">{{ $message }}</label>
+                @enderror
 
-                    <label class="form_label" for="product_description">Description:</label>
-                    <textarea spellcheck="true" class="form_input_textarea @error('product_description') is-invalid @enderror" name="product_description" placeholder="Experience superior quality and performance with ProX.">{{ old('product_description') }}</textarea>
-                    @error('product_description')
-                        <label class="form_label_invalid">{{ $message }}</label>
-                    @enderror
+                <label class="form_label" for="product_description">Description:</label>
+                <textarea spellcheck="true" class="form_input_textarea @error('product_description') is-invalid @enderror"
+                    name="product_description" placeholder="Experience superior quality and performance with ProX.">{{ old('product_description') }}</textarea>
+                @error('product_description')
+                    <label class="form_label_invalid">{{ $message }}</label>
+                @enderror
 
                 <label class="form_label" for="product_price">Price:
                 </label>
                 <input type="number" class="form_input @error('product_price') is-invalid @enderror" placeholder="12€"
                     name="product_price" value="{{ old('product_price') }}">
-                    @error('product_price')
-                        <label class="form_label_invalid">{{ $message }}</label>
-                    @enderror
+                @error('product_price')
+                    <label class="form_label_invalid">{{ $message }}</label>
+                @enderror
 
                 <label class="form_label" for="product_image">Image(s):
                 </label>
@@ -38,12 +39,13 @@
                 @enderror
 
 
-                <label class="form_label" for="product_tag">Tag(s): <small><i>(Add tags that describe your product, separated by commas)</i></small></label>
+                <label class="form_label" for="product_tag">Tag(s): <small><i>(Add tags that describe your product,
+                            separated by commas)</i></small></label>
                 <input type="text" class="form_input @error('product_tag') is-invalid @enderror"
                     placeholder="wood, furniture, bedroom, modern" name="product_tag" value="{{ old('product_tag') }}">
-                    @error('product_tag')
-                        <label class="form_label_invalid">{{ $message }}</label>
-                    @enderror
+                @error('product_tag')
+                    <label class="form_label_invalid">{{ $message }}</label>
+                @enderror
 
                 <label class="form_label" for="product_category">Category:
                 </label>

@@ -69,7 +69,6 @@
 @mixin imageBigCardSize {
     height: auto;
     width: auto;
-    // object-fit: contain;
     display: flex;
     align-items: center;
 
@@ -78,6 +77,5 @@
 }
 
 @mixin outerBorder {
-    // border: 3px solid $error-origin;
     border: none;
 }

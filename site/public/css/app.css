@@ -1676,6 +1676,41 @@ footer .footer__logo {
   margin-inline: auto;
   object-fit: cover;
 }
+.card-style-productshow .slider {
+  position: relative;
+}
+.card-style-productshow .slide {
+  display: none;
+}
+.card-style-productshow .slider img {
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+  object-fit: contain;
+  width: 500px;
+  height: 500px;
+}
+.card-style-productshow .slider-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card-style-productshow .slide-button {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 5px 10px;
+  background-color: #43a1cc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.card-style-productshow .slide-button.active {
+  background-color: #175977;
+}
+.card-style-productshow .slide-button:hover {
+  background-color: #3985a9;
+}
 
 .card-style-productshow-details {
   color: #1f1f1f;

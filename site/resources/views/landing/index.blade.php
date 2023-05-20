@@ -28,15 +28,11 @@
                 @foreach ($tag['products'] as $tagProducts)
                     <div class="card-style-home product" id={{ $tagProducts['id'] }}>
                         <a class="card-style-home_a" href="{{ route('product.show', $tagProducts['id']) }}">
-                            {{-- </div>
-                        <div class="product__div_img"> --}}
                             <img class="product-img" src="{{ $tagProducts['image'] }}" />
                             <h4 class="card-style-home_title product__name">{{ $tagProducts['name'] }}</h4>
                             <h4 class="card-style-home_title product__name">{{ $tagProducts['tag'] }}</h4>
                             <h3 class="card-style-home_title product__price">{{ $tagProducts['price'] }} €</h3>
                         </a>
-                        {{-- <button class="btn-cart small-button" data-product-id="{{ $tagProducts['id'] }}">Add to
-                            cart</button> --}}
                     </div>
                 @endforeach
             </div>
@@ -47,5 +43,5 @@
             </a>
         </div>
     </section>
-    <script type ="module" src="{{ asset('js/app.js') }}"></script>
+    <script type="module" src="{{ asset('js/app.js') }}"></script>
 @endsection

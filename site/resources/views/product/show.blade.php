@@ -43,10 +43,6 @@
                 <small class="card-style-home_property"><i>This product has already sold.</i></small>
             @endif
         </section>
-
-
-
-
     </section>
     <script type="module" src="{{ asset('js/pages/product_show.js') }}"></script>
 @endsection

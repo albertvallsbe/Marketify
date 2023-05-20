@@ -23,7 +23,7 @@ class HistoricController extends Controller
      */
     public function index()
     {
-        // try{
+        try{
             $categories = Category::all();
 
             $id = auth()->id();
@@ -37,11 +37,10 @@ class HistoricController extends Controller
                 'orders' => $orders,
                 'options_order' => HeaderVariables::$order_array,
             ]);
-
-        // }catch (\Exception $e) {
-            // Log::channel('marketify')->info('The email has not been sent.', ["e" => $e->getMessage()]);
-            // return redirect(route('landing.index'));
-        // }
+        }catch (\Exception $e) {
+            Log::channel('marketify')->info('The email has not been sent.', ["e" => $e->getMessage()]);
+            return redirect(route('landing.index'));
+        }
     }
     /**
      * Crear vista de detalles

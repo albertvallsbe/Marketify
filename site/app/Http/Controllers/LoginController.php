@@ -124,7 +124,6 @@ class LoginController extends Controller
 
         $value = $email;
         $id_user = User::catchId($value);
-        // dd($id_user);
 
         if ($password == $repeatpassword) {
 

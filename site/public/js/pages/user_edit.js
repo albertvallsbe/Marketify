@@ -1,13 +1,13 @@
-import '../app.js';
+import "../app.js";
 
-const avatar = document.getElementById('avatar');
-const btnAvatar = document.getElementById('btn-avatar');
+const avatar = document.getElementById("avatar");
+const btnAvatar = document.getElementById("btn-avatar");
 
 //FUNCTIONS
-avatar.addEventListener('change', function () {
+avatar.addEventListener("change", function () {
     if (avatar.value) {
-        btnAvatar.removeAttribute('disabled');
+        btnAvatar.removeAttribute("disabled");
     } else {
-        btnAvatar.setAttribute('disabled', true);
+        btnAvatar.setAttribute("disabled", true);
     }
 });
