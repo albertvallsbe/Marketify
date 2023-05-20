@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="main-productshow">
-        <section class="card-style-productshow"=>
+        <section class="card-style-productshow">
             @for ($i = 0; $i < count($paths); $i++)
                 <img src="{{ asset($paths[$i]['path']) }}" height="auto" width="100px">
             @endfor

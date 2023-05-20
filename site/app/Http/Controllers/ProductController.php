@@ -58,18 +58,16 @@ class ProductController extends Controller
             $client = new Client();
 
             // $response = $client->get('https://172.16.50.60:443/api/images/');
-            $response = $client->request('GET', 'https://172.16.50.60:443/api/images/', [
+            $response = $client->get('https://172.16.50.60:443/api/images', [
                 'verify' => false
             ]);
-            $data = json_decode($response->getBody(), true);
-            
+            $data = json_decode($response->getBody(), true);           
+            // dd($data);
             
             $paths = [];
             foreach ($data as $ruta ) {
-                array_push($paths,$ruta);        
-                     
+                array_push($paths,$ruta);          
             }
-
             //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
             $usersShop = Shop::findShopUserID($userId);
             if ($usersShop) {
@@ -115,7 +113,6 @@ class ProductController extends Controller
             $paths = [];
             foreach ($data as $ruta ) {
                 array_push($paths,$ruta);        
-                     
             }
 
             //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
@@ -142,13 +139,30 @@ class ProductController extends Controller
                     return redirect()->route('product.index');
                 }
             }else{
-                dd('hola');
+                $shop = Shop::findOrFail($usersShop);
+                if ($product->status != "hidden" ||$product->shop_id == $shop->id) {
+                    $category_id = Category::findCategoryOfProduct($product->id);
+                    $categoryName = Category::findCategoryName($category_id);
+                    
+                    Log::channel('marketify')->info('product.show view loaded');
+                    return view('product.show', [
+                        'product' => $product,
+                        'categories' => $categories,
+                        'options_order' => HeaderVariables::$order_array,
+                        'shop' => $shop,
+                        'productShop' => $productShop,
+                        'paths'=> $paths,
+                        'categoryname' => $categoryName
+                    ]);
+                } else {
+                    return redirect()->route('product.index');
+                }
             }
-        } catch (ModelNotFoundException $e) {
-            Log::channel('marketify')->error('An error occurred showing product show view: ' . $e->getMessage());
-            return redirect()->route('product.404');
-        }
+            } catch (ModelNotFoundException $e) {
+                Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
+        return redirect()->route('product.404');
     }
+}
 
     /**
      * Vista para creación de producto
