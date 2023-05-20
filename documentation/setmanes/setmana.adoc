@@ -1,5 +1,4 @@
-
-=== Setmana 13
+=== Setmana 12
 
 ==== David
 Comprovar l'estat del producto abans de comprar (en la vista del carret, vista de l'ordre i al presionar le botó de comprar)
@@ -38,44 +37,21 @@ Permetre Connexió HTTPS i redirecció desde HTTP
 Temps estimat ⇒ 3h
 Temps Real ⇒ 5h
 
-==== Oscar
-
-==== Albert
-
-=== Setmana 12
-
-==== David
-Ajudar a Albert amb la creació d’orders
-Temps estimat ⇒ 2h
-Temps Real ⇒ 4h
-
-Solucionar errors del xat
-Temps estimat ⇒ 2h
-Temps Real ⇒ 2h
-
-Xat funcionant jutament amb les commandes
-Temps estimat ⇒ 3h
-Temps Real ⇒ 7h
-
-Solucionar errors del carret
-Temps estimat ⇒ 2h
-Temps Real ⇒ 3h
-
-Millorar diversos elements de l'estil
-Temps estimat ⇒ 2h
-Temps Real ⇒ 2h
-
-Xat funcionant amb diferents enllaços // route(chat.show)
-Temps estimat ⇒ 2h
-Temps Real ⇒ 2h
-
-Comprovar l'estat del producte abans de realitzar una comanda
+Conectar API amb màquina vagrant i fer-la servir amb la màquina vagrant del site
 Temps estimat ⇒ 6h
 Temps Real ⇒ 5h
 
-Afegir LOGs a Cart, Chat, Order, Product i Shop Controllers
+Corregir alguns errors/bugs relacionats amb l'API
+Temps estimat ⇒ 3h
+Temps Real ⇒ 4h
+
+Slider fet amb JavaScript per la vista product.show
 Temps estimat ⇒ 1h
 Temps Real ⇒ 1h
+
+Fer funcionar LandingPage malgrat que hi hagi un json amb un format erroni
+Temps estimat ⇒ 1h
+Temps Real ⇒ 2h
 
 ==== Oscar
 Poner los mensajes de Log Info en diferentes páginas
@@ -113,30 +89,38 @@ Temps Real => 1,5h -> continua encara
 === Setmana 11
 
 ==== David
+Ajudar a Albert amb la creació d’orders
+Temps estimat ⇒ 2h
+Temps Real ⇒ 4h
 
-Header/nav responsives, millorat l’estil de les card dels productes (afegir descripció, tags HTML correctes…​).
+Solucionar errors del xat
 Temps estimat ⇒ 2h
 Temps Real ⇒ 2h
 
-Els seeders ara tenen 3 usuaris: 1 comprador, i 2 vendedors amb les seves respectives tendes.
-Temps estimat ⇒ 1h
-Temps Real ⇒ 2h
+Xat funcionant jutament amb les commandes
+Temps estimat ⇒ 3h
+Temps Real ⇒ 7h
 
-Per comprar l’usuari ha d’estar logejat.
-Temps estimat ⇒ 1h
-Temps Real ⇒ 1h
+Solucionar errors del carret
+Temps estimat ⇒ 2h
+Temps Real ⇒ 3h
 
-Alert de javascript per butons amb accions importants.
-Temps estimat ⇒ 1h
-Temps Real ⇒ 1h
-
-Solucionar errors de javascript i del carret a servidor.
+Millorar diversos elements de l'estil
 Temps estimat ⇒ 2h
 Temps Real ⇒ 2h
 
-Funcionalitat del xat, no implementada amb els orders
-Temps estimat ⇒ 16h
-Temps Real ⇒ 22h
+Xat funcionant amb diferents enllaços // route(chat.show)
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Comprovar l'estat del producte abans de realitzar una comanda
+Temps estimat ⇒ 6h
+Temps Real ⇒ 5h
+
+Afegir LOGs a Cart, Chat, Order, Product i Shop Controllers
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1h
+
 
 ==== Oscar
 
@@ -216,6 +200,30 @@ Temps Real ⇒ 3h
 Night/day mode afegit.
 Temps estimat ⇒ 5h
 Temps Real ⇒ 2h
+
+Header/nav responsives, millorat l’estil de les card dels productes (afegir descripció, tags HTML correctes…​).
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Els seeders ara tenen 3 usuaris: 1 comprador, i 2 vendedors amb les seves respectives tendes.
+Temps estimat ⇒ 1h
+Temps Real ⇒ 2h
+
+Per comprar l’usuari ha d’estar logejat.
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1h
+
+Alert de javascript per butons amb accions importants.
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1h
+
+Solucionar errors de javascript i del carret a servidor.
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Funcionalitat del xat, no implementada amb els orders
+Temps estimat ⇒ 16h
+Temps Real ⇒ 22h
 
 ==== Oscar
 

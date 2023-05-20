@@ -21,4 +21,5 @@
             {{ $orders->links('vendor.pagination.default') }}
         </div>
     </div>
+    <script type="module" src="{{ asset('js/app.js') }}"></script>
 @endsection
