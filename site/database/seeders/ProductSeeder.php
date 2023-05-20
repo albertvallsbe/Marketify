@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
 
         DB::table('products')->delete();
         Product::factory()
-            ->count(10)
+            ->count(1000)
             ->create();
     }
 }
