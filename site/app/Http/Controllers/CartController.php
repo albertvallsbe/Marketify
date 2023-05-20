@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\HeaderVariables;
-
 use App\Models\Cart;
+
 use App\Models\Shop;
+use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Classes\HeaderVariables;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
@@ -18,6 +19,17 @@ class CartController extends Controller {
      */
     public function index(Request $request) {
         try {
+            // Hacemos la petición a la api
+            $client = new Client();
+            $response = $client->get('https://'.env('API_IP').':443/api/images', [
+                'verify' => false
+            ]);
+            $data = json_decode($response->getBody(), true);        
+            $paths = [];
+            foreach ($data as $ruta ) {
+                array_push($paths,$ruta);          
+            }
+
             /**
              * 'id' es la QueryString de la URL de cart
              */
@@ -47,6 +59,7 @@ class CartController extends Controller {
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
                 'products' => $products,
+                'paths'=>$paths,
                 'shop' => $shop,
                 'error'=> $error
             ]);
