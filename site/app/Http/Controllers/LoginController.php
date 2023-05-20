@@ -50,7 +50,7 @@ class LoginController extends Controller
                 'current-password' => 'required|string|min:8|max:255',
             ], ValidationMessages::userValidationMessages());
 
-
+            
             $loginType = filter_var($validatedData['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
 
             $credentials = [
@@ -91,7 +91,7 @@ class LoginController extends Controller
         try {
             $validatedData = $request->validate([
                 'email' => 'required|email',
-            ]);
+            ], ValidationMessages::userValidationMessages());
 
             $user = User::where('email', $validatedData['email'])->first();
 
@@ -139,7 +139,7 @@ class LoginController extends Controller
                 'token' => 'required',
                 'new-password' => 'required|string|min:8|max:255|same:repeat-password',
                 'repeat-password' => 'required|string|min:8|max:255|same:new-password',
-            ]);
+            ], ValidationMessages::userValidationMessages());
 
             $user = User::where('remember_token', $validatedData['token'])
                 ->first();
