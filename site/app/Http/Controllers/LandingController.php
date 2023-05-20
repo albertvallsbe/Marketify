@@ -4,33 +4,43 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Order;
-
-    use App\Classes\HeaderVariables;
-    use App\Models\Product;
-    use App\Models\Category;
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Client;
+use App\Classes\HeaderVariables;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LandingController extends Controller
 {
     /**
      * Controlador de la pagina principal
      */
-    public function index()
-    {
+        public function index() {
         try {
-
+            // Hacemos la petición a la api
+            $client = new Client();
+            $response = $client->get('https://'.env('API_IP').':443/api/images', [
+                'verify' => false
+            ]);
+            $data = json_decode($response->getBody(), true);
+            $paths = [];
+            foreach ($data as $ruta) {
+                array_push($paths, $ruta);
+            }
             $categories = Category::all();
-            $json_string = file_get_contents('../datos.json');
+
+            try {
+                $json_string = file_get_contents('../landingValues.json');
 
                 // Decodificamos la cadena JSON en un array PHP
                 $data = json_decode($json_string, true);
                 $data = $data['variableCategories'];
                 $activeTags = array();
-                foreach($data as $key => $category) {
+                foreach ($data as $key => $category) {
                     $activeTags[$key]['name'] = self::getCategories($category['category']);
-                    
-                    $activeTags[$key]['products'] = self::getProducts($category['category'],$category['amount']);
+
+                    $activeTags[$key]['products'] = self::getProducts($category['category'], $category['amount']);
                 }
 
                 Log::channel('marketify')->info('The home view has been loaded successfully.');
@@ -38,15 +48,35 @@ class LandingController extends Controller
                 return view('landing.index', [
                     'categories' => $categories,
                     'options_order' => HeaderVariables::$order_array,
+                    'paths' => $paths,
                     'activeTags' => $activeTags
                 ]);
             } catch (\Exception $e) {
+                // Si hay un error al cargar el JSON, se carga el archivo de valores predeterminado
+                $json_string = file_get_contents('../defaultValues.json');
+                $data = json_decode($json_string, true);
+                $data = $data['variableCategories'];
+                $activeTags = array();
+                foreach ($data as $key => $category) {
+                    $activeTags[$key]['name'] = self::getCategories($category['category']);
+
+                    $activeTags[$key]['products'] = self::getProducts($category['category'], $category['amount']);
+                }
+
                 Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
-                return redirect()->back()->with('error', 'An error occurred while loading the home view.');
+                return view('landing.index', [
+                    'categories' => $categories,
+                    'options_order' => HeaderVariables::$order_array,
+                    'paths' => $paths,
+                    'activeTags' => $activeTags
+                ])->with('error', 'An error occurred while loading the home view.');
             }
-
-
+        } catch (\Exception $e) {
+            Log::channel('marketify')->error('An error occurred while loading the home view: '.$e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred while loading the home view.');
+        }
     }
+
 
     /**
      * Obtener productos para la landing page.
