@@ -11,13 +11,13 @@
                 <br><br>If you want to return press
                 <a href={{ route('login.index') }}>Login</a>
             </p>
-            <form class="form" method='POST'action="{{ route('login.rememberpassw') }}">
+            <form class="form" method="POST" action="{{ route('login.resetPassword') }}">
                 @csrf
-                <label class="form_label" for="remember-password">Your email:</label>
-                <input type="email" class="form_input rememberpassw" placeholder="Introduce your email" name="email1">
+                <input type="hidden" name="token" value="{{ $token }}">
+                
                 <label class="form_label" for="remember-password">Your new password:</label>
                 <input type="password" class="form_input rememberpassw" placeholder="Introduce your new password"
-                    name="remember-password">
+                    name="new-password">
                 <label class="form_label" for="remember-password">Repeat your new password:</label>
                 <input type="password" class="form_input rememberpassw" placeholder="Repeat your new passsword"
                     name="repeat-password">

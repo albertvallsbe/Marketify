@@ -11,11 +11,11 @@
                 <br>If you want to return press
                 <a href={{ route('login.index') }}>Login</a>
             </p>
-            <form class="form" method='POST'action="{{ route('login.remember') }}">
+            <form class="form" method='POST'action="{{ route('login.sendEmail') }}">
                 @csrf
                 <label class="form_label" for="remember-password">Your email:</label>
                 <input type="email" class="form_input input-mail-password" placeholder="example@gmail.com"
-                    name="remember-password">
+                    name="email">
                 <button class="general-button btn-password">SEND EMAIL</button>
                 @if ($errors->has('login-email'))
                     <span>{{ $errors->first('login-email') }}</span>
