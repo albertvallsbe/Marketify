@@ -1,5 +1,29 @@
 === Register
 
+- La funcionalitat de registre d'usuari permet als nous usuaris crear un compte al sistema per accedir a les seves funcionalitats i recursos. 
+
+- El nou usuari a de proporcionar al formulari de registre la informació que es demana per tal de finalitzar emb exit el procés de registre.
+
+- Una vegada l'usuari ha proporcionat totes les dades requerides i ha fet clic al botó de registre, el sistema processa la sol·licitud i crea un nou compte d'usuari amb les dades proporcionades. En aquest punt, el sistema realitza diverses comprovacions, com verificar si l'adreça de correu electrònic ja està registrada o si s'han complert determinades polítiques de contrasenya.
+
 === Login
 
+- La funció d'inici de sessió permet als usuaris accedir de manera segura al sistema utilitzant les seves credencials úniques. 
+
+- Els usuaris proporcionen el seu nom d'usuari o adreça de correu electrònic i la seva contrasenya per autenticar-se en el sistema. 
+
+- El sistema verifica l'autenticitat de les credencials i, si són correctes, permet l'accés a les funcions i àrees protegides del sistema. S'implementen mesures de seguretat per protegir les credencials i garantir la privacitat de l'usuari durant el procés d'inici de sessió.
+
 === Recordar contrassenya
+
+Aquesta funcionalitat és molt útil per als usuaris que ja estan registrats al sistema i han oblidat la seva contrasenya. Amb aquesta funcionalitat, els usuaris poden recuperar l'accés al sistema creant una nova contrasenya. Aquest procés es realitza mitjançant l'enviament d'un enllaç especial al correu electrònic associat a l'usuari.
+
+Per començar, l'usuari ha d'anar a la pàgina d'inici de sessió i seleccionar l'opció "Recordar contrasenya". A continuació, s'ha de proporcionar la direcció de correu electrònic associada al seu compte. Una vegada l'usuari envia aquesta informació, el sistema processa la sol·licitud i genera un enllaç únic.
+
+Aquest enllaç és enviat a l'adreça de correu electrònic proporcionada per l'usuari. En l'email, s'inclou un missatge informatiu que explica el propòsit de l'enllaç i les instruccions a seguir. L'usuari ha de fer clic a l'enllaç proporcionat, el qual el redirigirà a una pàgina especial per a la creació d'una nova contrasenya.
+
+A la pàgina de creació de contrasenya, l'usuari ha de proporcionar una nova contrasenya i confirmar-la per garantir l'exactitud. També pot ser requerit que l'usuari compleixi certs requisits de seguretat en la creació de la contrasenya, com una longitud mínima o l'ús de caràcters especials.
+
+Un cop l'usuari introdueix la nova contrasenya i la confirma, el sistema verifica i actualitza la contrasenya associada a aquest compte d'usuari. A partir d'aquest moment, l'usuari podrà utilitzar la nova contrasenya per accedir al sistema amb les seves credencials actualitzades.
+
+Aquesta funcionalitat de recordar contrasenya proporciona als usuaris una manera senzilla i segura de recuperar l'accés al sistema en cas d'oblit de contrasenya. És important destacar que s'implementen mesures de seguretat adequades per protegir les dades personals i garantir que només l'usuari legítim pugui canviar la contrasenya.
