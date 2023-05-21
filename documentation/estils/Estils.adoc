@@ -8,24 +8,82 @@ https://www.figma.com/file/xjsmV9M96W2X4kTGWDs0Jh/Mockups?node-id=1%3A2&t=EsRwF3
 Els colors que hem utilitzat en la nostra aplicació són:
 
 
-*Negre:* Utilitzem el color negre per als menús i lletres. La raó principal és el bon contrast que ofereix aquest color i la seva fàcil combinació amb la resta de colors de la paleta, a més d'aportar un estil net i elegant a la web.
+==== *Negre:* 
+- Utilitzem el color negre, específicament el tonal "#0e0e0e", per als menús i el text de la nostra aplicació. Aquest color ens ofereix un bon contrast amb els altres colors de la paleta i permet una fàcil combinació amb ells. El color negre transmet un estil net i elegant, aportant sofisticació i claredat a la interfície. A més, el negre també facilita la llegibilitat del text, ja que proporciona un fons contrastant que permet als usuaris llegir la informació amb comoditat. Amb l'ús d'aquest color, busquem crear una estètica atractiva i professional en el nostre disseny.
+
+==== *Blanc:* 
+- Dins de la nostra paleta de colors, inclou el color blanc. Aquest color és essencial tant per a fons com per a molts altres detalls de la interfície. El color blanc ofereix un contrast perfecte i combina de manera excel·lent amb el color negre. La seva presència permet destacar elements clau, crear espais amb sensació de netedat i transmetre una estètica elegant i minimalista a la nostra aplicació. 
+
+==== *Blau:* 
+- Hem seleccionat el color blau "#43a1cc" com a color secundari per al fons dels menús. Aquest color aporta elegància a la web i ofereix un contrast subtil, destacant els detalls importants sense perdre l'harmonia general del menú.
+
+- També hem afegit variacions tonals d'aquest mateix color per a poder crear contrastos en cas que siguin necessaris, com en l'estat "hover" o altres elements on es requereixi destacar visualment. Això ens permet utilitzar diferents nuances de blau, mantenint la coherència i estil de la paleta de colors de la web.
+
+==== *Taronja:*
+- Hem triat el color vermell "#ff5208" com a color primari per als botons. Aquest color vibrants i enèrgic destaca els botons i crida l'atenció dels usuaris. Amb aquest color, volem transmetre un sentiment de vitalitat i acció, animant els usuaris a interactuar amb els botons i realitzar accions rellevants al sistema.
+
+==== *Verd Lima/Pi:* 
+- Per als botons de compra i generar comanda, farem servir el color verd "#67ce74". Aquest color vibrant i fresc suggereix l'acció positiva de realitzar una compra o generar una comanda, donant una sensació d'èxit i confiança als usuaris. Això els animarà a prendre aquestes accions i reforçarà la seva experiència d'ús en la plataforma.
+
+==== *Vermell:*
+- El color vermell "#f43e3e" serà utilitzat per als missatges d'error a la nostra aplicació. Aquest color vibrant i intens transmet una sensació d'alerta i destaca clarament els missatges d'error per captar l'atenció dels usuaris. L'ús d'aquest color ens permetrà indicar de manera visual i efectiva quan hi ha problemes o errors en la interacció amb el sistema, ajudant els usuaris a identificar i abordar ràpidament els problemes. Això millorarà la seva experiència d'ús i facilitarà la resolució dels errors de forma eficient.
 
 
-*Blau de Prússia:* Hem triat el color blau de Prússia per al fons dels menús, la raó és l'elegància que aporta a la web. També ofereix un contrast subtil, respectant el to del menú, però donant la importància necessària als detalls als quals volem donar-li.
+=== Variacions de colors
 
+==== Negre i Blanc:
+Dins de la nostra paleta de colors, tenim les següents variacions de negre i blanc:
 
-*Verd Lima/Pi:* Tenim dos tons de verds presents en la nostra aplicació, això és degut al bon contrast que produeixen amb la resta de colors i a la sensació de tranquil·litat i confiança que transmet. Els utilitzarem per a marcar les seccions actives, per als botons i per als detalls que vulguem ressaltar dins de la interfície.
+    $neutral_darkest: #0e0e0e
+    $neutral_darker: #1f1f1f
+    $neutral_dark: #3e3e3e
+    $neutral_origin: #8f8f8f
+    $neutral_light: #d8d8d8
+    $neutral_lighter: #fbfbfd
 
+Aquests colors proporcionen una gradació de tonalitats des del negre més fosc fins al blanc més clar. Són útils per crear contrastos i definir diferents nivells de profunditat en la nostra interfície.
 
-*Blanc:* En la nostra paleta està el color blanc, ja que és necessari tant per al fons com per a molts altres detalls, ofereix un contrast perfecte i combina molt bé amb el negre.
+==== Taronja:
+Basant-nos en el color taronja base "#ff5208", tenim les següents variacions:
 
+    $primary_dark: #7e2a06
+    $primary_origin: #ff5208
+    $primary_light: #ff9680
+    $primary_lighter: #ffd5cc
 
-=== Usos de cada color:
-*Negre:* En la nostra web, el negre és present solament en la tipografia, textos de menú, textos de contingut, textos del footer…​ No es fa servir per a cap apartat en particular ni per a destacar cap secció ni botó.
+Aquests colors taronja ens permeten jugar amb diverses intensitats i tonalitats, oferint una gamma de colors càlids i enèrgics que es poden utilitzar per destacar elements importants de la interfície.
 
-*Blau de Prússia:* El blau de Prússia ho utilitzem per als menús, així com per als contenidors.
+==== Blau:
+Partint del color blau base "#43a1cc", tenim les següents variacions:
 
-*Verd Lima/Pi:* El verd l'utilitzem per a destacar seccions, en hovers i botons. Per exemple, tots els nostres botons d'inici de sessió, registre…​ Tenen aquest color verd, és el color diferencial de la nostra web.
+    $secondary_darker: #175977
+    $secondary_dark: #3985a9
+    $secondary_origin: #43a1cc
+    $secondary_light: #6cc1e9
+    $secondary_lighter: #abcddc
 
+Aquests tons de blau ens proporcionen una paleta diversa per ressaltar elements i crear un aspecte elegant i refrescant a la interfície.
 
-*Blanc:* En la nostra web, el blanc és utilitzat per al fons, totes les pàgines de la web tenen el color blanc de fons.
+==== Verd Lima/Pi:
+Basant-nos en el color verd base "#67ce74", tenim les següents variacions:
+
+    $succes_lighter: #e2ebe0
+    $succes_light: #b3ffbd
+    $succes_origin: #67ce74
+    $succes_dark: #638a5c
+    $succes_darker: #425c3d
+
+Aquestes variacions de verd ens permeten destacar elements relacionats amb èxits, aportant una sensació de frescor i confiança a la interfície.
+
+==== Vermell:
+Partint del color vermell base "#f43e3e", tenim les següents variacions:
+
+    $error_lighter: #fdc3c9
+    $error_light: #fc9fa8
+    $error_origin: #f43e3e
+    $error_dark: #d90d0d
+    $error_darker: #780707
+
+Aquestes tonalitats de vermell són utilitzades per ressaltar missatges d'error, creant un efecte d'alerta i captant l'atenció dels usuaris.
+
+A través d'aquesta diversitat de colors, podem crear una interfície rica en matisos i contrastos, afegint profunditat i personalitat a la nostra aplicació.
