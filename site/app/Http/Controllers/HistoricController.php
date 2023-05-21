@@ -23,25 +23,28 @@ class HistoricController extends Controller
      */
     public function index()
     {
-        // try{
-            $categories = Category::all();
-
-            $id = auth()->id();
-            $shopID = Shop::findShopUserID($id);
-            $orders = Order::searchOrder($id, $shopID);
-
-            Log::channel('marketify')->info('Historic of orders generated.');
-
-            return view('order.historic', [
-                'categories' => $categories,
-                'orders' => $orders,
-                'options_order' => HeaderVariables::$order_array,
-            ]);
-
-        // }catch (\Exception $e) {
-            // Log::channel('marketify')->info('The email has not been sent.', ["e" => $e->getMessage()]);
-            // return redirect(route('landing.index'));
-        // }
+        try{
+            if (auth()->id()) {
+                $categories = Category::all();
+                
+                $id = auth()->id();
+                $shopID = Shop::findShopUserID($id);
+                $orders = Order::searchOrder($id, $shopID);
+                
+                Log::channel('marketify')->info('Historic of orders generated.');
+                
+                return view('order.historic', [
+                    'categories' => $categories,
+                    'orders' => $orders,
+                    'options_order' => HeaderVariables::$order_array,
+                ]);
+            } else {
+                return redirect()->route('login.index');
+            }
+        }catch (\Exception $e) {
+            Log::channel('marketify')->info('The email has not been sent.', ["e" => $e->getMessage()]);
+            return redirect(route('landing.index'));
+        }
     }
     /**
      * Crear vista de detalles

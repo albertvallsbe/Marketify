@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\HeaderVariables;
+use App\Models\User;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\RememberPassword;
+use App\Classes\HeaderVariables;
+use App\Helpers\ValidationMessages;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Helpers\ValidationMessages;
 
 class LoginController extends Controller
 {
@@ -48,7 +50,7 @@ class LoginController extends Controller
                 'current-password' => 'required|string|min:8|max:255',
             ], ValidationMessages::userValidationMessages());
 
-
+            
             $loginType = filter_var($validatedData['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
 
             $credentials = [
@@ -78,62 +80,92 @@ class LoginController extends Controller
      */
     public function password()
     {
-        return view('login.password');
+        if (auth()->user()) {
+            return redirect(route('user.edit'));
+        } else {
+            return view('login.formEmail');
+        }
     }
 
     /**
      * Remember del password de usuario
      */
-    public function remember(Request $request)
+    public function sendEmail(Request $request)
     {
         try {
             $validatedData = $request->validate([
-                'remember-password' => 'required|string|min:8|max:255',
+                'email' => 'required|email',
             ], ValidationMessages::userValidationMessages());
 
-            $email = $validatedData['remember-password'];
-            $correo = new RememberPassword;
+            $user = User::where('email', $validatedData['email'])->first();
 
-            Mail::to($email)->send($correo);
-            session()->flash('status', 'Email send.');
-            Log::channel('marketify')->debug('Mail send successfuly!');
-            return redirect(route('login.password'));
+            if (!$user) {
+                Log::channel('marketify')->info('The provided email address does not exist.');
+                return redirect()->back()->with('error', 'The provided email address does not exist.');
+            }
+
+            $token = Str::random(32); // Generate a random token
+            $user->remember_token = $token;
+            $user->save();
+
+            $correo = new RememberPassword($user, $token);
+            Mail::to($validatedData['email'])->send($correo);
+
+            Log::channel('marketify')->info('The email for password reset has been sent successfully.');
+            return redirect()->back()->with('status', 'An email with password reset instructions has been sent to your email address.');
         } catch (\Exception $e) {
-            Log::channel('marketify')->debug('The email has not been sent!', ["e" => $e->getMessage()]);
-            return redirect()->back()->with('error', 'An error occurred while sending the email) ');
+            Log::channel('marketify')->error('An error occurred while sending the password reset email.', ["e" => $e->getMessage()]);
+            return redirect()->back()->with('error', 'An error occurred while sending the password reset email.');
         }
     }
 
-    /**
-     * Vista de recordar password
-     */
-    public function rememberView()
+    public function showResetForm(Request $request)
     {
-        return view('login.newPassword');
+        try {
+            if (auth()->user()) {
+                return redirect(route('user.edit'));
+            } else {
+                $token = $request->query('token');
+                return view('login.formNewPassword', ['token' => $token]);
+            }
+        } catch (\Exception $e) {
+            Log::channel('marketify')->error('An error occurred while loading the Reset Password view.', ['e' => $e->getMessage()]);
+            return redirect()->back()->with('error', 'An error occurred while loading the Reset Password view.');
+        }
     }
 
-    /**
-     * Recordar el password olvidado
+        /**
+     * Restablecer la contraseña del usuario.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    public function rememberpassw(Request $request)
+    public function resetPassword(Request $request)
     {
+        try {
+            $validatedData = $request->validate([
+                'token' => 'required',
+                'new-password' => 'required|string|min:8|max:255|same:repeat-password',
+                'repeat-password' => 'required|string|min:8|max:255|same:new-password',
+            ], ValidationMessages::userValidationMessages());
 
-        $email = $request['email1'];
-        $password = $request['remember-password'];
-        $repeatpassword = $request['repeat-password'];
+            $user = User::where('remember_token', $validatedData['token'])
+                ->first();
 
-        $value = $email;
-        $id_user = User::catchId($value);
-        // dd($id_user);
+            if (!$user) {
+                Log::info('The provided email or token is invalid.');
+                return redirect()->back()->with('error', 'The provided email or token is invalid.');
+            }
 
-        if ($password == $repeatpassword) {
+            $user->password = Hash::make($validatedData['new-password']);
+            $user->remember_token = null;
+            $user->save();
 
-            $users = User::updatePassword($id_user, $password);
-            $users->save();
-
-            return redirect(route('login.index'));
-        } else {
-            session()->flash('status', 'Passwords do not match.');
+            Log::info('The password has been reset successfully.');
+            return redirect(route('login.index'))->with('status', 'Your password has been reset successfully. You can now log in with your new password.');
+        } catch (\Exception $e) {
+            Log::error('An error occurred while resetting the password.', ['e' => $e->getMessage()]);
+            return redirect()->back()->with('error', 'An error occurred while resetting the password.');
         }
     }
 }

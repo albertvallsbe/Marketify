@@ -70,7 +70,7 @@
                     @endif
                 </a>
             </div>
-            
+
             <button id="mode-toggle" class="shop_buttons"><img class="icon"
                     src="{{ asset('images/icons/moon-solid.svg') }}"></button>
         </div>

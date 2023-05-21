@@ -170,7 +170,7 @@ class ChatController extends Controller {
                 ['chat_id' => $chat->id, 'user_id' => $chat->customer_id],
                 ['read' => false]
             );
-            Log::channel('marketify')->info("Order status for chat #$chatId has updated");
+            Log::channel('marketify')->info("Order status for chat has updated");
             return redirect()->route('chat.show', ['id' => $chat->id]);
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred updating order status: '.$e->getMessage());

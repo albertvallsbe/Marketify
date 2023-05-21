@@ -13,12 +13,19 @@ class RememberPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+    public $token;
+
     /**
      * Create a new message instance.
+     *
+     * @param  User  $user
+     * @param  string  $token
      */
-    public function __construct()
+    public function __construct($user, $token)
     {
-        //
+        $this->user = $user;
+        $this->token = $token;
     }
 
     /**
@@ -27,7 +34,7 @@ class RememberPassword extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Have you forgotten the password?',
+            subject: 'Have you forgotten the password?'
         );
     }
 

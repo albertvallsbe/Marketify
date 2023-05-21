@@ -7,14 +7,52 @@
     @include cardPosition;
     width: 50vw;
     @include imageBigCardSize;
+    .slider {
+        position: relative;
+      }
+    
+      .slide {
+        display: none;
+      }
+    
+      .slider img {
+        display: flex;
+        align-items: center;
+        margin-inline: auto;
+        object-fit: contain;
+        width: 500px;
+        height: 500px;
+      }
+    
+      .slider-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    
+      .slide-button {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 5px 10px;
+        background-color: $secondary_origin;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .slide-button.active {
+        background-color: $secondary_darker;
+      }
+
+      .slide-button:hover {
+        background-color: $secondary_dark;
+      }
 }
 
 .card-style-productshow-details {
     @include cardStyle;
     @include cardPosition;
 
-    // margin-top: 20%;
-    // margin-left: 1rem;
     padding-bottom: 2rem;
     min-width: 250px;
 
@@ -54,7 +92,6 @@
         grid-column-gap: $size-small;
     }
     .card-style-productshow-details {
-        // min-width: 350px;
 
         text-align: center;
         align-items: center;

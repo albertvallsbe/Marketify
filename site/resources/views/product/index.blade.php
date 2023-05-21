@@ -9,7 +9,7 @@
                 @foreach ($products as $key => $product)
                     <div class="card-style-home product" id={{ $product->id }}>
                         <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
-                            <img class="product-img" src="{{ asset($product->image) }}" />
+                            <img class="product-img" src="{{ asset($paths[$product->id - 1]['path']) }}" />
                             <h4 class="card-style-home_title product__name">{{ $product->name }}</h4>
                             <h5 class="card-style-home_title product__description">{{ $product->description }}</h5>
                             <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>
@@ -35,7 +35,6 @@
             @endif
         </div>
         <div id="pagination">
-            {{-- {{ $products->appends(['search' => $search]) }} --}}
             {{ $products->links('vendor.pagination.default') }}
         </div>
         <script type="module" src="{{ asset('js/pages/product_index.js') }}"></script>

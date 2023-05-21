@@ -27,32 +27,36 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         try {
-            if ($request->isMethod('get')) {
-                $categories = Category::all();
-                $shops = Shop::all();
-                $products = Product::all();
-
-                $shopName = array();
-                for ($i=0 ; $i< count($shops); $i++) {
-                    $shopName[$i] = $shops[$i]->shopname;
+            if (auth()->user()) {
+                if ($request->isMethod('get')) {
+                    $categories = Category::all();
+                    $shops = Shop::all();
+                    $products = Product::all();
+                    
+                    $shopName = array();
+                    for ($i=0 ; $i< count($shops); $i++) {
+                        $shopName[$i] = $shops[$i]->shopname;
+                    }
+                    $productsByShop = Order::findShopAndCartProducts();
+                    
+                    Log::channel('marketify')->info('order.index view loaded');
+                    return view('order.index', [
+                        'categories' => $categories,
+                        'options_order' => HeaderVariables::$order_array,
+                        'products' => $products,
+                        'shops' => $shops,
+                        'productsByShop' => $productsByShop,
+                        'shopName' => $shopName,
+                    ]);
+                } else {
+                    return redirect()->route('landing.index');
                 }
-                $productsByShop = Order::findShopAndCartProducts();
-
-                Log::channel('marketify')->info('order.index view loaded');
-                return view('order.index', [
-                    'categories' => $categories,
-                    'options_order' => HeaderVariables::$order_array,
-                    'products' => $products,
-                    'shops' => $shops,
-                    'productsByShop' => $productsByShop,
-                    'shopName' => $shopName,
-                ]);
             } else {
-                return redirect()->route('landing.index');
+                return redirect()->route('login.index');
             }
         } catch (\Exception $e) {
-                Log::channel('marketify')->error('An error occurred showing order view: '.$e->getMessage());
-                return redirect()->back()->with('error', 'An error occurred in OrderController.');
+            Log::channel('marketify')->error('An error occurred showing order view: '.$e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred in OrderController.');
         }
     }
 
@@ -85,7 +89,7 @@ class OrderController extends Controller
                     'user_id' => auth()->id(),
                     'shop_id' => $shopId
                 ]);
-                Log::channel('marketify')->info("Order #$order->id of $order->user_id has created");
+                Log::channel('marketify')->info("Order has created");
                 $chat = Chat::createChatByOrder($shops[$key], $order->id);
                 foreach ($shopByProduct as $key => $products) {
                     OrderItems::create([
@@ -135,11 +139,15 @@ class OrderController extends Controller
 
     public function management(){
         try{
-            $categories = Category::all();
-            return view('order.management', [
-                'categories' => $categories,
-                'options_order' => HeaderVariables::$order_array
-            ]);
+            if (auth()->user()) {
+                $categories = Category::all();
+                return view('order.management', [
+                    'categories' => $categories,
+                    'options_order' => HeaderVariables::$order_array
+                ]);
+            } else {
+                return redirect()->route('login.index');                
+            }
         } catch (\Exception $e) {
                 Log::channel('marketify')->error('An error occurred showing management order fail view: '.$e->getMessage());
                 return redirect()->back()->with('error', 'An error occurred in OrderController.');

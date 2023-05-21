@@ -3,11 +3,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\User;
-use App\Classes\HeaderVariables;
+use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Classes\HeaderVariables;
 use App\Helpers\ValidationMessages;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -18,10 +19,14 @@ class ShopController extends Controller {
     //Vista principal de la tienda
     public function index() {
         try {
-            $categories = Category::all();
-            Log::channel('marketify')->info('shop.index view loaded');
-            return view('shop.index',['categories' => $categories,
-            'options_order' => HeaderVariables::$order_array]);
+            if (auth()->id()) {
+                $categories = Category::all();
+                Log::channel('marketify')->info('shop.index view loaded');
+                return view('shop.index',['categories' => $categories,
+                'options_order' => HeaderVariables::$order_array]);
+            } else {
+                return redirect()->route('login.index'); 
+            }
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred showing shop view: '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
@@ -31,6 +36,17 @@ class ShopController extends Controller {
     //Vista selectiva de la tienda
     public function show($url) {
         try {
+            // Hacemos la petición a la api
+            $client = new Client();
+            $response = $client->get('https://'.env('API_IP').':443/api/images', [
+                'verify' => false
+            ]);
+            $data = json_decode($response->getBody(), true);        
+            $paths = [];
+            foreach ($data as $ruta ) {
+                array_push($paths,$ruta);          
+            }
+
             $shop = Shop::showByURL($url);
             $products = Product::productsShop($shop->id, $shop->order);
             $categories = Category::all();
@@ -50,6 +66,7 @@ class ShopController extends Controller {
                 'options_order' => HeaderVariables::$order_array,
                 'products' => $products,
                 'usersShop' => $usersShop,
+                'paths'=>$paths,
                 'header_color' => $header_color,
                 'background_color' => $background_color]);
         } catch (ModelNotFoundException $e) {
@@ -64,7 +81,17 @@ class ShopController extends Controller {
             if(auth()->user()) {
                 $id = Auth::user()->id;
                 $shopID = Shop::findShopUserID($id);
-                try {
+                try {           
+                // Hacemos la petición a la api
+                $client = new Client();
+                $response = $client->get('https://'.env('API_IP').':443/api/images', [
+                    'verify' => false
+                ]);
+                $data = json_decode($response->getBody(), true);        
+                $paths = [];
+                foreach ($data as $ruta ) {
+                    array_push($paths,$ruta);          
+                }
                     $shop = Shop::findOrFail($shopID);
                     $products = Product::productsShop($shopID, $shop->order);
                     $categories = Category::all();
@@ -78,6 +105,7 @@ class ShopController extends Controller {
                         'shop' => $shop,
                         'categories' => $categories,
                         'options_order' => HeaderVariables::$order_array,
+                        'paths'=>$paths,
                         'header_color' => $header_color,
                         'background_color' => $background_color
                     ]);
@@ -217,7 +245,7 @@ class ShopController extends Controller {
                     'order' => $validatedData['order'],
                     'background_color' => $validatedData['background_color'],
                 ]);
-
+                
                 Log::channel('marketify')->info("Shop #$shop->id has been updated");
                 session()->flash('status', "Shop edited successfully.");
                 return redirect()->route('shop.admin');

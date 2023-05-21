@@ -18,8 +18,13 @@ class ProductSeeder extends Seeder
     {
 
         DB::table('products')->delete();
-        Product::factory()
-            ->count(10)
-            ->create();
+        $productCount = 10;
+        $delay = 1000; // 1 segundo en milisegundos
+
+        for ($i = 0; $i < $productCount; $i++) {
+            Product::factory()->create();
+            // Agrega un retraso de 1 segundo (1000 milisegundos) antes de crear el siguiente producto
+            usleep($delay * 1000);
+        }
     }
 }

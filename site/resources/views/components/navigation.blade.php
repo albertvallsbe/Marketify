@@ -10,9 +10,9 @@
 
 
     @if (auth()->check())
-            <a href="{{ route('user.edit') }}">
-                <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
-            </a>
+        <a href="{{ route('user.edit') }}">
+            <img class="icon icon_user" src="{{ asset(auth()->user()->avatar) }}">
+        </a>
     @else
         <a href="{{ route('login.index') }}">
             <img class="icon" src="{{ asset('images/icons/user-solid.svg') }}">

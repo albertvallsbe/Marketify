@@ -1,0 +1,133 @@
+== Manual d'Instal·lació: Configuració de l'Aplicació
+Aquest manual d'instal·lació descriu els passos necessaris per configurar correctament l'aplicació. Sigueu atents i seguiu les instruccions de manera precisa per assegurar-vos que tot funciona adequadament.
+
+=== Pas 1: Configuració de la Base de Dades
+Els dos projectes Laravel, l'API i el lloc web, requereixen una configuració adequada per connectar-se correctament a la base de dades. Assegureu-vos d'incloure les següents configuracions en els arxius de configuració corresponents:
+
+Copieu els dos arxius de configuracions d'exemples (.env.example) als dos projectes i enganxeu-los al mateix repositori al qual pertanyen. A continuació, elimineu la part '.example' del nom de l'arxiu.
+
+Un cop realitzades aquestes modificacions, el vostre arxiu de configuració .env hauria de tenir l'estructura següent:
+```
+DB_CONNECTION=mysql
+DB_HOST=172.16.50.50
+DB_PORT=3306
+DB_DATABASE=marketifyBBDD
+DB_USERNAME=admin
+DB_PASSWORD=1234
+```
+=== Configuració específica del lloc web
+Confirmeu que l'arxiu .env del lloc web ha de tenir la següent línia de codi per establir la IP de l'API:
+
+```
+API_IP=172.16.50.60
+```
+
+=== Pas 2: 
+Per instal·lar les dependències dels dos projectes Laravel (site i ApiMarketplace), seguiu les següents instruccions:
+
+- Obriu una nova consola i navegueu fins al directori del projecte "site" utilitzant la comanda següent:
+```
+cd site
+```
+- Un cop esteu dins del directori del projecte "site", executeu la comanda següent per instal·lar les dependències utilitzant Composer:
+```
+composer install
+```
+
+- Un cop finalitzat, executeu aquesta comanda per generar una clau de Laravel:
+```
+php artisan key:generate
+```
+
+- Tanqueu aquesta terminal i obriu una altra consola nova i navegueu fins al directori del projecte "ApiMarketplace" utilitzant la comanda següent:
+```
+cd ApiMarketplace
+```
+- Un cop esteu dins del directori del projecte "ApiMarketplace", executeu la comanda següent per instal·lar les dependències utilitzant Composer:
+```
+composer install
+```
+
+- Ja podeu tancar aquesta terminal.
+
+=== Pas 3: Creació de la Màquina Virtual per al Lloc Web
+Ara que la connexió està configurada, heu de crear una màquina virtual per al lloc web. Seguiu aquests passos:
+
+1. Obriu una nova terminal.
+2. Executeu les comandes següents:
+```
+cd vagrantSITE
+vagrant up
+vagrant ssh
+```
+*Generació del Certificat HTTPS*
+
+Quan se us demani una contrasenya, introduïu '1234'. A continuació, executeu les següents comandes per generar un certificat autofirmat.
+
+- Generar una nova clau privada encriptada:
+```
+sudo openssl genpkey -algorithm RSA -out /etc/ssl/private/selfsigned.key -aes128
+```
+- Generar un certificat autofirmat amb la nova clau privada:
+```
+sudo openssl req -new -x509 -sha256 -key /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt -days 3650 -subj "/C=ES/ST=Barelona/L=Terrassa/O=Marketify/OU=NicolauCopernic/CN=Marketify"
+
+```
+- Reiniciar Apache
+```
+sudo systemctl restart apache2
+```
+
+- No tanqueu la terminal. Serà útil per a més endavant.
+=== Pas 5: Creació de la Màquina Virtual per a l'API d'Imatges
+Ara heu de crear una màquina virtual per a l'API d'imatges. Seguiu aquests passos:
+
+1. Obriu una nova terminal.
+2. Executeu les comandes següents:
+```
+cd vagrantAPI
+vagrant up
+vagrant ssh
+```
+*Generació del Certificat HTTPS*
+Quan se us demani una contrasenya, introduïu '1234'. A continuació, executeu les comandes següents:
+
+- Generar una nova clau privada encriptada:
+```
+sudo openssl genpkey -algorithm RSA -out /etc/ssl/private/selfsigned.key -aes128
+```
+- Generar un certificat autofirmat amb la nova clau privada:
+```
+sudo openssl req -new -x509 -sha256 -key /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt -days 3650 -subj "/C=ES/ST=Barelona/L=Terrassa/O=Marketify/OU=NicolauCopernic/CN=Marketify"
+
+```
+- Reiniciar Apache
+```
+sudo systemctl restart apache2
+```
+
+- No tanqueu la terminal. Serà útil per a més endavant.
+
+Ja heu generat els dos certificats HTTPS necessaris per al funcionament de l'aplicació.
+
+=== Pas 4: Execució de les Migracions i Poblament de la Base de Dades
+Ara, aneu a la terminal on heu tractat el vagrant del lloc web (vagrantSITE) i executeu les comandes següents:
+
+```
+cd /home/marketify/site
+php artisan migrate:refresh
+```
+
+Torneu a la terminal on heu tractat el vagrant de l'API (vagrantAPI) i executeu les comandes següents:
+```
+cd /home/marketify/ApiMarketplace
+php artisan migrate:refresh
+```
+Torneu a la terminal vagrantSITE (estant en /home/marketify/site) i executeu:
+```
+php artisan db:seed
+```
+=== Pas 6: Finalització de la Configuració
+Felicitats! Heu acabat amb èxit la configuració. Ara, obriu el navegador i introduïu la següent adreça IP per accedir al lloc web:
+
+https://172.16.50.50

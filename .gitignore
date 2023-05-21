@@ -23,7 +23,6 @@ yarn-error.log
 /.idea
 /.vscode
 
-/vagrant
 /vagrant/.vagrant
 
 /public/css

@@ -72,8 +72,6 @@ clearButton.addEventListener("click", function () {
 });
 
 ordersButton.addEventListener("click", function () {
-    // localStorage.removeItem("cart");
-    // updateCartServerStorage();
     window.location.href = "/order";
 });
 showTotalPrice();

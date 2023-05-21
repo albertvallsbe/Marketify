@@ -10,7 +10,7 @@
                 <ul class="chat_list">
                     @foreach ($chats as $key => $chat)
                         <a href="{{ route('chat.show', ['id' => $chat->id]) }}" class="link_show">
-                            <li class="chat_item @if ($chat->notification->read == 0 && $chat->notification->user_id === auth()->id()) unread @endif @if($chat->id == $selectedChat->id) selected @endif"
+                            <li class="chat_item @if ($chat->notification->read == 0 && $chat->notification->user_id === auth()->id()) unread @endif @if ($chat->id == $selectedChat->id) selected @endif"
                                 data-chat-id="{{ $chat->id }}">
                                 @if ($chat->seller_id != auth()->id())
                                     <span class="chat_name">Buying Order: #{{ $chat->order->id }}</span>

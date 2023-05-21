@@ -44,14 +44,13 @@ Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('pro
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 
-Route::get('/login/password', [LoginController::class, 'password'])->name('login.password');
-Route::post('/login/password', [LoginController::class, 'remember'])->name('login.remember');
-Route::get('/login/password/email', [LoginController::class, 'email'])->name('login.email');
-Route::post('/login/password/email', [EmailController::class, 'return'])->name('email.return');
-Route::get('/login/password/remember', [LoginController::class, 'rememberView'])->name('login.rememberView');
-Route::post('/login/password/remember', [LoginController::class, 'rememberpassw'])->name('login.rememberpassw');
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('auth.login');
+Route::get('/login/remember-psw1', [LoginController::class, 'password'])->name('login.formEmail');
+Route::post('/login/remember-psw1', [LoginController::class, 'sendEmail'])->name('login.sendEmail');
+
+Route::get('/login/remember-psw2', [LoginController::class, 'showResetForm'])->name('login.receivedEmail');
+Route::post('/login/remember-psw2', [LoginController::class, 'resetPassword'])->name('login.resetPassword');
 
 Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/edit', [UserController::class, 'changeData'])->name('user.changeData');

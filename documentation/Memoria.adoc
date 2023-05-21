@@ -8,6 +8,7 @@ Albert Valls Berengueras<valls.berengueras.albert@alumnat.copernic.cat>, Óscar 
 include::setmanes/setmana.adoc[]
 
 == Disseny base de dades
+include::documentacio/db.adoc[]
 
 == Usuaris
 // Albert
@@ -21,7 +22,7 @@ include::documentacio/products.adoc[]
 // Oscar
 include::documentacio/search.adoc[]
 
-== Carret
+== Carret de la Compra
 // David
 include::documentacio/cart.adoc[] 
 
@@ -67,6 +68,7 @@ include::estils/Estils.adoc[]
 
 == Confecció del manual d’instal·lació/distribució de l’aplicació.
 // David
+include::documentacio/installation_manual.adoc[]
 
 == Confecció del manual d’usuari.
 // Albert
@@ -79,5 +81,7 @@ include::estils/Estils.adoc[]
 
 
 == Glossari. Webgrafia. Altres recursos de consulta.
+include::documentacio/resources.adoc[]
+
 
 == Presentació del projecte.
