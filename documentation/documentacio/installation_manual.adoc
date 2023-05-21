@@ -120,7 +120,7 @@ php artisan migrate:refresh
 
 Torneu a la terminal on heu tractat el vagrant de l'API (vagrantAPI) i executeu les comandes següents:
 ```
-cd /home/marketify/ApiMarketPlace
+cd /home/marketify/ApiMarketplace
 php artisan migrate:refresh
 ```
 Torneu a la terminal vagrantSITE (estant en /home/marketify/site) i executeu:
