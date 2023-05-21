@@ -203,8 +203,12 @@ class ProductController extends Controller
                 'product_category' => 'required|exists:categories,id',
             ], ValidationMessages::productValidationMessages());
             $productImages = $request->file('product_image');
-            if (count($productImages) > 4) {
-                return redirect()->back()->withErrors(['product_image' => 'You can upload a maximum of 4 images.']);
+            if ($productImages) {   
+                if (count($productImages) > 4) {
+                    return redirect()->back()->withErrors(['product_image' => 'You can upload a maximum of 4 images.']);
+                }
+            } else {
+                return redirect()->back()->withErrors(['product_image' => 'You can not upload 0 images.']);
             }
             $client = new Client();
             if ($request->hasFile('product_image')) {
@@ -271,10 +275,13 @@ class ProductController extends Controller
                 'product_tag' => 'nullable|string',
                 'product_category' => 'required|exists:categories,id',
             ], ValidationMessages::productValidationMessages());
-
-            // Verificar si se supera el límite de imágenes
-            if (count($request->file('product_image')) > 4) {
-                return redirect()->back()->withErrors(['product_image' => 'You can upload a maximum of 4 images.']);
+            $productImages = $request->file('product_image');
+            if ($productImages) {   
+                if (count($productImages) > 4) {
+                    return redirect()->back()->withErrors(['product_image' => 'You can upload a maximum of 4 images.']);
+                }
+            } else {
+                return redirect()->back()->withErrors(['product_image' => 'You can not upload 0 images.']);
             }
 
             $client = new Client();
