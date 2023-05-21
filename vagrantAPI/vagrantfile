@@ -2,7 +2,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "debian/bullseye64"
   config.vm.hostname = "marketifyAPI"
   config.vm.define "marketifyAPI"
-  config.vm.synced_folder "../../marketplace/ApiMarketplace", "/home/marketify/ApiMarketplace"
+  config.vm.synced_folder "../ApiMarketplace", "/home/marketify/ApiMarketplace"
   config.vm.network "private_network", ip: "172.16.50.60"
   config.vm.provision "shell", path: "bootstrap.sh"
   config.vm.provider "virtualbox" do |vb|
