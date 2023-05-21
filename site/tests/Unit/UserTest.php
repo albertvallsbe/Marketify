@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Unit;
-
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Database\QueryException;
@@ -19,6 +17,22 @@ class UserTest extends TestCase {
         $this->assertNotNull($user);
     }
 
+    /**
+     * Test formato de correo inválido
+     */
+    public function testInvalidEmailFormat() {
+        $email = 'invalid_email_format';
+    
+        $user = User::factory()->make(['email' => $email]);
+        
+        $validator = Validator::make($user->toArray(), [
+            'email' => 'email'
+        ]);
+        
+        $this->assertTrue($validator->fails());
+    }
+
+    
     /**
      * Test crear correo único
      */

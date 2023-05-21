@@ -80,7 +80,11 @@ class LoginController extends Controller
      */
     public function password()
     {
-        return view('login.formEmail');
+        if (auth()->user()) {
+            return redirect(route('user.edit'));
+        } else {
+            return view('login.formEmail');
+        }
     }
 
     /**
@@ -118,8 +122,12 @@ class LoginController extends Controller
     public function showResetForm(Request $request)
     {
         try {
-            $token = $request->query('token');
-            return view('login.formNewPassword', ['token' => $token]);
+            if (auth()->user()) {
+                return redirect(route('user.edit'));
+            } else {
+                $token = $request->query('token');
+                return view('login.formNewPassword', ['token' => $token]);
+            }
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred while loading the Reset Password view.', ['e' => $e->getMessage()]);
             return redirect()->back()->with('error', 'An error occurred while loading the Reset Password view.');

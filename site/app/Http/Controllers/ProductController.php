@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Shop;
+use App\Models\User;
 use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Notification;
 
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\View\Components\Header;
 use App\Classes\HeaderVariables;
@@ -167,12 +168,22 @@ class ProductController extends Controller
     public function create()
     {
         try {
-            $categories = Category::all();
-            Log::channel('marketify')->info('product.create view loaded');
-            return view('product.create', [
-                'categories' => $categories,
-                'options_order' => HeaderVariables::$order_array
-            ]);
+            if (auth()->id()) {
+
+                $user = User::findOrFail(auth()->id());
+                if ($user->role == 'seller') {
+                    $categories = Category::all();
+                    Log::channel('marketify')->info('product.create view loaded');
+                    return view('product.create', [
+                        'categories' => $categories,
+                        'options_order' => HeaderVariables::$order_array
+                    ]);
+                } else {
+                    return redirect()->route('shop.index');                
+                }
+            } else {
+                return redirect()->route('login.index'); 
+            }
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred showing product create view: ' . $e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
@@ -334,13 +345,17 @@ class ProductController extends Controller
         try {
             $categories = Category::all();
             $product = Product::find($id);
-
-            Log::channel('marketify')->info('product.edit view loaded');
-            return view('product.edit', [
-                'categories' => $categories,
-                'options_order' => HeaderVariables::$order_array,
-                'product' => $product
-            ]);
+            if ($product->shop->user_id == auth()->id()) { 
+                Log::channel('marketify')->info('product.edit view loaded');
+                return view('product.edit', [
+                    'categories' => $categories,
+                    'options_order' => HeaderVariables::$order_array,
+                    'product' => $product
+                ]);
+            } else {
+                Log::channel('marketify')->info('Redirect to product.show');
+                return redirect()->route('product.show', $id);
+            }
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred showing product edit view: ' . $e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
