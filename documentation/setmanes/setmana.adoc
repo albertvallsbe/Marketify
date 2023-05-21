@@ -1,7 +1,7 @@
 === Setmana 12
 
 ==== David
-Comprovar l'estat del producto abans de comprar (en la vista del carret, vista de l'ordre i al presionar le botó de comprar)
+Comprovar l'estat del producte abans de comprar (en la vista del carret, vista de l'ordre i al presionar le botó de comprar)
 Temps estimat ⇒ 2h
 Temps Real ⇒ 4h
 
@@ -17,7 +17,7 @@ Esborrar codi mort, codi de test i comentar funcions
 Temps estimat ⇒ 1h
 Temps Real ⇒ 1h
 
-Solucionar error de notificacions, error de paginació
+Solucionar error de notificacions i error de paginació
 Temps estimat ⇒ 2h
 Temps Real ⇒ 2h
 
@@ -52,6 +52,14 @@ Temps Real ⇒ 1h
 Fer funcionar LandingPage malgrat que hi hagi un json amb un format erroni
 Temps estimat ⇒ 1h
 Temps Real ⇒ 2h
+
+Funcionalitat per canviar contrasenya amb correu i token asociat al compte 
+Temps estimat ⇒ 2h
+Temps Real ⇒ 2h
+
+Guia de instal·lació
+Temps estimat ⇒ 1h
+Temps Real ⇒ 1h
 
 ==== Oscar
 Poner los mensajes de Log Info en diferentes páginas

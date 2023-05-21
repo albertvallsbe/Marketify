@@ -81,5 +81,7 @@ include::documentacio/installation_manual.adoc[]
 
 
 == Glossari. Webgrafia. Altres recursos de consulta.
+include::documentacio/resources.adoc[]
+
 
 == Presentació del projecte.
