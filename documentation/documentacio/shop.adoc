@@ -36,3 +36,8 @@ Es reaprofita el mixin utilitzat pel formulari de creació.
 Des de la vista d'administrador, l'usuari propietari és capaç de crear productes, esborrar-los, editar-los i amagar-los.
 
 Menys l'afegir, aquestes opcions apareixen en cada producte en forma d'icones.
+
+==== Altres consideracions
+- En la creació del seeder de shops, hem tingut problemes amb l'id de botiga, que al estar relacionat amb l'id d'usuari en alguns casos donava errors en la comanda de db:seed. 
+- Al assignar de forma fixe un user_id a la botiga en cas de repetir l'ordre de db:seed sense havere fet un migrate donava un error per la repetició de la id. Per la qual cosa, desprès de varies proves. s'ha arribat a la conclusió que es un aspecte a millorar el fet de controlar millor aquest seeder per evitar conflictes. 
+- Per falta de temps s'accepta que no es pot tornar a llançar les db:seed sense fer un migrate:fresh abans. Ja que en altra manera hi ha duplicitats que fan fallar el sistema.
