@@ -198,21 +198,20 @@ class ProductController extends Controller
              * FUNCIONALIDAD POR TERMINAR(SUBIR UNA IMAGEN A LA API AL CREAR EL PRODUCTO )
              */
 
-            $uploadedFile = new UploadedFile($imagePath, basename($imagePath));
 
-            // dd($uploadedFile); 
-
-            $client = new Client();
-
+            $product_id = Product::all();
+            $ids = count($product_id);
+            
             $client->post('http://localhost:8080/api/insert', [
-                'multipart' => [
+                'json' => [
                     'name' => $name,
-                    'path' => fopen($uploadedFile->getPathname(), 'r'),
-                    'product_id' => 1,
+                    'path' => $imagePath,
+                    'product_id' =>  $ids,
                     'main' => true,
                 ]
 
             ]);
+
 
             Log::channel('marketify')->info("Product #$product->id created succesfully");
             $category_product = Category_product::create([
