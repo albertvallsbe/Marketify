@@ -31,9 +31,8 @@
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
 
-                <label class="form_label" for="product_image">Image(s):
-                </label>
-                <input type="file" class="form_input @error('product_image') is-invalid @enderror" name="product_image">
+                <label class="form_label" for="product_image">Image(s):</label>
+                <input type="file" class="form_input @error('product_image') is-invalid @enderror" name="product_image[]" multiple>
                 @error('product_image')
                     <label class="form_label_invalid">{{ $message }}</label>
                 @enderror
