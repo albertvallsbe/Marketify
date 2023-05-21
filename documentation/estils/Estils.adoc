@@ -11,17 +11,17 @@ Els colors que hem utilitzat en la nostra aplicació són:
 *Negre:* Utilitzem el color negre per als menús i lletres. La raó principal és el bon contrast que ofereix aquest color i la seva fàcil combinació amb la resta de colors de la paleta, a més d'aportar un estil net i elegant a la web.
 
 
-*Blau de Prússia:* Hem triat el color blau de Prússia per al fons dels menús, la raó és l'elegància que aporta a la web. També ofereix un contrast sútil, respectant el to del menú però donant la importància necessària als detalls als quals volem donar-la-hi.
+*Blau de Prússia:* Hem triat el color blau de Prússia per al fons dels menús, la raó és l'elegància que aporta a la web. També ofereix un contrast subtil, respectant el to del menú, però donant la importància necessària als detalls als quals volem donar-li.
 
 
 *Verd Lima/Pi:* Tenim dos tons de verds presents en la nostra aplicació, això és degut al bon contrast que produeixen amb la resta de colors i a la sensació de tranquil·litat i confiança que transmet. Els utilitzarem per a marcar les seccions actives, per als botons i per als detalls que vulguem ressaltar dins de la interfície.
 
 
-*Blanc:* En la nostra paleta està el color blanc ja que és necessari tant per al fons com per a molts altres detalls, ofereix un contrast perfecte i combina molt bé amb el negre.
+*Blanc:* En la nostra paleta està el color blanc, ja que és necessari tant per al fons com per a molts altres detalls, ofereix un contrast perfecte i combina molt bé amb el negre.
 
 
 === Usos de cada color:
-*Negre:* En la nostra web, el negre és present solament en la tipografia, textos de menú, textos de contingut, textos del footer…​ No s'utilitza per a cap apartat en particular ni per a destacar cap secció ni botó.
+*Negre:* En la nostra web, el negre és present solament en la tipografia, textos de menú, textos de contingut, textos del footer…​ No es fa servir per a cap apartat en particular ni per a destacar cap secció ni botó.
 
 *Blau de Prússia:* El blau de Prússia ho utilitzem per als menús, així com per als contenidors.
 

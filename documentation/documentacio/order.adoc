@@ -1,0 +1,23 @@
+
+=== Control del carret
+- La vista order mostra un resum dels articles que conte el carret de l'usuari, amb el nom i el preu dels productes agrupats per venedor
+
+- Es controla que un producte no hagi estat venut abans de pasar al realitzar la comanda
+
+- En cas de que un producte hagi estat venut no es pot realitzar la comanda i s'informa al client dels productes ja venuts i que els ha d'eliminar manualment
+
+- Un cop tots els productes del carret estan disponibles per vendre i realitzaem la comanda. s'activa el botó de realitzar comanda.
+
+=== Realització de la comanda
+
+- Al presionar el botó de realitzar comanda es genera una order per cada venedor implicat en els productes del carret
+
+- Es crea un registre a la base de dades de orders amb les dades de la comanda. I a la taula de ordersItems es crea un registre per cada producte en aquell order, amb la informacio del order
+
+- Es crea al mateix temps un chat unic entre el client i el venedor relacionat amb aquell id de order
+
+=== Buidatge del carret
+
+- Quan l'order s'ha realitzat amb exit i s'han creat els registres a la base de dades, aquells productes que han estat venuts en aquelles orders, es marcaran a la taula de products com a que ja estan venuts.
+
+- Tambè es procedeix a borrar les dades del carret tant en local com el carret del servidor asignat a aquell usuari. De manera que quan vulgui tornar a compra el carret estarà buit i es podra tornar a cpmençar el cicle.

@@ -1,5 +1,5 @@
 === Creació del xat
-El xat es creat una vegada que s'ha creat l'ordre. Agafa la ID de l'usuari comprador i la ID de l'usuari venedor per crear-ho. Aquest xat inicia amb un missatge automàtic per part de l'usuari comprador ón confirma i presenta la ordre.
+El xat és creat una vegada que s'ha creat l'ordre. Agafa la ID de l'usuari comprador i la ID de l'usuari venedor per crear-ho. Aquest xat inicia amb un missatge automàtic per part de l'usuari comprador on es confirma i presenta l'ordre.
 
 ==== Missatges automàtics
 Els missatges automàtics estan determinats per l'estat de l'ordre, que pot ser un dels quatre següents:
@@ -24,5 +24,5 @@ Quan es crea un xat, es generen les notificacions dels usuaris, que inclouen la 
 El xat i les notificacions no són asíncrons; cal actualitzar la pàgina per veure la informació més recent. La pàgina de missatges mostra una llista de tots els xats als quals l'usuari pertany, tant si és un venedor com un comprador, i inclou una secció on es mostren els missatges. Aquesta secció utilitza la funció "show" en el controlador de xats.
 
 
-=== Posibles conflictes:
+=== Possibles conflictes
 - Si l'usuari introdueix manualment una ID a l'URL que no correspon a aquest usuari, el xat no es mostrarà.

@@ -4,7 +4,7 @@ Aquest manual d'instal·lació descriu els passos necessaris per configurar corr
 === Pas 1: Configuració de la Base de Dades
 Els dos projectes Laravel, l'API i el lloc web, requereixen una configuració adequada per connectar-se correctament a la base de dades. Assegureu-vos d'incloure les següents configuracions en els arxius de configuració corresponents:
 
-Copieu els dos arxius de configuracions d'exemples (.env.example) als dos projectes i enganxeu-los al mateix repositori al que pertanyen. A continuació, elimineu la part '.example' del nom de l'arxiu.
+Copieu els dos arxius de configuracions d'exemples (.env.example) als dos projectes i enganxeu-los al mateix repositori al qual pertanyen. A continuació, elimineu la part '.example' del nom de l'arxiu.
 
 Un cop realitzades aquestes modificacions, el vostre arxiu de configuració .env hauria de tenir l'estructura següent:
 ```
