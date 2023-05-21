@@ -36,7 +36,6 @@ class ImageController extends Controller
     }
 
     public function insertImage(Request $request){
-
         Image::create([
             'name'=> $request['name'],
             'path'=> $request['path'],
