@@ -19,10 +19,14 @@ class ShopController extends Controller {
     //Vista principal de la tienda
     public function index() {
         try {
-            $categories = Category::all();
-            Log::channel('marketify')->info('shop.index view loaded');
-            return view('shop.index',['categories' => $categories,
-            'options_order' => HeaderVariables::$order_array]);
+            if (auth()->id()) {
+                $categories = Category::all();
+                Log::channel('marketify')->info('shop.index view loaded');
+                return view('shop.index',['categories' => $categories,
+                'options_order' => HeaderVariables::$order_array]);
+            } else {
+                return redirect()->route('login.index'); 
+            }
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred showing shop view: '.$e->getMessage());
             return redirect()->back()->with('error', 'An error occurred.');
