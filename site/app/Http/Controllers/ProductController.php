@@ -58,7 +58,7 @@ class ProductController extends Controller
             // Hacemos la petición a la api
             $client = new Client();
 
-            $response = $client->get('https://'.env('API_IP').':443/api/images', [
+            $response = $client->get(env('API_IP').'api/images', [
                 'verify' => false
             ]);
             $data = json_decode($response->getBody(), true);
@@ -101,7 +101,7 @@ class ProductController extends Controller
 
             $client = new Client();
 
-            $response = $client->request('GET', 'https://'.env('API_IP').':443/api/images/'.$id, [
+            $response = $client->request('GET', env('API_IP').'api/images/'.$id, [
                 'verify' => false
             ]);
             
@@ -238,7 +238,7 @@ class ProductController extends Controller
             $firstImage = true;
             
             foreach ($imagePaths as $imagePath) {
-                $client->post('https://'.env('API_IP').':443/api/insert', [
+                $client->post(env('API_IP').'api/insert', [
                     'verify' => false,
                     'json' => [
                         'name' => $name,
@@ -315,12 +315,12 @@ class ProductController extends Controller
             $firstImage = true;
 
 
-            $response = $client->delete('https://'.env('API_IP').':443/api/delete/product/'.$id, [
+            $response = $client->delete(env('API_IP').'api/delete/product/'.$id, [
                 'verify' => false,
             ]);
 
             foreach ($imagePaths as $imagePath) {
-                $client->post('https://'.env('API_IP').':443/api/insert', [
+                $client->post(env('API_IP').'api/insert', [
                     'verify' => false,
                     'json' => [
                         'name' => $name,

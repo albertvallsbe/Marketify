@@ -44,7 +44,7 @@ class ProductFactory extends Factory
             $main = true;
             for ($i=0; $i < 4; $i++) {
 
-                $client->post('https://'.env('API_IP').':443/api/insert', [
+                $client->post(env('API_IP').'api/insert', [
                     'verify' => false,
                     'json' => [
                         'name' => $product->name,
