@@ -1,0 +1,31 @@
+==== Creació de la maquina virtual vagrant
+
+- Aquest fitxer de configuració de Vagrant estableix la imatge de la màquina virtual de debian.
+- Establim les dades requerides del sistema que volem crear i les configuracions per al correcte funcionament de la màquina virtual.
+- Amb totes les especificacións del sistema ja podem crear el host vagrant que configurarem en el segúent pas.
+
+==== Configuració de la màquina virtual
+
+- La instal·lació del projecte consta de diversos passos que s'han de seguir per configurar correctament l'entorn de desenvolupament. En primer lloc, és necessari actualitzar els repositoris del sistema operatiu per obtenir les últimes actualitzacions disponibles.
+
+- A continuació, s'instal·la el servidor web Apache, que és l'encarregat de servir les pàgines web i gestionar les sol·licituds entrants. 
+
+- Un cop instal·lat Apache, es procedeix a afegir el repositori de PHP 8.2, que és el llenguatge de programació utilitzat en el projecte. Després s'han d'instal·lar les extensions requerides per Laravel, el framework utilitzat en el projecte. Aquestes extensions proporcionen funcionalitats addicionals necessàries per al correcte funcionament de l'aplicació.
+
+- Un cop completada la instal·lació de PHP, s'instal·la Composer, una eina que facilita la gestió de les dependències del projecte. Composer s'utilitza per descarregar i instal·lar les biblioteques i paquets necessaris per al desenvolupament de l'aplicació.
+
+- A continuació, es crea un nou projecte Laravel, que és el punt de partida per al desenvolupament de l'aplicació. Laravel és un framework de codi obert que ofereix una estructura i característiques avançades per al desenvolupament web.
+
+- Després de crear el projecte, es procedeix a configurar Apache perquè pugui servir l'aplicació Laravel. Això implica configurar la ruta d'accés als fitxers del projecte i habilitar la reescriptura d'URL, que és necessària per a l'enrutament de l'aplicació.
+
+- A més de la configuració d'Apache, s'han de realitzar ajustos en els permisos dels fitxers i directoris del projecte per garantir que el servidor web tingui accés adequat a ells.
+
+- Un cop realitzats aquests passos, es reinicia el servidor web Apache per aplicar els canvis realitzats. A continuació, s'instal·la el sistema de gestió de bases de dades MariaDB, que s'utilitzarà per emmagatzemar i gestionar les dades de l'aplicació.
+
+- Es crea la base de dades específica per al projecte i es configura MariaDB per assegurar-se que l'aplicació pugui accedir-hi correctament.
+
+- A més, es crea un usuari amb accés remot a la base de dades, la qual cosa permet que l'aplicació es comuniqui amb la base de dades des de diferents ubicacions.
+
+- Després de configurar MariaDB, es realitza la instal·lació del certificat SSL per habilitar la comunicació segura a través de HTTPS. Això implica generar una clau privada i un certificat autofirmat.
+
+- Finalment, es realitzen modificacions en la configuració d'Apache per habilitar el lloc SSL i redirigir el trànsit HTTP
