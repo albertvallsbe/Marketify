@@ -1,8 +1,8 @@
 # Marketify
 ## Integrants del grup
-* David Hernández
+* David Hernández: https://hachenda.github.io/portafolio
 * Albert Valls 
-* Oscar Ramírez
+* Oscar Ramírez: https://oscaarramirezfernandez.github.io/Portafolio_Oscar/
 
 ## Enllaços
 Trello:
