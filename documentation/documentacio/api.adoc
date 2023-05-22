@@ -1,0 +1,21 @@
+=== API 
+
+En aquest apartat s'explica les diferents funcionalitats que té le api i com les utilitzem.
+
+La configuració de la API es troba al Manual d'isntal·lació.
+
+=== Funcionalitats
+
+- index(). En aquesta funcionalitat s'obtenen totes les imatges principals per mitja d'una consulta. Vam decidir que agafes totes les principals, ja que sino aquesta funció (en principi era agafar totes les imatges amb el mètode all()) no s'utilitzava per res.
+
+- catchImage(). En aquesta funcionalitat es fa una consulta a la taula "images" filtrant per l'id del producte, on s'obtenen totes les imatges d'un producte.
+
+- insertImage(). En aquesta funció es crea la imatge, on pasem com a camps el nom de la imatge, el seu path, un boleeà per si és o no la imatge principal i l'id del producte.
+
+- deleteImage(). En aquesta funció es fa una consulta a la taula "images" filtrant per l'id de la imatge i una vegada obté la imatge, l'esborra.
+
+- deleteAll(). En aquesta imatge es fa una consulta a la taula "images" filtrant per l'id del producte i una vegada s'obtenen les imatges, les esborra.
+
+=== Realitzar peticions
+
+Per a poder realitzar peticions, es necessari aquest codi $response = $client->get(env('API_IP').'api/images', ['verify' => false ]) envies le url de la api i es fa una petició on et retorna un contingut(en segons quina funció).Per últim, amb aquest codi $data = json_decode($response->getBody(), true) on retorna el contingut de la petició en forma d'array.

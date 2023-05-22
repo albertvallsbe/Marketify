@@ -1,0 +1,26 @@
+- L'històric de comandes mostrará totes las comandes realitzades per un usuari. 
+
+- L'usuari podrá veure la comanda detallada si ho desitja. 
+
+- El propietari de la botiga podrá consultar les comandes realitzades a la seva botiga.
+
+- L'usuari podrá descarregar un pdf amb la seva comanda. 
+
+=== Historial de comandes 
+ 
+En general, totes les funcions son PHP i están integrades, tant al model (Order) com al controlador. 
+
+Només carregar la página, es mostrará una llista amb totes les comandes realitzades (están separades per la botiga a la qual pertany el producte/s) per l'usuari, amb la seva data i el seu id corresponent. Aquesta funció s'executa fent una consulta a la taula "shops" filtrant per l'id del usuari , per a treure l'id de la botiga.
+Seguidament, es fa una altra consulta a la taula "orders", flitrant per l'id de l'usuari i per l'id de la botiga. Així s'obtenen les comandes. 
+
+=== Detall de la comanda 
+
+Quan l'usuari fa click a una comanda, li redirigeix a una página amb els detalls de la comanda. En aquesta página es mostra un llistat de tots el productes amb els seus preus i el preu total. A més, l'usuari tindrá l'opció de descarregar la comanda en PDF.
+
+Al detall de la comanda es mostra el nom de la botiga i els productes que l'usuari ha comprat (d'aquella botiga). 
+
+- Per al nom de la botiga, s'utilitza una consulta per agafar l'id de la comanda(filtrant a la taula "order_items" per l'id ). 
+
+- Després, s'utilitza una altra consulta a la taula "products" filtrant per (per als productes), on retorna el producte/s que ha comprat l'usuari a aquella botiga. Si retornamés d'un producte, retornem un array. En canvi, si la consulta retorna un únic registre, retornem el producte.
+
+- Per últim, l'usuari pot descarregar el PDF de la seva comanda. Per a poder descarregar-ho, s'utilitza la mateixa funció que per a obtenir els prodcutes i el nom de la botiga, però li pasem la vista creada, generem el contingut del PDF amb "loadHtml()", renderitzem el contingut y per últim descarreguem en PDF la vista.
