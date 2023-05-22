@@ -1,5 +1,29 @@
+=== Cerca i filtres
+
+- Prácticament a cada página apareix un botó de desplegament on apareixen totes les categories, allá es pot filtrar per aquestes i apareixen tots el prodcutes que tenen aquesta categoria.
+
+- També apareix una barra de cerca on es pot filtrar, tant per el nom com per el tag/tags que té cada producte.
+
+- Per últim, apareix un altre botó de desplegament on es pot filtrar per l'ordre que l'usuari vulgui que li apareiguin els prodcutes.
+
 === Categories
+
+En aquest apartat, només s'han utilitzat funcions amb PHP. On es fa una o varies consultes i es carreguen el productes.
+De cara al botó de desplegament de les categories, hem utilitzat les següents funcions:
+
+- searchSpecific(). Aquesta funció, fa una consulta a la taula "prodcuts" on s'obté els productes, filtrats per categoria. També es pot filtrar per la barra de cerca i per l'ordre si l'usuari ho dessitja.
 
 === Barra de cerca
 
+En aquest altra apartat,també s'han utilitzat funcions amb PHP. 
+Per la barra de cerca, hem utilitzat les següents funcions:
+
+- searchSpecific(). En aquesta funció es fa una consulta a la taula "products" on s'obtenen els productes filtrats per la barra de cerca. També es pot filtrar per categoria i per l'ordre si l'usuari ho dessitja.
+
 === Ordre
+
+En aquest últim apartat,també s'han utilitzat funcions amb PHP. 
+
+- Per a filtrar per l'ordre en que apareixen els productes, s'utilitzen les dues funcions mencionades previament, ja que permeten també filtrar per l'ordre. 
+
+- L'usuari pot filtrar per nom ascendent i descendent, i per preu ascendent i descendent.

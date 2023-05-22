@@ -1,5 +1,28 @@
 === Planificació a la base de dades
 
+Per a poder fer la planificació a la base de dades dels productes, vam haver de planificar varies taules. 
+
+=== Taula de productes
+
+- Al nostre grup es va decidir que la taula de productes hi haurien els tags relacionats amb el producte. Perque creiem que era la manera més fácil de gestionar el filtrat per tags, ja que només haviem d'agafar el camp a la taula i filtrar per aquest.  
+
+=== Taula de categories
+
+- Per a la taula de categories vam decidir posar un identificador a la categoria i el propi nom d'aquesta(el qual vam posar com a únic).
+
+=== Taula intermitja de categories i productes 
+
+- Nosaltres vam creure necessaria una Taula intermitja de categories i productes, ja vam pensar que un producte podia tenir més d'una categoria, i una categoria havia de tenir més d'un producte. 
+
 === Tags
 
-=== Categories
+Pel que fa als tags, vam haver de plantejar-nos diferents possibilitats.
+
+- Crear tags i afegir-los als productes.
+
+- Fer subcategories i filtrar també per subcategories.
+
+Finalment ens vam decantar per afegir tags als productes, ja que vam pensar que era la manera més óptima i rápida de fer-ho, sense que ens portès moltes hores. Sobretot, vam creure que la era la manera més fácil i rápida de poder filtrar per productes. 
+=== Possibles conflictes
+
+- Quan es carregava el seeder de "prodcuts", apareixia un error de que no podia crear els productes perque les foreign keys de la taula intermitja de categories i productes estava mal formada. Per sort i amb molt de treball, vam trobar la soluciió i vam poder crearla. 

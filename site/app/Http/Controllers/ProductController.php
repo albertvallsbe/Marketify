@@ -250,6 +250,7 @@ class ProductController extends Controller
                 $firstImage = false;
             }
 
+
             Log::channel('marketify')->info("Product #$product->id created succesfully");
             $category_product = Category_product::create([
                 'product_id' => $product->id,

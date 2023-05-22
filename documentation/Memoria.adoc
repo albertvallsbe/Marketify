@@ -78,10 +78,11 @@ include::documentacio/installation_manual.adoc[]
 
 == Línies futures
 // Oscar
+include::documentacio/linies_futures.adoc[]
 
 == Conclusions. Desviacions en la planificació. Aportacions del projecte als coneixements de l’alumne.
 // Oscar
-
+include::documentacio/conclusions.adoc[]
 
 == Glossari. Webgrafia. Altres recursos de consulta.
 include::documentacio/resources.adoc[]
