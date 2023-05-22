@@ -24,11 +24,11 @@ include::documentacio/search.adoc[]
 
 == Carret de la Compra
 // David
-include::documentacio/cart.adoc[] 
+include::documentacio/cart.adoc[]
 
 == Shops
 // David
-include::documentacio/shop.adoc[] 
+include::documentacio/shop.adoc[]
 
 == Realitzar comanda
 // Albert
@@ -36,7 +36,7 @@ include::documentacio/order.adoc[]
 
 == Missatgeria Interna
 // David
-include::documentacio/chat.adoc[] 
+include::documentacio/chat.adoc[]
 
 == Flux de compra
 // David
@@ -56,7 +56,7 @@ include::documentacio/environment.adoc[]
 
 == Pàgines d'error personalitzat
 // David
-include::documentacio/errors.adoc[] 
+include::documentacio/errors.adoc[]
 
 == Mockup d'interficies
 // image::Recursos Memoria/BDD.png[align="center"]
@@ -75,10 +75,11 @@ include::documentacio/installation_manual.adoc[]
 
 == Línies futures
 // Oscar
+include::documentacio/linies_futures.adoc[]
 
 == Conclusions. Desviacions en la planificació. Aportacions del projecte als coneixements de l’alumne.
 // Oscar
-
+include::documentacio/conclusions.adoc[]
 
 == Glossari. Webgrafia. Altres recursos de consulta.
 include::documentacio/resources.adoc[]

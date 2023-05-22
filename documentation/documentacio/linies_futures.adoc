@@ -1,0 +1,17 @@
+=== Línies futures 
+
+En aquest apartat volem explicar les diferents funcionalitats que voliem fer però per falta de temps no hem pogut.
+
+
+- Arreglar el problema de que es pugui enviar el formulari de edició i afegir prodcutes buit.
+
+- Les imatges del producte només s'actualizen en el detall de producte, falta que s'actualitzin a /search i a las botigues.
+
+- La API no guarda imatges a la API sinó que les guarda al site del projecte.
+
+- Es guarda la imatge principal del producte encara que es canvii.
+
+- Totes les imatges que no son de productes(fotos de perfil o de la botiga) funcionen sense la API.
+
+- Falta fer la petició per a borrar una imatge, quan l'usuari vol esborrar un producte.També quan es canvien les imatges d'un producte. 
+

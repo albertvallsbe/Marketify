@@ -58,7 +58,7 @@ class ProductController extends Controller
             // Hacemos la petición a la api
             $client = new Client();
 
-            $response = $client->get('https://'.env('API_IP').':443/api/images', [
+            $response = $client->get(env('API_IP').'api/images', [
                 'verify' => false
             ]);
             $data = json_decode($response->getBody(), true);
@@ -101,7 +101,7 @@ class ProductController extends Controller
 
             $client = new Client();
 
-            $response = $client->request('GET', 'https://'.env('API_IP').':443/api/images/'.$id, [
+            $response = $client->request('GET', env('API_IP').'api/images/'.$id, [
                 'verify' => false
             ]);
             
@@ -198,19 +198,27 @@ class ProductController extends Controller
                 'product_name' => 'required|string|max:255',
                 'product_description' => 'required|string',
                 'product_price' => 'required|numeric|min:0',
-                'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'product_image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'product_tag' => 'nullable|string',
                 'product_category' => 'required|exists:categories,id',
             ], ValidationMessages::productValidationMessages());
-
+            $productImages = $request->file('product_image');
+            if ($productImages) {   
+                if (count($productImages) > 4) {
+                    return redirect()->back()->withErrors(['product_image' => 'You can upload a maximum of 4 images.']);
+                }
+            } else {
+                return redirect()->back()->withErrors(['product_image' => 'You can not upload 0 images.']);
+            }
             $client = new Client();
             if ($request->hasFile('product_image')) {
-                $image = $validatedData['product_image'];
-
-                $name = uniqid('product_') . '.' . $image->extension();
-                $path = 'images/products/';
-                $image->move($path, $name);
-                $imagePath = $path . $name;
+                $imagePaths = [];
+                foreach ($validatedData['product_image'] as $image) {
+                    $name = uniqid('product_') . '.' . $image->extension();
+                    $path = 'images/products/';
+                    $image->move($path, $name);
+                    $imagePaths[] = $path . $name;
+                }
             }
             $id = Auth::user()->id;
             $shopID = Shop::findShopUserID($id);
@@ -220,28 +228,27 @@ class ProductController extends Controller
                 'price' => $validatedData['product_price'],
                 'tag' => $validatedData['product_tag'],
                 'shop_id' => $shopID,
-                // 'image' => $imagePath ?? 'images/products/default-product.png',
             ]);
 
             /**
-             * FUNCIONALIDAD POR TERMINAR(SUBIR UNA IMAGEN A LA API AL CREAR EL PRODUCTO )
+             * FUNCIONALIDAD SUBIR UNA IMAGEN A LA API AL CREAR EL PRODUCTO
              */
-
-            $uploadedFile = new UploadedFile($imagePath, basename($imagePath));
             $client = new Client();
 
-            $product_id = Product::all();
-            $ids = count($product_id);
+            $firstImage = true;
             
-            $client->post('http://localhost:8080/api/insert', [
-                'json' => [
-                    'name' => $name,
-                    'path' => $imagePath,
-                    'product_id' =>  $ids,
-                    'main' => true,
-                ]
-
-            ]);
+            foreach ($imagePaths as $imagePath) {
+                $client->post(env('API_IP').'api/insert', [
+                    'verify' => false,
+                    'json' => [
+                        'name' => $name,
+                        'path' => $imagePath,
+                        'product_id' => $product->id,
+                        'main' => $firstImage,
+                    ]
+                ]);
+                $firstImage = false;
+            }
 
 
             Log::channel('marketify')->info("Product #$product->id created succesfully");
@@ -259,39 +266,73 @@ class ProductController extends Controller
     /**
      * Función que trata petición POST para actualizar un producto
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         try {
             $validatedData = $request->validate([
                 'product_name' => 'required|string|max:255',
                 'product_description' => 'required|string',
                 'product_price' => 'required|numeric|min:0',
-                'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'product_image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'product_tag' => 'nullable|string',
                 'product_category' => 'required|exists:categories,id',
             ], ValidationMessages::productValidationMessages());
+            $productImages = $request->file('product_image');
+            if ($productImages) {   
+                if (count($productImages) > 4) {
+                    return redirect()->back()->withErrors(['product_image' => 'You can upload a maximum of 4 images.']);
+                }
+            } else {
+                return redirect()->back()->withErrors(['product_image' => 'You can not upload 0 images.']);
+            }
+
+            $client = new Client();
 
             if ($request->hasFile('product_image')) {
-                $image = $validatedData['product_image'];
+                $imagePaths = [];
 
-                $name = uniqid('product_') . '.' . $image->extension();
-                $path = 'images/products/';
-                $image->move($path, $name);
-                $imagePath = $path . $name;
+                foreach ($request->file('product_image') as $image) {
+                    $name = uniqid('product_') . '.' . $image->extension();
+                    $path = 'images/products/';
+                    $image->move($path, $name);
+                    $imagePaths[] = $path . $name;
+                }
             }
+
             $product = Product::findOrFail($id);
 
             $product->update([
                 'name' => $validatedData['product_name'],
                 'description' => $validatedData['product_description'],
                 'price' => $validatedData['product_price'],
-                'tag' => $validatedData['product_tag'],
-                'image' => $imagePath ?? $product->image,
+                'tag' => $validatedData['product_tag']
             ]);
+
             $Category_Product = Category_Product::findCat_ProByProduct($product->id);
+
             $Category_Product->update([
                 'category_id' => $validatedData['product_category'],
             ]);
+
+            $firstImage = true;
+
+
+            $response = $client->delete(env('API_IP').'api/delete/product/'.$id, [
+                'verify' => false,
+            ]);
+
+            foreach ($imagePaths as $imagePath) {
+                $client->post(env('API_IP').'api/insert', [
+                    'verify' => false,
+                    'json' => [
+                        'name' => $name,
+                        'path' => $imagePath,
+                        'product_id' => $id,
+                        'main' => $firstImage,
+                    ]
+                ]);
+
+                $firstImage = false;
+            }
 
             Log::channel('marketify')->info("Product updated succesfully");
             session()->flash('status', "Product '$product->name' edited successfully.");
@@ -300,6 +341,7 @@ class ProductController extends Controller
             Log::channel('marketify')->error('An error occurred updating an existing product: ' . $e->getMessage());
         }
     }
+
 
     /**
      * Función que trata petición POST para borrar un producto

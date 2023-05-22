@@ -20,7 +20,7 @@ class LandingController extends Controller
         try {
             // Hacemos la petición a la api
             $client = new Client();
-            $response = $client->get('https://'.env('API_IP').':443/api/images', [
+            $response = $client->get(env('API_IP').'api/images', [
                 'verify' => false
             ]);
             $data = json_decode($response->getBody(), true);

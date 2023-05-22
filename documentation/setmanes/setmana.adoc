@@ -80,20 +80,48 @@ Temps Real ⇒ 1:30h
 
 Crear el disseny del Historic de Comandes
 Temps estimat ⇒ 2h
-Temps Real ⇒ 
+Temps Real ⇒
 
 ==== Albert
+Problemes amb el shop seeder
+Temps estimat => 1h
+Temps Real => 1,5h
+
+Crear test de Chat
+Temps estimat => 5h
+Temps Real => 1,5h -> encara continua
+
+Error entorn de desplegament
+Temps estimat => 1h
+Temps Real => 6,25 -> encara continua
+
+Actualitzar test CategoryProduct i crear OrdersItems
+Temps estimat => 10h
+Temps Real => 5,5h
+
+Modificar ShopFactory
+Temps estimat => 1h
+Temps Real => 1h
+
+Configuració entorn testin JS
+Temps estimat => 1h
+Temps Real => 0,75h
+
+Crear vista de management
+Temps estimat => 5h
+Temps Real => 4,75h
+
 Comentar funcions i afegir logs
-Temps estimat => 5h 
-Temps Real => 1,5h -> continua encara
+Temps estimat => 5h
+Temps Real => 1,5h
 
 Update vista d'orders i estils
-Temps estimat => 2h 
-Temps Real => 2,25h 
+Temps estimat => 2h
+Temps Real => 2,25h
 
 Documentació
-Temps estimat => 5h 
-Temps Real => 1,5h -> continua encara
+Temps estimat => 5h
+Temps Real => 6,5h
 === Setmana 11
 
 ==== David
