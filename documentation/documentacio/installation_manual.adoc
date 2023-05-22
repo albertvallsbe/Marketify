@@ -19,7 +19,21 @@ DB_PASSWORD=1234
 Confirmeu que l'arxiu .env del lloc web ha de tenir la següent línia de codi per establir la IP de l'API:
 
 ```
-API_IP=172.16.50.60
+API_IP=https://172.16.50.60:443/
+```
+
+=== Configuració de l'enviament d'emails
+Per a la configuració dels emails, trobeu la següent línia a l'arxiu .env (del site) i substituïu-la amb la vostra configuració de sistema d'enviament d'emails:
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=155ea25db1b4d7
+MAIL_PASSWORD=74e21308539aea
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 === Pas 2: 
@@ -79,6 +93,7 @@ sudo systemctl restart apache2
 ```
 
 - No tanqueu la terminal. Serà útil per a més endavant.
+
 === Pas 5: Creació de la Màquina Virtual per a l'API d'Imatges
 Ara heu de crear una màquina virtual per a l'API d'imatges. Seguiu aquests passos:
 

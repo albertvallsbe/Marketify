@@ -8,6 +8,7 @@ Els missatges automàtics estan determinats per l'estat de l'ordre, que pot ser 
 - Pagat: Quan el pagament ha estat confirmat pel venedor.
 - Enviat: Quan el venedor ha confirmat l'enviament dels productes.
 - Rebut: Quan el comprador ha confirmat la recepció dels productes.
+- Failed: Quan el venedor ha rebutjat el pagament.
 
 El canvi d'estat de l'ordre és responsabilitat de l'usuari, ja que és el venedor qui confirma el pagament i l'enviament, mentre que és el comprador qui confirma la recepció dels productes.
 

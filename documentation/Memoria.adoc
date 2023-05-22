@@ -2,6 +2,9 @@
 Albert Valls Berengueras<valls.berengueras.albert@alumnat.copernic.cat>, Óscar Ramírez Fernández<ramirez.fernandez.oscar@alumnat.copernic.cat>, David Hernández Larrea<hernandez.larrea.david@alumnat.copernic.cat>
 
 == Introducció
+* https://www.youtube.com/watch?v=DpfmlBA8e_I[Vídeo de presentació del projecte]
+
+Marketify és una plataforma de marketplace en línia que connecta artesans i creadors de productes casolans amb consumidors interessats en adquirir articles únics i de qualitat. A través de Marketify, els usuaris poden crear un compte, explorar una àmplia gamma de productes casolans i establir comunicació directa amb els venedors a través d'un sistema de xat integrat. A més, els usuaris també tenen l'oportunitat de crear les seves pròpies botigues en línia dins de la plataforma, exhibint i venent les seves pròpies creacions. Marketify ofereix un sistema de generació automàtica de factures en format PDF per a garantir la transparència en les transaccions i facilitar la gestió administrativa. A través de Marketify, es busca crear una comunitat activa i vibrant, organitzant esdeveniments i fomentant la col·laboració entre els usuaris. L'objectiu principal de Marketify és proporcionar una experiència de compra enriquidora per als consumidors i una plataforma eficaç per als artesans i creadors de productes casolans.
 
 == Memoria setmanal
 
@@ -38,10 +41,6 @@ include::documentacio/order.adoc[]
 // David
 include::documentacio/chat.adoc[]
 
-== Flux de compra
-// David
-include::documentacio/flow.adoc[]
-
 == Pàgina històric de comandes
 // Oscar
 include::documentacio/history.adoc[]
@@ -65,6 +64,10 @@ include::documentacio/mockups.adoc[]
 == Guía d'estils
 //Albert
 include::estils/Estils.adoc[]
+
+== Conflictes i errors
+//David
+include::estils/conflicts.adoc[]
 
 == Confecció del manual d’instal·lació/distribució de l’aplicació.
 // David

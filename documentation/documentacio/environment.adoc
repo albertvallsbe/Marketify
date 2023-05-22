@@ -1,10 +1,10 @@
-==== Creació de la maquina virtual vagrant
+=== Creació de la maquina virtual vagrant
 
 - Aquest fitxer de configuració de Vagrant estableix la imatge de la màquina virtual de debian.
 - Establim les dades requerides del sistema que volem crear i les configuracions per al correcte funcionament de la màquina virtual.
 - Amb totes les especificacións del sistema ja podem crear el host vagrant que configurarem en el segúent pas.
 
-==== Configuració de la màquina virtual
+=== Configuració de la màquina virtual
 
 - La instal·lació del projecte consta de diversos passos que s'han de seguir per configurar correctament l'entorn de desenvolupament. En primer lloc, és necessari actualitzar els repositoris del sistema operatiu per obtenir les últimes actualitzacions disponibles.
 

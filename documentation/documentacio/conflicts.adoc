@@ -1,0 +1,11 @@
+Hi ha hagut alguns problemes en realitzar una 'merge' amb l'API d'imatges.
+
+Per aconseguir les diferents imatges 'main' de més d'un producte, s'utilitza la variable $paths a les funcions dels controladors que retornen una vista. Aquesta variable obté les dades d'una petició a l'API a través d'una funció que realitza un 'get' per obtenir totes les imatges 'main'. El problema rau en el fet que a la vista s'obté l'ID de la relació entre la imatge i el producte, en lloc de l'ID del propi producte.
+
+Per aquesta raó, es presenten els següents problemes:
+
+Si es modifica un producte i s'actualitzen les imatges, a la pàgina de detalls del producte la imatge canvia correctament, però l'antiga imatge principal es manté on s'utilitza la variable $paths.
+No es poden eliminar productes perquè s'elimina la relació entre la imatge i el producte, i la variable $paths no està pensada per a aquest cas.
+L'API no funciona com s'esperava. Tot i que les sol·licituds es fan des del lloc web, les sol·licituds són per establir relacions amb les funcions d'un controlador situat a l'API. Les imatges s'emmagatzemen a la carpeta del lloc web en lloc de l'API, i les imatges com a avatar o icones de botigues no s'han inclòs a l'API.
+
+Es poden enviar sol·licituds POST amb formularis buits en el formulari de creació i edició de productes, però si s'introdueix almenys un camp, es realitza la validació correctament.
