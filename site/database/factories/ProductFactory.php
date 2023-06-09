@@ -48,7 +48,7 @@ class ProductFactory extends Factory
                     'verify' => false,
                     'json' => [
                         'name' => $product->name,
-                        'path' => "images/products/" . rand(1, 4) . ".jpg",
+                        'path' => env('API_IP')."images/products/" . rand(1, 4) . ".jpg",
                         'product_id' => $product->id,
                         'main' => $main,
                     ]

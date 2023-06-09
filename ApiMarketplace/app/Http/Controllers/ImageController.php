@@ -45,25 +45,30 @@ class ImageController extends Controller
     public function insert(Request $request)
     {
         $validatedData = $request->validate([
-            'product_image' => 'required|array',
-            'product_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => 'required|string',
+            'path' => 'required|string',
+            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_id' => 'required|integer',
+            'main' => 'required|boolean',
         ]);
-    
-        $path = 'images/products/';
-    
-        $imagePaths = [];
-    
-        foreach ($validatedData['product_image'] as $image) {
-            
-            $name = uniqid('product_') . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path($path), $name);
-            $imagePaths[] = $path . $name;
-        }
-        
-        return response()->json([
-            'message' => 'Imágenes cargadas exitosamente.',
-            'image_paths' => $imagePaths,
-        ], 200);
+
+        $name = $validatedData['name'];
+        $path = $validatedData['path'];
+        $image = $validatedData['product_image'];
+        $productID = $validatedData['product_id'];
+        $main = $validatedData['main'];
+
+        $realpath = 'images/products/';
+        $image->move($realpath, $name);
+
+        Image::create([
+            'name' => $name,
+            'path' => $path,
+            'product_id' => $productID,
+            'main' => $main,
+        ]);
+
+        return response('Image inserted successfully', 200);
     }
 
     public function delete($id)

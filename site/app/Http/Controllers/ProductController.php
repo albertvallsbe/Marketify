@@ -58,7 +58,7 @@ class ProductController extends Controller
             // Hacemos la petición a la api
             $client = new Client();
 
-            $response = $client->get(env('API_IP').'api/images', [
+            $response = $client->get(env('API_IP').'api/images/view/all', [
                 'verify' => false
             ]);
             $data = json_decode($response->getBody(), true);
@@ -100,67 +100,63 @@ class ProductController extends Controller
             $categories = Category::all();
 
             $client = new Client();
-
-            $response = $client->request('GET', env('API_IP').'api/images/'.$id, [
+            $response = $client->request('GET', env('API_IP').'api/images/view/'.$id, [
                 'verify' => false
             ]);
-            
-            $data = json_decode($response->getBody(), true);
-            
-            
-            $paths = [];
-            foreach ($data as $ruta ) {
-                array_push($paths,$ruta);        
-            }
+            if (true) {
+                $images = json_decode($response->getBody(), true);
 
-            //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
-            $userId = auth()->id();
-            $usersShop = Shop::findShopUserID($userId);
-            if (!$usersShop) {
-                $shop = 0;
-                
-                if ($product->status != "hidden") {
-                    $category_id = Category::findCategoryOfProduct($product->id);
-                    $categoryName = Category::findCategoryName($category_id);
-             
-                    Log::channel('marketify')->info('product.show view loaded');
-                    return view('product.show', [
-                        'product' => $product,
-                        'categories' => $categories,
-                        'options_order' => HeaderVariables::$order_array,
-                        'shop' => $shop,
-                        'productShop' => $productShop,
-                        'paths'=> $paths,
-                        'categoryname' => $categoryName
-                    ]);
-                } else {
-                    return redirect()->route('product.index');
-                }
-            }else{
-                $shop = Shop::findOrFail($usersShop);
-                if ($product->status != "hidden" ||$product->shop_id == $shop->id) {
-                    $category_id = Category::findCategoryOfProduct($product->id);
-                    $categoryName = Category::findCategoryName($category_id);
+                //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
+                $userId = auth()->id();
+                $usersShop = Shop::findShopUserID($userId);
+                if (!$usersShop) {
+                    $shop = 0;
                     
-                    Log::channel('marketify')->info('product.show view loaded');
-                    return view('product.show', [
-                        'product' => $product,
-                        'categories' => $categories,
-                        'options_order' => HeaderVariables::$order_array,
-                        'shop' => $shop,
-                        'productShop' => $productShop,
-                        'paths'=> $paths,
-                        'categoryname' => $categoryName
-                    ]);
-                } else {
-                    return redirect()->route('product.index');
+                    if ($product->status != "hidden") {
+                        $category_id = Category::findCategoryOfProduct($product->id);
+                        $categoryName = Category::findCategoryName($category_id);
+                
+                        Log::channel('marketify')->info('product.show view loaded');
+                        return view('product.show', [
+                            'product' => $product,
+                            'categories' => $categories,
+                            'options_order' => HeaderVariables::$order_array,
+                            'shop' => $shop,
+                            'productShop' => $productShop,
+                            'images'=> $images,
+                            'categoryname' => $categoryName
+                        ]);
+                    } else {
+                        return redirect()->route('product.index');
+                    }
+                }else{
+                    $shop = Shop::findOrFail($usersShop);
+                    if ($product->status != "hidden" ||$product->shop_id == $shop->id) {
+                        $category_id = Category::findCategoryOfProduct($product->id);
+                        $categoryName = Category::findCategoryName($category_id);
+                        
+                        Log::channel('marketify')->info('product.show view loaded');
+                        return view('product.show', [
+                            'product' => $product,
+                            'categories' => $categories,
+                            'options_order' => HeaderVariables::$order_array,
+                            'shop' => $shop,
+                            'productShop' => $productShop,
+                            'images'=> $images,
+                            'categoryname' => $categoryName
+                        ]);
+                    } else {
+                        return redirect()->route('product.index');
+                    }
                 }
+            } else {
+                    abort(404);
             }
-            } catch (ModelNotFoundException $e) {
-                Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
-        return redirect()->route('product.404');
+        } catch (ModelNotFoundException $e) {
+            Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
+            return redirect()->route('product.404');
+        }
     }
-}
 
     /**
      * Vista para creación de producto
@@ -210,16 +206,6 @@ class ProductController extends Controller
             } else {
                 return redirect()->back()->withErrors(['product_image' => 'You can not upload 0 images.']);
             }
-            $client = new Client();
-            if ($request->hasFile('product_image')) {
-                $imagePaths = [];
-                foreach ($validatedData['product_image'] as $image) {
-                    $name = uniqid('product_') . '.' . $image->extension();
-                    $path = 'images/products/';
-                    $image->move($path, $name);
-                    $imagePaths[] = $path . $name;
-                }
-            }
             $id = Auth::user()->id;
             $shopID = Shop::findShopUserID($id);
             $product = Product::create([
@@ -235,22 +221,46 @@ class ProductController extends Controller
              */
             $client = new Client();
 
-            $firstImage = true;
-            
-            foreach ($imagePaths as $imagePath) {
-                $client->post(env('API_IP').'api/insert', [
-                    'verify' => false,
-                    'json' => [
-                        'name' => $name,
-                        'path' => $imagePath,
-                        'product_id' => $product->id,
-                        'main' => $firstImage,
-                    ]
-                ]);
-                $firstImage = false;
+            $imagePaths = [];
+            $main = true;
+            try {
+                foreach ($productImages as $image) {
+                    $name = uniqid('product_') . '.' . $image->getClientOriginalExtension();
+                    
+                    $path = env('API_IP')."images/products/";
+                    $finalPath = $path . $name;
+                    
+                    $client->post(env('API_IP') . 'api/images/insert', [
+                        'verify' => false,
+                        'multipart' => [
+                            [
+                                'name' => 'name',
+                                'contents' => $name,
+                            ],
+                            [
+                                'name' => 'path',
+                                'contents' => $finalPath,
+                            ],
+                            [
+                                'name' => 'product_image',
+                                'contents' => fopen($image, 'r'),
+                                'filename' => $name,
+                            ],
+                            [
+                                'name' => 'product_id',
+                                'contents' => $product->id,
+                            ],
+                            [
+                                'name' => 'main',
+                                'contents' => $main,
+                            ],
+                        ],
+                    ]);
+                    $main = false;
+                }
+            } catch (\Exception $e) {
+                LOG::ERROR($e->getMessage());
             }
-
-
             Log::channel('marketify')->info("Product #$product->id created succesfully");
             $category_product = Category_product::create([
                 'product_id' => $product->id,
@@ -284,22 +294,7 @@ class ProductController extends Controller
             } else {
                 return redirect()->back()->withErrors(['product_image' => 'You can not upload 0 images.']);
             }
-
-            $client = new Client();
-
-            if ($request->hasFile('product_image')) {
-                $imagePaths = [];
-
-                foreach ($request->file('product_image') as $image) {
-                    $name = uniqid('product_') . '.' . $image->extension();
-                    $path = 'images/products/';
-                    $image->move($path, $name);
-                    $imagePaths[] = $path . $name;
-                }
-            }
-
             $product = Product::findOrFail($id);
-
             $product->update([
                 'name' => $validatedData['product_name'],
                 'description' => $validatedData['product_description'],
@@ -308,30 +303,56 @@ class ProductController extends Controller
             ]);
 
             $Category_Product = Category_Product::findCat_ProByProduct($product->id);
-
+            
             $Category_Product->update([
                 'category_id' => $validatedData['product_category'],
             ]);
-
-            $firstImage = true;
-
-
-            $response = $client->delete(env('API_IP').'api/delete/product/'.$id, [
+            
+            
+            
+            $client = new Client();
+            $response = $client->delete(env('API_IP').'api/images/delete/product/'.$id, [
                 'verify' => false,
             ]);
-
-            foreach ($imagePaths as $imagePath) {
-                $client->post(env('API_IP').'api/insert', [
-                    'verify' => false,
-                    'json' => [
-                        'name' => $name,
-                        'path' => $imagePath,
-                        'product_id' => $id,
-                        'main' => $firstImage,
-                    ]
-                ]);
-
-                $firstImage = false;
+            
+            $main = true;
+            try {
+                foreach ($productImages as $image) {
+                    $name = uniqid('product_') . '.' . $image->getClientOriginalExtension();
+                    
+                    $path = env('API_IP')."images/products/";
+                    $finalPath = $path . $name;
+                    
+                    $client->post(env('API_IP') . 'api/images/insert', [
+                        'verify' => false,
+                        'multipart' => [
+                            [
+                                'name' => 'name',
+                                'contents' => $name,
+                            ],
+                            [
+                                'name' => 'path',
+                                'contents' => $finalPath,
+                            ],
+                            [
+                                'name' => 'product_image',
+                                'contents' => fopen($image, 'r'),
+                                'filename' => $name,
+                            ],
+                            [
+                                'name' => 'product_id',
+                                'contents' => $product->id,
+                            ],
+                            [
+                                'name' => 'main',
+                                'contents' => $main,
+                            ],
+                        ],
+                    ]);
+                    $main = false;
+                }
+            } catch (\Exception $e) {
+                LOG::ERROR($e->getMessage());
             }
 
             Log::channel('marketify')->info("Product updated succesfully");
@@ -431,12 +452,29 @@ class ProductController extends Controller
             $categories = Category::all();
 
             $products = Product::filterCategory($id);
+
+
+            // Hacemos la petición a la api
+            $client = new Client();
+
+            $response = $client->get(env('API_IP').'api/images/view/all', [
+                'verify' => false
+            ]);
+            $data = json_decode($response->getBody(), true);
+
+            $paths = [];
+            foreach ($data as $ruta ) {
+                array_push($paths,$ruta);          
+            }
+
+
             Log::channel('marketify')->info('product.index with filter view loaded');
             return view('product.index', [
                 'products' => $products,
                 'categories' => $categories,
                 'options_order' => HeaderVariables::$order_array,
-                'shop' => $shop
+                'shop' => $shop,
+                'paths' => $paths
             ]);
         } catch (\Exception $e) {
             Log::channel('marketify')->error('An error occurred showing product index with filter view: ' . $e->getMessage());

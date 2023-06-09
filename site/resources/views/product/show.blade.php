@@ -6,16 +6,16 @@
     <section class="main-productshow">
         <section class="card-style-productshow">
             <div class="slider">
-                @for ($i = 0; $i < count($paths); $i++)
+                @for ($i = 0; $i < count($images); $i++)
                     <div class="slide">
-                        <img id="slide{{ $i }}" src="{{ asset($paths[$i]['path']) }}"
+                        <img id="slide{{ $i }}" src="{{ $images[$i]['path'] }}"
                             alt="Slide {{ $i + 1 }}">
                     </div>
                 @endfor
             </div>
 
             <div class="slider-buttons">
-                @for ($i = 0; $i < count($paths); $i++)
+                @for ($i = 0; $i < count($images); $i++)
                     <button class="slide-button{{ $i === 0 ? ' active' : '' }}"
                         data-slide-index="{{ $i }}">{{ $i + 1 }}</button>
                 @endfor
