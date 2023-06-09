@@ -38,7 +38,7 @@ class ShopController extends Controller {
         try {
             // Hacemos la petición a la api
             $client = new Client();
-            $response = $client->get(env('API_IP').'api/images', [
+            $response = $client->get(env('API_IP').'api/images/view/all', [
                 'verify' => false
             ]);
             $data = json_decode($response->getBody(), true);        
@@ -84,7 +84,7 @@ class ShopController extends Controller {
                 try {           
                 // Hacemos la petición a la api
                 $client = new Client();
-                $response = $client->get(env('API_IP').'api/images', [
+                $response = $client->get(env('API_IP').'api/images/view/all', [
                     'verify' => false
                 ]);
                 $data = json_decode($response->getBody(), true);        

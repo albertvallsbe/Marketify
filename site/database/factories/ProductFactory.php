@@ -42,9 +42,9 @@ class ProductFactory extends Factory
             $client = new Client();
 
             $main = true;
-            for ($i=0; $i < 4; $i++) {
+            for ($i=0; $i < 2; $i++) {
 
-                $client->post(env('API_IP').'api/insert', [
+                $client->post(env('API_IP').'api/images/insert/seeder', [
                     'verify' => false,
                     'json' => [
                         'name' => $product->name,

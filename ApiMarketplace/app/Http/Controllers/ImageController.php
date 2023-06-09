@@ -8,64 +8,85 @@ use Illuminate\Support\Facades\Log;
 
 class ImageController extends Controller
 {
-
-    /** 
-     * EXPLICAR EL PORQUE HE CAMBIADO LA FUNCIÓN EN LA DOCUMENTACIÓN 
-    */
-     
-    public function index() {
+    public function index()
+    {
         $images = Image::where('main', true)->get();
-    
-        if ($images && $images->count() > 0) {
+
+        if ($images->count() > 0) {
             return response($images, 200);
         } else {
-            abort(404);
-        }
-    }
-    
-
-    public function catchImage($id){
-        $images = Image::where('product_id',$id)->get();
-
-        if ($images && $images->count() > 0) {
-            return response($images,200);
-
-        }else {
-        abort(404);
+            return abort(404);
         }
     }
 
-    public function insertImage(Request $request){
-        Image::create([
-            'name'=> $request['name'],
-            'path'=> $request['path'] ?? 'images/products/default-product.png',
-            'product_id'=>$request['product_id'],
-            'main'=>$request['main']
+    public function show($id)
+    {
+        $images = Image::where('product_id', $id)->get();
+
+        if ($images->count() > 0) {
+            return response($images, 200);
+        } else {
+            return abort(404);
+        }
+    }
+
+    public function insertSeeder(Request $request)
+    {
+        $image = Image::create([
+            'name' => $request->input('name'),
+            'path' => $request->input('path', 'images/products/default-product.png'),
+            'product_id' => $request->input('product_id'),
+            'main' => $request->input('main')
         ]);
+
+        return response(['message' => 'Image inserted successfully', 'image' => $image], 200);
     }
 
-    public function deleteImage($id){
+    public function insert(Request $request)
+    {
+        $validatedData = $request->validate([
+            'product_image' => 'required|array',
+            'product_image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $path = 'images/products/';
+    
+        $imagePaths = [];
+    
+        foreach ($validatedData['product_image'] as $image) {
+            
+            $name = uniqid('product_') . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path($path), $name);
+            $imagePaths[] = $path . $name;
+        }
+        
+        return response()->json([
+            'message' => 'Imágenes cargadas exitosamente.',
+            'image_paths' => $imagePaths,
+        ], 200);
+    }
+
+    public function delete($id)
+    {
         $image = Image::find($id);
 
-        if ($image && $image->count() > 0) {
+        if ($image) {
             $image->delete();
-            return "La imagen ". $id ." ha sido borrada";
-
-        }else {
-        abort(404);
+            return response(['message' => 'The image ' . $id . ' has been deleted'], 200);
+        } else {
+            return abort(404);
         }
-
     }
-    public function deleteAll($id){
-        $images = Image::where('product_id',$id);
 
-        if ($images && $images->count() > 0) {
+    public function deleteAll($id)
+    {
+        $images = Image::where('product_id', $id);
+
+        if ($images->count() > 0) {
             $images->delete();
-            return "Las imagenes del producto ". $id ." han sido borradas.";
-
-        }else {
-        abort(404);
+            return response(['message' => 'All images of the product ' . $id . ' have been deleted'], 200);
+        } else {
+            return abort(404);
         }
-
     }
 }
