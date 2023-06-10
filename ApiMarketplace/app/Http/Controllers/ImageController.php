@@ -11,20 +11,24 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::where('main', true)->get();
-
+    
         if ($images->count() > 0) {
-            return response($images, 200);
+            $response = response($images, 200);
+            $response->header('Cache-Control', 'public, max-age=5184000'); // 60 días en segundos
+            return $response;
         } else {
             return abort(404);
         }
     }
-
+    
     public function show($id)
     {
         $images = Image::where('product_id', $id)->get();
-
+    
         if ($images->count() > 0) {
-            return response($images, 200);
+            $response = response($images, 200);
+            $response->header('Cache-Control', 'public, max-age=5184000'); // 60 días en segundos
+            return $response;
         } else {
             return abort(404);
         }
@@ -68,7 +72,7 @@ class ImageController extends Controller
             'main' => $main,
         ]);
 
-        return response('Image inserted successfully', 200);
+        return response(['message' => 'Image inserted successfully', 'image' => $image], 200);
     }
 
     public function delete($id)
