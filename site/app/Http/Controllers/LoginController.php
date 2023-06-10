@@ -42,15 +42,13 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-
-
         try {
             $validatedData = $request->validate([
                 'login' => 'required|string|max:255',
                 'current-password' => 'required|string|min:8|max:255',
             ], ValidationMessages::userValidationMessages());
 
-            
+
             $loginType = filter_var($validatedData['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
 
             $credentials = [
