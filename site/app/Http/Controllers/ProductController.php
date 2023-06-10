@@ -375,6 +375,10 @@ class ProductController extends Controller
     public function destroy($id)
     {
         try {
+            $client = new Client();
+            $response = $client->delete(env('API_IP').'api/images/delete/product/'.$id, [
+                'verify' => false,
+            ]);
             $product = Product::find($id);
             $product->delete();
 

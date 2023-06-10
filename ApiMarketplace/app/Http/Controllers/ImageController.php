@@ -8,28 +8,53 @@ use Illuminate\Support\Facades\Log;
 
 class ImageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        Log::channel('Marketify_API')->info('Received request: GET /images/view/all', [
+            'user_agent' => $request->userAgent(),
+            'ip_address' => $request->ip(),
+            'parameters' => $request->all(),
+        ]);
+
         $images = Image::where('main', true)->get();
-    
+
         if ($images->count() > 0) {
             $response = response($images, 200);
-            $response->header('Cache-Control', 'public, max-age=5184000'); // 60 días en segundos
+            $response->header('Cache-Control', 'public, max-age=5184000'); // 60 days in seconds
+
+            Log::channel('Marketify_API')->info('Sent response: 200 OK', [
+                'content' => $response->getContent(),
+            ]);
+
             return $response;
         } else {
+            Log::channel('Marketify_API')->info('Sent response: 404 Not Found');
+
             return abort(404);
         }
     }
-    
-    public function show($id)
+
+    public function show(Request $request, $id)
     {
+        Log::channel('Marketify_API')->info('Received request: GET /images/view/' . $id, [
+            'user_agent' => $request->userAgent(),
+            'ip_address' => $request->ip(),
+            'parameters' => $request->all(),
+        ]);
+
         $images = Image::where('product_id', $id)->get();
-    
+
         if ($images->count() > 0) {
             $response = response($images, 200);
-            $response->header('Cache-Control', 'public, max-age=5184000'); // 60 días en segundos
+            $response->header('Cache-Control', 'public, max-age=5184000'); // 60 days in seconds
+
+            Log::channel('Marketify_API')->info('Sent response: 200 OK', [
+                'content' => $response->getContent(),
+            ]);
+
             return $response;
         } else {
+            Log::channel('Marketify_API')->info('Sent response: 404 Not Found');
             return abort(404);
         }
     }
@@ -42,6 +67,8 @@ class ImageController extends Controller
             'product_id' => $request->input('product_id'),
             'main' => $request->input('main')
         ]);
+
+        Log::channel('Marketify_API')->info('Image inserted successfully (BY SEEDER)');
 
         return response(['message' => 'Image inserted successfully', 'image' => $image], 200);
     }
@@ -72,6 +99,13 @@ class ImageController extends Controller
             'main' => $main,
         ]);
 
+        Log::channel('Marketify_API')->info('Image inserted successfully', [
+            'name' => $name,
+            'path' => $path,
+            'product_id' => $productID,
+            'main' => $main,
+        ]);
+
         return response(['message' => 'Image inserted successfully', 'image' => $image], 200);
     }
 
@@ -81,6 +115,12 @@ class ImageController extends Controller
 
         if ($image) {
             $image->delete();
+            Storage::disk('public2')->delete($image->path);
+
+            Log::channel('Marketify_API')->info('The image ' . $id . ' has been deleted', [
+                'image_id' => $id,
+            ]);
+
             return response(['message' => 'The image ' . $id . ' has been deleted'], 200);
         } else {
             return abort(404);
@@ -92,7 +132,15 @@ class ImageController extends Controller
         $images = Image::where('product_id', $id);
 
         if ($images->count() > 0) {
-            $images->delete();
+            foreach ($images as $image) {
+                $image->delete();
+                Storage::disk('public2')->delete($image->path);
+            }
+
+            Log::channel('Marketify_API')->info('All images of the product ' . $id . ' have been deleted', [
+                'image_id' => $id,
+            ]);
+
             return response(['message' => 'All images of the product ' . $id . ' have been deleted'], 200);
         } else {
             return abort(404);

@@ -126,6 +126,12 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        
+        'Marketify_API' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/Marketify_API.log'),
+            'level' => 'info',
+        ],
     ],
 
 ];
