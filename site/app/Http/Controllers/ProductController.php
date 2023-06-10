@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\Category;
 
+use Illuminate\Support\Arr;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\View\Components\Header;
@@ -57,16 +58,17 @@ class ProductController extends Controller
 
             // Hacemos la petición a la api
             $client = new Client();
-
             $response = $client->get(env('API_IP').'api/images/view/all', [
                 'verify' => false
             ]);
-            $data = json_decode($response->getBody(), true);
-            
-            $paths = [];
-            foreach ($data as $ruta ) {
-                array_push($paths,$ruta);          
+            // Comprobamos que ha recibido las imágenes de manera correcta
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+                $paths = Arr::pluck($data, 'path','product_id');
+            } else {
+                throw new \Exception('Error retrieving images from the API');
             }
+
             //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
             $usersShop = Shop::findShopUserID($userId);
             if ($usersShop) {
@@ -99,13 +101,19 @@ class ProductController extends Controller
             $productShop = $product->shop;
             $categories = Category::all();
 
+            // Hacemos la petición a la api
             $client = new Client();
-            $response = $client->request('GET', env('API_IP').'api/images/view/'.$id, [
+            $response = $client->get(env('API_IP').'api/images/view/'.$id, [
                 'verify' => false
             ]);
-            if (true) {
+            // Comprobamos que ha recibido las imágenes de manera correcta
+            if ($response->getStatusCode() === 200) {
                 $images = json_decode($response->getBody(), true);
+            } else {
+                throw new \Exception('Error retrieving images from the API');
+            }
 
+            
                 //Comprobamos la ID del usuario y si le pertenece una tienda, para comprobar si le pertenece el producto mostrado.
                 $userId = auth()->id();
                 $usersShop = Shop::findShopUserID($userId);
@@ -149,9 +157,6 @@ class ProductController extends Controller
                         return redirect()->route('product.index');
                     }
                 }
-            } else {
-                    abort(404);
-            }
         } catch (ModelNotFoundException $e) {
             Log::channel('marketify')->error('An error occurred showing product show view: '.$e->getMessage());
             return redirect()->route('product.404');
@@ -453,20 +458,18 @@ class ProductController extends Controller
 
             $products = Product::filterCategory($id);
 
-
             // Hacemos la petición a la api
             $client = new Client();
-
             $response = $client->get(env('API_IP').'api/images/view/all', [
                 'verify' => false
             ]);
-            $data = json_decode($response->getBody(), true);
-
-            $paths = [];
-            foreach ($data as $ruta ) {
-                array_push($paths,$ruta);          
+            // Comprobamos que ha recibido las imágenes de manera correcta
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+                $paths = Arr::pluck($data, 'path','product_id');
+            } else {
+                throw new \Exception('Error retrieving images from the API');
             }
-
 
             Log::channel('marketify')->info('product.index with filter view loaded');
             return view('product.index', [

@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use App\Classes\HeaderVariables;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -23,11 +24,14 @@ class LandingController extends Controller
             $response = $client->get(env('API_IP').'api/images/view/all', [
                 'verify' => false
             ]);
-            $data = json_decode($response->getBody(), true);
-            $paths = [];
-            foreach ($data as $ruta) {
-                array_push($paths, $ruta);
+            // Comprobamos que ha recibido las imágenes de manera correcta
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+                $paths = Arr::pluck($data, 'path','product_id');
+            } else {
+                throw new \Exception('Error retrieving images from the API');
             }
+            
             $categories = Category::all();
 
             try {

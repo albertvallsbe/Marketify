@@ -131,15 +131,6 @@ Ara, aneu a la terminal on heu tractat el vagrant del lloc web (vagrantSITE) i e
 ```
 cd /home/marketify/site
 php artisan migrate:refresh
-```
-
-Torneu a la terminal on heu tractat el vagrant de l'API (vagrantAPI) i executeu les comandes següents:
-```
-cd /home/marketify/ApiMarketplace
-php artisan migrate:refresh
-```
-Torneu a la terminal vagrantSITE (estant en /home/marketify/site) i executeu:
-```
 php artisan db:seed
 ```
 

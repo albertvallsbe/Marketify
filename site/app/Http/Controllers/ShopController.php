@@ -6,6 +6,7 @@ use App\Models\User;
 use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Classes\HeaderVariables;
@@ -41,10 +42,12 @@ class ShopController extends Controller {
             $response = $client->get(env('API_IP').'api/images/view/all', [
                 'verify' => false
             ]);
-            $data = json_decode($response->getBody(), true);        
-            $paths = [];
-            foreach ($data as $ruta ) {
-                array_push($paths,$ruta);          
+            // Comprobamos que ha recibido las imágenes de manera correcta
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true);
+                $paths = Arr::pluck($data, 'path','product_id');
+            } else {
+                throw new \Exception('Error retrieving images from the API');
             }
 
             $shop = Shop::showByURL($url);
@@ -82,16 +85,19 @@ class ShopController extends Controller {
                 $id = Auth::user()->id;
                 $shopID = Shop::findShopUserID($id);
                 try {           
-                // Hacemos la petición a la api
-                $client = new Client();
-                $response = $client->get(env('API_IP').'api/images/view/all', [
-                    'verify' => false
-                ]);
-                $data = json_decode($response->getBody(), true);        
-                $paths = [];
-                foreach ($data as $ruta ) {
-                    array_push($paths,$ruta);          
-                }
+                        // Hacemos la petición a la api
+                    $client = new Client();
+                    $response = $client->get(env('API_IP').'api/images/view/all', [
+                        'verify' => false
+                    ]);
+                    // Comprobamos que ha recibido las imágenes de manera correcta
+                    if ($response->getStatusCode() === 200) {
+                        $data = json_decode($response->getBody(), true);
+                        $paths = Arr::pluck($data, 'path','product_id');
+                    } else {
+                        throw new \Exception('Error retrieving images from the API');
+                    }
+
                     $shop = Shop::findOrFail($shopID);
                     $products = Product::productsShop($shopID, $shop->order);
                     $categories = Category::all();

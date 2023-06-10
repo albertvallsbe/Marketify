@@ -9,7 +9,7 @@
                 @foreach ($products as $key => $product)
                     <div class="card-style-home product" id={{ $product->id }}>
                         <a class="card-style-home_a" href="{{ route('product.show', $product->id) }}">
-                            <img class="product-img" src="{{ asset($paths[$product->id - 1]['path']) }}" />
+                            <img class="product-img" src="{{ asset($paths[$product->id])}}"/>
                             <h4 class="card-style-home_title product__name">{{ $product->name }}</h4>
                             <h5 class="card-style-home_title product__description">{{ $product->description }}</h5>
                             <h3 class="card-style-home_title product__price">{{ $product->price }} €</h3>

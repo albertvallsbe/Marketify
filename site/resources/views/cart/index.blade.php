@@ -24,7 +24,7 @@
                     @endphp
                     <div class="product card-style-cart {{ $isShopDifferent ? '' : 'hidden' }}" id="{{ $product->id }}">
                         <a class="card-style-cart_a" href="{{ route('product.show', $product->id) }}">
-                            <img class="product-img" src="{{ asset($paths[$product->id - 1]['path']) }}" />
+                            <img class="product-img" src="{{ asset($paths[$product->id])}}"/>
                             <h4 class="card-style-cart_title product__name">{{ $product->name }}</h4>
                             <h3 class="card-style-cart_title product__price">{{ $product->price }} €</h3>
                         </a>

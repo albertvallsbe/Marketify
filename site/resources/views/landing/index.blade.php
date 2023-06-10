@@ -30,7 +30,7 @@
                 @foreach ($tag['products'] as $tagProducts)
                     <div class="card-style-home product" id={{ $tagProducts['id'] }}>
                         <a class="card-style-home_a" href="{{ route('product.show', $tagProducts['id']) }}">
-                            <img class="product-img" src="{{ asset($paths[$tagProducts->id - 1]['path']) }}" />
+                            <img class="product-img" src="{{ asset($paths[$tagProducts->id]) }}" />
                             <h4 class="card-style-home_title product__name">{{ $tagProducts['name'] }}</h4>
                             <h4 class="card-style-home_title product__name">{{ $tagProducts['tag'] }}</h4>
                             <h3 class="card-style-home_title product__price">{{ $tagProducts['price'] }} €</h3>
