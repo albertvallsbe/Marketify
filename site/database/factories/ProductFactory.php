@@ -47,10 +47,14 @@ class ProductFactory extends Factory
                 $client->post(env('API_IP').'api/images/insert/seeder', [
                     'verify' => false,
                     'json' => [
-                        'name' => $product->name,
-                        'path' => env('API_IP')."images/products/" . rand(1, 4) . ".jpg",
-                        'product_id' => $product->id,
-                        'main' => $main,
+                        'insert_images' => [
+                            [
+                                'name' => $product->name,
+                                'path' => env('API_IP')."images/products/" . rand(1, 4) . ".jpg",
+                                'product_id' => $product->id,
+                                'main' => $main,
+                            ]
+                        ]
                     ]
 
                 ]);
