@@ -1,9 +1,9 @@
 <?php
+
 use Tests\TestCase;
+
 use App\Models\User;
 use App\Models\Shop;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ShopTest extends TestCase
