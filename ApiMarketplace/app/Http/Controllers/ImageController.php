@@ -61,16 +61,22 @@ class ImageController extends Controller
 
     public function insertSeeder(Request $request)
     {
-        $image = Image::create([
-            'name' => $request->input('name'),
-            'path' => $request->input('path', 'images/products/default-product.png'),
-            'product_id' => $request->input('product_id'),
-            'main' => $request->input('main')
-        ]);
-
-        Log::channel('Marketify_API')->info('Image inserted successfully (BY SEEDER)');
-
-        return response(['message' => 'Image inserted successfully', 'image' => $image], 200);
+        $imagesData = $request->input('insert_images');
+    
+        $images = [];
+        foreach ($imagesData as $data) {
+            $image = Image::create([
+                'name' => $data['name'],
+                'path' => $data['path'] ?? 'images/products/default-product.png',
+                'product_id' => $data['product_id'],
+                'main' => $data['main']
+            ]);
+            $images[] = $image;
+        }
+    
+        Log::channel('Marketify_API')->info('Images inserted successfully (BY SEEDER)');
+    
+        return response(['message' => 'Images inserted successfully', 'images' => $images], 200);
     }
 
     public function insert(Request $request)
@@ -115,7 +121,6 @@ class ImageController extends Controller
 
         if ($image) {
             $image->delete();
-            Storage::disk('public2')->delete($image->path);
 
             Log::channel('Marketify_API')->info('The image ' . $id . ' has been deleted', [
                 'image_id' => $id,
@@ -132,10 +137,7 @@ class ImageController extends Controller
         $images = Image::where('product_id', $id);
 
         if ($images->count() > 0) {
-            foreach ($images as $image) {
-                $image->delete();
-                Storage::disk('public2')->delete($image->path);
-            }
+            $images->delete();
 
             Log::channel('Marketify_API')->info('All images of the product ' . $id . ' have been deleted', [
                 'image_id' => $id,
