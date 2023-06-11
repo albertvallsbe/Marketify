@@ -50,7 +50,7 @@ class ProductFactory extends Factory
                         'insert_images' => [
                             [
                                 'name' => $product->name,
-                                'path' => env('API_IP')."images/products/" . rand(1, 4) . ".jpg",
+                                'path' => "images/products/" . rand(1, 4) . ".jpg",
                                 'product_id' => $product->id,
                                 'main' => $main,
                             ]
