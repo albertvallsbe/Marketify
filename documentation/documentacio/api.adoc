@@ -1,20 +1,88 @@
 === API 
 
-En aquest apartat s'explica les diferents funcionalitats que té le api i com les utilitzem.
+=== ENDPOINTS
 
-La configuració de la API es troba al Manual d'isntal·lació.
+*Obtenir totes les imatges*
 
-=== Funcionalitats
+Mètode: GET
 
-- index(). En aquesta funcionalitat s'obtenen totes les imatges principals per mitja d'una consulta. Vam decidir que agafes totes les principals, ja que sino aquesta funció (en principi era agafar totes les imatges amb el mètode all()) no s'utilitzava per res.
+Ruta: /images/view/all
 
-- catchImage(). En aquesta funcionalitat es fa una consulta a la taula "images" filtrant per l'id del producte, on s'obtenen totes les imatges d'un producte.
+Controlador: ImageController@index
 
-- insertImage(). En aquesta funció es crea la imatge, on pasem com a camps el nom de la imatge, el seu path, un boleeà per si és o no la imatge principal i l'id del producte.
+Nom de la ruta: api.images.index
 
-- deleteImage(). En aquesta funció es fa una consulta a la taula "images" filtrant per l'id de la imatge i una vegada obté la imatge, l'esborra.
+Descripció: Aquest endpoint retorna totes les imatges disponibles a la base de dades.
 
-- deleteAll(). En aquesta imatge es fa una consulta a la taula "images" filtrant per l'id del producte i una vegada s'obtenen les imatges, les esborra.
+
+*Obtenir una imatge per ID*
+
+Mètode: GET
+
+Ruta: /images/view/{id}
+
+Controlador: ImageController@show
+
+Nom de la ruta: api.images.show
+
+Paràmetres de ruta:
+id (enter): L'ID únic de la imatge que es vol obtenir.
+
+Descripció: Aquest endpoint retorna els detalls d'una imatge específica segons la seva ID.
+
+*Inserir imatges utilitzant un seeder*
+
+Mètode: POST
+
+Ruta: /images/insert/seeder
+
+Controlador: ImageController@insertSeeder
+
+Nom de la ruta: api.images.insertseeder
+
+Descripció: Aquest endpoint permet inserir imatges a la base de dades utilitzant un seeder. Un seeder és una eina que s'utilitza per generar dades de prova a la base de dades.
+
+*Inserir una nova imatge*
+
+Mètode: POST
+
+Ruta: /images/insert
+
+Controlador: ImageController@insert
+
+Nom de la ruta: api.images.insert
+
+Descripció: Aquest endpoint permet inserir una nova imatge a la base de dades. Els detalls de la imatge s'han de proporcionar al cos de la sol·licitud.
+
+*Eliminar una imatge per ID*
+
+Mètode: DELETE
+
+Ruta: /images/delete/{id}
+
+Controlador: ImageController@delete
+
+Nom de la ruta: api.images.delete
+
+Paràmetres de ruta:
+id (enter): L'ID únic de la imatge que es vol eliminar.
+
+Descripció: Aquest endpoint permet eliminar una imatge específica segons la seva ID.
+
+*Eliminar totes les imatges associades a un producte*
+
+Mètode: DELETE
+
+Ruta: /images/delete/product/{id}
+
+Controlador: ImageController@deleteAll
+
+Nom de la ruta: api.images.deleteAll
+
+Paràmetres de ruta:
+id (enter): L'ID únic del producte del qual es volen eliminar totes les imatges.
+
+Descripció: Aquest endpoint permet eliminar totes les imatges associades a un producte específic segons la seva ID.
 
 === Realitzar peticions
 
