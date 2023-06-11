@@ -46,6 +46,9 @@ class ProductFactory extends Factory
 
                 $client->post(env('API_IP').'api/images/insert/seeder', [
                     'verify' => false,
+                    'headers' => [
+                        'Authorization' => env('API_TOKEN'),
+                    ],
                     'json' => [
                         'insert_images' => [
                             [

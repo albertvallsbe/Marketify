@@ -25,7 +25,10 @@ class APITest extends TestCase
 
         $client = new Client();
         $response = $client->get(env('API_IP').'api/images/view/all', [
-            'verify' => false
+            'verify' => false,
+                    'headers' => [
+                        'Authorization' => env('API_TOKEN'),
+                    ],
         ]);
         $statusCode = $response->getStatusCode();
         $this->assertEquals(200, $statusCode);
@@ -39,7 +42,10 @@ class APITest extends TestCase
 
         $client = new Client();
         $response = $client->get(env('API_IP').'api/images/view/'.$products[0]->id, [
-            'verify' => false
+            'verify' => false,
+                    'headers' => [
+                        'Authorization' => env('API_TOKEN'),
+                    ],
         ]);
         $statusCode = $response->getStatusCode();
         $this->assertEquals(200, $statusCode);
@@ -53,7 +59,10 @@ class APITest extends TestCase
 
         $client = new Client();
         $response = $client->get(env('API_IP').'api/images/view/'.$product->id, [
-            'verify' => false
+            'verify' => false,
+                    'headers' => [
+                        'Authorization' => env('API_TOKEN'),
+                    ],
         ]);
         $statusCode = $response->getStatusCode();
         $this->assertEquals(200, $statusCode);
@@ -76,6 +85,9 @@ class APITest extends TestCase
     
         $response = $client->post(env('API_IP') . 'api/images/insert', [
             'verify' => false,
+            'headers' => [
+                'Authorization' => env('API_TOKEN'),
+            ],
             'multipart' => [
                 [
                     'name' => 'name',
@@ -114,6 +126,9 @@ class APITest extends TestCase
         $client = new Client();
         $response = $client->delete(env('API_IP').'api/images/delete/product/'.$product->id, [
             'verify' => false,
+            'headers' => [
+                'Authorization' => env('API_TOKEN'),
+            ],
         ]);
 
         $statusCode = $response->getStatusCode();

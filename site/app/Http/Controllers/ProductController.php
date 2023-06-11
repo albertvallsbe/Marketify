@@ -237,6 +237,9 @@ class ProductController extends Controller
                     
                     $client->post(env('API_IP') . 'api/images/insert', [
                         'verify' => false,
+                    'headers' => [
+                        'Authorization' => env('API_TOKEN'),
+                    ],
                         'multipart' => [
                             [
                                 'name' => 'name',
@@ -318,6 +321,9 @@ class ProductController extends Controller
             $client = new Client();
             $response = $client->delete(env('API_IP').'api/images/delete/product/'.$id, [
                 'verify' => false,
+                    'headers' => [
+                        'Authorization' => env('API_TOKEN'),
+                    ],
             ]);
             
             $main = true;
@@ -330,6 +336,9 @@ class ProductController extends Controller
                     
                     $client->post(env('API_IP') . 'api/images/insert', [
                         'verify' => false,
+                        'headers' => [
+                            'Authorization' => env('API_TOKEN'),
+                        ],
                         'multipart' => [
                             [
                                 'name' => 'name',
@@ -378,6 +387,9 @@ class ProductController extends Controller
             $client = new Client();
             $response = $client->delete(env('API_IP').'api/images/delete/product/'.$id, [
                 'verify' => false,
+                'headers' => [
+                    'Authorization' => env('API_TOKEN'),
+                ],
             ]);
             $product = Product::find($id);
             $product->delete();
