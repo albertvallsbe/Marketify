@@ -71,7 +71,7 @@ class APITest extends TestCase
         $client = new Client();
     
         $name = uniqid('product_') . '.' . $image->getClientOriginalExtension();
-        $path = env('API_IP')."images/products/";
+        $path = "images/products/";
         $finalPath = $path . $name;
     
         $response = $client->post(env('API_IP') . 'api/images/insert', [

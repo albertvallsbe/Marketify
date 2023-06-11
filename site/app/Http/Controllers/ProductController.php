@@ -232,7 +232,7 @@ class ProductController extends Controller
                 foreach ($productImages as $image) {
                     $name = uniqid('product_') . '.' . $image->getClientOriginalExtension();
                     
-                    $path = env('API_IP')."images/products/";
+                    $path = "images/products/";
                     $finalPath = $path . $name;
                     
                     $client->post(env('API_IP') . 'api/images/insert', [
@@ -325,7 +325,7 @@ class ProductController extends Controller
                 foreach ($productImages as $image) {
                     $name = uniqid('product_') . '.' . $image->getClientOriginalExtension();
                     
-                    $path = env('API_IP')."images/products/";
+                    $path = "images/products/";
                     $finalPath = $path . $name;
                     
                     $client->post(env('API_IP') . 'api/images/insert', [
