@@ -8,7 +8,7 @@
             <div class="slider">
                 @for ($i = 0; $i < count($images); $i++)
                     <div class="slide">
-                        <img id="slide{{ $i }}" src="{{ $images[$i]['path'] }}"
+                        <img id="slide{{ $i }}" src="{{ env('API_IP').$images[$i]['path'] }}"
                             alt="Slide {{ $i + 1 }}">
                     </div>
                 @endfor
