@@ -14,7 +14,7 @@ use App\Http\Controllers\ImageController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::middleware(['throttle:500,1'])->prefix('images')->group(function () {
+Route::prefix('images')->withoutMiddleware('throttle:api')->middleware('throttle:300:1')->group(function () {
     Route::get('/view/all', [ImageController::class, 'index'])->name('api.images.index');
     Route::get('/view/{id}', [ImageController::class, 'show'])->name('api.images.show');
     Route::post('/insert/seeder', [ImageController::class, 'insertSeeder'])->name('api.images.insertseeder');

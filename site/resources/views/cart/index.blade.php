@@ -5,6 +5,7 @@
 @section('content')
     @php
         $errorSold = false;
+        $errorHidden = false;
         $errorYours = false;
     @endphp
     <h1 class="main_title">Cart</h1>
@@ -17,6 +18,8 @@
                         if (!$isShopDifferent) {
                             if ($product->status == 'sold') {
                                 $errorSold = true;
+                            }else if ($product->status == 'hidden'){
+                                $errorHidden = true;
                             } else {
                                 $errorYours = true;
                             }
@@ -56,6 +59,10 @@
             @if ($errorSold)
                 <p>Some products have been sold. Please delete them to proceed.</p>
             @endif
+            @if ($errorHidden)
+                <p>Some products are marked as disabled by their owner. Please delete them to proceed.</p>
+            @endif
+
             @if ($errorYours)
                 <p>Some products are marked as if you are the owner. Please delete them to proceed.</p>
             @endif
