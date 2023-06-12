@@ -6,10 +6,13 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Log;
 
 class Chat extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'seller_id',
         'customer_id',
@@ -31,7 +34,7 @@ class Chat extends Model
                     'seller_id' => $seller_id,
                     'customer_id' => $customer_id,
                     'order_id' => $order_id
-                ]);            
+                ]);
 
         $message = Message::create([
             'chat_id' => $chat->id,
