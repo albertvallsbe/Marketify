@@ -36,6 +36,15 @@ MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
+=== Configuració del ficher php.ini
+Per a la correcte realització dels test amb imatges de la API, hem de descomentar la seguent línea del fitcher de configuració de php
+
+- Fitxer php.ini
+
+```
+extension=gd
+```
+
 === Pas 2: 
 Per instal·lar les dependències dels dos projectes Laravel (site i ApiMarketplace), seguiu les següents instruccions:
 
